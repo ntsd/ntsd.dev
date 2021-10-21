@@ -1,0 +1,12 @@
+<span id='tag_cloud' class="tags">
+  <svg class="svg-icon svg-icon-sm pricetag"></svg>
+  {% if post %}
+    {% for tag in post.tags %}
+      <a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+    {% endfor %}
+  {% else %}
+    {% for tag in page.tags %}
+      <a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+    {% endfor %}
+  {% endif %}
+</span>

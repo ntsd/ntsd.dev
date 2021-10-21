@@ -1,0 +1,77 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="google-site-verification"
+    content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="{{ site.keyword }}" />
+  <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="script-src 'self' 'unsafe-inline' giscus.app *.cloudflare.com; object-src 'none';base-uri 'none';"
+  />
+
+  {% seo %}
+
+  <!-- preconnect & dns-prefetch -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  {% if site.ga_track_id %}
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+  {% endif %} {% if site.github_btn %}
+  <link rel="preconnect" href="https://api.github.com" />
+  {% endif %}
+  <!-- Styles css -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json" defer />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ site.baseurl }}/img/icon-min.svg" defer />
+  <!-- apple-touch-icon -->
+  <link
+    rel="apple-touch-icon"
+    href="{{ site.baseurl }}/img/icon-min.svg"
+    defer
+  />
+
+  {% if page.header_import %} {% include_relative {{ page.header_import }} %} {%
+  endif %}
+
+  <!-- async load function async(url, callback, delay) -->
+  <script>
+    function async(u, c, t) {
+      function l() {
+        var d = document,
+          s = "script",
+          o = d.createElement(s),
+          e = d.getElementsByTagName(s)[0];
+        o.src = u;
+        if (c) {
+          o.addEventListener(
+            "load",
+            function (e) {
+              c(null, e);
+            },
+            false
+          );
+        }
+        e.parentNode.insertBefore(o, e);
+      }
+      if (t) {
+        setTimeout(l, t);
+      } else {
+        l();
+      }
+    }
+    function asyncStyle(u) {
+      var d = document,
+        t = "link",
+        o = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+      o.href = u;
+      o.rel = "stylesheet";
+      s.parentNode.insertBefore(o, s);
+    }
+  </script>
+</head>

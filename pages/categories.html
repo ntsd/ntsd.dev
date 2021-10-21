@@ -1,0 +1,27 @@
+---
+layout: page
+title: "Categories"
+header-img: "img/home-bg-art.jpg"
+permalink: /categories/
+catalog: false
+---
+
+<div class="post-container">
+    <ul>
+        {% for category in site.categories %}
+        <h1 id="{{category | first}}">{{category | first}}</h1>
+            {% for posts in category  %}
+                {% for post in posts %}
+                    {% if post.url %}
+                    <li>
+                        <time>
+                        {{ post.date | date:"%F" }}
+                        </time>
+                        <a class="title" href="{{ post.url | prepend: site.baseurl }}" style="margin-right: 5px">{{ post.title }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>

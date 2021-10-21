@@ -1,0 +1,191 @@
+---
+layout: default
+---
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header {
+        position: relative;
+        background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
+    }
+
+    {% if page.header-mask %}
+    header.intro-header .header-mask {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0,0,0, {{ page.header-mask }});
+    }
+    {% endif %}
+</style>
+<header class="intro-header" >
+    <div class="intro-header-inner">
+        <div class="header-mask"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <span class="categories">
+                            {% for category in page.categories %}
+                            <a class="category" href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
+                            {% endfor %}
+                        </span>
+                        <span class="tags">
+                            {% for tag in page.tags %}
+                            <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+                            {% endfor %}
+                        </span>
+                        <h1>{{ page.title }}</h1>
+                        <h2 class="subheading">{{ page.subtitle }}</h2>
+                        <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Left Side Catalog Container -->
+            {% if page.catalog %}
+            <div class="
+                col-lg-2
+                col-md-1
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+            </div>
+            {% endif %}
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8
+                col-md-10
+                post-container">
+
+                <!-- Multi-Lingual -->
+                {% if page.multilingual %}
+                <!-- Language Selector -->
+                <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+                    <option value="0"> Thai </option>
+                    <option value="1" selected> English </option>
+                </select>
+                {% endif %}
+
+                {{ content }}
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    {% if page.previous.url %}
+                    <li class="previous">
+                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                        Previous<br>
+                        <span>{{page.previous.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if page.next.url %}
+                    <li class="next">
+                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                        Next<br>
+                        <span>{{page.next.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>  
+
+            <!-- Right Side Catalog Container -->
+            {% if page.catalog %}
+            <div class="
+                col-lg-2
+                col-md-1
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <a class="catalog-toggle" href="#">Contents</a>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <!-- Bottom Container -->
+        <div class="row">
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <hr class="hidden-sm hidden-xs" style="visibility: hidden;">
+
+                {% if site.giscus %}
+                <div class="comment giscus"></div>
+                {% endif %}
+
+                <!-- Featured Tags -->
+                {% if site.featured-tags %}
+                <hr class="hidden-sm hidden-xs">
+                <h3><a href="/tags/">FEATURED TAGS</a></h3>
+                <div class="tags">
+                    {% for tag in site.tags %}
+                        {% if tag[1].size > site.featured-condition-size %}
+                            <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                                {{ tag[0] }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</article>
+
+{% if site.giscus %}
+<script>
+    setTimeout(function() {
+        var d = document, s = d.createElement('script');
+        s.src = ' https://giscus.app/client.js';
+        s.setAttribute('data-repo', 'ntsd/ntsd.github.io');
+        s.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkyNDYwNjU3MDI');
+        s.setAttribute('data-category', 'General');
+        s.setAttribute('data-category-id', 'DIC_kwDODqqqJs4B_e5q');
+        s.setAttribute('data-mapping', 'pathname');
+        s.setAttribute('data-reactions-enabled', '0');
+        s.setAttribute('data-emit-metadata', '0');
+        s.setAttribute('data-theme', 'light');
+        s.setAttribute('crossorigin', 'anonymous');
+        (d.head || d.body).appendChild(s);
+    }, 5000);
+</script>
+{% endif %}
+
+{% if site.anchorjs %}
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js", function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add('.post-container h1, .post-container h2, .post-container h3');
+    }, 5000)
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+{% endif %}

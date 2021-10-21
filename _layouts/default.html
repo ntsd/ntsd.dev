@@ -1,0 +1,27 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<!-- hack iOS CSS :active style -->
+<body>
+    {% if page.no-nav == null %}
+        {% include nav.html %}
+    {% endif %}
+
+    {{ content }}
+
+    {% if page.no-footer == null %}
+        {% include footer.html %}
+    {% endif %}
+
+    {% if page.footer_import %}
+        {% include_relative {{ page.footer_import }} %}
+    {% endif %}
+</body>
+
+</html>
