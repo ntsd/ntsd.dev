@@ -1,160 +1,190 @@
 ---
 layout: default
 ---
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header {
-        position: relative;
-        background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
-    }
-</style>
+
 <!-- Page Header -->
-<header class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    {% if page.description %}
-                        <span class="subheading">{{ page.description }}</span>
-                    {% else %}
-                        {% if site.show_quotes %}
-                            {% assign random = "now" | date: "%N" | modulo: site.quotes.size %}
-                            <span class="subheading">{{site.quotes[random]}}</span>
-                        {% else %}
-                            <span class="subheading">{{site.description}}</span>
-                        {% endif %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+<style type="text/css">
+  header .header-bg {
+    background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
+  }
+</style>
+<header>
+  <div class="w-full bg-center bg-cover bg-black header-bg">
+    <div
+      class="
+        flex
+        items-center
+        justify-center
+        w-full
+        h-full
+        backdrop-filter backdrop-brightness-75
+        py-32
+      "
+    >
+      <div class="text-center">
+        <h1 class="text-4xl font-semibold text-white uppercase lg:text-5xl">
+          {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif
+          %}
+        </h1>
+        {% if page.description %}
+        <p class="mt-2 text-sm text-white lg:text-base">
+          {{ page.description }}
+        </p>
+        {% else %} {% if site.show_quotes %} {% assign random = "now" | date:
+        "%N" | modulo: site.quotes.size %}
+        <span class="subheading">{{site.quotes[random]}}</span>
+        {% else %}
+        <p class="mt-2 text-sm text-white lg:text-base">{{site.description}}</p>
+        {% endif %} {% endif %}
+      </div>
     </div>
+  </div>
 </header>
 
 <!-- Main Content -->
 <div class="container">
-	<div class="row">
-        {% if site.sidebar == false %}
-<!-- NO SIDEBAR -->
+  <div class="row">
+    {% if site.sidebar == false %}
+    <!-- NO SIDEBAR -->
     <!-- PostList Container -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
-                {{ content }}
-            </div>
+    <div
+      class="
+        col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+        postlist-container
+      "
+    >
+      {{ content }}
+    </div>
     <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
+    <div
+      class="
+        col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+        sidebar-container
+      "
+    >
+      <!-- Featured Tags -->
+      {% if site.featured-tags %}
+      <section>
+        <!-- no hr -->
+        <h5>
+          <a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a>
+        </h5>
+        <div class="tags">
+          {% for tag in site.tags %} {% if tag[1].size >
+          site.featured-condition-size %}
+          <a
+            href="{{ site.baseurl }}/tags/#{{ tag[0] }}"
+            title="{{ tag[0] }}"
+            rel="{{ tag[1].size }}"
+          >
+            {{ tag[0] }}
+          </a>
+          {% endif %} {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+    {% else %}
 
-                <!-- Featured Tags -->
-                {% if site.featured-tags %}
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
-                    <div class="tags">
-        				{% for tag in site.tags %}
-                            {% if tag[1].size > site.featured-condition-size %}
-                				<a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
-                                </a>
-                            {% endif %}
-        				{% endfor %}
-        			</div>
-                </section>
-                {% endif %}
-            </div>
-        {% else %}
-
-<!-- USE SIDEBAR -->
+    <!-- USE SIDEBAR -->
     <!-- PostList Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
-    			{{ content }}
-            </div>
-            {% if page.catalog %}
-                <!-- Side Catalog Container -->
-                <div class="
-                    col-lg-2 col-lg-offset-0
-                    visible-lg-block
-                    sidebar-container
-                    catalog-container">
-                    <div class="side-catalog">
-                        <h5>
-                            <a class="catalog-toggle" href="#">Contents</a>
-                        </h5>
-                        <ul class="catalog-body"></ul>
-                    </div>
-                </div>
-                <!-- Featured Tags -->
-                <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-                    {% if site.featured-tags %}
-                        <section>
-                            <hr class="hidden-sm hidden-xs">
-                            <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                            <div class="tags">
-                                {% for tag in site.tags %}
-                                    {% if tag[1].size > site.featured-condition-size %}
-                                        <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                            {{ tag[0] }}
-                                        </a>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </section>
-                    {% endif %}
-                </div>
-            {% else %}
-                <!-- Sidebar Container if not catalog-->
-                <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-                ">
-                    <!-- Short About -->
-                    <section class="visible-md visible-lg">
-                        <a href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
-                        <div class="short-about">
-                            {% if site.sidebar-avatar %}
-                                <img alt="My Avartar" src="{{site.sidebar-avatar}}" />
-                            {% endif %}
-                            {% if site.sidebar-about-description %}
-                                <p>{{site.sidebar-about-description}}</p>
-                            {% endif %}
-                            <!-- SNS Link -->
-                            <ul class="list-inline">
-                                {% include social.html %}
-                            </ul>
-                        </div>
-                    </section>
-                    
-                    <!-- Featured Tags -->
-                    {% if site.featured-tags %}
-                    <section>
-                        <hr class="hidden-sm hidden-xs">
-                        <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
-                        <div class="tags">
-                            {% for tag in site.tags %}
-                                {% if tag[1].size > site.featured-condition-size %}
-                                    <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                        {{ tag[0] }}
-                                    </a>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </section>
-                    {% endif %}
-                </div>
-            {% endif %}
-        {% endif %}
-	</div>
+    <div
+      class="
+        col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12
+        postlist-container
+      "
+    >
+      {{ content }}
+    </div>
+    {% if page.catalog %}
+    <!-- Side Catalog Container -->
+    <div
+      class="
+        col-lg-2 col-lg-offset-0
+        visible-lg-block
+        sidebar-container
+        catalog-container
+      "
+    >
+      <div class="side-catalog">
+        <h5>
+          <a class="catalog-toggle" href="#">Contents</a>
+        </h5>
+        <ul class="catalog-body"></ul>
+      </div>
+    </div>
+    <!-- Featured Tags -->
+    <div
+      class="
+        col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+        sidebar-container
+      "
+    >
+      {% if site.featured-tags %}
+      <section>
+        <hr class="hidden-sm hidden-xs" />
+        <h5><a href="/tags/">FEATURED TAGS</a></h5>
+        <div class="tags">
+          {% for tag in site.tags %} {% if tag[1].size >
+          site.featured-condition-size %}
+          <a
+            href="/tags/#{{ tag[0] }}"
+            title="{{ tag[0] }}"
+            rel="{{ tag[1].size }}"
+          >
+            {{ tag[0] }}
+          </a>
+          {% endif %} {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+    {% else %}
+    <!-- Sidebar Container if not catalog-->
+    <div
+      class="
+        col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12
+        sidebar-container
+      "
+    >
+      <!-- Short About -->
+      <section class="visible-md visible-lg">
+        <a href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
+        <div class="short-about">
+          {% if site.sidebar-avatar %}
+          <img alt="My Avartar" src="{{site.sidebar-avatar}}" />
+          {% endif %} {% if site.sidebar-about-description %}
+          <p>{{site.sidebar-about-description}}</p>
+          {% endif %}
+          <!-- SNS Link -->
+          <ul class="list-inline">
+            {% include social.html %}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Featured Tags -->
+      {% if site.featured-tags %}
+      <section>
+        <hr class="hidden-sm hidden-xs" />
+        <h5>
+          <a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a>
+        </h5>
+        <div class="tags">
+          {% for tag in site.tags %} {% if tag[1].size >
+          site.featured-condition-size %}
+          <a
+            href="{{ site.baseurl }}/tags/#{{ tag[0] }}"
+            title="{{ tag[0] }}"
+            rel="{{ tag[1].size }}"
+          >
+            {{ tag[0] }}
+          </a>
+          {% endif %} {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+    {% endif %} {% endif %}
+  </div>
 </div>

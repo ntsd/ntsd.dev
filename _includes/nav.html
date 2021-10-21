@@ -1,8 +1,7 @@
 <!-- Navigation -->
-<nav class="bg-white shadow dark:bg-gray-800 sticky top-0 z-50">
+<nav class="bg-white shadow">
   <div
     class="
-      container
       px-6
       py-4
       mx-auto
@@ -17,10 +16,8 @@
               text-2xl
               font-bold
               text-gray-800
-              dark:text-white
               lg:text-3xl
               hover:text-gray-700
-              dark:hover:text-gray-300
             "
             href="{{ site.baseurl }}/"
             >{{ site.title }}</a
@@ -33,11 +30,8 @@
             type="button"
             class="
               text-gray-500
-              dark:text-gray-200
               hover:text-gray-600
-              dark:hover:text-gray-400
               focus:outline-none focus:text-gray-600
-              dark:focus:text-gray-400
             "
             id="nav-toggle"
             aria-label="toggle menu"
@@ -57,7 +51,6 @@
           flex flex-col
           text-gray-600
           capitalize
-          dark:text-gray-300
           lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center
           md:hidden
         "
@@ -67,19 +60,18 @@
           class="
             mt-2
             lg:mt-0 lg:mx-4
-            hover:text-gray-800
-            dark:hover:text-gray-200
+            hover:text-gray-900
           "
           href="{{ site.baseurl }}/"
-          >Home</a
+          >HOME</a
         >
         {% for page in site.pages %} {% if page.title %}
         <a
           class="
             mt-2
             lg:mt-0 lg:mx-4
-            hover:text-gray-800
-            dark:hover:text-gray-200
+            hover:text-gray-900
+            uppercase
           "
           href="{{ page.url | prepend: site.baseurl }}"
           >{{ page.title }}</a
@@ -96,9 +88,7 @@
         class="
           mx-2
           text-gray-600
-          dark:text-gray-300
-          hover:text-gray-500
-          dark:hover:text-gray-300
+          hover:text-gray-400
         "
         aria-label="Reddit"
       >
@@ -119,9 +109,7 @@
         class="
           mx-2
           text-gray-600
-          dark:text-gray-300
-          hover:text-gray-500
-          dark:hover:text-gray-300
+          hover:text-gray-400
         "
         aria-label="Facebook"
       >
@@ -142,9 +130,7 @@
         class="
           mx-2
           text-gray-600
-          dark:text-gray-300
-          hover:text-gray-500
-          dark:hover:text-gray-300
+          hover:text-gray-400
         "
         aria-label="Github"
       >
