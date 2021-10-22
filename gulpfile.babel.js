@@ -7,15 +7,18 @@ import postcss from "gulp-postcss";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 
-const SITE_ROOT = "./_site";
-const POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`;
+const isDevelopmentBuild = process.env.NODE_ENV === "development";
+
+const SITE_ROOT = ".";
+let POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`;
+if (isDevelopmentBuild) {
+  POST_BUILD_STYLESHEET = "./assets/css/"
+}
 const PRE_BUILD_STYLESHEET = "./src/style.css";
 const TAILWIND_CONFIG = "./tailwind.config.js";
 
 // Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
-
-const isDevelopmentBuild = process.env.NODE_ENV === "development";
 
 task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
