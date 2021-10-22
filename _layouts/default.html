@@ -5,23 +5,22 @@ layout: compress
 <!DOCTYPE html>
 <html lang="en">
 
-{% include head.html %}
+    {% include head.html %}
 
-<!-- hack iOS CSS :active style -->
-<body>
-    {% if page.no-nav == null %}
-        {% include nav.html %}
-    {% endif %}
+    <body>
+        {% if page.no-nav == null %}
+            {% include nav.html %}
+        {% endif %}
 
-    {{ content }}
+        {{ content }}
 
-    {% if page.no-footer == null %}
-        {% include footer.html %}
-    {% endif %}
+        {% if page.no-footer == null %}
+            {% include footer.html %}
+        {% endif %}
 
-    {% if page.footer_import %}
-        {% include_relative {{ page.footer_import }} %}
-    {% endif %}
-</body>
+        {% if page.footer_import %}
+            {% include_relative {{ page.footer_import }} %}
+        {% endif %}
+    </body>
 
 </html>

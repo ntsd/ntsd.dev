@@ -1,40 +1,102 @@
 ---
 layout: page
+pagination: 
+  enabled: true
 ---
 
 {% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:200 }}
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+<div
+  class="
+    max-w-2xl
+    px-8
+    py-4
+    mx-auto
+    bg-white
+    rounded-lg
+    shadow-md
+    dark:bg-gray-800
+  "
+>
+  <div class="flex items-center justify-between">
+    <span class="text-sm font-light text-gray-600 dark:text-gray-400"
+      >{{ post.date | date: "%B %-d, %Y" }}</span
+    >
+    {% for category in post.categories %}
+    <a
+      class="
+        px-3
+        py-1
+        text-sm
+        font-bold
+        text-gray-100
+        transition-colors
+        duration-200
+        transform
+        bg-gray-600
+        rounded
+        cursor-pointer
+        hover:bg-gray-500
+      "
+      href="{{ site.baseurl }}/categories/#{{ category }}"
+      title="{{ category }}"
+      >{{ category }}</a
+    >
+    {% endfor %}
+  </div>
+
+  <div class="mt-2">
+    <a
+      href="{{ post.url | prepend: site.baseurl }}"
+      class="
+        text-2xl
+        font-bold
+        text-gray-700
+        dark:text-white
+        hover:text-gray-600
+        dark:hover:text-gray-200
+        hover:underline
+      "
+      >{{ post.title }}</a
+    >
+    <p class="mt-2 text-gray-600 dark:text-gray-300">
+      {{ post.content | strip_html | truncate:200 }}
     </p>
+  </div>
+
+  <div class="flex items-center justify-between mt-4">
+    <a
+      href="{{ post.url | prepend: site.baseurl }}"
+      class="text-blue-600 dark:text-blue-400 hover:underline"
+      >Read more</a
+    >
+
+    <div class="flex items-center">
+      <a class="font-bold text-gray-700 cursor-pointer dark:text-gray-200"
+        >{% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif
+        %}</a
+      >
+    </div>
+  </div>
 </div>
 {% endfor %}
 
 <!-- Pager -->
 {% if paginator.total_pages > 1 %}
 <ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
+  {% if paginator.previous_page %}
+  <li class="previous">
+    <a
+      href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
+      >&larr; Newer Posts</a
+    >
+  </li>
+  {% endif %} {% if paginator.next_page %}
+  <li class="next">
+    <a
+      href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
+      >Older Posts &rarr;</a
+    >
+  </li>
+  {% endif %}
 </ul>
 {% endif %}
