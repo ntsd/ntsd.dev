@@ -9,10 +9,10 @@ import tailwindcss from "tailwindcss";
 
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
 
-const SITE_ROOT = ".";
-let POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`;
+const SITE_ROOT = "./_site";
+let POST_BUILD_STYLESHEET = `./assets/css/`;
 if (isDevelopmentBuild) {
-  POST_BUILD_STYLESHEET = "./assets/css/"
+  POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`
 }
 const PRE_BUILD_STYLESHEET = "./src/style.css";
 const TAILWIND_CONFIG = "./tailwind.config.js";
