@@ -103,7 +103,7 @@ giscus: true
 # ga_domain: ntsd.dev
 
 # Sidebar settings
-sidebar-about-description: "<h4>Jirawat Boonkumnerd</h4> A Software Engineer"
+sidebar-about-description: '<div class="font-bond text-xl">Jirawat Boonkumnerd</div> A Software Engineer'
 # sidebar-avatar: /img/me.jpg # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags

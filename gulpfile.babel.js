@@ -65,6 +65,7 @@ task("startServer", () => {
       "**/*.markdown",
       "!_site/**/*",
       "!node_modules/**/*",
+      "_config.yml",
     ],
     { interval: 500 },
     buildSite

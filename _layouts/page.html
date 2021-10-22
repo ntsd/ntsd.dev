@@ -34,48 +34,45 @@ layout: default
 </header>
 
 <!-- Main Content -->
-<div class="container mx-auto">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 postlist-container">
-            {{ content }}
-        </div>
-        <!-- Sidebar Container -->
-        <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container">
-            <!-- Short About -->
-            <section class="visible-md visible-lg">
-                <a href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
-                <div class="short-about">
-                    {% if site.sidebar-avatar %}
-                        <img alt="My Avartar" src="{{site.sidebar-avatar}}"/>
-                    {% endif %}
-                    {% if site.sidebar-about-description %}
-                        <p>{{site.sidebar-about-description}}</p>
-                    {% endif %}
-                    <!-- SNS Link -->
-                    <ul class="list-inline">
-                        {% include social.html %}
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Featured Tags -->
-            {% if site.featured-tags %}
-                <section>
-                    <hr class="hidden-sm hidden-xs"/>
-                    <h5>
-                        <a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a>
-                    </h5>
-                    <div class="tags">
-                        {% for tag in site.tags %}
-                            {% if tag[1].size > site.featured-condition-size %}
-                                <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
-                                </a>
-                            {% endif %}
-                        {% endfor %}
+<div class="container mx-auto grid grid-cols-12">
+    <div class="col-span-9 md:col-span-12 p-4">
+        {{ content }}
+    </div>
+    <!-- Sidebar Container -->
+    <div class="col-span-3 md:col-span-12 p-4 divide-y">
+        <!-- Short About -->
+        <div class="py-4">
+            <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
+            <div>
+                {% if site.sidebar-avatar %}
+                    <img alt="My Avartar" src="{{site.sidebar-avatar}}"/>
+                {% endif %}
+                {% if site.sidebar-about-description %}
+                    <div class="my-4">
+                        {{site.sidebar-about-description}}
                     </div>
-                </section>
-            {% endif %}
+                {% endif %}
+                <!-- SNS Link -->
+                <div class="flex justify-left my-4">
+                    {% include social.html %}
+                </div>
+            </div>
         </div>
+
+        <!-- Featured Tags -->
+        {% if site.featured-tags %}
+            <div class="py-4">
+                <a class="text-gray-700 font-bond" href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a>
+                <div class="my-4">
+                    {% for tag in site.tags %}
+                        {% if tag[1].size > site.featured-condition-size %}
+                            <a class="text-sm py-1 px-2 mr-1 mb-1 inline-block border border-black rounded-full" href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                                {{ tag[0] }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
