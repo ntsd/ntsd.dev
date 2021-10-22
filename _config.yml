@@ -34,8 +34,12 @@ exclude:
 pagination:
   enabled: true
   per_page: 5
+  sort_reverse: true
   permalink: '/page/:num/'
   title: 'page :num'
+  trail:
+    before: 2 # The number of links before the current page
+    after: 2 # The number of links after the current page
 
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
 future: true # Publish posts or collection documents with a future date.
