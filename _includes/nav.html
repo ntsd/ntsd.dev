@@ -18,11 +18,11 @@
             </div>
 
             <div class="flex flex-col text-gray-600 capitalize lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center md:hidden" id="nav-left">
-                <a class="mt-2 lg:mt-0 lg:mx-4 hover:text-gray-900" href="{{ site.baseurl }}/">HOME</a>
+                <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900" href="{{ site.baseurl }}/">HOME</a>
                 {% for page in site.pages %}
                     {% if page.title %}
                         {% unless page.pagination_info %}
-                            <a class="mt-2 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                            <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
                         {% endunless %}
                     {% endif %}
                 {% endfor %}

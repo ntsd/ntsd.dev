@@ -30,7 +30,7 @@ pagination:
                 <a href="{{ post.url | prepend: site.baseurl }}" class="text-blue-600 hover:underline">Read more</a>
 
                 <div class="flex items-center">
-                    Posted by&nbsp;
+                    <span class="text-gray-600">Posted by&nbsp;</span>
                     <a class="font-bold text-gray-700 cursor-pointer">
                         {% if post.author %}
                             {{ post.author }}

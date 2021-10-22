@@ -1,5 +1,10 @@
 # ntsd.dev
 
+## Todos
+
+- Content
+- Tag Page
+
 ## Resources
 
 <https://merakiui.com/>

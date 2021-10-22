@@ -1,0 +1,14 @@
+{% if site.featured-tags %}
+    <div class="pt-8">
+        <a class="text-gray-700 font-bond" href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a>
+        <div class="my-4 text-xs">
+            {% for tag in site.tags %}
+                {% if tag[1].size > site.featured-condition-size %}
+                    <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                        {{ tag[0] }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

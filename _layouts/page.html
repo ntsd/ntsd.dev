@@ -10,9 +10,9 @@ layout: default
 </style>
 <header>
     <div class="w-full bg-center bg-cover bg-black header-bg">
-        <div class="flex items-center justify-center w-full h-full backdrop-filter backdrop-brightness-75 py-32">
-            <div class="text-center">
-                <h1 class="text-4xl font-semibold text-white uppercase lg:text-5xl">
+        <div class="container mx-auto flex items-center justify-center w-full h-full backdrop-filter backdrop-brightness-75 py-32 p-4">
+            <div class="text-left text-white">
+                <h1 class="text-4xl font-semibold uppercase lg:text-5xl">
                     {% if page.title %}
                         {{ page.title }}
                     {% else %}
@@ -20,11 +20,11 @@ layout: default
                     {% endif %}
                 </h1>
                 {% if page.description %}
-                    <p class="mt-2 text-sm text-white lg:text-base">
+                    <p class="mt-2 text-sm lg:text-base">
                         {{ page.description }}
                     </p>
                 {% else %}
-                    <p class="mt-2 text-sm text-white lg:text-base">
+                    <p class="mt-2 text-sm lg:text-base">
                         {{site.description}}
                     </p>
                 {% endif %}
@@ -37,11 +37,12 @@ layout: default
 <div class="container mx-auto grid grid-cols-12">
     <div class="col-span-9 md:col-span-12 p-4">
         {{ content }}
+        <hr class="mt-10 dark:border-gray-500 lg:hidden">
     </div>
     <!-- Sidebar Container -->
-    <div class="col-span-3 md:col-span-12 p-8 divide-y">
+    <div class="col-span-3 md:col-span-12 p-4 md:p-8 divide-y">
         <!-- Short About -->
-        <div class="py-4">
+        <div class="py-4 md:text-center">
             <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
             <div>
                 {% if site.sidebar-avatar %}
@@ -53,26 +54,12 @@ layout: default
                     </div>
                 {% endif %}
                 <!-- SNS Link -->
-                <div class="flex justify-left my-4">
+                <div class="flex justify-left my-4 md:justify-center">
                     {% include social.html %}
                 </div>
             </div>
         </div>
 
-        <!-- Featured Tags -->
-        {% if site.featured-tags %}
-            <div class="py-8">
-                <a class="text-gray-700 font-bond" href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a>
-                <div class="my-4 text-xs">
-                    {% for tag in site.tags %}
-                        {% if tag[1].size > site.featured-condition-size %}
-                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:border-blue-600 hover:text-blue-600" href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                {{ tag[0] }}
-                            </a>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
+        {% include featured_tags.html %}
     </div>
 </div>
