@@ -39,7 +39,7 @@ layout: default
         {{ content }}
     </div>
     <!-- Sidebar Container -->
-    <div class="col-span-3 md:col-span-12 p-4 divide-y">
+    <div class="col-span-3 md:col-span-12 p-8 divide-y">
         <!-- Short About -->
         <div class="py-4">
             <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
@@ -61,12 +61,12 @@ layout: default
 
         <!-- Featured Tags -->
         {% if site.featured-tags %}
-            <div class="py-4">
+            <div class="py-8">
                 <a class="text-gray-700 font-bond" href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a>
-                <div class="my-4">
+                <div class="my-4 text-xs">
                     {% for tag in site.tags %}
                         {% if tag[1].size > site.featured-condition-size %}
-                            <a class="text-sm py-1 px-2 mr-1 mb-1 inline-block border border-black hover:border-indigo-600 hover:text-indigo-600 rounded-full" href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:border-blue-600 hover:text-blue-600" href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
                                 {{ tag[0] }}
                             </a>
                         {% endif %}
