@@ -5,19 +5,18 @@ permalink: /categories/
 catalog: false
 ---
 
-<div class="post-container">
+<div>
     <ul>
         {% for category in site.categories %}
-        <h1 id="{{category | first}}">{{category | first}}</h1>
+            <h1 class="text-4xl my-4" id="{{category | first}}">{{category | first}}</h1>
             {% for posts in category  %}
                 {% for post in posts %}
                     {% if post.url %}
-                    <li>
-                        <time>
-                        {{ post.date | date:"%F" }}
-                        </time>
-                        <a class="title" href="{{ post.url | prepend: site.baseurl }}" style="margin-right: 5px">{{ post.title }}</a>
-                    </li>
+                        <li>
+                            <a class="hover:text-indigo-600" href="{{ post.url | prepend: site.baseurl }}">
+                               {{ post.date | date:"%F" }} {{ post.title }}
+                            </a>
+                        </li>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
