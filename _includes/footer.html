@@ -1,38 +1,31 @@
 <!-- Footer -->
 <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <ul class="list-inline text-center">
-          {% include social.html %}
-        </ul>
-        <div class="copyright">
-          <div>
-            Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
-          </div>
-          <div>
-            Made by <a href="{{ site.url }}">ntsd</a>
-            {% if site.github_btn %} |
-            <iframe
-              title="{{ site.github_btn }}"
-              style="margin-bottom: -5px"
-              frameborder="0"
-              scrolling="0"
-              width="80px"
-              height="20px"
-              src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_btn }}&type=star&count=true"
-            >
-            </iframe>
-            {% endif %}
-          </div>
+    <div class="container px-6 py-8 mx-auto">
+        <hr class="my-10 dark:border-gray-500"/>
+        <div class="grid justify-items-center">
+            <div class="flex justify-center my-4">{% include social.html %}</div>
+            <div class="text-center text-gray-800">
+                <div>
+                    &copy;
+                    {{ site.title }}
+                    {{ site.time | date: '%Y' }}
+                    - All rights reserved
+                </div>
+                <div>
+                    Made by
+                    <a class="text-indigo-600" href="{{ site.url }}">ntsd</a>
+                    {% if site.github_btn %}
+                        |
+                        <iframe title="{{ site.github_btn }}" style="margin-bottom: -5px" frameborder="0" scrolling="0" width="80px" height="20px" src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_btn }}&type=star&count=true"></iframe>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </footer>
 
 {% if page.collection == "posts" %}
-<script>
+    <script>
   async("{{ '/js/prism.min.js' | prepend: site.baseurl }}");
   asyncStyle("{{ '/css/prism.min.css' | prepend: site.baseurl }}");
 </script>
@@ -40,7 +33,7 @@
 
 <!-- Google Analytics -->
 {% if site.ga_track_id %}
-<script>
+    <script>
   var _gaId = "{{ site.ga_track_id }}";
   var _gaDomain = "{{ site.ga_domain }}";
 
