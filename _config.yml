@@ -5,7 +5,7 @@ header-img: data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox
 email: jo06942@gmail.com
 description: "A full-stack software engineer who likes to learn, play, and develop things in software."
 keyword: "Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd"
-url: "https://ntsd.dev" # host for absolute URL
+url: "https://ntsd-dev-next.pages.dev" # host for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Gems

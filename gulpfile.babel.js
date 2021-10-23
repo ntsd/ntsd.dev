@@ -2,19 +2,28 @@ import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
 import spawn from "cross-spawn";
 import cssnano from "cssnano";
-import { dest, series, src, task, watch } from "gulp";
+import { dest, series, src, task, watch, parallel } from "gulp";
 import postcss from "gulp-postcss";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
+import uglify from "gulp-uglify";
 
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
 
 const SITE_ROOT = "./_site";
-let POST_BUILD_STYLESHEET = `./assets/css/`;
+
+const PRE_BUILD_STYLES = "./src/styles/style.css";
+let POST_BUILD_STYLES = `./assets/css/`;
 if (isDevelopmentBuild) {
-  POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`
+  POST_BUILD_STYLES = `${SITE_ROOT}/assets/css/`
 }
-const PRE_BUILD_STYLESHEET = "./src/styles/style.css";
+
+const PRE_BUILD_JS = "./src/js/*.js";
+let POST_BUILD_JS = `./assets/js/`;
+if (isDevelopmentBuild) {
+  POST_BUILD_JS = `${SITE_ROOT}/assets/js/`
+}
+
 const TAILWIND_CONFIG = "./tailwind.config.js";
 
 // Fix for Windows compatibility
@@ -35,7 +44,7 @@ task("buildJekyll", () => {
 task("processStyles", () => {
   browserSync.notify("Compiling styles...");
 
-  return src(PRE_BUILD_STYLESHEET)
+  return src(PRE_BUILD_STYLES)
     .pipe(
       postcss([
         atimport(),
@@ -43,7 +52,13 @@ task("processStyles", () => {
         ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano()]),
       ])
     )
-    .pipe(dest(POST_BUILD_STYLESHEET));
+    .pipe(dest(POST_BUILD_STYLES));
+});
+
+task('uglify', () => {
+  return src([PRE_BUILD_JS])
+    .pipe(uglify())
+    .pipe(dest(POST_BUILD_JS));
 });
 
 task("startServer", () => {
@@ -69,13 +84,15 @@ task("startServer", () => {
       "!_site/**/*",
       "!node_modules/**/*",
       "_config.yml",
+      "!assets/**/*",
     ],
     { interval: 500 },
     buildSite
   );
 });
 
-const buildSite = series("buildJekyll", "processStyles");
+const serie = series("buildJekyll", "processStyles");
+const buildSite = parallel(serie, "uglify")
 
 exports.serve = series(buildSite, "startServer");
 exports.default = series(buildSite);
