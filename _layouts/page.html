@@ -11,7 +11,7 @@ layout: default
 <header>
     <div class="w-full bg-center bg-cover bg-black header-bg">
         <div class="container mx-auto flex items-center justify-center w-full h-full backdrop-filter backdrop-brightness-75 py-32 p-4">
-            <div class="text-left text-white">
+            <div class="text-center text-white">
                 <h1 class="text-4xl font-semibold uppercase lg:text-5xl">
                     {% if page.title %}
                         {{ page.title }}
@@ -40,26 +40,28 @@ layout: default
         <hr class="mt-10 dark:border-gray-500 lg:hidden">
     </div>
     <!-- Sidebar Container -->
-    <div class="col-span-3 md:col-span-12 p-4 md:p-8 divide-y">
-        <!-- Short About -->
-        <div class="py-4 md:text-center">
-            <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
-            <div>
-                {% if site.sidebar-avatar %}
-                    <img alt="My Avartar" src="{{site.sidebar-avatar}}"/>
-                {% endif %}
-                {% if site.sidebar-about-description %}
-                    <div class="my-4">
-                        {{site.sidebar-about-description}}
+    <div class="col-span-3 md:col-span-12 p-4 md:p-8">
+        <div class="pt-4 sticky top-28 divide-y">
+            <!-- Short About -->
+            <div class="py-4 md:text-center">
+                <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
+                <div>
+                    {% if site.sidebar-avatar %}
+                        <img alt="My Avartar" src="{{site.sidebar-avatar}}"/>
+                    {% endif %}
+                    {% if site.sidebar-about-description %}
+                        <div class="my-4">
+                            {{site.sidebar-about-description}}
+                        </div>
+                    {% endif %}
+                    <!-- SNS Link -->
+                    <div class="flex justify-left my-4 md:justify-center">
+                        {% include social.html %}
                     </div>
-                {% endif %}
-                <!-- SNS Link -->
-                <div class="flex justify-left my-4 md:justify-center">
-                    {% include social.html %}
                 </div>
             </div>
-        </div>
 
-        {% include featured_tags.html %}
+            {% include featured_tags.html %}
+        </div>
     </div>
 </div>

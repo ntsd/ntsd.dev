@@ -5,12 +5,12 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta name="keywords" content="{{ site.keyword }}"/>
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}"/>
-    <meta content="script-src 'self' 'unsafe-inline' giscus.app *.cloudflare.com *.jsdelivr.net; object-src 'none';base-uri 'none';" http-equiv="Content-Security-Policy"/>
+    <meta content="script-src 'self' 'unsafe-inline' giscus.app *.jsdelivr.net; object-src 'none';base-uri 'none';" http-equiv="Content-Security-Policy"/>
 
     {% seo %}
 
     <!-- preconnect & dns-prefetch -->
-    <link href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+    <link href="https://cdn.jsdelivr.net" rel="preconnect"/>
     {% if site.ga_track_id %}
         <link href="https://www.google-analytics.com" rel="preconnect"/>
     {% endif %}
@@ -20,11 +20,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css"/>
     <!-- Web App Manifest -->
-    <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json" defer/>
+    <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json" async/>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ site.baseurl }}/img/icon-min.svg" defer/>
+    <link rel="shortcut icon" href="{{ site.baseurl }}/img/icon-min.svg" async/>
     <!-- apple-touch-icon -->
-    <link rel="apple-touch-icon" href="{{ site.baseurl }}/img/icon-min.svg" defer/>
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/img/icon-min.svg" async/>
 
     <!-- async load function async(url, callback, delay) -->
     <script>
@@ -35,7 +35,7 @@
           o = d.createElement(s),
           e = d.getElementsByTagName(s)[0];
         o.src = u;
-        o.defer = true;
+        o.async = true;
         if (c) {
           o.addEventListener(
             "load",
@@ -60,7 +60,7 @@
         s = d.getElementsByTagName(t)[0];
       o.href = u;
       o.rel = "stylesheet";
-      o.defer = true;
+      o.async = true;
       s.parentNode.insertBefore(o, s);
     }
   </script>
