@@ -14,24 +14,24 @@ pagination:
                 {% endfor %}
             </div>
 
-            <div class="mt-2">
-                <a href="{{ post.url | prepend: site.baseurl }}" class="text-2xl font-bold text-gray-900 hover:text-gray-800 hover:underline">{{ post.title }}</a>
-                {% if post.subtitle %}
-                    <p class="font-bold text-gray-500">
-                        {{ post.subtitle }}
+            <a href="{{ post.url | prepend: site.baseurl }}">
+                <div class="mt-2">
+                    <div class="text-2xl font-bold text-gray-900 hover:text-gray-800 hover:underline">{{ post.title }}</div>
+                    {% if post.subtitle %}
+                        <p class="font-bold text-gray-500">
+                            {{ post.subtitle }}
+                        </p>
+                    {% endif %}
+                    <p class="mt-2 text-gray-600">
+                        {{ post.content | strip_html | truncate:200 }}
                     </p>
-                {% endif %}
-                <p class="mt-2 text-gray-600">
-                    {{ post.content | strip_html | truncate:200 }}
-                </p>
-            </div>
+                </div>
+            </a>
 
-            <div class="flex items-center justify-between mt-4">
-                <a href="{{ post.url | prepend: site.baseurl }}" class="text-blue-600 hover:underline">Read more</a>
-
+            <div class="flex items-center justify-end mt-4">
                 <div class="flex items-center">
                     <span class="text-gray-600">Posted by&nbsp;</span>
-                    <a class="font-bold text-gray-700 cursor-pointer">
+                    <a class="font-bold text-gray-700 cursor-pointer" href="#">
                         {% if post.author %}
                             {{ post.author }}
                         {% else %}
@@ -49,21 +49,21 @@ pagination:
     <div class="grid justify-items-end md:justify-items-center">
         <div class="flex">
             {% if paginator.previous_page %}
-                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md hover:bg-blue-600 hover:text-white" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Previous</a>
+                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md hover:bg-gray-600 hover:text-white" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Previous</a>
             {% else %}
                 <a class="flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md pointer-events-none" href="#">Previous</a>
             {% endif %}
             {% if paginator.page_trail %}
                 {% for trail in paginator.page_trail %}
                     {% if page.url == trail.path %}
-                        <a class="flex items-center px-4 py-2 mx-1 transition-colors transform rounded-md bg-blue-600 text-white pointer-events-none" href="#" title="{{trail.title}}">{{ trail.num }}</a>
+                        <a class="flex items-center px-4 py-2 mx-1 transition-colors transform rounded-md bg-gray-600 text-white pointer-events-none" href="#" title="{{trail.title}}">{{ trail.num }}</a>
                     {% else %}
-                        <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md hover:bg-blue-600 hover:text-white" href="{{ trail.path | prepend: site.baseurl }}" title="{{trail.title}}">{{ trail.num }}</a>
+                        <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md hover:bg-gray-600 hover:text-white" href="{{ trail.path | prepend: site.baseurl }}" title="{{trail.title}}">{{ trail.num }}</a>
                     {% endif %}
                 {% endfor %}
             {% endif %}
             {% if paginator.next_page %}
-                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md hover:bg-blue-600 hover:text-white" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next</a>
+                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white rounded-md hover:bg-gray-600 hover:text-white" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next</a>
             {% else %}
                 <a class="flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md pointer-events-none" href="#">Next</a>
             {% endif %}

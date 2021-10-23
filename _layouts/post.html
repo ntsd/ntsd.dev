@@ -9,30 +9,32 @@ layout: default
 </style>
 <header>
     <div class="w-full bg-center bg-cover bg-black header-bg">
-        <div class="container mx-auto flex items-start justify-start w-full h-full backdrop-filter backdrop-brightness-75 py-32 px-4">
-            <div class="text-left text-white">
-                <span class="categories">
-                    {% for category in page.categories %}
-                        <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-500" href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
-                    {% endfor %}
-                </span>
-                <span class="tags">
-                    {% for tag in page.tags %}
-                        <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-                    {% endfor %}
-                </span>
-                <h1 class="text-6xl my-4">{{ page.title }}</h1>
-                <h2 class="text-2xl my-4">{{ page.subtitle }}</h2>
-                <span class="meta">
-                    Posted by
-                    {% if page.author %}
-                        {{ page.author }}
-                    {% else %}
-                        {{ site.title }}
-                    {% endif %}
-                    on
-                    {{ page.date | date: "%B %-d, %Y" }}
-                </span>
+        <div class="backdrop-filter backdrop-brightness-75">
+            <div class="container mx-auto grid grid-cols-12">
+                <div class="text-left text-white col-start-3 col-span-8 md:col-start-1 md:col-span-12 py-32 px-4">
+                    <span class="categories">
+                        {% for category in page.categories %}
+                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-500" href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
+                        {% endfor %}
+                    </span>
+                    <span class="tags">
+                        {% for tag in page.tags %}
+                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+                        {% endfor %}
+                    </span>
+                    <h1 class="text-6xl my-4">{{ page.title }}</h1>
+                    <h2 class="text-2xl my-4">{{ page.subtitle }}</h2>
+                    <span class="meta">
+                        Posted by
+                        {% if page.author %}
+                            {{ page.author }}
+                        {% else %}
+                            {{ site.title }}
+                        {% endif %}
+                        on
+                        {{ page.date | date: "%B %-d, %Y" }}
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -41,32 +43,34 @@ layout: default
 <!-- Post Content -->
 <article class="container mx-auto grid grid-cols-12">
     <!-- Post Container -->
-    <div class="col-span-9 md:col-span-12 p-4">
-        <div class="prose max-w-none my-8">
-            {{ content }}
+    <div class="col-start-3 col-span-8 md:col-start-1 md:col-span-12 p-4">
+        <div class="py-8">
+            <div class="post-container prose max-w-none">
+                {{ content }}
+            </div>
+
+            <ul class="grid grid-cols-2 text-center mt-8">
+                {% if page.previous.url %}
+                    <li class="col-span-1 border p-4 mr-4 hover:bg-gray-300">
+                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                            <div class="text-xl font-bold">Previous</div>
+                            <div class="text-gray-600">{{page.previous.title}}</div>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if page.next.url %}
+                    <li class="col-span-1 border p-4 ml-4 hover:bg-gray-300">
+                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                            <div class="text-xl font-bold">Next</div>
+                            <div class="text-gray-600">{{page.next.title}}</div>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
 
-        <ul class="grid grid-cols-2 text-center my-8">
-            {% if page.previous.url %}
-                <li class="col-span-1 border p-4 mr-4 hover:bg-gray-300">
-                    <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                        <div class="text-xl font-bold">Previous</div>
-                        <div class="text-gray-600">{{page.previous.title}}</div>
-                    </a>
-                </li>
-            {% endif %}
-            {% if page.next.url %}
-                <li class="col-span-1 border p-4 ml-4 hover:bg-gray-300">
-                    <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                        <div class="text-xl font-bold">Next</div>
-                        <div class="text-gray-600">{{page.next.title}}</div>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-
         {% if site.giscus %}
-            <div class="comment giscus my-8"></div>
+            <div class="comment giscus py-8"></div>
         {% endif %}
 
         {% include featured_tags.html %}
@@ -74,14 +78,44 @@ layout: default
 
     <!-- Right Side Catalog Container -->
     {% if page.catalog %}
-        <div class="col-span-3 md:col-span-12 p-4">
-            <div class="side-catalog">
-                <a class="catalog-toggle" href="#">Contents</a>
-                <ul class="catalog-body"></ul>
+        <div class="col-span-2 md:hidden p-4">
+            <div class="on-page-nav sticky top-20 text-gray-500 font-medium">
+                <div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div>
             </div>
         </div>
     {% endif %}
 </article>
+
+{% if page.catalog %}
+    <script>
+    async(
+        "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js",
+        function () {
+            const content = document.querySelector('.post-container');
+            const insertTarget = document.querySelector('.on-page-nav');
+            scrollnav.init(content, { 
+                debug: false,
+                insertTarget: insertTarget,
+                insertLocation: 'append',
+            });
+        },
+        1000
+    );
+    </script>
+    <style>
+        nav.scroll-nav a.scroll-nav__link {
+            display: block;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        nav.scroll-nav li.scroll-nav__item.scroll-nav__item--active {
+            color: #000;
+        }
+        nav.scroll-nav a.scroll-nav__link:hover {
+            color: #000;
+        }
+    </style>
+{% endif %}
 
 {% if site.giscus %}
     <script>
@@ -101,31 +135,30 @@ layout: default
         }, 5000);
     </script>
 {% endif %}
+
 {% if site.anchorjs %}
     <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
     <script>
-  async(
-    "https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js",
-    function () {
-      anchors.options = {
-        visible: "always",
-        placement: "right",
-        icon: "#",
-      };
-      anchors.add(".post-container h1, .post-container h2, .post-container h3");
-    },
-    5000
-  );
-</script>
+    async(
+        "https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js",
+        function () {
+        anchors.options = {
+            visible: "always",
+            placement: "right",
+            icon: '#',
+        };
+        anchors.add(".post-container h1, .post-container h2, .post-container h3");
+        },
+        1000
+    );
+    </script>
     <style>
-  /* place left on bigger screen */
-  @media all and (min-width: 800px) {
-    .anchorjs-link {
-      position: absolute;
-      left: -0.75em;
-      font-size: 1.1em;
-      margin-top: -0.1em;
-    }
-  }
-</style>
+        .anchorjs-link {
+            color: #777 !important;
+            text-decoration: none !important;
+        }
+        .anchorjs-link:hover {
+            color: #000 !important;
+        }
+    </style>
 {% endif %}

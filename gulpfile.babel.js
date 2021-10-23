@@ -14,7 +14,7 @@ let POST_BUILD_STYLESHEET = `./assets/css/`;
 if (isDevelopmentBuild) {
   POST_BUILD_STYLESHEET = `${SITE_ROOT}/assets/css/`
 }
-const PRE_BUILD_STYLESHEET = "./src/style.css";
+const PRE_BUILD_STYLESHEET = "./src/styles/style.css";
 const TAILWIND_CONFIG = "./tailwind.config.js";
 
 // Fix for Windows compatibility

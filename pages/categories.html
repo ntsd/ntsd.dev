@@ -13,7 +13,7 @@ catalog: false
                 {% for post in posts %}
                     {% if post.url %}
                         <li>
-                            <a class="hover:text-blue-600" href="{{ post.url | prepend: site.baseurl }}">
+                            <a class="hover:text-gray-600" href="{{ post.url | prepend: site.baseurl }}">
                                {{ post.date | date:"%F" }} {{ post.title }}
                             </a>
                         </li>
