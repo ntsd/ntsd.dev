@@ -18,10 +18,16 @@ if (isDevelopmentBuild) {
   POST_BUILD_STYLES = `${SITE_ROOT}/assets/css/`
 }
 
-const PRE_BUILD_JS = "./src/js/*.js";
-let POST_BUILD_JS = `./assets/js/`;
+const PRE_BUILD_JS = ["./src/js/*.js", "!./src/js/sw.js"];
+let POST_BUILD_JS = "./assets/js/";
 if (isDevelopmentBuild) {
   POST_BUILD_JS = `${SITE_ROOT}/assets/js/`
+}
+
+const PRE_BUILD_SW = "./src/js/sw.js"
+let POST_BUILD_SW = ".";
+if (isDevelopmentBuild) {
+  POST_BUILD_SW = `${SITE_ROOT}`
 }
 
 const TAILWIND_CONFIG = "./tailwind.config.js";
@@ -55,10 +61,16 @@ task("processStyles", () => {
     .pipe(dest(POST_BUILD_STYLES));
 });
 
-task('uglify', () => {
-  return src([PRE_BUILD_JS])
+task("uglify", () => {
+  return src(PRE_BUILD_JS)
     .pipe(uglify())
     .pipe(dest(POST_BUILD_JS));
+});
+
+task("uglify-sw", () => {
+  return src(PRE_BUILD_SW)
+    .pipe(uglify())
+    .pipe(dest(POST_BUILD_SW));
 });
 
 task("startServer", () => {
@@ -92,7 +104,7 @@ task("startServer", () => {
 });
 
 const serie = series("buildJekyll", "processStyles");
-const buildSite = parallel(serie, "uglify")
+const buildSite = parallel(serie, "uglify", "uglify-sw")
 
 exports.serve = series(buildSite, "startServer");
 exports.default = series(buildSite);
