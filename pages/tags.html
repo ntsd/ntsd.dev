@@ -5,7 +5,7 @@ permalink: /tags/
 ---
 
 <!-- Main Content -->
-<div>
+<div id="tag-container">
     <!-- Tags List -->
     <div class="w-full h-72 my-8" id="tag-cloud"></div>
     <!-- Topic on tags -->
@@ -34,25 +34,57 @@ permalink: /tags/
 </div>
 
 <script>
-    async("https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js", function () {
-        let tagArray = new Array();
-        
-        {% for tag in site.tags %}
-            tagArray.push(['{{ tag[0] }}', {{ tag[1].size }}]);
-        {% endfor %}
+    async(
+        "https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js",
+        function () {
+            let tagArray = new Array();
+            
+            {% for tag in site.tags %}
+                tagArray.push(['{{ tag[0] }}', {{ tag[1].size }}]);
+            {% endfor %}
 
-        const tagWrapper = document.querySelector("#tag-cloud");
-        WordCloud(tagWrapper, {
-            list: tagArray,
-            weightFactor: 25,
-            classes: "tag-cloud-item",
-        });
-
-        tagWrapper.addEventListener('wordcloudstop', function (e) {
-            document.querySelectorAll('.tag-cloud-item').forEach(function (element) {
-                const text = element.innerHTML;
-                element.innerHTML = `<a href="#${text}" class="hover:text-gray-500">${text}</a>`;
+            const tagWrapper = document.querySelector("#tag-cloud");
+            WordCloud(tagWrapper, {
+                list: tagArray,
+                weightFactor: 25,
+                classes: "tag-cloud-item",
             });
-        });
-    });
+
+            tagWrapper.addEventListener('wordcloudstop', function (e) {
+                document.querySelectorAll('.tag-cloud-item').forEach(function (element) {
+                    const text = element.innerHTML;
+                    element.innerHTML = `<a href="#${text}" class="hover:text-gray-500">${text}</a>`;
+                });
+            });
+        },
+        1000
+    );
 </script>
+
+{% if site.anchorjs %}
+    <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+    <script>
+    async(
+        "https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js",
+        function () {
+        anchors.options = {
+            visible: "always",
+            placement: "right",
+            icon: '#',
+        };
+        anchors.add("#tag-container span");
+        },
+        1000
+    );
+    </script>
+    <style>
+        .anchorjs-link {
+            color: #777 !important;
+            text-decoration: none !important;
+        }
+        .anchorjs-link:hover {
+            color: #000 !important;
+        }
+    </style>
+{% endif %}
+

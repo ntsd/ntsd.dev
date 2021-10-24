@@ -23,6 +23,15 @@
     </div>
 </footer>
 
+<!-- Service Worker -->
+{% if site.service-worker %}
+<script async>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/assets/js/sw.js');
+}
+</script>
+{% endif %}
+
 <!-- Google Analytics -->
 {% if site.ga_track_id %}
     <script>
