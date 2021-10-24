@@ -18,7 +18,7 @@ permalink: /tags/
                         <a href="{{ post.url | prepend: site.baseurl }}">
                             <h2 class="font-bold">
                                 {{ post.title }}
-                                <time class="text-sm font-light text-gray-600" datetime="{{ post.date | date:"%Y-%m-%d" }}">&nbsp;{{ post.date | date:"%Y-%m-%d" }}</time>
+                                <time class="text-sm font-light text-gray-600" datetime="{{ post.date | date:"%Y-%m-%d" }}">&nbsp;{{ post.date | date: "%B %-d, %Y" }}</time>
                             </h2>
                             {% if post.subtitle %}
                                 <h3 class="font-light">

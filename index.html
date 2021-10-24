@@ -8,7 +8,7 @@ pagination:
     {% for post in paginator.posts %}
         <div class="px-8 py-12 mx-auto bg-white">
             <div class="flex items-center justify-between">
-                <span class="text-sm font-light text-gray-600">{{ post.date | date: "%B %-d, %Y" }}</span>
+                <time class="text-sm font-light text-gray-600" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time>
                 {% for category in post.categories %}
                     <a class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500" href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
                 {% endfor %}

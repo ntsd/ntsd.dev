@@ -2,8 +2,8 @@
 
 ## Todos
 
-- Content
-- Tag Page
+- Fix offline page
+- Fix 404 page
 
 ## Resources
 

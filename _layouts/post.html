@@ -32,7 +32,7 @@ layout: default
                             {{ site.title }}
                         {% endif %}
                         on
-                        {{ page.date | date: "%B %-d, %Y" }}
+                        <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
                     </span>
                 </div>
             </div>

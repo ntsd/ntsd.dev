@@ -19,8 +19,11 @@ const RUNTIME = 'runtime';
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
-  '/assets/css/style.css',
-  '/img/icon-min.svg',
+  "./",
+  "./404.html",
+  "./offline.html",
+  './assets/css/style.css',
+  './img/icon-min.svg',
   // External
   'https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js',
   'https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js',
