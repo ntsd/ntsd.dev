@@ -4,7 +4,17 @@ module.exports = {
     content: ['_site/**/*.html'],
   },
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              'line-break': 'anywhere',
+            },
+          },
+        },
+      },
+    },
     screens: {
       'md': { 'max': '1023px' },
       'lg': { 'min': '1024px' },
