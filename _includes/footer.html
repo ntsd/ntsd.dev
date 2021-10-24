@@ -27,7 +27,9 @@
 {% if site.service-worker %}
 <script async>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/assets/js/sw.js');
+  navigator.serviceWorker.register('/assets/js/sw.js', { scope: '/' }).catch((err) => {
+    console.error("service worker register error:", err);
+  });
 }
 </script>
 {% endif %}
