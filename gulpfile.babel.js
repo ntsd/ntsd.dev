@@ -103,8 +103,8 @@ task("startServer", () => {
   );
 });
 
-const serie = series("buildJekyll", "processStyles");
-const buildSite = parallel(serie, "uglify", "uglify-sw")
+const jekyllSeries = series("buildJekyll", "processStyles");
+const buildSite = parallel(jekyllSeries, "uglify", "uglify-sw");
 
 exports.serve = series(buildSite, "startServer");
 exports.default = series(buildSite);
