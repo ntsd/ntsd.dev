@@ -85,7 +85,7 @@ self.addEventListener('fetch', event => {
   setTimeout(() => {
     // Check cache updated when cached hit and it's same host
     if (cachedHit && event.request.url.startsWith(self.location.origin)) {
-      if (!endsWithAny(["/", ".css", ".js", ".json"], pathname)) { // return when file not end with any
+      if (!endsWithAny(["/", ".css", ".js"], pathname)) { // return when file not end with any
         return;
       }
       if (pathname.endsWith('/')) { // when path end with / should load /index.html

@@ -20,7 +20,7 @@ const CLOUDFLARE_WORKER_HOST = process.env.CLOUDFLARE_WORKER_HOST;
 const CLOUDFLARE_WORKER_API_KEY = process.env.CLOUDFLARE_WORKER_API_KEY;
 
 const SITE_ROOT = "./_site";
-const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.?(html|css|js|json)`
+const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.?(html|css|js)`
 
 const PRE_BUILD_STYLES = "./src/styles/style.css";
 let POST_BUILD_STYLES = `./assets/css/`;
