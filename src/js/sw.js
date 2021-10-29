@@ -2,7 +2,7 @@ const PRE_CACHE = 'precache-v1';
 const RUNTIME_CACHE = 'runtime';
 const HASH_CACHE = 'hash';
 
-const CLOUDFLARE_WORKER_HOST = self.location.origin; // "https://ntsd-dev-worker.ntsd.workers.dev";
+const CLOUDFLARE_WORKER_HOST = "https://ntsd.dev"; // "https://ntsd-dev-worker.ntsd.workers.dev";
 
 // A list of local resources we always want to be cached.
 const PRE_CACHE_URLS = [
