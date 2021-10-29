@@ -20,7 +20,7 @@ const CLOUDFLARE_WORKER_HOST = "http://127.0.0.1:8787";// "https://ntsd-dev-work
 const CLOUDFLARE_WORKER_API_KEY = process.env.CLOUDFLARE_WORKER_API_KEY;
 
 const SITE_ROOT = "./_site";
-const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.html`
+const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.(html|css|js|svg|png|json)`
 
 const PRE_BUILD_STYLES = "./src/styles/style.css";
 let POST_BUILD_STYLES = `./assets/css/`;
@@ -79,7 +79,7 @@ gulp.task("uglify", () => {
 
 gulp.task("uglify-sw", () => {
   return gulp.src(PRE_BUILD_SW)
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(POST_BUILD_SW));
 });
 
@@ -145,9 +145,9 @@ gulp.task("startServer", () => {
   );
 });
 
-const jekyllSeries = gulp.series("buildJekyll", "processStyles", "bust-cache");
+const jekyllSeries = gulp.series("buildJekyll", "processStyles");
 const buildSite = gulp.parallel(jekyllSeries, "uglify", "uglify-sw");
 
 exports.serve = gulp.series(buildSite, "startServer");
 exports.default = gulp.series(buildSite);
-exports.bustCache = gulp.series("bust-cache");
+exports.bustCache = gulp.series(jekyllSeries, "bust-cache");

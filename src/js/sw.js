@@ -2,7 +2,6 @@ const PRE_CACHE = 'precache-v1';
 const RUNTIME_CACHE = 'runtime';
 const HASH_CACHE = 'hash';
 
-const HASH_PREFIX = 'hash-';
 const CLOUDFLARE_WORKER_HOST = "http://127.0.0.1:8787";// "https://ntsd-dev-worker.ntsd.workers.dev";
 
 // A list of local resources we always want to be cached.
@@ -34,9 +33,9 @@ self.addEventListener('install', event => {
   );
 });
 
-// Remove old cache when activate
 self.addEventListener('activate', event => {
-  const currentCaches = [PRE_CACHE, RUNTIME_CACHE];
+  const currentCaches = [PRE_CACHE, RUNTIME_CACHE, HASH_CACHE];
+  // Remove old cache when activate
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return cacheNames.filter(cacheName => !currentCaches.includes(cacheName));
@@ -56,21 +55,18 @@ function fetchAndCache(request) {
       });
     });
   });
-
-  Promise.all([fetch(request), caches.open(RUNTIME_CACHE)])
-    .then(([response, cache]) => response.ok && cache.put(request, response))
 }
 
 self.addEventListener('fetch', event => {
   let { pathname, hostname } = new URL(event.request.url);
-  // console.log(hostname, pathname);
-  const cached = caches.match(event.request);
+  let cachedHit = false;
 
   // validate if hostname in whitelist
   if (HOSTNAME_WHITELIST.indexOf(hostname) > -1) {
     event.respondWith(
-      cached.then(cachedResponse => {
-        if (cachedResponse) {
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) { // when cache hit
+          cachedHit = true;
           return cachedResponse;
         }
 
@@ -78,51 +74,46 @@ self.addEventListener('fetch', event => {
       })
     );
   }
-
-  // Check cache updated
-  if (pathname.endsWith('/')) {
-    pathname += 'index.html';
-    const hashRequest = new Request(CLOUDFLARE_WORKER_HOST + pathname, {
-      mode: 'cors',
-    });
   
-    caches.match(hashRequest)
-      .then(oldHashResponse => {
-        if (!oldHashResponse) {
-          // console.log("cache not found");
+  setTimeout(() => {
+    // Check cache updated when cached hit and it's same host
+    if (cachedHit && event.request.url.startsWith(self.location.origin)) {
+      if (pathname.endsWith('/')) { // when path end with / should load /index.html
+        pathname += 'index.html';
+      }
+      const hashRequest = new Request(CLOUDFLARE_WORKER_HOST + pathname, {
+        mode: 'cors',
+      });
+
+      caches.match(hashRequest)
+        .then(oldHashResponse => {
           return fetch(hashRequest)
-            .then(response => {
-              caches.open(RUNTIME_CACHE).then(cache => {
-                cache.put(hashRequest, response.clone()).then(() => {
-                  return response;
-                });
+            .then(async newHashResponse => {
+              const newHashResponseClone = newHashResponse.clone();
+              const newHash = await newHashResponse.text();
+              if (newHash == '') {
+                console.log(`new hash not found ${pathname}`);
+                return newHashResponse;
+              }
+
+              if (oldHashResponse) { // hash cache found
+                const oldHash = await oldHashResponse.text();
+                if (newHash !== oldHash) { // refetch when hash not matched
+                  console.log(`cache not matched ${pathname} ${oldHash} ${newHash} refetch`);
+                  fetchAndCache(event.request);
+                }
+              }
+
+              caches.open(HASH_CACHE).then(cache => {
+                cache.put(hashRequest, newHashResponseClone)
               });
-              return response;
+
+              return newHashResponse;
             })
             .catch(err => {
               console.error(err);
             });
-        }
-        // console.log("cache found");
-        fetch(hashRequest)
-          .then(async newHashResponse => {
-            const newHashResponseClone = newHashResponse.clone();
-            const newHash = await newHashResponse.text();
-            const oldHash = await oldHashResponse.text();
-            if (newHash !== oldHash) { // when hash not matched refetch and reload
-              console.log('cache not matched ', oldHash, newHash);
-              fetchAndCache(event.request);
-              caches.open(RUNTIME_CACHE).then(cache => {
-                cache.put(hashRequest, newHashResponseClone)
-              });
-            }
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
+        });
+    };
+  }, 1000);
 });

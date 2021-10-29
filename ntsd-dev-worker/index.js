@@ -1,27 +1,17 @@
-let HOST = "https://ntsd.dev";
-let API_KEY = "";
-
-const DEBUG = true;
-
-if (DEBUG) {
-  HOST = "*";
-  API_KEY = "";
-}
-
+// setup env FRONT_END_HOST and API_KEY
 addEventListener("fetch", (event, ctx) => {
   event.respondWith(fetchAndModify(event.request));
 });
 
 async function fetchAndModify(request) {
-  let { pathname } = new URL(request.url);
+  const { pathname } = new URL(request.url);
 
-  console.log(pathname, request.method);
   if (request.method == 'OPTIONS') { // preflight
     return new Response(null, {
       status: 204,
       headers: {
         "Access-Control-Allow-Headers": "Content-Type, Authorization, Access-Control-Allow-Origin",
-        "Access-Control-Allow-Origin": HOST,
+        "Access-Control-Allow-Origin": FRONT_END_HOST,
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
       },
     });
@@ -33,7 +23,7 @@ async function fetchAndModify(request) {
         status: 200,
         headers: {
           "Content-Type": 'text/plain',
-          "Access-Control-Allow-Origin": HOST,
+          "Access-Control-Allow-Origin": FRONT_END_HOST,
         },
       });
     }
@@ -41,18 +31,15 @@ async function fetchAndModify(request) {
       status: 200,
       headers: {
         "Content-Type": 'text/plain',
-        "Access-Control-Allow-Origin": HOST,
+        "Access-Control-Allow-Origin": FRONT_END_HOST,
       },
     });
   }
 
-  if (!DEBUG) {
-    if (request.headers.get('Authorization') !== API_KEY) {
-      console.log(request.headers.get('Authorization'), API_KEY);
-      return new Response('', {
-        status: 401,
-      });
-    }
+  if (request.headers.get('Authorization') !== API_KEY) {
+    return new Response('', {
+      status: 401,
+    });
   }
 
   await NTSD_DEV.put(pathname, request.body);
