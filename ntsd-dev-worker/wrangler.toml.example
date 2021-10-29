@@ -16,7 +16,7 @@ API_KEY = "" # change your apikey for bust cache
 
 [env.production]
 zone_id = "" # The ID of the domain to deploying to
-route = "" # The route pattern your Workers application will be served at
+route = "example.com/cache-bust/*" # The route pattern your Workers application will be served at
 kv_namespaces = [
   { binding = "Customers", id = "<DEV KV NAMESPACEID>" },
 ]

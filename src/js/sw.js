@@ -2,7 +2,7 @@ const PRE_CACHE = 'precache-v1';
 const RUNTIME_CACHE = 'runtime';
 const HASH_CACHE = 'hash';
 
-const CLOUDFLARE_WORKER_HOST = "https://ntsd-dev-worker.ntsd.workers.dev";
+const CLOUDFLARE_WORKER_HOST = self.location.origin; // "https://ntsd-dev-worker.ntsd.workers.dev";
 
 // A list of local resources we always want to be cached.
 const PRE_CACHE_URLS = [
@@ -57,6 +57,13 @@ function fetchAndCache(request) {
   });
 }
 
+function endsWithAny(suffixes, string) {
+  for (let suffix of suffixes) {
+    if (string.endsWith(suffix)) return true;
+  }
+  return false;
+}
+
 self.addEventListener('fetch', event => {
   let { pathname, hostname } = new URL(event.request.url);
   let cachedHit = false;
@@ -74,10 +81,13 @@ self.addEventListener('fetch', event => {
       })
     );
   }
-  
+
   setTimeout(() => {
     // Check cache updated when cached hit and it's same host
     if (cachedHit && event.request.url.startsWith(self.location.origin)) {
+      if (!endsWithAny(["/", ".css", ".js", ".json"], pathname)) { // return when file not end with any
+        return;
+      }
       if (pathname.endsWith('/')) { // when path end with / should load /index.html
         pathname += 'index.html';
       }
@@ -92,7 +102,7 @@ self.addEventListener('fetch', event => {
               const newHashResponseClone = newHashResponse.clone();
               const newHash = await newHashResponse.text();
               if (newHash == '') {
-                console.log(`new hash not found ${pathname}`);
+                console.log(`hash not found ${pathname}`);
                 return newHashResponse;
               }
 
