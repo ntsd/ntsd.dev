@@ -8,3 +8,4 @@ npm-debug.log
 .jekyll-cache
 .vscode
 .jekyll-metadata
+.env
