@@ -16,7 +16,7 @@ dotenv.config();
 
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
 
-const CLOUDFLARE_WORKER_HOST = "http://127.0.0.1:8787";// "https://ntsd-dev-worker.ntsd.workers.dev";
+const CLOUDFLARE_WORKER_HOST = process.env.CLOUDFLARE_WORKER_HOST;
 const CLOUDFLARE_WORKER_API_KEY = process.env.CLOUDFLARE_WORKER_API_KEY;
 
 const SITE_ROOT = "./_site";
