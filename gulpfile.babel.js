@@ -2,15 +2,25 @@ import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
 import spawn from "cross-spawn";
 import cssnano from "cssnano";
-import { dest, series, src, task, watch, parallel } from "gulp";
+import gulp from "gulp";
 import postcss from "gulp-postcss";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 import uglify from "gulp-uglify";
+import through2 from "through2";
+import crypto from "crypto";
+import path from "path";
+import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
 
+const CLOUDFLARE_WORKER_HOST = process.env.CLOUDFLARE_WORKER_HOST;
+const CLOUDFLARE_WORKER_API_KEY = process.env.CLOUDFLARE_WORKER_API_KEY;
+
 const SITE_ROOT = "./_site";
+const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.?(html|css|js)`
 
 const PRE_BUILD_STYLES = "./src/styles/style.css";
 let POST_BUILD_STYLES = `./assets/css/`;
@@ -35,7 +45,7 @@ const TAILWIND_CONFIG = "./tailwind.config.js";
 // Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 
-task("buildJekyll", () => {
+gulp.task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
 
   const args = ["exec", jekyll, "build"];
@@ -47,10 +57,10 @@ task("buildJekyll", () => {
   return spawn("bundle", args, { stdio: "inherit" });
 });
 
-task("processStyles", () => {
+gulp.task("processStyles", () => {
   browserSync.notify("Compiling styles...");
 
-  return src(PRE_BUILD_STYLES)
+  return gulp.src(PRE_BUILD_STYLES)
     .pipe(
       postcss([
         atimport(),
@@ -58,22 +68,60 @@ task("processStyles", () => {
         ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano()]),
       ])
     )
-    .pipe(dest(POST_BUILD_STYLES));
+    .pipe(gulp.dest(POST_BUILD_STYLES));
 });
 
-task("uglify", () => {
-  return src(PRE_BUILD_JS)
+gulp.task("uglify", () => {
+  return gulp.src(PRE_BUILD_JS)
     .pipe(uglify())
-    .pipe(dest(POST_BUILD_JS));
+    .pipe(gulp.dest(POST_BUILD_JS));
 });
 
-task("uglify-sw", () => {
-  return src(PRE_BUILD_SW)
+gulp.task("uglify-sw", () => {
+  return gulp.src(PRE_BUILD_SW)
     .pipe(uglify())
-    .pipe(dest(POST_BUILD_SW));
+    .pipe(gulp.dest(POST_BUILD_SW));
 });
 
-task("startServer", () => {
+gulp.task("bust-cache", () => {
+  return gulp.src(SITE_ROOT_HTML)
+    .pipe(through2.obj(function (file, _, cb) {
+      const hash = crypto.createHash('md5');
+
+      if (file.isNull() || file.isStream()) { // not support type
+        return cb(null, file);
+      }
+      if (file.isBuffer()) {
+        hash.end(file.contents);
+      }
+
+      const fileHash = hash.read().toString('hex').substr(0, this.checksumLength);
+      const relativeRootPath = path.relative(process.cwd(), file.path);
+      const relativePath = path.relative(SITE_ROOT, relativeRootPath);
+
+      const cachePath = `${CLOUDFLARE_WORKER_HOST}/cache-bust/${relativePath}`;
+      axios.get(cachePath).then((res) => {
+        if (res.data === fileHash) { // when cache no update
+          return;
+        }
+        axios.post(cachePath, fileHash, {
+          headers: { 'Authorization': CLOUDFLARE_WORKER_API_KEY }
+        })
+        .then(() => {
+          console.log(`cache bust success: ${relativePath} ${fileHash}`);
+        })
+        .catch(error => {
+          console.error(`cache bust failed ${relativePath} ${fileHash} ${error}`)
+        });
+      }).catch(error => {
+        console.error(`get cache failed ${relativePath} ${fileHash} ${error}`)
+      });
+
+      cb(null, file);
+    }));
+});
+
+gulp.task("startServer", () => {
   browserSync.init({
     files: [SITE_ROOT + "/**"],
     open: "local",
@@ -86,7 +134,7 @@ task("startServer", () => {
     },
   });
 
-  watch(
+  gulp.watch(
     [
       "**/*.css",
       "**/*.html",
@@ -103,8 +151,9 @@ task("startServer", () => {
   );
 });
 
-const jekyllSeries = series("buildJekyll", "processStyles");
-const buildSite = parallel(jekyllSeries, "uglify", "uglify-sw");
+const jekyllSeries = gulp.series("buildJekyll", "processStyles");
+const buildSite = gulp.parallel(jekyllSeries, "uglify", "uglify-sw");
 
-exports.serve = series(buildSite, "startServer");
-exports.default = series(buildSite);
+exports.serve = gulp.series(buildSite, "startServer");
+exports.default = gulp.series(buildSite);
+exports.bustCache = gulp.series(jekyllSeries, "bust-cache");

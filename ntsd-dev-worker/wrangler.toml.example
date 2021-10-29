@@ -1,0 +1,25 @@
+name = "ntsd-dev-worker"
+type = "javascript"
+
+account_id = ""
+workers_dev = true
+compatibility_date = "2021-10-27"
+
+# to generate preview https://developers.cloudflare.com/workers/cli-wrangler/commands#create
+kv_namespaces = [
+  { binding = "Customers", id = "<DEV KV NAMESPACEID>", preview_id = "<PREVIEW KV NAMESPACEID>" },
+]
+
+[vars]
+FRONT_END_HOST = "*" # change your front end website
+API_KEY = "" # change your apikey for bust cache
+
+[env.production]
+zone_id = "" # The ID of the domain to deploying to
+route = "" # The route pattern your Workers application will be served at
+kv_namespaces = [
+  { binding = "Customers", id = "<DEV KV NAMESPACEID>" },
+]
+[env.production.vars]
+FRONT_END_HOST = ""
+API_KEY = ""
