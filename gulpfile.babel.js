@@ -20,7 +20,7 @@ const CLOUDFLARE_WORKER_HOST = process.env.CLOUDFLARE_WORKER_HOST;
 const CLOUDFLARE_WORKER_API_KEY = process.env.CLOUDFLARE_WORKER_API_KEY;
 
 const SITE_ROOT = "./_site";
-const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.(html|css|js|svg|png|json)`
+const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.?(html|css|js)`
 
 const PRE_BUILD_STYLES = "./src/styles/style.css";
 let POST_BUILD_STYLES = `./assets/css/`;
@@ -99,17 +99,23 @@ gulp.task("bust-cache", () => {
       const relativeRootPath = path.relative(process.cwd(), file.path);
       const relativePath = path.relative(SITE_ROOT, relativeRootPath);
 
-      const postPath = `${CLOUDFLARE_WORKER_HOST}/${relativePath}`;
-      axios
-        .post(postPath, fileHash, {
+      const cachePath = `${CLOUDFLARE_WORKER_HOST}/cache-bust/${relativePath}`;
+      axios.get(cachePath).then((res) => {
+        if (res.data === fileHash) { // when cache no update
+          return;
+        }
+        axios.post(cachePath, fileHash, {
           headers: { 'Authorization': CLOUDFLARE_WORKER_API_KEY }
         })
-        .then(res => {
+        .then(() => {
           console.log(`cache bust success: ${relativePath} ${fileHash}`);
         })
         .catch(error => {
-          console.error(`cache bust failed ${relativePath} ${fileHash}`)
+          console.error(`cache bust failed ${relativePath} ${fileHash} ${error}`)
         });
+      }).catch(error => {
+        console.error(`get cache failed ${relativePath} ${fileHash} ${error}`)
+      });
 
       cb(null, file);
     }));

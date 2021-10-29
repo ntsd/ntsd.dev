@@ -2,7 +2,7 @@ const PRE_CACHE = 'precache-v1';
 const RUNTIME_CACHE = 'runtime';
 const HASH_CACHE = 'hash';
 
-const CLOUDFLARE_WORKER_HOST = "http://127.0.0.1:8787";// "https://ntsd-dev-worker.ntsd.workers.dev";
+const CLOUDFLARE_WORKER_HOST = "https://ntsd-dev-worker.ntsd.workers.dev";
 
 // A list of local resources we always want to be cached.
 const PRE_CACHE_URLS = [
@@ -81,7 +81,7 @@ self.addEventListener('fetch', event => {
       if (pathname.endsWith('/')) { // when path end with / should load /index.html
         pathname += 'index.html';
       }
-      const hashRequest = new Request(CLOUDFLARE_WORKER_HOST + pathname, {
+      const hashRequest = new Request(`${CLOUDFLARE_WORKER_HOST}/cache-bust${pathname}`, {
         mode: 'cors',
       });
 
