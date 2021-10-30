@@ -12,6 +12,8 @@ import crypto from "crypto";
 import path from "path";
 import axios from 'axios';
 import dotenv from 'dotenv';
+import puppeteer from 'puppeteer';
+
 dotenv.config();
 
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
@@ -19,26 +21,18 @@ const isDevelopmentBuild = process.env.NODE_ENV === "development";
 const CLOUDFLARE_WORKER_HOST = process.env.CLOUDFLARE_WORKER_HOST;
 const CLOUDFLARE_WORKER_API_KEY = process.env.CLOUDFLARE_WORKER_API_KEY;
 
-const SITE_ROOT = "./_site";
-const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.?(html|css|js)`
+const SITE_ROOT = isDevelopmentBuild ? "./_watch" : "./_site";
+const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.html`;
+const CACHE_BUST_PATH = `${SITE_ROOT}/**/*.?(html|css|js)`;
 
-const PRE_BUILD_STYLES = "./src/styles/style.css";
-let POST_BUILD_STYLES = `./assets/css/`;
-if (isDevelopmentBuild) {
-  POST_BUILD_STYLES = `${SITE_ROOT}/assets/css/`
-}
+const PRE_BUILD_STYLES = "./src/styles/*.css";
+const POST_BUILD_STYLES = `${SITE_ROOT}/assets/css/`;
 
 const PRE_BUILD_JS = ["./src/js/*.js", "!./src/js/sw.js"];
-let POST_BUILD_JS = "./assets/js/";
-if (isDevelopmentBuild) {
-  POST_BUILD_JS = `${SITE_ROOT}/assets/js/`
-}
+const POST_BUILD_JS = `${SITE_ROOT}/assets/js/`;
 
 const PRE_BUILD_SW = "./src/js/sw.js"
-let POST_BUILD_SW = ".";
-if (isDevelopmentBuild) {
-  POST_BUILD_SW = `${SITE_ROOT}`
-}
+const POST_BUILD_SW = `${SITE_ROOT}`;
 
 const TAILWIND_CONFIG = "./tailwind.config.js";
 
@@ -50,6 +44,7 @@ gulp.task("buildJekyll", () => {
 
   const args = ["exec", jekyll, "build"];
 
+  args.push("--destination", SITE_ROOT)
   if (isDevelopmentBuild) {
     args.push("--incremental");
   }
@@ -84,16 +79,15 @@ gulp.task("uglify-sw", () => {
 });
 
 gulp.task("bust-cache", () => {
-  return gulp.src(SITE_ROOT_HTML)
+  return gulp.src(CACHE_BUST_PATH)
     .pipe(through2.obj(function (file, _, cb) {
-      const hash = crypto.createHash('md5');
-
-      if (file.isNull() || file.isStream()) { // not support type
+      if (!file.isBuffer()) { // not support type
         return cb(null, file);
       }
-      if (file.isBuffer()) {
-        hash.end(file.contents);
-      }
+
+      const hash = crypto.createHash('md5');
+
+      hash.end(file.contents);
 
       const fileHash = hash.read().toString('hex').substr(0, this.checksumLength);
       const relativeRootPath = path.relative(process.cwd(), file.path);
@@ -107,18 +101,74 @@ gulp.task("bust-cache", () => {
         axios.post(cachePath, fileHash, {
           headers: { 'Authorization': CLOUDFLARE_WORKER_API_KEY }
         })
-        .then(() => {
-          console.log(`cache bust success: ${relativePath} ${fileHash}`);
-        })
-        .catch(error => {
-          console.error(`cache bust failed ${relativePath} ${fileHash} ${error}`)
-        });
+          .then(() => {
+            console.log(`cache bust success: ${relativePath} ${fileHash}`);
+          })
+          .catch(error => {
+            console.error(`cache bust failed ${relativePath} ${fileHash} ${error}`)
+          });
       }).catch(error => {
         console.error(`get cache failed ${relativePath} ${fileHash} ${error}`)
       });
 
       cb(null, file);
     }));
+});
+
+gulp.task("post-js", async () => {
+  browserSync.init({
+    files: [SITE_ROOT + "/**"],
+    open: false,
+    port: 7000,
+    server: {
+      baseDir: SITE_ROOT,
+      serveStaticOptions: {
+        extensions: ["html"],
+      },
+    },
+  });
+
+  await new Promise(resolve => setTimeout(resolve, 3000)); // wait browserSync run
+
+  return gulp.src(SITE_ROOT_HTML, { base: SITE_ROOT })
+    .pipe(through2.obj(async (file, _, cb) => {
+      if (!file.isBuffer()) { // not support type
+        return cb(null, file);
+      }
+
+      const relativeRootPath = path.relative(process.cwd(), file.path);
+      const relativePath = path.relative(SITE_ROOT, relativeRootPath);
+
+      console.log(`Rendering ${relativePath}`);
+
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+
+      await page.goto(`http://localhost:7000/${relativePath}`, { waitUntil: 'networkidle0' });
+
+      let body = await page.evaluate(() => {
+        // remove data-post-js script
+        const unusedElements = document.querySelectorAll('script[data-post-js="true"]');
+        for (var i = 0; i < unusedElements.length; i++) {
+          unusedElements[i].parentNode.removeChild(unusedElements[i]);
+        }
+        return document.documentElement.outerHTML;
+      });
+
+      // replace script type text/runtime-javascript to text/javascript
+      body = body.replace(/text\/runtime\-javascript/g, 'text/javascript');
+
+      file.contents = Buffer.from(body);
+
+      await browser.close();
+
+      cb(null, file);
+    }))
+    .pipe(gulp.dest(SITE_ROOT))
+    .on('end', () => {
+      browserSync.exit();
+      console.log('post-js finished');
+    });
 });
 
 gulp.task("startServer", () => {
@@ -155,5 +205,6 @@ const jekyllSeries = gulp.series("buildJekyll", "processStyles");
 const buildSite = gulp.parallel(jekyllSeries, "uglify", "uglify-sw");
 
 exports.serve = gulp.series(buildSite, "startServer");
-exports.default = gulp.series(buildSite, "bust-cache");
+exports.default = gulp.series(buildSite, "bust-cache", "post-js");
 exports.bustCache = gulp.series(jekyllSeries, "bust-cache");
+exports.postJS = gulp.series("post-js");

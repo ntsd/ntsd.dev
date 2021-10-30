@@ -6,6 +6,8 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "10.3.4",
+    "axios": "^0.24.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "1.7.0",
     "babel-register": "6.26.0",
     "browser-sync": "2.27.4",
@@ -13,14 +15,14 @@
     "cross-env": "7.0.3",
     "cross-spawn": "7.0.3",
     "cssnano": "5.0.8",
+    "dotenv": "^10.0.0",
     "gulp": "4.0.2",
     "gulp-postcss": "9.0.1",
     "gulp-uglify": "^3.0.2",
     "postcss": "8.3.6",
     "postcss-import": "14.0.2",
-    "tailwindcss": "2.2.15",
-    "axios": "^0.24.0",
-    "dotenv": "^10.0.0"
+    "puppeteer": "^10.4.0",
+    "tailwindcss": "2.2.15"
   },
   "scripts": {
     "build:production": "cross-env NODE_ENV=production gulp",
@@ -28,7 +30,8 @@
     "build": "npm run build:production",
     "dev": "cross-env NODE_ENV=development gulp serve",
     "start": "npm run dev",
-    "bust-cache": "cross-env gulp bustCache"
+    "bust-cache": "cross-env gulp bustCache",
+    "post-js": "gulp postJS"
   },
   "repository": {
     "type": "git",

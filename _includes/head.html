@@ -28,7 +28,7 @@
 
     <!-- async load function async(url, callback, delay) -->
     <script>
-    function async(u, c, t) {
+    function async(u, c, t, p) {
       function l() {
         var d = document,
           s = "script",
@@ -36,6 +36,9 @@
           e = d.getElementsByTagName(s)[0];
         o.src = u;
         o.async = true;
+        if (p) {
+          o.setAttribute("data-post-js", true);
+        }
         if (c) {
           o.addEventListener(
             "load",

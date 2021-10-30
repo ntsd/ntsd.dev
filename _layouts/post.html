@@ -87,7 +87,7 @@ layout: default
 </article>
 
 {% if page.catalog %}
-    <script>
+    <script type="text/runtime-javascript" >
     async(
         "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js",
         function () {
@@ -118,7 +118,7 @@ layout: default
 {% endif %}
 
 {% if site.giscus %}
-    <script>
+    <script type="text/runtime-javascript" >
         setTimeout(function () {
           var d = document, s = d.createElement("script");
           s.src = " https://giscus.app/client.js";
@@ -137,19 +137,19 @@ layout: default
 {% endif %}
 
 {% if site.anchorjs %}
-    <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-    <script>
+    <script type="text/javascript" data-post-js="true">
     async(
         "https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js",
         function () {
         anchors.options = {
             visible: "always",
             placement: "right",
-            icon: '#',
+            icon: '',
         };
         anchors.add(".post-container h1, .post-container h2, .post-container h3");
         },
-        1000
+        0,
+        true
     );
     </script>
     <style>
@@ -160,5 +160,15 @@ layout: default
         .anchorjs-link:hover {
             color: #000 !important;
         }
+        .anchorjs-link::before {
+            content: "#";
+        }
     </style>
+{% endif %}
+
+{% if site.prism %}
+    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/prism.js" data-post-js="true" ></script>
+    <script type="text/runtime-javascript">
+        asyncStyle("{{ site.baseurl }}/assets/css/prism.css");
+    </script>
 {% endif %}

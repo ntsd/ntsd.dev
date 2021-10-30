@@ -95,6 +95,8 @@ markdown: kramdown
 kramdown:
   input: GFM # use Github Flavored Markdown !important
 
+prism: true
+
 # Giscus
 giscus: true
 
