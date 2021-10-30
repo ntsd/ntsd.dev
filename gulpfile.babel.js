@@ -61,7 +61,9 @@ gulp.task("processStyles", () => {
       postcss([
         atimport(),
         tailwindcss(TAILWIND_CONFIG),
-        ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano()]),
+        ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano({
+          preset: ["default", { discardComments: { removeAll: true } }],
+        })]),
       ])
     )
     .pipe(gulp.dest(POST_BUILD_STYLES));
@@ -194,7 +196,7 @@ gulp.task("startServer", () => {
       "**/*.js",
       "**/*.md",
       "**/*.markdown",
-      "!_site/**/*",
+      "!_watch/**/*",
       "!node_modules/**/*",
       "_config.yml",
       "!assets/**/*",
