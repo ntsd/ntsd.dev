@@ -43,6 +43,17 @@ permalink: /tags/
                 tagArray.push(['{{ tag[0] }}', {{ tag[1].size }}]);
             {% endfor %}
 
+            /* Overwrite Math.random to use seed */
+            let seed=16;
+            function randseed(s) {
+                s = Math.sin(s) * 10000;
+                return s - Math.floor(s);
+            };
+            Math.random = function() {
+                seed++;
+                return randseed(seed);
+            };
+
             const tagWrapper = document.querySelector("#tag-cloud");
             WordCloud(tagWrapper, {
                 list: tagArray,
