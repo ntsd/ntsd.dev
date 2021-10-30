@@ -1,0 +1,242 @@
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta name="keywords" content="Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd">
+<meta name="theme-color" content="#000000">
+<meta content="script-src 'self' 'unsafe-inline' giscus.app *.jsdelivr.net; object-src 'none';base-uri 'none';" http-equiv="Content-Security-Policy">
+<title>Build and Install OpenWRT on Banana Pi R64 | Jirawat Boonkumnerd</title>
+<meta name="generator" content="Jekyll v4.2.1">
+<meta property="og:title" content="Build and Install OpenWRT on Banana Pi R64">
+<meta name="author" content="ntsd">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This tutorial is a getting start to build OpenWRT image and install on Banana Pi R64, This guide also works with the Banana Pi R2 but it will be a difference in some steps.">
+<meta property="og:description" content="This tutorial is a getting start to build OpenWRT image and install on Banana Pi R64, This guide also works with the Banana Pi R2 but it will be a difference in some steps.">
+<link rel="canonical" href="https://ntsd.dev/install-openwrt-on-banana-pi-r64/">
+<meta property="og:url" content="https://ntsd.dev/install-openwrt-on-banana-pi-r64/">
+<meta property="og:site_name" content="Jirawat Boonkumnerd">
+<meta property="og:image" content="https://ntsd.dev/pwa/icons/512.png">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-03-03T19:30:54+07:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:image" content="https://ntsd.dev/pwa/icons/512.png">
+<meta property="twitter:title" content="Build and Install OpenWRT on Banana Pi R64">
+<meta name="twitter:site" content="@ntsd_me">
+<meta name="twitter:creator" content="@ntsd">
+<meta property="fb:admins" content="jo.ntsd">
+<meta property="article:publisher" content="ntsd.dev">
+<meta property="fb:app_id" content="523337598616322"> <script type="application/ld+json"> {"datePublished":"2020-03-03T19:30:54+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ntsd.dev/install-openwrt-on-banana-pi-r64/"},"url":"https://ntsd.dev/install-openwrt-on-banana-pi-r64/","author":{"@type":"Person","name":"ntsd"},"image":"https://ntsd.dev/pwa/icons/512.png","description":"This tutorial is a getting start to build OpenWRT image and install on Banana Pi R64, This guide also works with the Banana Pi R2 but it will be a difference in some steps.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://ntsd.dev/pwa/icons/512.png"},"name":"ntsd"},"headline":"Build and Install OpenWRT on Banana Pi R64","dateModified":"2020-03-03T19:30:54+07:00","@type":"BlogPosting","@context":"https://schema.org"}</script><link href="https://cdn.jsdelivr.net" rel="preconnect">
+<style class="anchorjs"></style><link rel="stylesheet" href="/assets/css/style.css">
+<link rel="manifest" href="/pwa/manifest.json" async="">
+<link rel="shortcut icon" href="/img/icon-min.svg" async="">
+<link rel="apple-touch-icon" href="/img/icon-min.svg" async=""> <script> function async(u, c, t, p) { function l() { var d = document, s = "script", o = d.createElement(s), e = d.getElementsByTagName(s)[0]; o.src = u; o.async = true; if (p) { o.setAttribute("data-post-js", true); } if (c) { o.addEventListener( "load", function (e) { c(null, e); }, false ); } e.parentNode.insertBefore(o, e); } if (t) { setTimeout(l, t); } else { l(); } } function asyncStyle(u) { var d = document, t = "link", o = d.createElement(t), s = d.getElementsByTagName(t)[0]; o.href = u; o.rel = "stylesheet"; o.async = true; s.parentNode.insertBefore(o, s); } </script></head><body><nav class="bg-white shadow md:sticky md:top-0 z-50"><div class="container mx-auto px-6 py-4 lg:flex lg:justify-between lg:items-center">
+<div class="lg:flex lg:items-center">
+<div class="flex items-center justify-between">
+<div> <a class="text-2xl font-bold text-gray-800 lg:text-3xl hover:text-gray-700" href="/">Jirawat Boonkumnerd</a>
+</div>
+<div class="flex lg:hidden"> <button aria-label="toggle menu" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" id="nav-toggle" type="button"> <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" fill-rule="evenodd"></path> </svg> </button>
+</div>
+</div>
+<div class="flex flex-col text-gray-600 capitalize lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center md:hidden" id="nav-left"> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900" href="/">HOME</a> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="/categories/">Categories</a> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="/tags/">Tags</a>
+</div>
+</div>
+<div class="flex justify-center mt-6 lg:flex lg:mt-0 lg:-mx-2 md:hidden" id="nav-right"> <a aria-label="Github" class="mr-4 text-gray-600 hover:text-gray-400" href="https://github.com/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://www.linkedin.com/in/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 21H9V9H13V11C13.8526 9.91525 15.1456 9.26857 16.525 9.237C19.0056 9.25077 21.0072 11.2694 21 13.75V21H17V14.25C16.84 13.1326 15.8818 12.3036 14.753 12.306C14.2593 12.3216 13.7932 12.5378 13.4624 12.9046C13.1316 13.2715 12.9646 13.7573 13 14.25V21ZM7 21H3V9H7V21ZM5 7C3.89543 7 3 6.10457 3 5C3 3.89543 3.89543 3 5 3C6.10457 3 7 3.89543 7 5C7 5.53043 6.78929 6.03914 6.41421 6.41421C6.03914 6.78929 5.53043 7 5 7Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank"> <svg class="mt-1 w-6 h-6 fill-current" fill="none" viewBox="0 0 416 416" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M53 128.8l-16-8.2a192 192 0 1094.7-88.9l7.1 16.6A174 174 0 1153 128.8z" fill-rule="evenodd" fill="currentColor"></path><path d="M94.7 92.3L82 126.5 62.6 95.7l-36.4-1.4 23.3-28-9.9-35.1 33.9 13.5 30.3-20.3-2.4 36.4L130 83.3l-35.3 9z" fill="currentColor"></path> </svg> </a>
+</div>
+</div></nav><script> var toggle = document.querySelector("#nav-toggle"); var navLeft = document.querySelector("#nav-left"); var navRight = document.querySelector("#nav-right"); var nav = { close: function () { navLeft.classList.add("md:hidden"); navRight.classList.add("md:hidden"); toggle.classList.remove("nav-open"); }, open: function () { navLeft.classList.remove("md:hidden"); navRight.classList.remove("md:hidden"); toggle.classList.add("nav-open"); }, }; toggle.addEventListener("click", function (e) { if (toggle.className.indexOf("nav-open") > 0) { nav.close(); } else { nav.open(); } }); </script><style type="text/css"> header .header-bg { background-image: url("/../img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/plash-speed-2.jpg"); }</style>
+<header><div class="w-full bg-center bg-cover bg-black header-bg"><div class="backdrop-filter backdrop-brightness-75"><div class="container mx-auto grid grid-cols-12"><div class="text-left text-white col-start-3 col-span-8 md:col-start-1 md:col-span-12 py-32 px-4"> <span class="categories"> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-500" href="/categories/#Network" title="Network">Network</a> </span> <span class="tags"> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#OpenWRT" title="OpenWRT">OpenWRT</a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Router" title="Router">Router</a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Network" title="Network">Network</a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Embedded" title="Embedded">Embedded</a> </span><h1 class="text-6xl my-4">Build and Install OpenWRT on Banana Pi R64</h1>
+<h2 class="text-2xl my-4">Getting start to build and install OpenWRT on Banana Pi R64 by using macOS</h2>
+<span class="meta"> Posted by ntsd on <time datetime="2020-03-03">March 3, 2020</time> </span>
+</div></div></div></div></header><article class="container mx-auto grid grid-cols-12"><div class="col-start-3 col-span-8 md:col-start-1 md:col-span-12 p-4">
+<div class="py-8">
+<div class="post-container prose max-w-none">
+<p>This tutorial is a getting start to build OpenWRT image and install on Banana Pi R64, This guide also works with the Banana Pi R2 but it will be a difference in some steps.</p>
+<h2 id="what-is-banana-pi-r64">What is Banana Pi R64<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#what-is-banana-pi-r64" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<p>The Banana Pi R64 is a router-based development board running with ARM Chipset MediaTek MT7622. So you can install operating systems which support to this ARM CPU including OpenWrt, Ubuntu, or many Linux distributions. It has many interfaces support such as on board Wifi/Bluetooth, 1GB Ethernet, USB 3.0, 40 GPIO, etc. Banana Pi R64 can add a Mini-PCI Express Modules and PoE module. And It also has a performance, resource, and interfaces good enough to be a high-end router.</p>
+<h3 id="banana-pi-r64-specifications">Banana Pi R64 Specifications<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#banana-pi-r64-specifications" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<ul>
+<li>MediaTek MT7622,1.35GHZ 64 bit dual-core ARM Cortex-A53</li>
+<li>1G DDR3 SDRAM</li>
+<li>Mini PCIE interface support 4G module</li>
+<li>Built-in 4x4n 802.11n/Bluetooth 5.0 system-on-chip</li>
+<li>MTK7615 4x4ac wifi on board</li>
+<li>Support 1 SATA interface</li>
+<li>MicroSD slot supports up to 256GB expansion</li>
+<li>8G eMMC flash (option 16/32/64G)</li>
+<li>5 port 10/100/1000 Mb Ethernet port</li>
+<li>1 Port USB 3.0</li>
+<li>Slow I/O:ADC, Audio Amplifier, GPIO, I2C, I2S, IR, PMIC I/F, PWM, RTC, SPI, UART</li>
+<li>POE function support</li>
+</ul>
+<h2 id="requirements">Requirements<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#requirements" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<ul>
+<li>macOS (I used 10.15.3) *for Ubuntu, will easier to build the image</li>
+<li>Banana Pi R64</li>
+<li>MicroSD Card</li>
+<li>MicroSD Card Reader</li>
+<li>USB to UART</li>
+</ul>
+<h2 id="preparation">Preparation<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#preparation" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<h3 id="install-usb-to-uart-driver">Install USB to UART Driver<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#install-usb-to-uart-driver" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>Just follow this link if you’re using FTDI</p>
+<p><a href="https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/all">https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/all</a></p>
+<p>here is for CP2102</p>
+<p><a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers</a></p>
+<h3 id="terminal-software-for-serial">Terminal software for serial<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#terminal-software-for-serial" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>you can use whatever serial console Putty, screen, minicom</p>
+<p>for this tutorial I use <code class=" highlighter-rouge language-plaintext">screen</code></p>
+<h3 id="download-images">Download images<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#download-images" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<h4 id="sd-card-image">SD card image</h4>
+<p><a href="https://drive.google.com/open?id=1Ap7lt-pjpG-pAOAEqpH13-SMOSkRkZI0">https://drive.google.com/open?id=1Ap7lt-pjpG-pAOAEqpH13-SMOSkRkZI0</a></p>
+<h4 id="emmc-all-in-one-single-image">eMMC all-in-one single image</h4>
+<p>includes GPT, ATF, u-boot, and Linux kernel image</p>
+<p><a href="https://drive.google.com/open?id=1w8kO3klbPfdHK6lTI8Ub8sR_7ViISORM">https://drive.google.com/open?id=1w8kO3klbPfdHK6lTI8Ub8sR_7ViISORM</a></p>
+<h4 id="emmc-preloader">eMMC preloader</h4>
+<p><a href="https://drive.google.com/open?id=1Fy__GpNSWRcITEmzH4Z_jxnjrCS3BpQJ">https://drive.google.com/open?id=1Fy__GpNSWRcITEmzH4Z_jxnjrCS3BpQJ</a></p>
+<h2 id="setup-boot-from-emmc">Setup boot from eMMC<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#setup-boot-from-emmc" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<p>this step will allow you to build image to eMMC storage on the board instead sd card</p>
+<h3 id="write-sd-card-image-into-sd-card">Write SD card image into SD card<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#write-sd-card-image-into-sd-card" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>You need to boot via sd card first to write preloader and eMMC all-in-one single image</p>
+<p><code class=" highlighter-rouge language-plaintext">dd if=sdcardimage.img of=/dev/sdX</code></p>
+<p>replace <code class=" highlighter-rouge language-plaintext">sdX</code> with your drive</p>
+<h3 id="run-tftp-server">Run TFTP server<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#run-tftp-server" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>You can your system TFTP Server but for easy on and off the service so I use 3rd party TFTP Server.</p>
+<h4 id="tftp-server">TFTP server</h4>
+<p>you can download here <a href="http://ww2.unime.it/flr/tftpserver">http://ww2.unime.it/flr/tftpserver</a></p>
+<h4 id="macos-build-in-tftp-optional">MacOS build-in tftp (optional)</h4>
+<p>If you don’t like to install 3rd party software you can use system TFTP Service</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash"><span class="token function">sudo</span> launchctl load -F /System/Library/LaunchDaemons/tftp.plist
+
+<span class="token function">sudo</span> launchctl start com.apple.tftpd
+
+<span class="token builtin class-name">cd</span> /var/tftpboot <span class="token function">touch</span> <span class="token comment"># make initial tftp directory</span>
+</code></pre></div></div>
+<h4 id="copy-file-to-tftp-folder">Copy file to tftp folder</h4>
+<p>change mode your directory to allow other users to read and write files</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash"><span class="token function">chmod</span> <span class="token number">777</span> /private/tftpboot
+</code></pre></div></div>
+<p>copy the binary file into TFTP root directory</p>
+<p><img alt="copy the binary file into TFTP root directory" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/1.png" loading="lazy"></p>
+<h3 id="connect-to-board-by-uart">Connect to board by UART<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#connect-to-board-by-uart" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>use serial 115200 baud for Bananapi r64</p>
+<p><code class=" highlighter-rouge language-plaintext">sudo screen /dev/cu.usbserial-A50285BI 115200</code></p>
+<p>replace <code class=" highlighter-rouge language-plaintext">cu.usbserial-A50285BI</code> with your serial driver</p>
+<h3 id="set-u-boot-env">Set u-boot env<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#set-u-boot-env" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash">setenv ipaddr <span class="token number">192.168</span>.1.126 <span class="token comment"># your bpi ip address</span>
+setenv serverip <span class="token number">192.168</span>.1.1 <span class="token comment"># your tfto server</span>
+setenv netmask <span class="token number">255.255</span>.255.0
+saveenv
+</code></pre></div></div>
+<p>check u-boot env</p>
+<p><code class=" highlighter-rouge language-plaintext">printenv</code></p>
+<p>return to u-boot menu</p>
+<p><code class=" highlighter-rouge language-plaintext">bootmenu</code></p>
+<h3 id="write-emmc-image-to-flash-via-tftp">Write eMMC image to flash via TFTP<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#write-emmc-image-to-flash-via-tftp" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>Put Ethernet to WLAN port for connect to the router</p>
+<p>make sure your TFTP server in the same network with your bpi board</p>
+<h4 id="install-emmc-flash-image-to-flash">Install eMMC flash image to flash</h4>
+<p>in u-boot menu choose “b. System Load flash image then write to Flash via TFTP”</p>
+<p><img alt="b. System Load flash image then write to Flash via TFTP" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/2.png" loading="lazy"></p>
+<p>Set TFTP server IP and flash image file name</p>
+<p><img alt="Set TFTP server ip and flash image file name" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/3.png" loading="lazy"></p>
+<h4 id="install-preloader-to-flash">Install preloader to flash</h4>
+<p>back to U-Boot menu choose “7. System Load Preloader then write to Flash via TFTP”</p>
+<p><img alt="7. System Load Preloader then write to Flash via TFTP" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/4.png" loading="lazy"></p>
+<p>Set TFTP server IP address and preloader file name</p>
+<p><img alt="Set TFTP server ip and preloader file name" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/5.png" loading="lazy"></p>
+<p>Remove sd card and power-off The Banana pi, Remove SD card, and Power on.</p>
+<p>Now you’ll get U-BOOT installed on eMMC storage</p>
+<p><img alt="U-BOOT install on eMMC on board storage" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/6.png" loading="lazy"></p>
+<h2 id="build-your-openwrt-image">Build your OpenWRT image<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#build-your-openwrt-image" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<h3 id="preparation-to-build-openwrt-image">Preparation to build OpenWRT image<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#preparation-to-build-openwrt-image" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<p>follow the link for more information <a href="https://openwrt.org/docs/guide-developer/buildroot.exigence.macosx">https://openwrt.org/docs/guide-developer/buildroot.exigence.macosx</a></p>
+<h4 id="setup-macosx-as-an-openwrt-build-environment">Setup MacOSX as an OpenWrt build environment</h4>
+<p>Install these package by Homebrew</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash">brew <span class="token function">install</span> coreutils diffutils findutils <span class="token function">gawk</span> gnu-getopt gnu-tar <span class="token function">grep</span> <span class="token function">wget</span> quilt xz
+
+<span class="token comment"># Link gnu-getopt to local gnugetopt</span>
+<span class="token function">ln</span> -s <span class="token variable"><span class="token variable">`</span>brew --prefix gnu-getopt<span class="token variable">`</span></span>/bin/getopt <span class="token variable"><span class="token variable">`</span>brew --prefix<span class="token variable">`</span></span>/bin/gnugetopt
+</code></pre></div></div>
+<p>add gnu-getopt to your path</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"/usr/local/opt/gnu-getopt/bin:<span class="token environment constant">$PATH</span>"</span>
+</code></pre></div></div>
+<h4 id="create-case-insensitive-filesystem">Create case-insensitive filesystem</h4>
+<p>OS X by default comes with a case-insensitive filesystem. OpenWrt won’t build on that. As a workaround, create a (Sparse) case-sensitive disk-image that you then mount in the finder and use as build directory</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash">hdiutil create -size 20g -type SPARSE -fs <span class="token string">"Case-sensitive HFS+"</span> -volname OpenWrt OpenWrt.sparseimage
+
+<span class="token comment"># mount the image</span>
+hdiutil attach OpenWrt.sparseimage
+</code></pre></div></div>
+<p>change directory to /Volumes/OpenWrt</p>
+<p><code class=" highlighter-rouge language-plaintext">cd /Volumes/OpenWrt</code></p>
+<h3 id="build-openwrt-image-for-mt7622">Build OpenWRT Image for MT7622<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#build-openwrt-image-for-mt7622" style="opacity: 1; padding-left: 0.375em;"></a></h3>
+<h4 id="clone-openwrt-project">Clone OpenWRT project</h4>
+<p><code class=" highlighter-rouge language-plaintext">git clone https://github.com/openwrt/openwrt.git</code></p>
+<h4 id="set-parametres">Set parametres</h4>
+<p>Target System: MediaTek Ralink ARM</p>
+<p>Subtarget: MT7622</p>
+<p>Target Profile: Banana Pi R64</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash"><span class="token builtin class-name">cd</span> openwrt
+
+./scripts/feeds update -a
+./scripts/feeds <span class="token function">install</span> -a
+
+<span class="token function">make</span> menuconfig
+</code></pre></div></div>
+<p>Set config and include built-in dependency that you want (Luci is not included by default)</p>
+<p>then save to <code class=" highlighter-rouge language-plaintext">.config</code></p>
+<h4 id="build-openwrt-image">Build OpenWRT image</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight language-bash" tabindex="0"><code class=" language-bash"><span class="token comment"># for 10.15 need set deploy target it to 10.14</span>
+<span class="token assign-left variable">MACOSX_DEPLOYMENT_TARGET</span><span class="token operator">=</span><span class="token number">10.14</span>
+
+<span class="token comment"># Start make</span>
+<span class="token comment"># vadd v1 mean verbose Level 1 (warnings/errors), level 99 (stdout+stderr)</span>
+<span class="token comment"># add -j4 mean use quard core</span>
+<span class="token function">make</span> -j4 <span class="token assign-left variable">V</span><span class="token operator">=</span><span class="token number">1</span>
+</code></pre></div></div>
+<p>Kernel image file will be at ./bin/targets/mediatek/mt7622/openwrt-mediatek-mt7622-bpi_bananapi-r64-initramfs-kernel.bin</p>
+<h4 id="install-openwrt-image-to-bananapi-via-tftp">Install OpenWRT Image to Bananapi via TFTP</h4>
+<p>Copy the kernel image to TFTP folder</p>
+<p><code class=" highlighter-rouge language-plaintext">cp ./bin/targets/mediatek/mt7622/openwrt-mediatek-mt7622-bpi_bananapi-r64-initramfs-kernel.bin /private/tftpboot/</code></p>
+<p>Enter to the U-Boot menu</p>
+<p>Install kernel image from TFTP</p>
+<p><img alt="Install kernel image from TFTP" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/8.png" loading="lazy"></p>
+<p>Finally, I got The OpenWRT image installed</p>
+<p><img alt="OpenWRT installed" src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/7.png" loading="lazy"></p>
+<h2 id="references">References<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#references" style="opacity: 1; padding-left: 0.375em;"></a></h2>
+<ul>
+<li><a href="http://wiki.banana-pi.org/Banana_Pi_BPI-R64">http://wiki.banana-pi.org/Banana_Pi_BPI-R64</a></li>
+<li><a href="http://forum.banana-pi.org/t/bpi-r64-loading-openwrt-built-files-into-the-board/9960">http://forum.banana-pi.org/t/bpi-r64-loading-openwrt-built-files-into-the-board/9960</a></li>
+<li><a href="http://forum.banana-pi.org/t/bpi-r64-quick-start-boot-from-emmc/9809">http://forum.banana-pi.org/t/bpi-r64-quick-start-boot-from-emmc/9809</a></li>
+<li><a href="https://openwrt.org/docs/guide-developer">https://openwrt.org/docs/guide-developer</a></li>
+</ul>
+</div>
+<ul class="grid grid-cols-2 text-center mt-8">
+<li class="col-span-1 border p-4 mr-4 hover:bg-gray-300"> <a href="/aria2-max-connections-per-server/" data-toggle="tooltip" data-placement="top" title="Recompile aria2 to increment max connections per server"><div class="text-xl font-bold">Previous</div>
+<div class="text-gray-600">Recompile aria2 to increment max connections per server</div></a>
+</li>
+<li class="col-span-1 border p-4 ml-4 hover:bg-gray-300"> <a href="/build-a-static-website-with-gatsby/" data-toggle="tooltip" data-placement="top" title="Build a static website with Gatsby and TypeScript"><div class="text-xl font-bold">Next</div>
+<div class="text-gray-600">Build a static website with Gatsby and TypeScript</div></a>
+</li>
+</ul>
+</div>
+<div class="comment giscus py-8"></div>
+<div class="pt-8"> <a class="text-gray-700 font-bond" href="/tags/">FEATURED TAGS</a><div class="my-4 text-xs"> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Artificial%20Intelligence" title="Artificial Intelligence" rel="1"> Artificial Intelligence </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Programming" title="Programming" rel="7"> Programming </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Python" title="Python" rel="2"> Python </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Code%20golf" title="Code golf" rel="1"> Code golf </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#C++" title="C++" rel="1"> C++ </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#aria2" title="aria2" rel="1"> aria2 </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Network" title="Network" rel="2"> Network </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#OpenWRT" title="OpenWRT" rel="1"> OpenWRT </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Router" title="Router" rel="1"> Router </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Embedded" title="Embedded" rel="1"> Embedded </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Gatsby" title="Gatsby" rel="1"> Gatsby </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#React" title="React" rel="1"> React </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#GraphQL" title="GraphQL" rel="1"> GraphQL </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Progressive%20Web%20App" title="Progressive Web App" rel="1"> Progressive Web App </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#TypeScript" title="TypeScript" rel="2"> TypeScript </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Facebook%20Developer" title="Facebook Developer" rel="1"> Facebook Developer </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#ESLint" title="ESLint" rel="1"> ESLint </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Hosting" title="Hosting" rel="1"> Hosting </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Website" title="Website" rel="1"> Website </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Web%20Performance" title="Web Performance" rel="1"> Web Performance </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Database" title="Database" rel="1"> Database </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#PostgreSQL" title="PostgreSQL" rel="1"> PostgreSQL </a>
+</div>
+</div>
+</div>
+<div class="col-span-2 md:hidden p-4"><div class="on-page-nav sticky top-28 text-gray-500 font-medium py-8"><div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div></div></div></article><script type="text/javascript"> async( "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js", function () { const content = document.querySelector('.post-container'); const insertTarget = document.querySelector('.on-page-nav'); scrollnav.init(content, { debug: false, insertTarget: insertTarget, insertLocation: 'append', }); }, 1000 ); </script><style> nav.scroll-nav a.scroll-nav__link { display: block; padding-top: 0.5rem; padding-bottom: 0.5rem; } nav.scroll-nav li.scroll-nav__item.scroll-nav__item--active { color: #000; } nav.scroll-nav a.scroll-nav__link:hover { color: #000; }</style>
+<script type="text/javascript"> setTimeout(function () { var d = document, s = d.createElement("script"); s.src = " https://giscus.app/client.js"; s.setAttribute("data-repo", "ntsd/ntsd.github.io"); s.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkyNDYwNjU3MDI"); s.setAttribute("data-category", "General"); s.setAttribute("data-category-id", "DIC_kwDODqqqJs4B_e5q"); s.setAttribute("data-mapping", "pathname"); s.setAttribute("data-reactions-enabled", "0"); s.setAttribute("data-emit-metadata", "0"); s.setAttribute("data-theme", "light"); s.setAttribute("crossorigin", "anonymous"); (d.head || d.body).appendChild(s); }, 2000); </script> <style> .anchorjs-link { color: #777 !important; text-decoration: none !important; } .anchorjs-link:hover { color: #000 !important; } .anchorjs-link::before { content: "#"; }</style>
+ <script type="text/javascript"> asyncStyle("/assets/css/prism.css"); </script><footer><hr class="mt-10 dark:border-gray-500">
+<div class="container px-6 py-8 mx-auto"><div class="grid justify-items-center">
+<div class="flex justify-center my-4"> <a aria-label="Github" class="mr-4 text-gray-600 hover:text-gray-400" href="https://github.com/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://www.linkedin.com/in/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 21H9V9H13V11C13.8526 9.91525 15.1456 9.26857 16.525 9.237C19.0056 9.25077 21.0072 11.2694 21 13.75V21H17V14.25C16.84 13.1326 15.8818 12.3036 14.753 12.306C14.2593 12.3216 13.7932 12.5378 13.4624 12.9046C13.1316 13.2715 12.9646 13.7573 13 14.25V21ZM7 21H3V9H7V21ZM5 7C3.89543 7 3 6.10457 3 5C3 3.89543 3.89543 3 5 3C6.10457 3 7 3.89543 7 5C7 5.53043 6.78929 6.03914 6.41421 6.41421C6.03914 6.78929 5.53043 7 5 7Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank"> <svg class="mt-1 w-6 h-6 fill-current" fill="none" viewBox="0 0 416 416" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M53 128.8l-16-8.2a192 192 0 1094.7-88.9l7.1 16.6A174 174 0 1153 128.8z" fill-rule="evenodd" fill="currentColor"></path><path d="M94.7 92.3L82 126.5 62.6 95.7l-36.4-1.4 23.3-28-9.9-35.1 33.9 13.5 30.3-20.3-2.4 36.4L130 83.3l-35.3 9z" fill="currentColor"></path> </svg> </a>
+</div>
+<div class="text-center text-gray-800">
+<div> © Jirawat Boonkumnerd 2021</div>
+<div> Made by <a class="text-gray-600" href="https://ntsd.dev">ntsd</a>
+</div>
+</div>
+</div></div></footer><script async=""> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch((err) => { console.error("service worker register error:", err); }); } </script>
+
+</body></html>
