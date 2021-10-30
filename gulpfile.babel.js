@@ -158,6 +158,7 @@ gulp.task("post-js", async () => {
 
       // replace script type text/runtime-javascript to text/javascript
       body = body.replace(/text\/runtime\-javascript/g, 'text/javascript');
+      body = '<!DOCTYPE html>' + body; // DOCTYPE is gone when puppeteer run
 
       file.contents = Buffer.from(body);
 
@@ -204,7 +205,7 @@ gulp.task("startServer", () => {
 });
 
 const jekyllSeries = gulp.series("buildJekyll", "processStyles");
-const buildSite = gulp.parallel(jekyllSeries, "uglify", "uglify-sw");
+const buildSite = gulp.series(jekyllSeries, "uglify", "uglify-sw");
 
 exports.serve = gulp.series(buildSite, "startServer");
 exports.default = gulp.series(buildSite, "bust-cache", "post-js");
