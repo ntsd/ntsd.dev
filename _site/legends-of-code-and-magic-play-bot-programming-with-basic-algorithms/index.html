@@ -1,519 +1,368 @@
-<html lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" name="google-site-verification">
-<meta content="width=device-width, initial-scale=1" name="viewport">
-<meta name="keywords" content="Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd">
-<meta name="theme-color" content="#000000">
-<meta content="script-src 'self' 'unsafe-inline' giscus.app *.jsdelivr.net; object-src 'none';base-uri 'none';" http-equiv="Content-Security-Policy">
-<title>Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms | Jirawat Boonkumnerd</title>
-<meta name="generator" content="Jekyll v4.2.1">
-<meta property="og:title" content="Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms">
-<meta name="author" content="ntsd">
-<meta property="og:locale" content="en_US">
-<meta name="description" content="Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น">
-<meta property="og:description" content="Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น">
-<link rel="canonical" href="https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/">
-<meta property="og:url" content="https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/">
-<meta property="og:site_name" content="Jirawat Boonkumnerd">
-<meta property="og:image" content="https://ntsd.dev/pwa/icons/512.png">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-08-05T19:30:54+07:00">
-<meta name="twitter:card" content="summary">
-<meta property="twitter:image" content="https://ntsd.dev/pwa/icons/512.png">
-<meta property="twitter:title" content="Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms">
-<meta name="twitter:site" content="@ntsd_me">
-<meta name="twitter:creator" content="@ntsd">
-<meta property="fb:admins" content="jo.ntsd">
-<meta property="article:publisher" content="ntsd.dev">
-<meta property="fb:app_id" content="523337598616322"> <script type="application/ld+json"> {"datePublished":"2018-08-05T19:30:54+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/"},"url":"https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/","author":{"@type":"Person","name":"ntsd"},"image":"https://ntsd.dev/pwa/icons/512.png","description":"Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://ntsd.dev/pwa/icons/512.png"},"name":"ntsd"},"headline":"Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms","dateModified":"2018-08-05T19:30:54+07:00","@type":"BlogPosting","@context":"https://schema.org"}</script><link href="https://cdn.jsdelivr.net" rel="preconnect">
-<style class="anchorjs"></style><link rel="stylesheet" href="/assets/css/style.css">
-<link rel="manifest" href="/pwa/manifest.json" async="">
-<link rel="shortcut icon" href="/img/icon-min.svg" async="">
-<link rel="apple-touch-icon" href="/img/icon-min.svg" async=""> <script> function async(u, c, t, p) { function l() { var d = document, s = "script", o = d.createElement(s), e = d.getElementsByTagName(s)[0]; o.src = u; o.async = true; if (p) { o.setAttribute("data-post-js", true); } if (c) { o.addEventListener( "load", function (e) { c(null, e); }, false ); } e.parentNode.insertBefore(o, e); } if (t) { setTimeout(l, t); } else { l(); } } function asyncStyle(u) { var d = document, t = "link", o = d.createElement(t), s = d.getElementsByTagName(t)[0]; o.href = u; o.rel = "stylesheet"; o.async = true; s.parentNode.insertBefore(o, s); } </script></head><body><nav class="bg-white shadow md:sticky md:top-0 z-50"><div class="container mx-auto px-6 py-4 lg:flex lg:justify-between lg:items-center">
-<div class="lg:flex lg:items-center">
-<div class="flex items-center justify-between">
-<div> <a class="text-2xl font-bold text-gray-800 lg:text-3xl hover:text-gray-700" href="/">Jirawat Boonkumnerd</a>
-</div>
-<div class="flex lg:hidden"> <button aria-label="toggle menu" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" id="nav-toggle" type="button"> <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" fill-rule="evenodd"></path> </svg> </button>
-</div>
-</div>
-<div class="flex flex-col text-gray-600 capitalize lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center md:hidden" id="nav-left"> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900" href="/">HOME</a> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="/categories/">Categories</a> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="/tags/">Tags</a>
-</div>
-</div>
-<div class="flex justify-center mt-6 lg:flex lg:mt-0 lg:-mx-2 md:hidden" id="nav-right"> <a aria-label="Github" class="mr-4 text-gray-600 hover:text-gray-400" href="https://github.com/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://www.linkedin.com/in/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 21H9V9H13V11C13.8526 9.91525 15.1456 9.26857 16.525 9.237C19.0056 9.25077 21.0072 11.2694 21 13.75V21H17V14.25C16.84 13.1326 15.8818 12.3036 14.753 12.306C14.2593 12.3216 13.7932 12.5378 13.4624 12.9046C13.1316 13.2715 12.9646 13.7573 13 14.25V21ZM7 21H3V9H7V21ZM5 7C3.89543 7 3 6.10457 3 5C3 3.89543 3.89543 3 5 3C6.10457 3 7 3.89543 7 5C7 5.53043 6.78929 6.03914 6.41421 6.41421C6.03914 6.78929 5.53043 7 5 7Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank"> <svg class="mt-1 w-6 h-6 fill-current" fill="none" viewBox="0 0 416 416" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M53 128.8l-16-8.2a192 192 0 1094.7-88.9l7.1 16.6A174 174 0 1153 128.8z" fill-rule="evenodd" fill="currentColor"></path><path d="M94.7 92.3L82 126.5 62.6 95.7l-36.4-1.4 23.3-28-9.9-35.1 33.9 13.5 30.3-20.3-2.4 36.4L130 83.3l-35.3 9z" fill="currentColor"></path> </svg> </a>
-</div>
-</div></nav><script type="text/javascript"> var toggle = document.querySelector("#nav-toggle"); var navLeft = document.querySelector("#nav-left"); var navRight = document.querySelector("#nav-right"); var nav = { close: function () { navLeft.classList.add("md:hidden"); navRight.classList.add("md:hidden"); toggle.classList.remove("nav-open"); }, open: function () { navLeft.classList.remove("md:hidden"); navRight.classList.remove("md:hidden"); toggle.classList.add("nav-open"); }, }; toggle.addEventListener("click", function (e) { if (toggle.className.indexOf("nav-open") > 0) { nav.close(); } else { nav.open(); } }); </script><style type="text/css"> header .header-bg { background-image: url("/../img/in-post/2018-8-5-legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/post-legends-of-code-and-magic.png"); }</style>
-<header><div class="w-full bg-center bg-cover bg-black header-bg"><div class="backdrop-filter backdrop-brightness-75"><div class="container mx-auto grid grid-cols-12"><div class="text-left text-white col-start-3 col-span-8 md:col-start-1 md:col-span-12 py-32 px-4"> <span class="categories"> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-500" href="/categories/#Programming" title="Programming">Programming</a> </span> <span class="tags"> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Artificial%20Intelligence" title="Artificial Intelligence">Artificial Intelligence</a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Programming" title="Programming">Programming</a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Python" title="Python">Python</a> </span><h1 class="text-6xl my-4">Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms</h1>
-<h2 class="text-2xl my-4">สร้างบอทเกมเพื่อเล่นเกมไพ่แข่งกับคนอื่น</h2>
-<span class="meta"> Posted by ntsd on <time datetime="2018-08-05">August 5, 2018</time> </span>
-</div></div></div></div></header><article class="container mx-auto grid grid-cols-12"><div class="col-start-3 col-span-8 md:col-start-1 md:col-span-12 p-4">
-<div class="py-8">
-<div class="post-container prose max-w-none">
-<p>Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น</p>
-<p>สามารถเล่นได้ที่นี่ <a href="https://www.codingame.com/contests/legends-of-code-and-magic-marathon">Link</a></p>
-<p>สำหรับคนที่ยังไม่ค่อยเข้าใจระบบเกม ให้ลองเลื่อนลงไปดู Game loops and Input ก่อน</p>
-<h2 id="requirement-skills">Requirement skills<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#requirement-skills" style="opacity: 1; padding-left: 0.375em;"></a></h2>
-<ul>
-<li>Programming (Python Syntax)</li>
-<li>Basic Algorithms</li>
-<li>OOP นิดหน่อย</li>
-</ul>
-<p>LEGENDS OF CODE AND MAGIC เป็นเกมนี้จะเป็นบอร์ดเกมคล้าย Hearthstone</p>
-<p>ตัวอย่างเกม <a href="https://www.codingame.com/replay/328489470">https://www.codingame.com/replay/328489470</a></p>
-<p>มีผู้เล่นสองคนใช้ไพ่ต่อสู้กันใครเลือดหมดก่อนแพ้</p>
-<p>โดยจะแบ่งเป็น 2 phases</p>
-<p>phase แรกจะเป็นการเลือกไพ่ 1 ใน 3 จากไพ่ที่สุ่มมา จนครบ 30 ใบ</p>
-<p>phase ที่สองจะเป็นการ Battle</p>
-<p>โดยใน battle phase จะมีมานาเริ่มต้น 1 และเพิ่ม 1 ทุกๆเทริน</p>
-<p>โดยมานาสามารถนำไปจ่ายเพื่อใช้ไพ่</p>
-<p>ในเกมจะมีไพ่ 2 ชนิด คือไพ่ creatures กับ items แต่ผมจะอธิบายแค่ creature</p>
-<p>เมื่อใช้ไพ่ creature จากบนมือจะลงไปบนบอร์ด โดย creature สามารถโจมตีได้เมื่ออยู่บนบอร์ด</p>
-<p>เลือดจะลดหากโจมตี creature ด้วยกันเอง</p>
-<h2 id="creature-abilities">creature abilities<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#creature-abilities" style="opacity: 1; padding-left: 0.375em;"></a></h2>
-<p>creature จะมีความสามามารถพิเศษแตกต่างกันดังนี้</p>
-<pre class=" language-text" tabindex="0"><code class=" language-text">Breakthrough: Creatures with Breakthrough can deal extra damage to the opponent when they attack enemy creatures. If their attack damage is greater than the defending creature's defense, the excess damage is dealt to the opponent.
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta content="IE=edge" http-equiv="X-UA-Compatible"><meta content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" name="google-site-verification"><meta content="width=device-width,initial-scale=1" name="viewport"><meta name="keywords" content="Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd"><meta name="theme-color" content="#000000"><meta content="script-src 'self' 'unsafe-inline' giscus.app *.jsdelivr.net; object-src 'none';base-uri 'none';" http-equiv="Content-Security-Policy"><title>Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms | Jirawat Boonkumnerd</title><meta name="generator" content="Jekyll v4.2.1"><meta property="og:title" content="Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms"><meta name="author" content="ntsd"><meta property="og:locale" content="en_US"><meta name="description" content="Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น"><meta property="og:description" content="Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น"><link rel="canonical" href="https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/"><meta property="og:url" content="https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/"><meta property="og:site_name" content="Jirawat Boonkumnerd"><meta property="og:image" content="https://ntsd.dev/pwa/icons/512.png"><meta property="og:type" content="article"><meta property="article:published_time" content="2018-08-05T19:30:54+07:00"><meta name="twitter:card" content="summary"><meta property="twitter:image" content="https://ntsd.dev/pwa/icons/512.png"><meta property="twitter:title" content="Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms"><meta name="twitter:site" content="@ntsd_me"><meta name="twitter:creator" content="@ntsd"><meta property="fb:admins" content="jo.ntsd"><meta property="article:publisher" content="ntsd.dev"><meta property="fb:app_id" content="523337598616322"><script type="application/ld+json">{"datePublished":"2018-08-05T19:30:54+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/"},"url":"https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/","author":{"@type":"Person","name":"ntsd"},"image":"https://ntsd.dev/pwa/icons/512.png","description":"Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://ntsd.dev/pwa/icons/512.png"},"name":"ntsd"},"headline":"Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms","dateModified":"2018-08-05T19:30:54+07:00","@type":"BlogPosting","@context":"https://schema.org"}</script><link href="https://cdn.jsdelivr.net" rel="preconnect"><style class="anchorjs"></style><link rel="stylesheet" href="/assets/css/style.css"><link rel="manifest" href="/pwa/manifest.json" async=""><link rel="shortcut icon" href="/img/icon-min.svg" async=""><link rel="apple-touch-icon" href="/img/icon-min.svg" async=""><script>function async(u, c, t, p) { function l() { var d = document, s = "script", o = d.createElement(s), e = d.getElementsByTagName(s)[0]; o.src = u; o.async = true; if (p) { o.setAttribute("data-post-js", true); } if (c) { o.addEventListener( "load", function (e) { c(null, e); }, false ); } e.parentNode.insertBefore(o, e); } if (t) { setTimeout(l, t); } else { l(); } } function asyncStyle(u) { var d = document, t = "link", o = d.createElement(t), s = d.getElementsByTagName(t)[0]; o.href = u; o.rel = "stylesheet"; o.async = true; s.parentNode.insertBefore(o, s); }</script></head><body><nav class="bg-white shadow md:sticky md:top-0 z-50"><div class="container mx-auto px-6 py-4 lg:flex lg:justify-between lg:items-center"><div class="lg:flex lg:items-center"><div class="flex items-center justify-between"><div><a class="text-2xl font-bold text-gray-800 lg:text-3xl hover:text-gray-700" href="/">Jirawat Boonkumnerd</a></div><div class="flex lg:hidden"><button aria-label="toggle menu" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" id="nav-toggle" type="button"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" fill-rule="evenodd"></path></svg></button></div></div><div class="flex flex-col text-gray-600 capitalize lg:flex lg:px-16 lg:-mx-4 lg:flex-row lg:items-center md:hidden" id="nav-left"><a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900" href="/">HOME</a> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="/categories/">Categories</a> <a class="mt-4 lg:mt-0 lg:mx-4 hover:text-gray-900 uppercase" href="/tags/">Tags</a></div></div><div class="flex justify-center mt-6 lg:flex lg:mt-0 lg:-mx-2 md:hidden" id="nav-right"><a aria-label="Github" class="mr-4 text-gray-600 hover:text-gray-400" href="https://github.com/ntsd" rel="noopener noreferrer" target="_blank"><svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path></svg> </a><a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://www.linkedin.com/in/ntsd" rel="noopener noreferrer" target="_blank"><svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 21H9V9H13V11C13.8526 9.91525 15.1456 9.26857 16.525 9.237C19.0056 9.25077 21.0072 11.2694 21 13.75V21H17V14.25C16.84 13.1326 15.8818 12.3036 14.753 12.306C14.2593 12.3216 13.7932 12.5378 13.4624 12.9046C13.1316 13.2715 12.9646 13.7573 13 14.25V21ZM7 21H3V9H7V21ZM5 7C3.89543 7 3 6.10457 3 5C3 3.89543 3.89543 3 5 3C6.10457 3 7 3.89543 7 5C7 5.53043 6.78929 6.03914 6.41421 6.41421C6.03914 6.78929 5.53043 7 5 7Z"></path></svg> </a><a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank"><svg class="mt-1 w-6 h-6 fill-current" fill="none" viewBox="0 0 416 416" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M53 128.8l-16-8.2a192 192 0 1094.7-88.9l7.1 16.6A174 174 0 1153 128.8z" fill-rule="evenodd" fill="currentColor"></path><path d="M94.7 92.3L82 126.5 62.6 95.7l-36.4-1.4 23.3-28-9.9-35.1 33.9 13.5 30.3-20.3-2.4 36.4L130 83.3l-35.3 9z" fill="currentColor"></path></svg></a></div></div></nav><script type="text/javascript">var toggle = document.querySelector("#nav-toggle"); var navLeft = document.querySelector("#nav-left"); var navRight = document.querySelector("#nav-right"); var nav = { close: function () { navLeft.classList.add("md:hidden"); navRight.classList.add("md:hidden"); toggle.classList.remove("nav-open"); }, open: function () { navLeft.classList.remove("md:hidden"); navRight.classList.remove("md:hidden"); toggle.classList.add("nav-open"); }, }; toggle.addEventListener("click", function (e) { if (toggle.className.indexOf("nav-open") > 0) { nav.close(); } else { nav.open(); } });</script><style type="text/css">header .header-bg { background-image: url("/../img/in-post/2018-8-5-legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/post-legends-of-code-and-magic.png"); }</style><header><div class="w-full bg-center bg-cover bg-black header-bg"><div class="backdrop-filter backdrop-brightness-75"><div class="container mx-auto grid grid-cols-12"><div class="text-left text-white col-start-3 col-span-8 md:col-start-1 md:col-span-12 py-32 px-4"><span class="categories"><a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-500" href="/categories/#Programming" title="Programming">Programming</a> </span><span class="tags"><a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Artificial%20Intelligence" title="Artificial Intelligence">Artificial Intelligence</a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Programming" title="Programming">Programming</a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="/tags/#Python" title="Python">Python</a></span><h1 class="text-6xl my-4">Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms</h1><h2 class="text-2xl my-4">สร้างบอทเกมเพื่อเล่นเกมไพ่แข่งกับคนอื่น</h2><span class="meta">Posted by ntsd on <time datetime="2018-08-05">August 5, 2018</time></span></div></div></div></div></header><article class="container mx-auto grid grid-cols-12"><div class="col-start-3 col-span-8 md:col-start-1 md:col-span-12 p-4"><div class="py-8"><div class="post-container prose max-w-none"><p>Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น</p><p>สามารถเล่นได้ที่นี่ <a href="https://www.codingame.com/contests/legends-of-code-and-magic-marathon">Link</a></p><p>สำหรับคนที่ยังไม่ค่อยเข้าใจระบบเกม ให้ลองเลื่อนลงไปดู Game loops and Input ก่อน</p><h2 id="requirement-skills">Requirement skills<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#requirement-skills" style="opacity: 1; padding-left: 0.375em;"></a></h2><ul><li>Programming (Python Syntax)</li><li>Basic Algorithms</li><li>OOP นิดหน่อย</li></ul><p>LEGENDS OF CODE AND MAGIC เป็นเกมนี้จะเป็นบอร์ดเกมคล้าย Hearthstone</p><p>ตัวอย่างเกม <a href="https://www.codingame.com/replay/328489470">https://www.codingame.com/replay/328489470</a></p><p>มีผู้เล่นสองคนใช้ไพ่ต่อสู้กันใครเลือดหมดก่อนแพ้</p><p>โดยจะแบ่งเป็น 2 phases</p><p>phase แรกจะเป็นการเลือกไพ่ 1 ใน 3 จากไพ่ที่สุ่มมา จนครบ 30 ใบ</p><p>phase ที่สองจะเป็นการ Battle</p><p>โดยใน battle phase จะมีมานาเริ่มต้น 1 และเพิ่ม 1 ทุกๆเทริน</p><p>โดยมานาสามารถนำไปจ่ายเพื่อใช้ไพ่</p><p>ในเกมจะมีไพ่ 2 ชนิด คือไพ่ creatures กับ items แต่ผมจะอธิบายแค่ creature</p><p>เมื่อใช้ไพ่ creature จากบนมือจะลงไปบนบอร์ด โดย creature สามารถโจมตีได้เมื่ออยู่บนบอร์ด</p><p>เลือดจะลดหากโจมตี creature ด้วยกันเอง</p><h2 id="creature-abilities">creature abilities<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#creature-abilities" style="opacity: 1; padding-left: 0.375em;"></a></h2><p>creature จะมีความสามามารถพิเศษแตกต่างกันดังนี้</p><pre><code class="language-Text">Breakthrough: Creatures with Breakthrough can deal extra damage to the opponent when they attack enemy creatures. If their attack damage is greater than the defending creature's defense, the excess damage is dealt to the opponent.
 Charge: Creatures with Charge can attack the turn they are summoned.
 Drain: Creatures with Drain heal the player of the amount of the damage they deal (when attacking only).
 Guard: Enemy creatures must attack creatures with Guard first.
 Lethal: Creatures with Lethal kill the creatures they deal damage to.
 Ward: Creatures with Ward ignore once the next damage they would receive from any source. The "shield" given by the Ward ability is then lost.
-</code></pre>
-<h2 id="class">Class<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#class" style="opacity: 1; padding-left: 0.375em;"></a></h2>
-<h3 id="import-อะไรให้พร้อม">import อะไรให้พร้อม<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#import-อะไรให้พร้อม" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">import</span> sys <span class="token comment"># ใช้เพื่อ print log</span>
-<span class="token keyword">from</span> copy <span class="token keyword">import</span> deepcopy  <span class="token comment"># deepcopy เพื่อให้ object ต่างๆ ไม่ reference เวลา simulate</span>
-</code></pre>
-<h3 id="class-player">class Player<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#class-player" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">class</span> <span class="token class-name">Player</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>mana_curve <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token comment"># mana curve ใช่เพื่อเลือไพ่ให้ได้ curve ตามต้องการ</span>
-    <span class="token keyword">def</span> <span class="token function">setEnemy</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> player<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>op <span class="token operator">=</span> player
-    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ใช้เพื่ออัพเดตค่าทุกๆเทริน</span>
-        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'self'</span><span class="token punctuation">)</span> <span class="token comment"># map local vars ใส่ self vars</span>
-        self<span class="token punctuation">.</span>hands <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        self<span class="token punctuation">.</span>boards <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">def</span> <span class="token function">addHand</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> card<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ใช้เพื่อเพิ่มไพ่ในมือ</span>
-        self<span class="token punctuation">.</span>hands<span class="token punctuation">.</span>append<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">addBoard</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> card<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># ใช้เพื่อเพิ่มไพ่บอร์ด</span>
-        self<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>append<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-</code></pre>
-<h3 id="class-card">class Card<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#class-card" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">class</span> <span class="token class-name">Card</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'self'</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">1</span>
-        self<span class="token punctuation">.</span>shield <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'W'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>lethal <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'L'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>guard <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'G'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>charge <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'C'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>drain <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'D'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>breakthrough <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'B'</span><span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>live <span class="token operator">=</span> <span class="token number">1</span>
-    <span class="token keyword">def</span> <span class="token function">__hash__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ใช้เพื่อ hash เปรียบเทียบ object ด้วย id</span>
-         <span class="token keyword">return</span> <span class="token builtin">hash</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>instance_id<span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ใช้เพื่อเปรียบเทียบ Equal ของ Object</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>
-            self<span class="token punctuation">.</span>__class__ <span class="token operator">==</span> other<span class="token punctuation">.</span>__class__ <span class="token keyword">and</span>
-            self<span class="token punctuation">.</span>instance_id <span class="token operator">==</span> other<span class="token punctuation">.</span>instance_id
-        <span class="token punctuation">)</span>
-</code></pre>
-<h3 id="class-creature">class Creature<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#class-creature" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">class</span> <span class="token class-name">Creature</span><span class="token punctuation">(</span>Card<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># inheritance Card เพื่อบอกว่าเป็น Subclass ของ Card</span>
-    <span class="token keyword">def</span> <span class="token function">attackTarget</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ใช้เมื่อโจมตี Creature ตัวอื่น</span>
-        self<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>shield<span class="token punctuation">:</span> <span class="token comment"># เมื่อดาเมจโดน shield จะหาย</span>
-            self<span class="token punctuation">.</span>shield <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>defense <span class="token operator">-=</span> target<span class="token punctuation">.</span>attack <span class="token comment"># เลือดลดด้วยพลังโจมตีของเป้าหมาย</span>
-            <span class="token keyword">if</span> self<span class="token punctuation">.</span>defense <span class="token operator">&lt;=</span><span class="token number">0</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>target<span class="token punctuation">.</span>lethal <span class="token keyword">and</span> <span class="token builtin">type</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                self<span class="token punctuation">.</span>live <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment"># เมื่อเลือดหมด</span>
-        <span class="token keyword">if</span> target<span class="token punctuation">.</span>shield<span class="token punctuation">:</span> <span class="token comment"># damage to target</span>
-            target<span class="token punctuation">.</span>shield <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            target<span class="token punctuation">.</span>defense <span class="token operator">-=</span> self<span class="token punctuation">.</span>attack <span class="token comment"># เลือดเป้าหมายลดด้วยพลังโจมตีของผู้ตี</span>
-            <span class="token keyword">if</span> target<span class="token punctuation">.</span>defense <span class="token operator">&lt;=</span><span class="token number">0</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>lethal <span class="token keyword">and</span> <span class="token builtin">type</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                target<span class="token punctuation">.</span>live <span class="token operator">=</span> <span class="token number">0</span>
-</code></pre>
-<h3 id="class-item">class Item<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#class-item" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">class</span> <span class="token class-name">Item</span><span class="token punctuation">(</span>Card<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">use</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
-</code></pre>
-<h2 id="algorithms">Algorithms<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#algorithms" style="opacity: 1; padding-left: 0.375em;"></a></h2>
-<p>โดยวิธีที่ผมใช้เป็น Basic Algorithms ในการสร้าง Rules ต่างๆ ในการเล่นเกม เพื่อทำให้ชนะการเล่น โดยผมจะใส่เป็น Method ของ Player ดังนี้</p>
-<h3 id="draft-card">Draft Card<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#draft-card" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<p>โดยผมจะเลือกตาม mana curve เป็นหลักและ value ของไพ่ โดยผมใช้ attack * defence เป็น vaule ของไพ่</p>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">draft</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> draft_list<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># เลือกไพ่ 1 ใน 3</span>
-        max_value <span class="token operator">=</span> <span class="token number">0</span>
-        card_no<span class="token operator">=</span><span class="token number">0</span>
-        <span class="token keyword">for</span> i<span class="token punctuation">,</span> card <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>draft_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> <span class="token builtin">type</span><span class="token punctuation">(</span>card<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature<span class="token punctuation">:</span> <span class="token comment"># ดูว่าไพ่เป็นชนิด Creature</span>
-                value <span class="token operator">=</span> card<span class="token punctuation">.</span>attack <span class="token operator">*</span> card<span class="token punctuation">.</span>defense
-                <span class="token keyword">if</span> self<span class="token punctuation">.</span>mana_curve<span class="token punctuation">[</span>card<span class="token punctuation">.</span>cost<span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
-                    value <span class="token operator">+=</span> <span class="token number">100</span> <span class="token comment"># ถ้า curve ยังไม่เต็มให้เลือกตาม curve ก่อน โดยเพิ่ม value</span>
-                <span class="token keyword">if</span> value <span class="token operator">&gt;</span> max_value<span class="token punctuation">:</span> <span class="token comment"># เลือกไพ่ที่มี value มากสุด</span>
-                    max_value <span class="token operator">=</span> value
-                    card_no <span class="token operator">=</span> i
-        self<span class="token punctuation">.</span>mana_curve<span class="token punctuation">[</span>draft_list<span class="token punctuation">[</span>card_no<span class="token punctuation">]</span><span class="token punctuation">.</span>cost<span class="token punctuation">]</span><span class="token operator">-=</span><span class="token number">1</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'PICK {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>card_no<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
-<h3 id="battle-parse">Battle Parse<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#battle-parse" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<p>โดยผมจะ summon creatures ก่อน แล้วจึงโจมตีฝั่งตรงข้าม</p>
-<p>โดยจะทำเป็น action list ดังนี้</p>
-<pre class=" language-python" tabindex="0"><code class=" language-python">    <span class="token keyword">def</span> <span class="token function">useItem</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ผมยังไม่ได้ทำให้ใช้ item ได้เลยว่างไว้ก่อน</span>
-        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</code></pre><h2 id="class">Class<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#class" style="opacity: 1; padding-left: 0.375em;"></a></h2><h3 id="import-อะไรให้พร้อม">import อะไรให้พร้อม<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#import-อะไรให้พร้อม" style="opacity: 1; padding-left: 0.375em;"></a></h3><pre><code class="language-Python">import sys # ใช้เพื่อ print log
+from copy import deepcopy  # deepcopy เพื่อให้ object ต่างๆ ไม่ reference เวลา simulate
+</code></pre><h3 id="class-player">class Player<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#class-player" style="opacity: 1; padding-left: 0.375em;"></a></h3><pre><code class="language-Python">class Player:
+    def __init__(self):
+        self.mana_curve = [0, 7, 6, 5, 4, 3, 0, 0, 0, 0, 0, 0, 0] # mana curve ใช่เพื่อเลือไพ่ให้ได้ curve ตามต้องการ
+    def setEnemy(self, player):
+        self.op = player
+    def update(self, player_health, player_mana, player_deck, player_rune): # ใช้เพื่ออัพเดตค่าทุกๆเทริน
+        self.__dict__.update(l for l in locals().items() if l[0] != 'self') # map local vars ใส่ self vars
+        self.hands = []
+        self.boards = []
+    def addHand(self, card): # ใช้เพื่อเพิ่มไพ่ในมือ
+        self.hands.append(card)
+    def addBoard(self, card):  # ใช้เพื่อเพิ่มไพ่บอร์ด
+        self.boards.append(card)
+</code></pre><h3 id="class-card">class Card<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#class-card" style="opacity: 1; padding-left: 0.375em;"></a></h3><pre><code class="language-Python">class Card:
+    def __init__(self, card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw):
+        self.__dict__.update(l for l in locals().items() if l[0] != 'self')
+        self.action = 1
+        self.shield = 1 if 'W' in abilities else 0
+        self.lethal = 1 if 'L' in abilities else 0
+        self.guard = 1 if 'G' in abilities else 0
+        self.charge = 1 if 'C' in abilities else 0
+        self.drain = 1 if 'D' in abilities else 0
+        self.breakthrough = 1 if 'B'in abilities else 0
+        self.live = 1
+    def __hash__(self): # ใช้เพื่อ hash เปรียบเทียบ object ด้วย id
+         return hash(self.instance_id)
+    def __eq__(self, other): # ใช้เพื่อเปรียบเทียบ Equal ของ Object
+        return (
+            self.__class__ == other.__class__ and
+            self.instance_id == other.instance_id
+        )
+</code></pre><h3 id="class-creature">class Creature<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#class-creature" style="opacity: 1; padding-left: 0.375em;"></a></h3><pre><code class="language-Python">class Creature(Card): # inheritance Card เพื่อบอกว่าเป็น Subclass ของ Card
+    def attackTarget(self, target): # ใช้เมื่อโจมตี Creature ตัวอื่น
+        self.action = 0
+        if self.shield: # เมื่อดาเมจโดน shield จะหาย
+            self.shield = 0
+        else:
+            self.defense -= target.attack # เลือดลดด้วยพลังโจมตีของเป้าหมาย
+            if self.defense &lt;=0 or (target.lethal and type(target) is Creature):
+                self.live = 0 # เมื่อเลือดหมด
+        if target.shield: # damage to target
+            target.shield = 0
+        else:
+            target.defense -= self.attack # เลือดเป้าหมายลดด้วยพลังโจมตีของผู้ตี
+            if target.defense &lt;=0 or (self.lethal and type(target) is Creature):
+                target.live = 0
+</code></pre><h3 id="class-item">class Item<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#class-item" style="opacity: 1; padding-left: 0.375em;"></a></h3><pre><code class="language-Python">class Item(Card):
+    def use(self, target):
+        pass
+</code></pre><h2 id="algorithms">Algorithms<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#algorithms" style="opacity: 1; padding-left: 0.375em;"></a></h2><p>โดยวิธีที่ผมใช้เป็น Basic Algorithms ในการสร้าง Rules ต่างๆ ในการเล่นเกม เพื่อทำให้ชนะการเล่น โดยผมจะใส่เป็น Method ของ Player ดังนี้</p><h3 id="draft-card">Draft Card<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#draft-card" style="opacity: 1; padding-left: 0.375em;"></a></h3><p>โดยผมจะเลือกตาม mana curve เป็นหลักและ value ของไพ่ โดยผมใช้ attack * defence เป็น vaule ของไพ่</p><pre><code class="language-Python">def draft(self, draft_list): # เลือกไพ่ 1 ใน 3
+        max_value = 0
+        card_no=0
+        for i, card in enumerate(draft_list):
+            if type(card) is Creature: # ดูว่าไพ่เป็นชนิด Creature
+                value = card.attack * card.defense
+                if self.mana_curve[card.cost] &gt; 0:
+                    value += 100 # ถ้า curve ยังไม่เต็มให้เลือกตาม curve ก่อน โดยเพิ่ม value
+                if value &gt; max_value: # เลือกไพ่ที่มี value มากสุด
+                    max_value = value
+                    card_no = i
+        self.mana_curve[draft_list[card_no].cost]-=1
+        print('PICK {}'.format(card_no))
+</code></pre><h3 id="battle-parse">Battle Parse<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#battle-parse" style="opacity: 1; padding-left: 0.375em;"></a></h3><p>โดยผมจะ summon creatures ก่อน แล้วจึงโจมตีฝั่งตรงข้าม</p><p>โดยจะทำเป็น action list ดังนี้</p><pre><code class="language-Python">    def useItem(self): # ผมยังไม่ได้ทำให้ใช้ item ได้เลยว่างไว้ก่อน
+        return []
 
-    <span class="token keyword">def</span> <span class="token function">play</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        action_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        action_list <span class="token operator">+=</span> self<span class="token punctuation">.</span>summon<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        action_list <span class="token operator">+=</span> self<span class="token punctuation">.</span>useItem<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        action_list <span class="token operator">+=</span> self<span class="token punctuation">.</span>creatureAttack<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">';'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>action_list<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#  actions จะแบ่งด้วย ;</span>
-</code></pre>
-<h3 id="summon">Summon<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#summon" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<p>ต่อมาเป็นการเรียก Creature จากบนมือ โดยผมจะเลือกตัวที่มานามากที่สุดก่อน</p>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">summon</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        mana<span class="token operator">=</span>self<span class="token punctuation">.</span>player_mana
-        action_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        boards_count <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>boards<span class="token punctuation">)</span>
-        creature_on_hand <span class="token operator">=</span> <span class="token builtin">filter</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">type</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature <span class="token punctuation">,</span>self<span class="token punctuation">.</span>hands<span class="token punctuation">)</span> <span class="token comment"># filter เฉพาะ Creature ที่อยู่บนมือ</span>
-        <span class="token keyword">for</span> c <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>creature_on_hand<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>cost<span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># เรียงตาม มานา</span>
-            <span class="token keyword">if</span> boards_count <span class="token operator">&lt;</span> <span class="token number">6</span><span class="token punctuation">:</span> <span class="token comment"># เช็คถ้าบอร์ดยังไม่เต็ม</span>
-                <span class="token keyword">if</span> c<span class="token punctuation">.</span>cost<span class="token operator">&lt;=</span>mana<span class="token punctuation">:</span> <span class="token comment"># เช็คว่ายังเหลือมานายังพอเรียก</span>
-                    mana<span class="token operator">-=</span>c<span class="token punctuation">.</span>cost
-                    action_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"SUMMON {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>instance_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">if</span> c<span class="token punctuation">.</span>charge<span class="token punctuation">:</span> <span class="token comment"># ถ้ามี charge ability จะสามารถตีได้เลย ผมเลยใส่ในบอร์ด</span>
-                        self<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>append<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-                    boards_count <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">return</span> action_list <span class="token comment"># return action list</span>
-</code></pre>
-<h3 id="attack">Attack<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#attack" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<p>ในการโจมตีของ creature ผมจะสร้าง rules ลำดับความสำคัญให้มันว่าจะต้องทำอะไรก่อน โดยผมจะสร้าง Rule Class โดยจะใส่ lambda functions ให้กับมันดังนี้</p>
-<ul>
-<li>mySort - เรียง creatures ของเรา</li>
-<li>myFilter - filter creatures ของเรา</li>
-<li>opSort - เรียง creatures ของคู่ต่อสู้</li>
-<li>opFilter - filter creatures ของคู่ต่อสู้</li>
-<li>rule - กฏเพื่อให้เข้าเงื่อนไข</li>
-</ul>
-<h3 id="rule-class">Rule Class<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#rule-class" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">class</span> <span class="token class-name">AttackRule</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> mySort<span class="token punctuation">,</span> myFilter<span class="token punctuation">,</span> opSort<span class="token punctuation">,</span> opFilter<span class="token punctuation">,</span> rule<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'self'</span><span class="token punctuation">)</span>
-</code></pre>
-<h3 id="creature-attack">Creature Attack<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#creature-attack" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<p>ผมจะ simulate เพื่อให้ creature โจมตี crature ฝั่งตรงข้ามก่อนตามเงื่อนไขที่กำหนด จากนั้นถ้าเข้าเงื่อนไขจึงเก็บ action และบันทึกค่าว่าโจมตีจริงๆ</p>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">def</span> <span class="token function">creatureAttack</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        action_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    def play(self):
+        action_list = []
+        action_list += self.summon()
+        action_list += self.useItem()
+        action_list += self.creatureAttack()
+        print(';'.join(action_list)) #  actions จะแบ่งด้วย ;
+</code></pre><h3 id="summon">Summon<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#summon" style="opacity: 1; padding-left: 0.375em;"></a></h3><p>ต่อมาเป็นการเรียก Creature จากบนมือ โดยผมจะเลือกตัวที่มานามากที่สุดก่อน</p><pre><code class="language-Python">def summon(self):
+        mana=self.player_mana
+        action_list = []
+        boards_count = len(self.boards)
+        creature_on_hand = filter(lambda x: type(x) is Creature ,self.hands) # filter เฉพาะ Creature ที่อยู่บนมือ
+        for c in sorted(creature_on_hand, key=lambda x: x.cost, reverse=True): # เรียงตาม มานา
+            if boards_count &lt; 6: # เช็คถ้าบอร์ดยังไม่เต็ม
+                if c.cost&lt;=mana: # เช็คว่ายังเหลือมานายังพอเรียก
+                    mana-=c.cost
+                    action_list.append("SUMMON {}".format(c.instance_id))
+                    if c.charge: # ถ้ามี charge ability จะสามารถตีได้เลย ผมเลยใส่ในบอร์ด
+                        self.boards.append(c)
+                    boards_count += 1
+        return action_list # return action list
+</code></pre><h3 id="attack">Attack<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#attack" style="opacity: 1; padding-left: 0.375em;"></a></h3><p>ในการโจมตีของ creature ผมจะสร้าง rules ลำดับความสำคัญให้มันว่าจะต้องทำอะไรก่อน โดยผมจะสร้าง Rule Class โดยจะใส่ lambda functions ให้กับมันดังนี้</p><ul><li>mySort - เรียง creatures ของเรา</li><li>myFilter - filter creatures ของเรา</li><li>opSort - เรียง creatures ของคู่ต่อสู้</li><li>opFilter - filter creatures ของคู่ต่อสู้</li><li>rule - กฏเพื่อให้เข้าเงื่อนไข</li></ul><h3 id="rule-class">Rule Class<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#rule-class" style="opacity: 1; padding-left: 0.375em;"></a></h3><pre><code class="language-Python">class AttackRule:
+    def __init__(self, mySort, myFilter, opSort, opFilter, rule):
+        self.__dict__.update(l for l in locals().items() if l[0] != 'self')
+</code></pre><h3 id="creature-attack">Creature Attack<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#creature-attack" style="opacity: 1; padding-left: 0.375em;"></a></h3><p>ผมจะ simulate เพื่อให้ creature โจมตี crature ฝั่งตรงข้ามก่อนตามเงื่อนไขที่กำหนด จากนั้นถ้าเข้าเงื่อนไขจึงเก็บ action และบันทึกค่าว่าโจมตีจริงๆ</p><pre><code class="language-Python">def creatureAttack(self):
+        action_list = []
 
-        attack_rules<span class="token operator">=</span><span class="token punctuation">[</span>
-            <span class="token comment"># โจมตี taunt creature ให้ได้คุ้มค่า</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> <span class="token operator">-</span>my<span class="token punctuation">.</span>defense<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>guard<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> my<span class="token punctuation">.</span>live <span class="token keyword">and</span> op<span class="token punctuation">.</span>live<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># โจมตี taunt creature โดยที่ของเรายังไม่ตาย</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> <span class="token operator">-</span>my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>guard<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span>  my<span class="token punctuation">.</span>live<span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># โจมตี taunt creature ไม่ว่ายังไงก็ตาม</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> <span class="token operator">-</span>my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>guard<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># โจมตีโดยที่ creature ฝั่งตรงข้ามตาย แต่ฝั่งเราไม่ตาย</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> my<span class="token punctuation">.</span>live <span class="token keyword">and</span> op<span class="token punctuation">.</span>live<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># โจมตีโดยที่ creature ฝั่งตรงข้ามตาย</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>live<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># and self.player_health &lt; self.op.player_health</span>
-        <span class="token punctuation">]</span>
+        attack_rules=[
+            # โจมตี taunt creature ให้ได้คุ้มค่า
+            AttackRule(lambda my: -my.defense, lambda my: my.action,
+            lambda op: -op.attack, lambda op: op.guard==1,
+            lambda my, op: my.live and op.live==0),
+            # โจมตี taunt creature โดยที่ของเรายังไม่ตาย
+            AttackRule(lambda my: -my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: op.guard==1,
+            lambda my, op:  my.live),
+            # โจมตี taunt creature ไม่ว่ายังไงก็ตาม
+            AttackRule(lambda my: -my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: op.guard==1,
+            lambda my, op: True),
+            # โจมตีโดยที่ creature ฝั่งตรงข้ามตาย แต่ฝั่งเราไม่ตาย
+            AttackRule(lambda my: my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: True,
+            lambda my, op: my.live and op.live==0),
+            # โจมตีโดยที่ creature ฝั่งตรงข้ามตาย
+            AttackRule(lambda my: my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: True,
+            lambda my, op: op.live==0), # and self.player_health &lt; self.op.player_health
+        ]
 
-        <span class="token keyword">for</span> attack_rule <span class="token keyword">in</span> attack_rules<span class="token punctuation">:</span><span class="token comment"># loop ทุกๆ rules</span>
-            <span class="token comment"># sort และ filter creatures ตาม rule ที่กำหนด</span>
-            <span class="token keyword">for</span> my_c <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span><span class="token builtin">filter</span><span class="token punctuation">(</span>attack_rule<span class="token punctuation">.</span>myFilter<span class="token punctuation">,</span> self<span class="token punctuation">.</span>boards<span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span>attack_rule<span class="token punctuation">.</span>mySort<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">for</span> op_c <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span><span class="token builtin">filter</span><span class="token punctuation">(</span>attack_rule<span class="token punctuation">.</span>opFilter<span class="token punctuation">,</span> self<span class="token punctuation">.</span>op<span class="token punctuation">.</span>boards<span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span>attack_rule<span class="token punctuation">.</span>opSort<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    my_c_temp <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>my_c<span class="token punctuation">)</span> <span class="token comment"># deep copy เพื่อ simulate ว่าถ้าตีผลจะเป็นยังไง</span>
-                    op_c_temp <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>op_c<span class="token punctuation">)</span>
-                    my_c_temp<span class="token punctuation">.</span>attackTarget<span class="token punctuation">(</span>op_c_temp<span class="token punctuation">)</span>
-                    <span class="token keyword">if</span> attack_rule<span class="token punctuation">.</span>rule<span class="token punctuation">(</span>my_c_temp<span class="token punctuation">,</span> op_c_temp<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># ถ้าลองโจมตีแล้วเข้าเงื่อนไขให้ทำการบันทึก action</span>
-                        my_c <span class="token operator">=</span> my_c_temp
-                        op_c <span class="token operator">=</span> op_c_temp
-                        action_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"ATTACK {} {} Pika!"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>my_c<span class="token punctuation">.</span>instance_id<span class="token punctuation">,</span> op_c<span class="token punctuation">.</span>instance_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                        my_c<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment"># เมื่อโจมตีแล้วจะตีไม่ได้อีก</span>
-                        <span class="token keyword">if</span> <span class="token keyword">not</span> my_c<span class="token punctuation">.</span>live<span class="token punctuation">:</span>
-                            self<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>my_c<span class="token punctuation">)</span> <span class="token comment"># ถ้าตายจำออกจากบอร์ด</span>
-                        <span class="token keyword">if</span> <span class="token keyword">not</span> op_c<span class="token punctuation">.</span>live<span class="token punctuation">:</span>
-                            self<span class="token punctuation">.</span>op<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>op_c<span class="token punctuation">)</span>
-                        <span class="token keyword">break</span>
+        for attack_rule in attack_rules:# loop ทุกๆ rules
+            # sort และ filter creatures ตาม rule ที่กำหนด
+            for my_c in sorted(filter(attack_rule.myFilter, self.boards), key=attack_rule.mySort):
+                for op_c in sorted(filter(attack_rule.opFilter, self.op.boards), key=attack_rule.opSort):
+                    my_c_temp = deepcopy(my_c) # deep copy เพื่อ simulate ว่าถ้าตีผลจะเป็นยังไง
+                    op_c_temp = deepcopy(op_c)
+                    my_c_temp.attackTarget(op_c_temp)
+                    if attack_rule.rule(my_c_temp, op_c_temp): # ถ้าลองโจมตีแล้วเข้าเงื่อนไขให้ทำการบันทึก action
+                        my_c = my_c_temp
+                        op_c = op_c_temp
+                        action_list.append("ATTACK {} {} Pika!".format(my_c.instance_id, op_c.instance_id))
+                        my_c.action = 0 # เมื่อโจมตีแล้วจะตีไม่ได้อีก
+                        if not my_c.live:
+                            self.boards.remove(my_c) # ถ้าตายจำออกจากบอร์ด
+                        if not op_c.live:
+                            self.op.boards.remove(op_c)
+                        break
 
-        <span class="token comment"># สั่งให้ตีฮีโร่ฝั่งตรงข้ามเมื่อไม่เข้าเงื่อนไขข้างบน</span>
-        <span class="token keyword">for</span> my_c <span class="token keyword">in</span> self<span class="token punctuation">.</span>boards<span class="token punctuation">:</span>
-            <span class="token keyword">if</span> my_c<span class="token punctuation">.</span>action<span class="token punctuation">:</span>
-                action_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"ATTACK {} {} Pikachu!!"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>my_c<span class="token punctuation">.</span>instance_id<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                my_c<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">0</span>
+        # สั่งให้ตีฮีโร่ฝั่งตรงข้ามเมื่อไม่เข้าเงื่อนไขข้างบน
+        for my_c in self.boards:
+            if my_c.action:
+                action_list.append("ATTACK {} {} Pikachu!!".format(my_c.instance_id, -1))
+                my_c.action = 0
 
-        <span class="token keyword">return</span> action_list
-</code></pre>
-<h3 id="game-loops-and-input">Game loops and Input<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#game-loops-and-input" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<p>main ของ Bot ใช้เพื่ออัพเดตค่าต่างๆของเกมโดยผู้เล่นจะสลับฝั่งกันเล่นและอัพเดตค่าผ่านทาง input, output</p>
-<p>โดย Bot Game ใน Codingame นั้นจะประมวลผลเกมเป็น loop ดังนี้</p>
-<p>game ประมวลผล</p>
-<p>player 1 รับค่า และ ประมวลผล</p>
-<p>player 1 ส่งค่า</p>
-<p>game ประมวลผล</p>
-<p>player 2 รับค่า และ ประมวลผล</p>
-<p>player 2 ส่งค่า</p>
-<p>เป็น loop จนกว่าจะจบเกม</p>
-<h3 id="main">Main<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#main" style="opacity: 1; padding-left: 0.375em;"></a></h3>
-<pre class=" language-python" tabindex="0"><code class=" language-python">my_player <span class="token operator">=</span> Player<span class="token punctuation">(</span><span class="token punctuation">)</span>
-op_player <span class="token operator">=</span> Player<span class="token punctuation">(</span><span class="token punctuation">)</span>
-my_player<span class="token punctuation">.</span>setEnemy<span class="token punctuation">(</span>op_player<span class="token punctuation">)</span>
-<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-    player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    my_player<span class="token punctuation">.</span>update<span class="token punctuation">(</span>player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune<span class="token punctuation">)</span> <span class="token comment"># อัพเดตค่าของ player ทุกๆเทริน</span>
-    player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    op_player<span class="token punctuation">.</span>update<span class="token punctuation">(</span>player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune<span class="token punctuation">)</span>
+        return action_list
+</code></pre><h3 id="game-loops-and-input">Game loops and Input<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#game-loops-and-input" style="opacity: 1; padding-left: 0.375em;"></a></h3><p>main ของ Bot ใช้เพื่ออัพเดตค่าต่างๆของเกมโดยผู้เล่นจะสลับฝั่งกันเล่นและอัพเดตค่าผ่านทาง input, output</p><p>โดย Bot Game ใน Codingame นั้นจะประมวลผลเกมเป็น loop ดังนี้</p><p>game ประมวลผล</p><p>player 1 รับค่า และ ประมวลผล</p><p>player 1 ส่งค่า</p><p>game ประมวลผล</p><p>player 2 รับค่า และ ประมวลผล</p><p>player 2 ส่งค่า</p><p>เป็น loop จนกว่าจะจบเกม</p><h3 id="main">Main<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#main" style="opacity: 1; padding-left: 0.375em;"></a></h3><pre><code class="language-Python">my_player = Player()
+op_player = Player()
+my_player.setEnemy(op_player)
+while True:
+    player_health, player_mana, player_deck, player_rune = [int(j) for j in input().split()]
+    my_player.update(player_health, player_mana, player_deck, player_rune) # อัพเดตค่าของ player ทุกๆเทริน
+    player_health, player_mana, player_deck, player_rune = [int(j) for j in input().split()]
+    op_player.update(player_health, player_mana, player_deck, player_rune)
 
-    opponent_hand <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    card_count <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    draft_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>card_count<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment"># Input card และ map แปลง input ที่เป็นตัวเลขให้เป็น Int</span>
-        card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">if</span> x<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>isdigit<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> x<span class="token punctuation">,</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> card_type<span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token comment"># เช็คว่าเป็นไพ่ชนิดใด</span>
-            card <span class="token operator">=</span> Item<span class="token punctuation">(</span>card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw<span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            card <span class="token operator">=</span> Creature<span class="token punctuation">(</span>card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> my_player<span class="token punctuation">.</span>player_mana<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span>
-            draft_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> location<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token comment"># เช็คว่ายู่บนมือของเรา</span>
-            my_player<span class="token punctuation">.</span>addHand<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> location<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token comment"># เช็คว่ายู่บนสนามของเรา</span>
-            my_player<span class="token punctuation">.</span>addBoard<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> location<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token comment"># เช็คว่ายู่บนสนามของคู่แข่ง</span>
-            op_player<span class="token punctuation">.</span>addBoard<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
+    opponent_hand = int(input())
+    card_count = int(input())
+    draft_list = []
+    for i in range(card_count):
+        # Input card และ map แปลง input ที่เป็นตัวเลขให้เป็น Int
+        card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw = map(lambda x: int(x) if x[-1].isdigit() else x,input().split())
+        if card_type!=0: # เช็คว่าเป็นไพ่ชนิดใด
+            card = Item(card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw)
+        else:
+            card = Creature(card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw)
+        if my_player.player_mana==0:
+            draft_list.append(card)
+        elif location==0: # เช็คว่ายู่บนมือของเรา
+            my_player.addHand(card)
+        elif location==1: # เช็คว่ายู่บนสนามของเรา
+            my_player.addBoard(card)
+        elif location==-1: # เช็คว่ายู่บนสนามของคู่แข่ง
+            op_player.addBoard(card)
 
-    <span class="token keyword">if</span> my_player<span class="token punctuation">.</span>player_mana<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token comment"># ถ้ามานาเท่ากับ 0 แสดงว่าเป็น draft parse</span>
-        my_player<span class="token punctuation">.</span>draft<span class="token punctuation">(</span>draft_list<span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        my_player<span class="token punctuation">.</span>play<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<h2 id="full-code">Full Code<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="#full-code" style="opacity: 1; padding-left: 0.375em;"></a></h2>
-<pre class=" language-python" tabindex="0"><code class=" language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">from</span> copy <span class="token keyword">import</span> deepcopy
+    if my_player.player_mana==0: # ถ้ามานาเท่ากับ 0 แสดงว่าเป็น draft parse
+        my_player.draft(draft_list)
+    else:
+        my_player.play()
+</code></pre><h2 id="full-code">Full Code<a class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="" href="#full-code" style="opacity: 1; padding-left: 0.375em;"></a></h2><pre><code class="language-Python">import sys
+from copy import deepcopy
 
-<span class="token keyword">def</span> <span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token operator">=</span>sys<span class="token punctuation">.</span>stderr<span class="token punctuation">)</span>
+def log(*args,**kwargs):
+    print(*args,**kwargs, file=sys.stderr)
 
-<span class="token keyword">class</span> <span class="token class-name">AttackRule</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> mySort<span class="token punctuation">,</span> myFilter<span class="token punctuation">,</span> opSort<span class="token punctuation">,</span> opFilter<span class="token punctuation">,</span> rule<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'self'</span><span class="token punctuation">)</span>
+class AttackRule:
+    def __init__(self, mySort, myFilter, opSort, opFilter, rule):
+        self.__dict__.update(l for l in locals().items() if l[0] != 'self')
 
-<span class="token keyword">class</span> <span class="token class-name">Player</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>mana_curve <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">def</span> <span class="token function">setEnemy</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> player<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>op <span class="token operator">=</span> player
-    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'self'</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>hands <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        self<span class="token punctuation">.</span>boards <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">def</span> <span class="token function">addHand</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> card<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>hands<span class="token punctuation">.</span>append<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">addBoard</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> card<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>append<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
+class Player:
+    def __init__(self):
+        self.mana_curve = [0, 7, 6, 5, 4, 3, 0, 0, 0, 0, 0, 0, 0]
+    def setEnemy(self, player):
+        self.op = player
+    def update(self, player_health, player_mana, player_deck, player_rune):
+        self.__dict__.update(l for l in locals().items() if l[0] != 'self')
+        self.hands = []
+        self.boards = []
+    def addHand(self, card):
+        self.hands.append(card)
+    def addBoard(self, card):
+        self.boards.append(card)
 
-    <span class="token keyword">def</span> <span class="token function">draft</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> draft_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        max_value <span class="token operator">=</span> <span class="token number">0</span>
-        card_no<span class="token operator">=</span><span class="token number">0</span>
-        <span class="token keyword">for</span> i<span class="token punctuation">,</span> card <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>draft_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> <span class="token builtin">type</span><span class="token punctuation">(</span>card<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature<span class="token punctuation">:</span> <span class="token comment">#todo add item pick</span>
-                value <span class="token operator">=</span> card<span class="token punctuation">.</span>attack <span class="token operator">*</span> card<span class="token punctuation">.</span>defense
-                <span class="token keyword">if</span> self<span class="token punctuation">.</span>mana_curve<span class="token punctuation">[</span>card<span class="token punctuation">.</span>cost<span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
-                    value <span class="token operator">+=</span> <span class="token number">100</span>
-                <span class="token keyword">if</span> value <span class="token operator">&gt;</span> max_value<span class="token punctuation">:</span>
-                    max_value <span class="token operator">=</span> value
-                    card_no <span class="token operator">=</span> i
-        self<span class="token punctuation">.</span>mana_curve<span class="token punctuation">[</span>draft_list<span class="token punctuation">[</span>card_no<span class="token punctuation">]</span><span class="token punctuation">.</span>cost<span class="token punctuation">]</span><span class="token operator">-=</span><span class="token number">1</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'PICK {}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>card_no<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    def draft(self, draft_list):
+        max_value = 0
+        card_no=0
+        for i, card in enumerate(draft_list):
+            if type(card) is Creature: #todo add item pick
+                value = card.attack * card.defense
+                if self.mana_curve[card.cost] &gt; 0:
+                    value += 100
+                if value &gt; max_value:
+                    max_value = value
+                    card_no = i
+        self.mana_curve[draft_list[card_no].cost]-=1
+        print('PICK {}'.format(card_no))
 
-    <span class="token keyword">def</span> <span class="token function">summon</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># to do make mana zero</span>
-        mana<span class="token operator">=</span>self<span class="token punctuation">.</span>player_mana
-        action_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        boards_count <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>boards<span class="token punctuation">)</span>
-        creature_on_hand <span class="token operator">=</span> <span class="token builtin">filter</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">type</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature <span class="token punctuation">,</span>self<span class="token punctuation">.</span>hands<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> c <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>creature_on_hand<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>cost<span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> boards_count <span class="token operator">&lt;</span> <span class="token number">6</span> <span class="token keyword">or</span> <span class="token number">1</span><span class="token punctuation">:</span> <span class="token comment"># to do need to check summon again after trade</span>
-                <span class="token keyword">if</span> c<span class="token punctuation">.</span>cost<span class="token operator">&lt;=</span>mana<span class="token punctuation">:</span>
-                    mana<span class="token operator">-=</span>c<span class="token punctuation">.</span>cost
-                    action_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"SUMMON {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>instance_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">if</span> c<span class="token punctuation">.</span>charge<span class="token punctuation">:</span>
-                        self<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>append<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-                    boards_count <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">return</span> action_list
+    def summon(self): # to do make mana zero
+        mana=self.player_mana
+        action_list = []
+        boards_count = len(self.boards)
+        creature_on_hand = filter(lambda x: type(x) is Creature ,self.hands)
+        for c in sorted(creature_on_hand, key=lambda x: x.cost, reverse=True):
+            if boards_count &lt; 6 or 1: # to do need to check summon again after trade
+                if c.cost&lt;=mana:
+                    mana-=c.cost
+                    action_list.append("SUMMON {}".format(c.instance_id))
+                    if c.charge:
+                        self.boards.append(c)
+                    boards_count += 1
+        return action_list
 
-    <span class="token keyword">def</span> <span class="token function">creatureAttack</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        action_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    def creatureAttack(self):
+        action_list = []
 
-        attack_rules<span class="token operator">=</span><span class="token punctuation">[</span>
-            <span class="token comment"># trade taunt value</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> <span class="token operator">-</span>my<span class="token punctuation">.</span>defense<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>guard<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> my<span class="token punctuation">.</span>live <span class="token keyword">and</span> op<span class="token punctuation">.</span>live<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># attack taunt and survive</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> <span class="token operator">-</span>my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>guard<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span>  my<span class="token punctuation">.</span>live<span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># attack taunt</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> <span class="token operator">-</span>my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>guard<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># trade lethal</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>defense<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>lethal<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>live<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># trade value</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> my<span class="token punctuation">.</span>live <span class="token keyword">and</span> op<span class="token punctuation">.</span>live<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token comment"># trade equal</span>
-            AttackRule<span class="token punctuation">(</span><span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> my<span class="token punctuation">:</span> my<span class="token punctuation">.</span>action<span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token operator">-</span>op<span class="token punctuation">.</span>attack<span class="token punctuation">,</span> <span class="token keyword">lambda</span> op<span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
-            <span class="token keyword">lambda</span> my<span class="token punctuation">,</span> op<span class="token punctuation">:</span> op<span class="token punctuation">.</span>live<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># and self.player_health &lt; self.op.player_health</span>
-        <span class="token punctuation">]</span>
+        attack_rules=[
+            # trade taunt value
+            AttackRule(lambda my: -my.defense, lambda my: my.action,
+            lambda op: -op.attack, lambda op: op.guard==1,
+            lambda my, op: my.live and op.live==0),
+            # attack taunt and survive
+            AttackRule(lambda my: -my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: op.guard==1,
+            lambda my, op:  my.live),
+            # attack taunt
+            AttackRule(lambda my: -my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: op.guard==1,
+            lambda my, op: True),
+            # trade lethal
+            AttackRule(lambda my: my.defense, lambda my: my.action,
+            lambda op: -op.attack, lambda op: op.lethal==1,
+            lambda my, op: op.live==0),
+            # trade value
+            AttackRule(lambda my: my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: True,
+            lambda my, op: my.live and op.live==0),
+            # trade equal
+            AttackRule(lambda my: my.attack, lambda my: my.action,
+            lambda op: -op.attack, lambda op: True,
+            lambda my, op: op.live==0), # and self.player_health &lt; self.op.player_health
+        ]
 
-        <span class="token keyword">for</span> attack_rule <span class="token keyword">in</span> attack_rules<span class="token punctuation">:</span>
-            <span class="token keyword">for</span> my_c <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span><span class="token builtin">filter</span><span class="token punctuation">(</span>attack_rule<span class="token punctuation">.</span>myFilter<span class="token punctuation">,</span> self<span class="token punctuation">.</span>boards<span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span>attack_rule<span class="token punctuation">.</span>mySort<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">for</span> op_c <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span><span class="token builtin">filter</span><span class="token punctuation">(</span>attack_rule<span class="token punctuation">.</span>opFilter<span class="token punctuation">,</span> self<span class="token punctuation">.</span>op<span class="token punctuation">.</span>boards<span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span>attack_rule<span class="token punctuation">.</span>opSort<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    my_c_temp <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>my_c<span class="token punctuation">)</span>
-                    op_c_temp <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>op_c<span class="token punctuation">)</span>
-                    my_c_temp<span class="token punctuation">.</span>attackTarget<span class="token punctuation">(</span>op_c_temp<span class="token punctuation">)</span>
-                    <span class="token keyword">if</span> attack_rule<span class="token punctuation">.</span>rule<span class="token punctuation">(</span>my_c_temp<span class="token punctuation">,</span> op_c_temp<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                        my_c <span class="token operator">=</span> my_c_temp
-                        op_c <span class="token operator">=</span> op_c_temp
-                        action_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"ATTACK {} {} Pika!"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>my_c<span class="token punctuation">.</span>instance_id<span class="token punctuation">,</span> op_c<span class="token punctuation">.</span>instance_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                        my_c<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">0</span>
-                        <span class="token keyword">if</span> <span class="token keyword">not</span> my_c<span class="token punctuation">.</span>live<span class="token punctuation">:</span>
-                            self<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>my_c<span class="token punctuation">)</span>
-                        <span class="token keyword">if</span> <span class="token keyword">not</span> op_c<span class="token punctuation">.</span>live<span class="token punctuation">:</span>
-                            self<span class="token punctuation">.</span>op<span class="token punctuation">.</span>boards<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>op_c<span class="token punctuation">)</span>
-                        <span class="token keyword">break</span>
-        <span class="token comment"># go face</span>
-        <span class="token keyword">for</span> my_c <span class="token keyword">in</span> self<span class="token punctuation">.</span>boards<span class="token punctuation">:</span>
-            <span class="token keyword">if</span> my_c<span class="token punctuation">.</span>action<span class="token punctuation">:</span>
-                action_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"ATTACK {} {} Pikachu!!"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>my_c<span class="token punctuation">.</span>instance_id<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                my_c<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">0</span>
+        for attack_rule in attack_rules:
+            for my_c in sorted(filter(attack_rule.myFilter, self.boards), key=attack_rule.mySort):
+                for op_c in sorted(filter(attack_rule.opFilter, self.op.boards), key=attack_rule.opSort):
+                    my_c_temp = deepcopy(my_c)
+                    op_c_temp = deepcopy(op_c)
+                    my_c_temp.attackTarget(op_c_temp)
+                    if attack_rule.rule(my_c_temp, op_c_temp):
+                        my_c = my_c_temp
+                        op_c = op_c_temp
+                        action_list.append("ATTACK {} {} Pika!".format(my_c.instance_id, op_c.instance_id))
+                        my_c.action = 0
+                        if not my_c.live:
+                            self.boards.remove(my_c)
+                        if not op_c.live:
+                            self.op.boards.remove(op_c)
+                        break
+        # go face
+        for my_c in self.boards:
+            if my_c.action:
+                action_list.append("ATTACK {} {} Pikachu!!".format(my_c.instance_id, -1))
+                my_c.action = 0
 
-        <span class="token keyword">return</span> action_list
+        return action_list
 
-    <span class="token keyword">def</span> <span class="token function">useItem</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment"># item red target op minion</span>
-        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    def useItem(self):# item red target op minion
+        return []
 
-    <span class="token keyword">def</span> <span class="token function">play</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        action_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        action_list <span class="token operator">+=</span> self<span class="token punctuation">.</span>summon<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        action_list <span class="token operator">+=</span> self<span class="token punctuation">.</span>useItem<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        action_list <span class="token operator">+=</span> self<span class="token punctuation">.</span>creatureAttack<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">';'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>action_list<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    def play(self):
+        action_list = []
+        action_list += self.summon()
+        action_list += self.useItem()
+        action_list += self.creatureAttack()
+        print(';'.join(action_list))
 
-<span class="token keyword">class</span> <span class="token class-name">Card</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>__dict__<span class="token punctuation">.</span>update<span class="token punctuation">(</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'self'</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">1</span>
-        self<span class="token punctuation">.</span>shield <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'W'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>lethal <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'L'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>guard <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'G'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>charge <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'C'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>drain <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'D'</span> <span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>breakthrough <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token string">'B'</span><span class="token keyword">in</span> abilities <span class="token keyword">else</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>live <span class="token operator">=</span> <span class="token number">1</span>
-    <span class="token keyword">def</span> <span class="token function">__hash__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-         <span class="token keyword">return</span> <span class="token builtin">hash</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>instance_id<span class="token punctuation">)</span>
-    <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>
-            self<span class="token punctuation">.</span>__class__ <span class="token operator">==</span> other<span class="token punctuation">.</span>__class__ <span class="token keyword">and</span>
-            self<span class="token punctuation">.</span>instance_id <span class="token operator">==</span> other<span class="token punctuation">.</span>instance_id
-        <span class="token punctuation">)</span>
+class Card:
+    def __init__(self, card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw):
+        self.__dict__.update(l for l in locals().items() if l[0] != 'self')
+        self.action = 1
+        self.shield = 1 if 'W' in abilities else 0
+        self.lethal = 1 if 'L' in abilities else 0
+        self.guard = 1 if 'G' in abilities else 0
+        self.charge = 1 if 'C' in abilities else 0
+        self.drain = 1 if 'D' in abilities else 0
+        self.breakthrough = 1 if 'B'in abilities else 0
+        self.live = 1
+    def __hash__(self):
+         return hash(self.instance_id)
+    def __eq__(self, other):
+        return (
+            self.__class__ == other.__class__ and
+            self.instance_id == other.instance_id
+        )
 
-<span class="token keyword">class</span> <span class="token class-name">Item</span><span class="token punctuation">(</span>Card<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">use</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
+class Item(Card):
+    def use(self, target):
+        pass
 
-<span class="token keyword">class</span> <span class="token class-name">Creature</span><span class="token punctuation">(</span>Card<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">attackTarget</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># attack op creature</span>
-        self<span class="token punctuation">.</span>action <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>shield<span class="token punctuation">:</span> <span class="token comment"># damage to self</span>
-            self<span class="token punctuation">.</span>shield <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>defense <span class="token operator">-=</span> target<span class="token punctuation">.</span>attack
-            <span class="token keyword">if</span> self<span class="token punctuation">.</span>defense <span class="token operator">&lt;=</span><span class="token number">0</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>target<span class="token punctuation">.</span>lethal <span class="token keyword">and</span> <span class="token builtin">type</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                self<span class="token punctuation">.</span>live <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">if</span> target<span class="token punctuation">.</span>shield<span class="token punctuation">:</span> <span class="token comment"># damage to target</span>
-            target<span class="token punctuation">.</span>shield <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            target<span class="token punctuation">.</span>defense <span class="token operator">-=</span> self<span class="token punctuation">.</span>attack
-            <span class="token keyword">if</span> target<span class="token punctuation">.</span>defense <span class="token operator">&lt;=</span><span class="token number">0</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>lethal <span class="token keyword">and</span> <span class="token builtin">type</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span> <span class="token keyword">is</span> Creature<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                target<span class="token punctuation">.</span>live <span class="token operator">=</span> <span class="token number">0</span>
+class Creature(Card):
+    def attackTarget(self, target): # attack op creature
+        self.action = 0
+        if self.shield: # damage to self
+            self.shield = 0
+        else:
+            self.defense -= target.attack
+            if self.defense &lt;=0 or (target.lethal and type(target) is Creature):
+                self.live = 0
+        if target.shield: # damage to target
+            target.shield = 0
+        else:
+            target.defense -= self.attack
+            if target.defense &lt;=0 or (self.lethal and type(target) is Creature):
+                target.live = 0
 
-my_player <span class="token operator">=</span> Player<span class="token punctuation">(</span><span class="token punctuation">)</span>
-op_player <span class="token operator">=</span> Player<span class="token punctuation">(</span><span class="token punctuation">)</span>
-my_player<span class="token punctuation">.</span>setEnemy<span class="token punctuation">(</span>op_player<span class="token punctuation">)</span>
-<span class="token comment"># op_player.setEnemy(my_player)</span>
-<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-    player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    my_player<span class="token punctuation">.</span>update<span class="token punctuation">(</span>player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune<span class="token punctuation">)</span>
-    player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    op_player<span class="token punctuation">.</span>update<span class="token punctuation">(</span>player_health<span class="token punctuation">,</span> player_mana<span class="token punctuation">,</span> player_deck<span class="token punctuation">,</span> player_rune<span class="token punctuation">)</span>
+my_player = Player()
+op_player = Player()
+my_player.setEnemy(op_player)
+# op_player.setEnemy(my_player)
+while True:
+    player_health, player_mana, player_deck, player_rune = [int(j) for j in input().split()]
+    my_player.update(player_health, player_mana, player_deck, player_rune)
+    player_health, player_mana, player_deck, player_rune = [int(j) for j in input().split()]
+    op_player.update(player_health, player_mana, player_deck, player_rune)
 
-    opponent_hand <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    card_count <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    draft_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>card_count<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">if</span> x<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>isdigit<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> x<span class="token punctuation">,</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> card_type<span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">:</span>
-            card <span class="token operator">=</span> Item<span class="token punctuation">(</span>card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw<span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            card <span class="token operator">=</span> Creature<span class="token punctuation">(</span>card_number<span class="token punctuation">,</span> instance_id<span class="token punctuation">,</span> location<span class="token punctuation">,</span> card_type<span class="token punctuation">,</span> cost<span class="token punctuation">,</span> attack<span class="token punctuation">,</span> defense<span class="token punctuation">,</span> abilities<span class="token punctuation">,</span> my_health_change<span class="token punctuation">,</span> opponent_health_change<span class="token punctuation">,</span> card_draw<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> my_player<span class="token punctuation">.</span>player_mana<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span>
-            draft_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> location<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span>
-            my_player<span class="token punctuation">.</span>addHand<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> location<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">:</span>
-            my_player<span class="token punctuation">.</span>addBoard<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> location<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-            op_player<span class="token punctuation">.</span>addBoard<span class="token punctuation">(</span>card<span class="token punctuation">)</span>
+    opponent_hand = int(input())
+    card_count = int(input())
+    draft_list = []
+    for i in range(card_count):
+        card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw = map(lambda x: int(x) if x[-1].isdigit() else x,input().split())
+        if card_type!=0:
+            card = Item(card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw)
+        else:
+            card = Creature(card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw)
+        if my_player.player_mana==0:
+            draft_list.append(card)
+        elif location==0:
+            my_player.addHand(card)
+        elif location==1:
+            my_player.addBoard(card)
+        elif location==-1:
+            op_player.addBoard(card)
 
-    <span class="token keyword">if</span> my_player<span class="token punctuation">.</span>player_mana<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span>
-        my_player<span class="token punctuation">.</span>draft<span class="token punctuation">(</span>draft_list<span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        my_player<span class="token punctuation">.</span>play<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<p>การเขียนอาจะจะเข้าใจยากไปหน่อย สามารถติชมกันได้ครับ</p>
-</div>
-<ul class="grid grid-cols-2 text-center mt-8"><li class="col-span-1 border p-4 ml-4 hover:bg-gray-300"> <a href="/python-codegolf/" data-toggle="tooltip" data-placement="top" title="Python Code Golf Cheat Sheet"><div class="text-xl font-bold">Next</div>
-<div class="text-gray-600">Python Code Golf Cheat Sheet</div></a>
-</li></ul>
-</div>
-<div class="comment giscus py-8"></div>
-<div class="pt-8"> <a class="text-gray-700 font-bond" href="/tags/">FEATURED TAGS</a><div class="my-4 text-xs"> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Artificial%20Intelligence" title="Artificial Intelligence" rel="1"> Artificial Intelligence </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Programming" title="Programming" rel="7"> Programming </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Python" title="Python" rel="2"> Python </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Code%20golf" title="Code golf" rel="1"> Code golf </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#C++" title="C++" rel="1"> C++ </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#aria2" title="aria2" rel="1"> aria2 </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Network" title="Network" rel="2"> Network </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#OpenWRT" title="OpenWRT" rel="1"> OpenWRT </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Router" title="Router" rel="1"> Router </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Embedded" title="Embedded" rel="1"> Embedded </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Gatsby" title="Gatsby" rel="1"> Gatsby </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#React" title="React" rel="1"> React </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#GraphQL" title="GraphQL" rel="1"> GraphQL </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Progressive%20Web%20App" title="Progressive Web App" rel="1"> Progressive Web App </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#TypeScript" title="TypeScript" rel="2"> TypeScript </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Facebook%20Developer" title="Facebook Developer" rel="1"> Facebook Developer </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#ESLint" title="ESLint" rel="1"> ESLint </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Hosting" title="Hosting" rel="1"> Hosting </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Website" title="Website" rel="1"> Website </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Web%20Performance" title="Web Performance" rel="1"> Web Performance </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Database" title="Database" rel="1"> Database </a> <a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#PostgreSQL" title="PostgreSQL" rel="1"> PostgreSQL </a>
-</div>
-</div>
-</div>
-<div class="col-span-2 md:hidden p-4"><div class="on-page-nav sticky top-28 text-gray-500 font-medium py-8"><div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div></div></div></article><script type="text/javascript"> async( "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js", function () { const content = document.querySelector('.post-container'); const insertTarget = document.querySelector('.on-page-nav'); scrollnav.init(content, { debug: false, insertTarget: insertTarget, insertLocation: 'append', }); }, 1000 ); </script><style> nav.scroll-nav a.scroll-nav__link { display: block; padding-top: 0.5rem; padding-bottom: 0.5rem; } nav.scroll-nav li.scroll-nav__item.scroll-nav__item--active { color: #000; } nav.scroll-nav a.scroll-nav__link:hover { color: #000; }</style>
-<script type="text/javascript"> setTimeout(function () { var d = document, s = d.createElement("script"); s.src = " https://giscus.app/client.js"; s.setAttribute("data-repo", "ntsd/ntsd.github.io"); s.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkyNDYwNjU3MDI"); s.setAttribute("data-category", "General"); s.setAttribute("data-category-id", "DIC_kwDODqqqJs4B_e5q"); s.setAttribute("data-mapping", "pathname"); s.setAttribute("data-reactions-enabled", "0"); s.setAttribute("data-emit-metadata", "0"); s.setAttribute("data-theme", "light"); s.setAttribute("crossorigin", "anonymous"); (d.head || d.body).appendChild(s); }, 2000); </script> <style> .anchorjs-link { color: #777 !important; text-decoration: none !important; } .anchorjs-link:hover { color: #000 !important; } .anchorjs-link::before { content: "#"; }</style>
- <script type="text/javascript"> asyncStyle("/assets/css/prism.css"); </script><footer><hr class="mt-10 dark:border-gray-500">
-<div class="container px-6 py-8 mx-auto"><div class="grid justify-items-center">
-<div class="flex justify-center my-4"> <a aria-label="Github" class="mr-4 text-gray-600 hover:text-gray-400" href="https://github.com/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://www.linkedin.com/in/ntsd" rel="noopener noreferrer" target="_blank"> <svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 21H9V9H13V11C13.8526 9.91525 15.1456 9.26857 16.525 9.237C19.0056 9.25077 21.0072 11.2694 21 13.75V21H17V14.25C16.84 13.1326 15.8818 12.3036 14.753 12.306C14.2593 12.3216 13.7932 12.5378 13.4624 12.9046C13.1316 13.2715 12.9646 13.7573 13 14.25V21ZM7 21H3V9H7V21ZM5 7C3.89543 7 3 6.10457 3 5C3 3.89543 3.89543 3 5 3C6.10457 3 7 3.89543 7 5C7 5.53043 6.78929 6.03914 6.41421 6.41421C6.03914 6.78929 5.53043 7 5 7Z"></path> </svg> </a> <a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank"> <svg class="mt-1 w-6 h-6 fill-current" fill="none" viewBox="0 0 416 416" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M53 128.8l-16-8.2a192 192 0 1094.7-88.9l7.1 16.6A174 174 0 1153 128.8z" fill-rule="evenodd" fill="currentColor"></path><path d="M94.7 92.3L82 126.5 62.6 95.7l-36.4-1.4 23.3-28-9.9-35.1 33.9 13.5 30.3-20.3-2.4 36.4L130 83.3l-35.3 9z" fill="currentColor"></path> </svg> </a>
-</div>
-<div class="text-center text-gray-800">
-<div> © Jirawat Boonkumnerd 2021</div>
-<div> Made by <a class="text-gray-600" href="https://ntsd.dev">ntsd</a>
-</div>
-</div>
-</div></div></footer><script type="text/javascript" async=""> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch((err) => { console.error("service worker register error:", err); }); } </script>
-
-</body></html>
+    if my_player.player_mana==0:
+        my_player.draft(draft_list)
+    else:
+        my_player.play()
+</code></pre><p>การเขียนอาจะจะเข้าใจยากไปหน่อย สามารถติชมกันได้ครับ</p></div><ul class="grid grid-cols-2 text-center mt-8"><li class="col-span-1 border p-4 ml-4 hover:bg-gray-300"><a href="/python-codegolf/" data-toggle="tooltip" data-placement="top" title="Python Code Golf Cheat Sheet"><div class="text-xl font-bold">Next</div><div class="text-gray-600">Python Code Golf Cheat Sheet</div></a></li></ul></div><div class="comment giscus py-8"></div><div class="pt-8"><a class="text-gray-700 font-bond" href="/tags/">FEATURED TAGS</a><div class="my-4 text-xs"><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Artificial%20Intelligence" title="Artificial Intelligence" rel="1">Artificial Intelligence </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Programming" title="Programming" rel="7">Programming </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Python" title="Python" rel="2">Python </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Code%20golf" title="Code golf" rel="1">Code golf </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#C++" title="C++" rel="1">C++ </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#aria2" title="aria2" rel="1">aria2 </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Network" title="Network" rel="2">Network </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#OpenWRT" title="OpenWRT" rel="1">OpenWRT </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Router" title="Router" rel="1">Router </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Embedded" title="Embedded" rel="1">Embedded </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Gatsby" title="Gatsby" rel="1">Gatsby </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#React" title="React" rel="1">React </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#GraphQL" title="GraphQL" rel="1">GraphQL </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Progressive%20Web%20App" title="Progressive Web App" rel="1">Progressive Web App </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#TypeScript" title="TypeScript" rel="2">TypeScript </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Facebook%20Developer" title="Facebook Developer" rel="1">Facebook Developer </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#ESLint" title="ESLint" rel="1">ESLint </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Hosting" title="Hosting" rel="1">Hosting </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Website" title="Website" rel="1">Website </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Web%20Performance" title="Web Performance" rel="1">Web Performance </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#Database" title="Database" rel="1">Database </a><a class="py-1 px-2 mr-1 mb-2 inline-block border border-black rounded-full hover:bg-gray-300" href="/tags/#PostgreSQL" title="PostgreSQL" rel="1">PostgreSQL</a></div></div></div><div class="col-span-2 md:hidden p-4"><div class="on-page-nav sticky top-28 text-gray-500 font-medium py-8"><div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div></div></div></article><script type="text/javascript">async( "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js", function () { const content = document.querySelector('.post-container'); const insertTarget = document.querySelector('.on-page-nav'); scrollnav.init(content, { debug: false, insertTarget: insertTarget, insertLocation: 'append', }); }, 2000 );</script><style>nav.scroll-nav a.scroll-nav__link { display: block; padding-top: 0.5rem; padding-bottom: 0.5rem; } nav.scroll-nav li.scroll-nav__item.scroll-nav__item--active { color: #000; } nav.scroll-nav a.scroll-nav__link:hover { color: #000; }</style><script type="text/javascript">setTimeout(function () { var d = document, s = d.createElement("script"); s.src = " https://giscus.app/client.js"; s.setAttribute("data-repo", "ntsd/ntsd.github.io"); s.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkyNDYwNjU3MDI"); s.setAttribute("data-category", "General"); s.setAttribute("data-category-id", "DIC_kwDODqqqJs4B_e5q"); s.setAttribute("data-mapping", "pathname"); s.setAttribute("data-reactions-enabled", "0"); s.setAttribute("data-emit-metadata", "0"); s.setAttribute("data-theme", "light"); s.setAttribute("crossorigin", "anonymous"); (d.head || d.body).appendChild(s); }, 4000);</script><style>.anchorjs-link { color: #777 !important; text-decoration: none !important; } .anchorjs-link:hover { color: #000 !important; } .anchorjs-link::before { content: "#"; }</style><script type="text/javascript">asyncStyle("/assets/css/prism.css");</script><footer><hr class="mt-10 dark:border-gray-500"><div class="container px-6 py-8 mx-auto"><div class="grid justify-items-center"><div class="flex justify-center my-4"><a aria-label="Github" class="mr-4 text-gray-600 hover:text-gray-400" href="https://github.com/ntsd" rel="noopener noreferrer" target="_blank"><svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path></svg> </a><a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://www.linkedin.com/in/ntsd" rel="noopener noreferrer" target="_blank"><svg class="w-7 h-7 fill-current" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 21H9V9H13V11C13.8526 9.91525 15.1456 9.26857 16.525 9.237C19.0056 9.25077 21.0072 11.2694 21 13.75V21H17V14.25C16.84 13.1326 15.8818 12.3036 14.753 12.306C14.2593 12.3216 13.7932 12.5378 13.4624 12.9046C13.1316 13.2715 12.9646 13.7573 13 14.25V21ZM7 21H3V9H7V21ZM5 7C3.89543 7 3 6.10457 3 5C3 3.89543 3.89543 3 5 3C6.10457 3 7 3.89543 7 5C7 5.53043 6.78929 6.03914 6.41421 6.41421C6.03914 6.78929 5.53043 7 5 7Z"></path></svg> </a><a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank"><svg class="mt-1 w-6 h-6 fill-current" fill="none" viewBox="0 0 416 416" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M53 128.8l-16-8.2a192 192 0 1094.7-88.9l7.1 16.6A174 174 0 1153 128.8z" fill-rule="evenodd" fill="currentColor"></path><path d="M94.7 92.3L82 126.5 62.6 95.7l-36.4-1.4 23.3-28-9.9-35.1 33.9 13.5 30.3-20.3-2.4 36.4L130 83.3l-35.3 9z" fill="currentColor"></path></svg></a></div><div class="text-center text-gray-800"><div>© Jirawat Boonkumnerd 2021</div><div>Made by <a class="text-gray-600" href="https://ntsd.dev">ntsd</a></div></div></div></div></footer><script type="text/javascript" async="">if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch((err) => { console.error("service worker register error:", err); }); }</script></body></html>

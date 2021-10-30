@@ -13,6 +13,7 @@ import path from "path";
 import axios from 'axios';
 import dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
+import htmlmin from 'gulp-htmlmin';
 
 dotenv.config();
 
@@ -164,6 +165,7 @@ gulp.task("post-js", async () => {
 
       cb(null, file);
     }))
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest(SITE_ROOT))
     .on('end', () => {
       browserSync.exit();
