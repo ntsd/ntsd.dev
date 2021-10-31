@@ -14,6 +14,7 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
 import htmlmin from 'gulp-htmlmin';
+import tailwindConfigDefault from './tailwind.config.js';
 
 dotenv.config();
 
@@ -35,7 +36,7 @@ const POST_BUILD_JS = `${SITE_ROOT}/assets/js/`;
 const PRE_BUILD_SW = "./src/js/sw.js"
 const POST_BUILD_SW = `${SITE_ROOT}`;
 
-const TAILWIND_CONFIG = "./tailwind.config.js";
+// const TAILWIND_CONFIG = "./tailwind.config.js";
 
 // Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
@@ -56,11 +57,21 @@ gulp.task("buildJekyll", () => {
 gulp.task("processStyles", () => {
   browserSync.notify("Compiling styles...");
 
+  const tailwindConfig = Object.assign(
+    tailwindConfigDefault,
+    {
+      purge: {
+        enabled: true,
+        content: [SITE_ROOT_HTML],
+      },
+    }
+  );
+  
   return gulp.src(PRE_BUILD_STYLES)
     .pipe(
       postcss([
         atimport(),
-        tailwindcss(TAILWIND_CONFIG),
+        tailwindcss(tailwindConfig),
         ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano({
           preset: ["default", { discardComments: { removeAll: true } }],
         })]),
@@ -196,6 +207,7 @@ gulp.task("startServer", () => {
       "**/*.js",
       "**/*.md",
       "**/*.markdown",
+      "!_site/**/*",
       "!_watch/**/*",
       "!node_modules/**/*",
       "_config.yml",

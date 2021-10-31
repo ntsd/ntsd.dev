@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="bg-white shadow md:sticky md:top-0 z-50">
+<nav class="bg-white shadow sticky top-0 z-50 transition-transform duration-300 transform" id="navbar">
     <div class="container mx-auto px-6 py-4 lg:flex lg:justify-between lg:items-center">
         <div class="lg:flex lg:items-center">
             <div class="flex items-center justify-between">
@@ -34,29 +34,43 @@
         </div>
     </div>
 </nav>
-<script type="text/runtime-javascript">
-  var toggle = document.querySelector("#nav-toggle");
-  var navLeft = document.querySelector("#nav-left");
-  var navRight = document.querySelector("#nav-right");
+<script type="text/javascript">
+    var navbar = document.querySelector("#navbar");
+    var toggle = document.querySelector("#nav-toggle");
+    var navLeft = document.querySelector("#nav-left");
+    var navRight = document.querySelector("#nav-right");
 
-  var nav = {
-    close: function () {
-      navLeft.classList.add("md:hidden");
-      navRight.classList.add("md:hidden");
-      toggle.classList.remove("nav-open");
-    },
-    open: function () {
-      navLeft.classList.remove("md:hidden");
-      navRight.classList.remove("md:hidden");
-      toggle.classList.add("nav-open");
-    },
-  };
+    var nav = {
+        close: function () {
+            navLeft.classList.add("md:hidden");
+            navRight.classList.add("md:hidden");
+            toggle.classList.remove("nav-open");
+        },
+        open: function () {
+            navLeft.classList.remove("md:hidden");
+            navRight.classList.remove("md:hidden");
+            toggle.classList.add("nav-open");
+        }
+    };
 
-  toggle.addEventListener("click", function (e) {
-    if (toggle.className.indexOf("nav-open") > 0) {
-      nav.close();
-    } else {
-      nav.open();
-    }
-  });
+    toggle.addEventListener("click", function (e) {
+        if (toggle.className.indexOf("nav-open") > 0) {
+            nav.close();
+        } else {
+            nav.open();
+        }
+    });
+
+    var prevScrollPos = window.pageYOffset;
+    window.onscroll = function () {
+        var curScrollPos = window.pageYOffset;
+        if (curScrollPos > navbar.offsetHeight) {
+            if (prevScrollPos > curScrollPos) {
+                navbar.classList.remove("lg:-translate-y-full");
+            } else {
+                navbar.classList.add("lg:-translate-y-full");
+            }
+            prevScrollPos = curScrollPos;
+        }
+    };
 </script>
