@@ -7,7 +7,7 @@ permalink: /tags/
 <!-- Main Content -->
 <div id="tag-container">
     <!-- Tags List -->
-    <div class="w-full h-72 my-8" id="tag-cloud"></div>
+    <div class="w-full h-72 my-8 overflow-hidden" id="tag-cloud"></div>
     <!-- Topic on tags -->
     {% for tag in site.tags %}
         <div class="py-4">
@@ -59,6 +59,10 @@ permalink: /tags/
                 list: tagArray,
                 weightFactor: 25,
                 classes: "tag-cloud-item",
+                drawOutOfBound: false,
+                shrinkToFit: false,
+                origin: [0,0],
+                shape: "square",
             });
 
             tagWrapper.addEventListener('wordcloudstop', function (e) {
