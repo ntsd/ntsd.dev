@@ -170,7 +170,7 @@ gulp.task("post-js", async () => {
       });
 
       // replace script type text/runtime-javascript to text/javascript
-      body = body.replace(/text\/runtime\-javascript/g, 'text/javascript');
+      body = body.replace(/type\=\"text\/runtime\-javascript\"/g, 'type="text/javascript"');
       body = '<!DOCTYPE html>' + body; // DOCTYPE is gone when puppeteer run
 
       file.contents = Buffer.from(body);

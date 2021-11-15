@@ -30,7 +30,7 @@ I have a custom [data attributes](https://developer.mozilla.org/en-US/docs/Learn
 For JavaScript I want it to run on runtime I use to type `text/runtime-javascript` to avoid running in the Puppeteer.
 
 ```HTML
-<script type="text/runtime-javascript" async>
+<script type='text/runtime-javascript' async>
 </script>
 ```
 
@@ -77,8 +77,8 @@ gulp.task("post-js", async () => {
         return document.documentElement.outerHTML;
       });
 
-      // replace script type text/runtime-javascript to text/javascript
-      body = body.replace(/text\/runtime\-javascript/g, 'text/javascript');
+      // replace script type type="text/runtime-javascript" to type"text/javascript"
+      body = body.replace(/type\=\"text\/runtime\-javascript\"/g, 'type="text/javascript"');
 
       // DOCTYPE is gone when puppeteer run
       body = '<!DOCTYPE html>' + body;
