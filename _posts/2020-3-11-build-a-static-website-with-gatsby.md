@@ -14,6 +14,7 @@ tags:
     - GraphQL
     - Progressive Web App
     - TypeScript
+    - Frontend
 published: true
 ---
 

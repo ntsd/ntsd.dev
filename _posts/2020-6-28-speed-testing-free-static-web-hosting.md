@@ -9,6 +9,7 @@ tags:
     - Hosting
     - Website
     - Web Performance
+    - Frontend
 published: true
 catalog: true
 ---

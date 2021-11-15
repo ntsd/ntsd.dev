@@ -10,6 +10,7 @@ categories:
 tags:
     - Programming
     - Facebook Developer
+    - Frontend
 published: true
 ---
 

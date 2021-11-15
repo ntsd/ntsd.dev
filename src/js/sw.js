@@ -110,13 +110,14 @@ self.addEventListener('fetch', event => {
                 const oldHash = await oldHashResponse.text();
                 if (newHash !== oldHash) { // refetch when hash not matched
                   console.log(`cache not matched ${pathname} ${oldHash} ${newHash} refetch`);
-                  fetchAndCache(event.request);
+                  event.waitUntil(fetchAndCache(event.request));
+
+                  caches.open(HASH_CACHE).then(cache => {
+                    cache.put(hashRequest, newHashResponseClone)
+                  });
+                  // TODO apply service worker event reload page
                 }
               }
-
-              caches.open(HASH_CACHE).then(cache => {
-                cache.put(hashRequest, newHashResponseClone)
-              });
 
               return newHashResponse;
             })

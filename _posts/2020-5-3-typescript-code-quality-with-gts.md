@@ -12,6 +12,7 @@ tags:
     - Programming
     - TypeScript
     - ESLint
+    - Frontend
 published: true
 ---
 

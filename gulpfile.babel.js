@@ -163,7 +163,7 @@ gulp.task("post-js", async () => {
       let body = await page.evaluate(() => {
         // remove data-post-js script
         const unusedElements = document.querySelectorAll('script[data-post-js="true"]');
-        for (var i = 0; i < unusedElements.length; i++) {
+        for (let i = 0; i < unusedElements.length; i++) {
           unusedElements[i].parentNode.removeChild(unusedElements[i]);
         }
         return document.documentElement.outerHTML;

@@ -11,6 +11,7 @@ tags:
     - Programming
     - Odoo
     - React
+    - Frontend
 published: false
 ---
 

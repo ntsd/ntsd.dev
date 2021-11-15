@@ -5,10 +5,10 @@ permalink: /categories/
 catalog: false
 ---
 
-<div id="category-container">
+<div>
     <ul>
         {% for category in site.categories %}
-            <h1 class="text-4xl my-4" id="{{category | first}}">{{category | first}}</h1>
+            <h1 class="text-4xl my-4 category-title" id="{{category | first}}">{{category | first}}</h1>
             {% for posts in category  %}
                 {% for post in posts %}
                     {% if post.url %}
@@ -34,7 +34,7 @@ catalog: false
             placement: "right",
             icon: '',
         };
-        anchors.add("#category-container");
+        anchors.add(".category-title");
         },
         0,
         true

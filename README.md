@@ -2,6 +2,7 @@
 
 ## Todos
 
+- Apply service worker reload page <https://whatwebcando.today/articles/handling-service-worker-updates>, <https://github.com/GoogleChrome/workbox/issues/1120>
 - Fix offline page
 - Fix 404 page
 

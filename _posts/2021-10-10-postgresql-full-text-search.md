@@ -11,6 +11,8 @@ tags:
   - Programming
   - Database
   - PostgreSQL
+  - Backend
+  - Performance
 published: false
 ---
 
