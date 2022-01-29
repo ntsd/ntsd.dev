@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2022-01-29T11:31:47+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A full-stack software engineer who likes to learn, play, and develop things in software.</subtitle><entry><title type="html">How to manage multiple Git accounts on a single user</title><link href="https://ntsd.dev/git-multiple-accounts/" rel="alternate" type="text/html" title="How to manage multiple Git accounts on a single user" /><published>2022-01-28T00:00:00+07:00</published><updated>2022-01-28T00:00:00+07:00</updated><id>https://ntsd.dev/git-multiple-accounts</id><content type="html" xml:base="https://ntsd.dev/git-multiple-accounts/"><![CDATA[<h2 id="set-up-ssh-keys-for-multi-git-accounts">Set up SSH keys for multi git accounts</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2022-01-30T04:49:34+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A full-stack software engineer who likes to learn, play, and develop things in software.</subtitle><entry><title type="html">How to manage multiple Git accounts</title><link href="https://ntsd.dev/git-multiple-accounts/" rel="alternate" type="text/html" title="How to manage multiple Git accounts" /><published>2022-01-28T00:00:00+07:00</published><updated>2022-01-28T00:00:00+07:00</updated><id>https://ntsd.dev/git-multiple-accounts</id><content type="html" xml:base="https://ntsd.dev/git-multiple-accounts/"><![CDATA[<h2 id="set-up-ssh-keys-for-multi-git-accounts">Set up SSH keys for multi git accounts</h2>
 
 <h3 id="1-generate-ssh-keys">1. Generate SSH keys</h3>
 
@@ -132,6 +132,10 @@ ssb   cv25519/127C6D28828B3B8C 2021-11-23 <span class="o">[</span>E]
 <p>or for specific repo</p>
 
 <p><code class="language-plaintext highlighter-rouge">git config user.signingkey 3AA5C34371567BD2</code></p>
+
+<p>craete a sign commit</p>
+
+<p><code class="language-plaintext highlighter-rouge">git commit -S -m 'test'</code></p>
 
 <p>to make it automatically sign commits</p>
 
