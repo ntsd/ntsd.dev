@@ -1,6 +1,10 @@
+<!-- Icon from https://heroicons.com/ -->
 {% if site.RSS %}
-    <a href="{{ " /feed.xml" | prepend: site.baseurl }}">
-        <svg class="svg-icon logo-rss"></svg>
+    <a aria-label="RSS" class="mr-4 text-gray-600 hover:text-gray-400" href="{{ " /feed.xml" | prepend: site.baseurl }}">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 fill-current" viewBox="0 0 20 20">
+            <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z" />
+            <path d="M4 9a1 1 0 011-1 7 7 0 017 7 1 1 0 11-2 0 5 5 0 00-5-5 1 1 0 01-1-1zM3 15a2 2 0 114 0 2 2 0 01-4 0z" />
+        </svg>
     </a>
 {% endif %}
 {% if site.twitter_username %}
@@ -29,7 +33,7 @@
         </svg>
     </a>
 {% endif %}
-<a aria-label="Linkedin" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank">
+<a aria-label="Webring" class="mr-4 text-gray-600 hover:text-gray-400" href="https://webring.wonderful.software#ntsd.dev" rel="noopener noreferrer" target="_blank">
     <svg class="mt-1 w-6 h-6 fill-current" fill="none" viewbox="0 0 416 416" xmlns="http://www.w3.org/2000/svg">
         <path clip-rule="evenodd" d="M53 128.8l-16-8.2a192 192 0 1094.7-88.9l7.1 16.6A174 174 0 1153 128.8z" fill-rule="evenodd" fill="currentColor"/>
         <path d="M94.7 92.3L82 126.5 62.6 95.7l-36.4-1.4 23.3-28-9.9-35.1 33.9 13.5 30.3-20.3-2.4 36.4L130 83.3l-35.3 9z" fill="currentColor"/>

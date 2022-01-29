@@ -7,4 +7,5 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem 'jekyll-seo-tag'
   gem 'jekyll-lazy-load-image', require: 'jekyll-lazy-load-image/auto-execution'
+  gem 'jekyll-feed'
 end
