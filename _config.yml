@@ -45,7 +45,7 @@ anchorjs: true # if you want to customize anchor. check out line:181 of `post.ht
 future: true # Publish posts or collection documents with a future date.
 
 # SNS settings
-RSS: false
+RSS: true
 github_username: ntsd
 # twitter_username: ntsd_me
 # facebook_username: jo.ntsd

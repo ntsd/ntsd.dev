@@ -4,12 +4,13 @@ title:  "Speed testing and compare free static web hosting (Netlify vs Github Pa
 date:   2020-05-30 15:14:54
 subtitle: ""
 author: "ntsd"
-categories: Hosting
+categories: Network
 tags:
     - Hosting
     - Website
     - Web Performance
     - Frontend
+    - Network
 published: true
 catalog: true
 ---
