@@ -153,6 +153,10 @@ or for specific repo
 
 `git config user.signingkey 3AA5C34371567BD2`
 
+craete a sign commit
+
+`git commit -S -m 'test'`
+
 to make it automatically sign commits
 
 `git config --global commit.gpgsign true`
