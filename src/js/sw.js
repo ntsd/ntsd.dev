@@ -64,6 +64,14 @@ function endsWithAny(suffixes, string) {
   return false;
 }
 
+function sendMessageToAllClients(msg) {
+  self.clients.matchAll().then(clients => {
+    clients.forEach(client => {
+      client.postMessage(msg);
+    });
+  });
+}
+
 self.addEventListener('fetch', event => {
   let { pathname, hostname } = new URL(event.request.url);
   let cachedHit = false;
@@ -85,12 +93,14 @@ self.addEventListener('fetch', event => {
   setTimeout(() => {
     // Check cache updated when cached hit and it's same host
     if (cachedHit && event.request.url.startsWith(self.location.origin)) {
-      if (!endsWithAny(["/", ".css", ".js"], pathname)) { // return when file not end with any
+      if (!endsWithAny(["/", ".css", ".js"], pathname)) { // return when file not end with any of this
         return;
       }
       if (pathname.endsWith('/')) { // when path end with / should load /index.html
         pathname += 'index.html';
       }
+
+      // Request check hash cache
       const hashRequest = new Request(`${CLOUDFLARE_WORKER_HOST}/cache-bust${pathname}`, {
         mode: 'cors',
       });
@@ -106,17 +116,26 @@ self.addEventListener('fetch', event => {
                 return newHashResponse;
               }
 
-              if (oldHashResponse) { // hash cache found
+              if (oldHashResponse) { // old hash found compare the the new hash
                 const oldHash = await oldHashResponse.text();
                 if (newHash !== oldHash) { // refetch when hash not matched
                   console.log(`cache not matched ${pathname} ${oldHash} ${newHash} refetch`);
-                  event.waitUntil(fetchAndCache(event.request));
-
-                  caches.open(HASH_CACHE).then(cache => {
-                    cache.put(hashRequest, newHashResponseClone)
+                  fetchAndCache(event.request).then(() => {
+                    caches.open(HASH_CACHE).then(cache => {
+                      cache.put(hashRequest, newHashResponseClone).then(() => {
+                        // Apply service worker event to reload page
+                        sendMessageToAllClients({
+                          'command': 'UPDATE_FOUND',
+                          'url': pathname,
+                        });
+                      });
+                    });
                   });
-                  // TODO apply service worker event reload page
                 }
+              } else { // when old hash not found put a new hash
+                caches.open(HASH_CACHE).then(cache => {
+                  cache.put(hashRequest, newHashResponseClone);
+                });
               }
 
               return newHashResponse;
