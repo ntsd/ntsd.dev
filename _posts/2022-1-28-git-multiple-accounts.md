@@ -4,7 +4,7 @@ title: "How to manage multiple Git accounts"
 date: 2022-1-28
 subtitle: "How I set up multi SSH keys for multiple git accounts, To make Git can use the personal git and work git at the same time."
 author: "ntsd"
-catalog: false
+catalog: true
 categories:
   - Network
 tags:
