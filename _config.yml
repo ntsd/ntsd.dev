@@ -79,8 +79,8 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /pwa/icons/512.png
-logo: /pwa/icons/512.png
+      image: /pwa/icons/icon-min.svg
+logo: /pwa/icons/icon-min.svg
 twitter:
   username: ntsd_me
   card: summary
