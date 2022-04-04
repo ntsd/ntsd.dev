@@ -1,5 +1,17 @@
 # ntsd.dev
 
+## Installation
+
+```
+sudo apt install ruby-full
+sudo apt install rubygems
+sudo gem install bundler
+bundler install
+npm i
+```
+
+* If you got an puppeteer errors check <https://gist.github.com/winuxue/cfef08e2f5fe9dfc16a1d67a4ad38a01#file-puppeteer-ubuntu-1804-md>
+
 ## Todos
 
 - Apply service worker reload page <https://whatwebcando.today/articles/handling-service-worker-updates>, <https://github.com/GoogleChrome/workbox/issues/1120>
