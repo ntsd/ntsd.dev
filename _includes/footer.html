@@ -1,71 +1,64 @@
 <!-- Footer -->
 <footer>
-    <hr class="mt-10 dark:border-gray-500"/>
-    <div class="container px-6 py-8 mx-auto">
-        <div class="grid justify-items-center">
-            <div class="flex justify-center my-4">{% include social.html %}</div>
-            <div class="text-center text-gray-800">
-                <div>
-                    &copy;
-                    {{ site.title }}
-                    {{ site.time | date: '%Y' }}
-                </div>
-                <div>
-                    Made by
-                    <a class="text-gray-600" href="{{ site.url }}">ntsd</a>
-                    {% if site.github_btn %}
-                        |
-                        <iframe title="{{ site.github_btn }}" style="margin-bottom: -5px" frameborder="0" scrolling="0" width="80px" height="20px" src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_btn }}&type=star&count=true"></iframe>
-                    {% endif %}
-                </div>
-            </div>
+  <hr class="mt-10 dark:border-gray-500" />
+  <div class="container px-6 py-8 mx-auto">
+    <div class="grid justify-items-center">
+      <div class="flex justify-center my-4">{% include social.html %}</div>
+      <div class="text-center text-gray-800">
+        <div>&copy; {{ site.title }} {{ site.time | date: '%Y' }}</div>
+        <div>
+          Made by
+          <a class="text-gray-600" href="{{ site.url }}">ntsd</a>
+          {% if site.github_btn %} |
+          <iframe
+            title="{{ site.github_btn }}"
+            style="margin-bottom: -5px"
+            frameborder="0"
+            scrolling="0"
+            width="80px"
+            height="20px"
+            src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_btn }}&type=star&count=true"
+          ></iframe>
+          {% endif %}
         </div>
+      </div>
     </div>
+  </div>
 </footer>
 
 <!-- Service Worker -->
 {% if site.service-worker %}
 <script type="text/runtime-javascript" async>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').catch((err) => {
-    console.error("service worker register error:", err);
-  });
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch((err) => {
+      console.error("service worker register error:", err);
+    });
 
-  navigator.serviceWorker.onmessage = (e) => {
-    const data = e.data;
-    
-    if(data.command == "UPDATE_FOUND"){
-      console.log("UPDATE_FOUND_BY_SW", data);
-      location.reload();
-    }
-  };
-}
+    navigator.serviceWorker.onmessage = (e) => {
+      const data = e.data;
+
+      if(data.command == "UPDATE_FOUND"){
+        console.log("UPDATE_FOUND_BY_SW", data);
+        location.reload();
+      }
+    };
+  }
 </script>
 {% endif %}
 
 <!-- Google Analytics -->
 {% if site.ga_track_id %}
 <script type="text/runtime-javascript">
-  (function (i, s, o, g, r, a, m) {
-    i["GoogleAnalyticsObject"] = r;
-    (i[r] =
-      i[r] ||
-      function () {
-        (i[r].q = i[r].q || []).push(arguments);
-      }),
-      (i[r].l = 1 * new Date());
-    (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m);
-  })(
-    window,
-    document,
-    "script",
-    "https://www.google-analytics.com/analytics.js",
-    "ga"
+  async(
+    "https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}",
+    function () {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "{{ site.ga_track_id }}");
+    },
+    2000
   );
-  ga("create", "{{ site.ga_track_id }}", "{{ site.ga_domain }}");
-  ga("send", "pageview");
 </script>
 {% endif %}
