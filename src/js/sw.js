@@ -57,31 +57,31 @@ function fetchAndCache(request) {
   });
 }
 
-function endsWithAny(suffixes, string) {
-  for (let suffix of suffixes) {
-    if (string.endsWith(suffix)) return true;
-  }
-  return false;
-}
+// function endsWithAny(suffixes, string) {
+//   for (let suffix of suffixes) {
+//     if (string.endsWith(suffix)) return true;
+//   }
+//   return false;
+// }
 
-function sendMessageToAllClients(msg) {
-  self.clients.matchAll().then(clients => {
-    clients.forEach(client => {
-      client.postMessage(msg);
-    });
-  });
-}
+// function sendMessageToAllClients(msg) {
+//   self.clients.matchAll().then(clients => {
+//     clients.forEach(client => {
+//       client.postMessage(msg);
+//     });
+//   });
+// }
 
 self.addEventListener('fetch', event => {
   let { pathname, hostname } = new URL(event.request.url);
-  let cachedHit = false;
+  // let cachedHit = false;
 
   // validate if hostname in whitelist
   if (HOSTNAME_WHITELIST.indexOf(hostname) > -1) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
         if (cachedResponse) { // when cache hit
-          cachedHit = true;
+          // cachedHit = true;
           return cachedResponse;
         }
 
@@ -90,60 +90,61 @@ self.addEventListener('fetch', event => {
     );
   }
 
-  setTimeout(() => {
-    // Check cache updated when cached hit and it's same host
-    if (cachedHit && event.request.url.startsWith(self.location.origin)) {
-      if (!endsWithAny(["/", ".css", ".js"], pathname)) { // return when file not end with any of this
-        return;
-      }
-      if (pathname.endsWith('/')) { // when path end with / should load /index.html
-        pathname += 'index.html';
-      }
+  // Disable cache busting
+  // setTimeout(() => {
+  //   // Check cache updated when cached hit and it's same host
+  //   if (cachedHit && event.request.url.startsWith(self.location.origin)) {
+  //     if (!endsWithAny(["/", ".css", ".js"], pathname)) { // return when file not end with any of this
+  //       return;
+  //     }
+  //     if (pathname.endsWith('/')) { // when path end with / should load /index.html
+  //       pathname += 'index.html';
+  //     }
 
-      // Request check hash cache
-      const hashRequest = new Request(`${CLOUDFLARE_WORKER_HOST}/cache-bust${pathname}`, {
-        mode: 'cors',
-      });
+  //     // Request check hash cache
+  //     const hashRequest = new Request(`${CLOUDFLARE_WORKER_HOST}/cache-bust${pathname}`, {
+  //       mode: 'cors',
+  //     });
 
-      caches.match(hashRequest)
-        .then(oldHashResponse => {
-          return fetch(hashRequest)
-            .then(async newHashResponse => {
-              const newHashResponseClone = newHashResponse.clone();
-              const newHash = await newHashResponse.text();
-              if (newHash == '') {
-                console.log(`hash not found ${pathname}`);
-                return newHashResponse;
-              }
+  //     caches.match(hashRequest)
+  //       .then(oldHashResponse => {
+  //         return fetch(hashRequest)
+  //           .then(async newHashResponse => {
+  //             const newHashResponseClone = newHashResponse.clone();
+  //             const newHash = await newHashResponse.text();
+  //             if (newHash == '') {
+  //               console.log(`hash not found ${pathname}`);
+  //               return newHashResponse;
+  //             }
 
-              if (oldHashResponse) { // old hash found compare the the new hash
-                const oldHash = await oldHashResponse.text();
-                if (newHash !== oldHash) { // refetch when hash not matched
-                  console.log(`cache not matched ${pathname} ${oldHash} ${newHash} refetch`);
-                  fetchAndCache(event.request).then(() => {
-                    caches.open(HASH_CACHE).then(cache => {
-                      cache.put(hashRequest, newHashResponseClone).then(() => {
-                        // Apply service worker event to reload page
-                        sendMessageToAllClients({
-                          'command': 'UPDATE_FOUND',
-                          'url': pathname,
-                        });
-                      });
-                    });
-                  });
-                }
-              } else { // when old hash not found put a new hash
-                caches.open(HASH_CACHE).then(cache => {
-                  cache.put(hashRequest, newHashResponseClone);
-                });
-              }
+  //             if (oldHashResponse) { // old hash found compare the the new hash
+  //               const oldHash = await oldHashResponse.text();
+  //               if (newHash !== oldHash) { // refetch when hash not matched
+  //                 console.log(`cache not matched ${pathname} ${oldHash} ${newHash} refetch`);
+  //                 fetchAndCache(event.request).then(() => {
+  //                   caches.open(HASH_CACHE).then(cache => {
+  //                     cache.put(hashRequest, newHashResponseClone).then(() => {
+  //                       // Apply service worker event to reload page
+  //                       sendMessageToAllClients({
+  //                         'command': 'UPDATE_FOUND',
+  //                         'url': pathname,
+  //                       });
+  //                     });
+  //                   });
+  //                 });
+  //               }
+  //             } else { // when old hash not found put a new hash
+  //               caches.open(HASH_CACHE).then(cache => {
+  //                 cache.put(hashRequest, newHashResponseClone);
+  //               });
+  //             }
 
-              return newHashResponse;
-            })
-            .catch(err => {
-              console.error(err);
-            });
-        });
-    };
-  }, 2000);
+  //             return newHashResponse;
+  //           })
+  //           .catch(err => {
+  //             console.error(err);
+  //           });
+  //       });
+  //   };
+  // }, 2000);
 });
