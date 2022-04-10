@@ -107,6 +107,7 @@ giscus: true
 
 # Google Analytics
 ga_track_id: 'UA-166826202-1' # Format: UA-xxxxxx-xx
+ga_domain: ntsd.dev
 
 # Sidebar settings
 sidebar-about-description: '<div class="font-bond text-xl">Jirawat Boonkumnerd</div> A Software Engineer'
