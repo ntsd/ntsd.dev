@@ -17,6 +17,7 @@ npm i
 - Apply service worker reload page <https://whatwebcando.today/articles/handling-service-worker-updates>, <https://github.com/GoogleChrome/workbox/issues/1120>
 - Fix offline page
 - Fix 404 page
+- Imporve google tag manager <https://www.analyticsmania.com/post/google-tag-manager-impact-on-page-speed-and-how-to-improve/>
 
 ## Cloudflare Worker
 

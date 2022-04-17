@@ -99,7 +99,8 @@ layout: default
                 insertLocation: 'append',
             });
         },
-        2000
+        2000,
+        false
     );
     </script>
     <style>
@@ -141,12 +142,12 @@ layout: default
     async(
         "https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js",
         function () {
-        anchors.options = {
-            visible: "always",
-            placement: "right",
-            icon: '',
-        };
-        anchors.add(".post-container h1, .post-container h2, .post-container h3");
+            anchors.options = {
+                visible: "always",
+                placement: "right",
+                icon: '',
+            };
+            anchors.add(".post-container h1, .post-container h2, .post-container h3");
         },
         0,
         true

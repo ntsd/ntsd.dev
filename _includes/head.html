@@ -26,7 +26,7 @@
     <!-- apple-touch-icon -->
     <link rel="apple-touch-icon" href="{{ site.baseurl }}/pwa/icons/icon-min.svg" async/>
 
-    <!-- async load function async(url, callback, delay) -->
+    <!-- async load function async(url, callback, delay, isPostJS) -->
     <script>
     function async(u, c, t, p) {
       function l() {
@@ -43,7 +43,7 @@
           o.addEventListener(
             "load",
             function (e) {
-              c(null, e);
+              c(e);
             },
             false
           );
