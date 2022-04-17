@@ -133,7 +133,7 @@ gulp.task("post-js", async () => {
   browserSync.init({
     files: [SITE_ROOT + "/**"],
     open: false,
-    port: 7000,
+    port: 6969,
     server: {
       baseDir: SITE_ROOT,
       serveStaticOptions: {
@@ -158,7 +158,7 @@ gulp.task("post-js", async () => {
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
 
-      await page.goto(`http://localhost:7000/${relativePath}`, { waitUntil: 'networkidle0' });
+      await page.goto(`http://localhost:6969/${relativePath}`, { waitUntil: 'networkidle0' });
 
       let body = await page.evaluate(() => {
         // remove data-post-js script
