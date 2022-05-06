@@ -106,7 +106,7 @@ prism: true
 giscus: true
 
 # Google Analytics
-ga_track_id: 'UA-166826202-1' # Format: UA-xxxxxx-xx
+ga_track_id: 'G-XGQGF8LG4L' # Format: UA-xxxxxx-xx
 ga_domain: ntsd.dev
 
 # Sidebar settings
