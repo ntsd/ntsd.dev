@@ -143,6 +143,10 @@ export the public key
 
 Copy your GPG key and add to the Git provider. It may the same page as the SSH key.
 
+If it ask to verify by a token, you can generate signature by using
+
+`echo "token" | gpg -a --default-key 3AA5C34371567BD2 --detach-sig`
+
 ### 5. Set up git config to use the GPG key
 
 `git config --global user.signingkey 3AA5C34371567BD2`

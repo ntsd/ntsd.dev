@@ -106,8 +106,8 @@ prism: true
 giscus: true
 
 # Google Analytics
-ga_track_id: 'G-XGQGF8LG4L' # Format: UA-xxxxxx-xx
-ga_domain: ntsd.dev
+# ga_track_id: 'G-XGQGF8LG4L' # Format: UA-xxxxxx-xx
+# ga_domain: ntsd.dev
 
 # Sidebar settings
 sidebar-about-description: '<div class="font-bond text-xl">Jirawat Boonkumnerd</div> A Software Engineer'
