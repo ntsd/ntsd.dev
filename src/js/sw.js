@@ -1,4 +1,4 @@
-const PRE_CACHE = 'precache-v1';
+const PRE_CACHE = 'precache-v2';
 const RUNTIME_CACHE = 'runtime';
 const HASH_CACHE = 'hash';
 
