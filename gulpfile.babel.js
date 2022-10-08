@@ -140,6 +140,7 @@ gulp.task("post-js", async () => {
         extensions: ["html"],
       },
     },
+    watch: false,
   });
 
   await new Promise(resolve => setTimeout(resolve, 3000)); // wait browserSync run
@@ -198,6 +199,7 @@ gulp.task("startServer", () => {
         extensions: ["html"],
       },
     },
+    watch: false,
   });
 
   gulp.watch(
