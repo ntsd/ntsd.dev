@@ -12,9 +12,7 @@ const PRE_CACHE_URLS = [
   // External
   'https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js',
   'https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js',
-  'https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js',
   'https://giscus.app/client.js',
-  'https://giscus.app/js/iframeResizer.min.js',
 ];
 
 // whitelist hostname to cache

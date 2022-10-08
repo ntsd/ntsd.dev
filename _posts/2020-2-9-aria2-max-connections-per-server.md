@@ -6,7 +6,7 @@ subtitle: "Edit a line of code and re-complie aria2 to unlock aria 2 connections
 author: "ntsd"
 catalog: true
 categories:
-    - Network
+    - Programming
 header-img: "../img/in-post/2020-2-9-aria2-max-connections-per-server/header.jpg"
 tags:
     - Programming

@@ -6,10 +6,9 @@ subtitle: "How I set up multi SSH keys for multiple git accounts, To make Git ca
 author: "ntsd"
 catalog: true
 categories:
-  - Network
+  - Security
 tags:
   - Git
-  - Network
   - Security
 published: true
 ---
