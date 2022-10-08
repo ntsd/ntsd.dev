@@ -15,6 +15,7 @@ import dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
 import htmlmin from 'gulp-htmlmin';
 import tailwindConfigDefault from './tailwind.config.js';
+import express from 'express';
 
 dotenv.config();
 
@@ -66,7 +67,7 @@ gulp.task("processStyles", () => {
       },
     }
   );
-  
+
   return gulp.src(PRE_BUILD_STYLES)
     .pipe(
       postcss([
@@ -130,20 +131,11 @@ gulp.task("bust-cache", () => {
 });
 
 gulp.task("post-js", async () => {
-  browserSync.init({
-    files: [SITE_ROOT + "/**"],
-    open: false,
-    port: 6969,
-    server: {
-      baseDir: SITE_ROOT,
-      serveStaticOptions: {
-        extensions: ["html"],
-      },
-    },
-    watch: false,
-  });
+  var server = express();
+  server.use(express.static(SITE_ROOT));
+  server.listen(6969);
 
-  await new Promise(resolve => setTimeout(resolve, 3000)); // wait browserSync run
+  await new Promise(resolve => setTimeout(resolve, 3000)); // wait express running
 
   return gulp.src(SITE_ROOT_HTML, { base: SITE_ROOT })
     .pipe(through2.obj(async (file, _, cb) => {
@@ -183,7 +175,7 @@ gulp.task("post-js", async () => {
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest(SITE_ROOT))
     .on('end', () => {
-      browserSync.exit();
+      // TODO: close express server
       console.log('post-js finished');
     });
 });
@@ -199,7 +191,8 @@ gulp.task("startServer", () => {
         extensions: ["html"],
       },
     },
-    watch: false,
+    watch: true,
+    notify: true,
   });
 
   gulp.watch(
