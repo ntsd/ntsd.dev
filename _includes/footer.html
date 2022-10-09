@@ -1,12 +1,12 @@
 <!-- Footer -->
 <footer>
   <hr class="mt-10 dark:border-gray-500" />
-  <div class="container px-6 py-8 mx-auto">
-    <div class="grid justify-items-center">
-      <div class="flex justify-center my-4">{% include social.html %}</div>
-      <div class="text-center text-gray-800">
+  <div class="container px-4 py-8 mx-auto">
+    <div class="grid grid-cols-12 text-gray-800">
+      <div class="col-span-6 justify-left">{% include social.html %}</div>
+      <div class="col-span-6 text-right">
         <div>&copy; {{ site.title }} {{ site.time | date: '%Y' }}</div>
-        <div>
+        <!-- <div>
           Made by
           <a class="text-gray-600" href="{{ site.url }}">ntsd</a>
           {% if site.github_btn %} |
@@ -20,7 +20,7 @@
             src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_btn }}&type=star&count=true"
           ></iframe>
           {% endif %}
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

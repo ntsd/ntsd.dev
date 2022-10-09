@@ -6,7 +6,7 @@ pagination:
 
 <div class="divide-y">
     {% for post in paginator.posts %}
-        <div class="px-8 py-12 mx-auto bg-white">
+        <div class="py-12 mx-auto bg-white">
             <div class="flex items-center justify-between">
                 <time class="text-sm font-light text-gray-600" datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time>
                 {% for category in post.categories %}
