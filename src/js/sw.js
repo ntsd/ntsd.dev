@@ -10,8 +10,6 @@ const PRE_CACHE_URLS = [
   './assets/css/style.css',
   './pwa/icons/icon-min.svg',
   // External
-  'https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js',
-  'https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js',
   'https://giscus.app/client.js',
 ];
 

@@ -43,7 +43,7 @@ layout: default
 <!-- Post Content -->
 <article class="container mx-auto grid grid-cols-12">
     <!-- Post Container -->
-    <div class="col-span-10 md:col-start-1 md:col-span-12 p-4">
+    <div class="col-span-10 md:col-start-1 md:col-span-12 py-4 px-4">
         <div class="py-8">
             <div class="post-container prose max-w-none">
                 {{ content }}
@@ -78,7 +78,7 @@ layout: default
 
     <!-- Right Side Catalog Container -->
     {% if page.catalog %}
-        <div class="col-span-2 md:hidden p-4">
+        <div class="col-span-2 md:hidden py-4 pl-4">
             <div class="on-page-nav sticky top-28 text-gray-500 font-medium py-8">
                 <div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div>
             </div>
@@ -87,7 +87,7 @@ layout: default
 </article>
 
 {% if page.catalog %}
-    <script type="text/runtime-javascript" >
+    <script type="text/javascript" data-post-js="true" >
     async(
         "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js",
         function () {
@@ -99,8 +99,8 @@ layout: default
                 insertLocation: 'append',
             });
         },
-        2000,
-        false
+        0,
+        true
     );
     </script>
     <style>
