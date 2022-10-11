@@ -19,18 +19,17 @@ const putInCache = async (request, response) => {
     await cache.put(request, response);
 };
 
-const cacheFirst = async (request, preloadResponsePromise) => {
+const cacheFirst = async (request) => {
+    // try to use (and cache) the preloaded response
+    // const preloadResponse = await preloadResponsePromise;
+    // if (preloadResponse) {
+    //     return preloadResponse;
+    // }
+
     // try to get the resource from the cache
     const responseFromCache = await caches.match(request);
     if (responseFromCache) {
         return responseFromCache;
-    }
-
-    // try to use (and cache) the preloaded response, if it's there
-    const preloadResponse = await preloadResponsePromise;
-    if (preloadResponse) {
-        putInCache(request, preloadResponse.clone());
-        return preloadResponse;
     }
 
     // try to get the resource from the network
@@ -59,9 +58,9 @@ self.addEventListener('activate', event => {
             }));
 
             // enable navigation preload
-            if (self.registration.navigationPreload) {
-                await self.registration.navigationPreload.enable();
-            }
+            // if (self.registration.navigationPreload) {
+            //     await self.registration.navigationPreload.enable();
+            // }
         })()
     );
 });
@@ -81,6 +80,6 @@ self.addEventListener("fetch", (event) => {
 
     // validate if hostname in whitelist
     if (HOSTNAME_WHITELIST.indexOf(hostname) > -1) {
-        event.respondWith(cacheFirst(event.request, event.preloadResponse));
+        event.respondWith(cacheFirst(event.request));
     }
 });
