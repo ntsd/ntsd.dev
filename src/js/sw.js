@@ -72,7 +72,7 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         async () => {
             const cache = await caches.open(PRE_CACHE);
-            return cache.addAll(PRE_CACHE_URLS);
+            await cache.addAll(PRE_CACHE_URLS);
         }
     );
 });
