@@ -50,16 +50,16 @@ const cacheFirst = async (request, preloadResponsePromise) => {
 };
 
 self.addEventListener('activate', event => {
-    const currentCaches = [PRE_CACHE, RUNTIME_CACHE];
-    // Remove old cache when activate
+    const cacheKeepList = [PRE_CACHE, RUNTIME_CACHE];
+    // remove old cache
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return cacheNames.filter(cacheName => !currentCaches.includes(cacheName));
-        }).then(cachesToDelete => {
-            return Promise.all(cachesToDelete.map(cacheToDelete => {
-                return caches.delete(cacheToDelete);
+        async () => {
+            const keyList = await caches.keys();
+            const cachesToDelete = keyList.filter((key) => !cacheKeepList.includes(key));
+            await Promise.all(cachesToDelete.map(async (key) => {
+                await caches.delete(key);
             }));
-        }).then(() => self.clients.claim())
+        }
     );
 
     // enable navigation preload
@@ -73,9 +73,10 @@ self.addEventListener('activate', event => {
 self.addEventListener("install", (event) => {
     // cache all precach url
     event.waitUntil(
-        caches.open(PRE_CACHE)
-            .then(cache => cache.addAll(PRE_CACHE_URLS))
-            .then(self.skipWaiting())
+        async () => {
+            const cache = await caches.open(PRE_CACHE);
+            return cache.addAll(PRE_CACHE_URLS);
+        }
     );
 });
 
