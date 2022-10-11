@@ -7,8 +7,6 @@ const PRE_CACHE_URLS = [
     './pwa/manifest.json',
     './pwa/icons/icon-min.svg',
     './favicon.ico',
-    // External
-    // 'https://giscus.app/client.js',
 ];
 
 // whitelist hostname to cache
@@ -51,23 +49,22 @@ const cacheFirst = async (request, preloadResponsePromise) => {
 
 self.addEventListener('activate', event => {
     const cacheKeepList = [PRE_CACHE, RUNTIME_CACHE];
-    // remove old cache
+    
     event.waitUntil(
         async () => {
+            // remove old cache
             const keyList = await caches.keys();
             const cachesToDelete = keyList.filter((key) => !cacheKeepList.includes(key));
             await Promise.all(cachesToDelete.map(async (key) => {
                 await caches.delete(key);
             }));
+
+            // enable navigation preload
+            if (self.registration.navigationPreload) {
+                await self.registration.navigationPreload.enable();
+            }
         }
     );
-
-    // enable navigation preload
-    event.waitUntil(async () => {
-        if (self.registration.navigationPreload) {
-            await self.registration.navigationPreload.enable();
-        }
-    });
 });
 
 self.addEventListener("install", (event) => {
