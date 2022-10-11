@@ -51,7 +51,7 @@ self.addEventListener('activate', event => {
     const cacheKeepList = [PRE_CACHE, RUNTIME_CACHE];
     
     event.waitUntil(
-        async () => {
+        (async () => {
             // remove old cache
             const keyList = await caches.keys();
             const cachesToDelete = keyList.filter((key) => !cacheKeepList.includes(key));
@@ -63,17 +63,17 @@ self.addEventListener('activate', event => {
             if (self.registration.navigationPreload) {
                 await self.registration.navigationPreload.enable();
             }
-        }
+        })()
     );
 });
 
 self.addEventListener("install", (event) => {
     // cache all precach url
     event.waitUntil(
-        async () => {
+        (async () => {
             const cache = await caches.open(PRE_CACHE);
             await cache.addAll(PRE_CACHE_URLS);
-        }
+        })()
     );
 });
 
