@@ -6,7 +6,6 @@ const PRE_CACHE_URLS = [
     './assets/css/style.css',
     './pwa/manifest.json',
     './pwa/icons/icon-min.svg',
-    './favicon.ico',
 ];
 
 // whitelist hostname to cache
