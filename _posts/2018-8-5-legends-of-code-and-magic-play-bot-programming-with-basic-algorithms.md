@@ -5,7 +5,8 @@ date:   2018-08-5 12:30:54
 subtitle: "สร้างบอทเกมเพื่อเล่นเกมไพ่แข่งกับคนอื่น"
 author: "ntsd"
 catalog: true
-categories: Software Development
+categories:
+    - Software Development
 header-img: "../img/in-post/2018-8-5-legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/post-legends-of-code-and-magic.png"
 tags:
     - Artificial Intelligence

@@ -14,7 +14,7 @@ catalog: false
                     {% if post.url %}
                         <li>
                             <a class="hover:text-gray-600" href="{{ post.url | prepend: site.baseurl }}">
-                               {{ post.date | date:"%F" }} {{ post.title }}
+                               [{{ post.date | date:"%F" }}] {{ post.title }}
                             </a>
                         </li>
                     {% endif %}
