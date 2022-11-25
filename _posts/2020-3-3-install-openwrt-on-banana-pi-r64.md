@@ -6,7 +6,7 @@ subtitle: "Getting start to build and install OpenWRT on Banana Pi R64 by using 
 author: "ntsd"
 catalog: true
 categories:
-    - Network
+    - Software Development
 tags:
     - OpenWRT
     - Router

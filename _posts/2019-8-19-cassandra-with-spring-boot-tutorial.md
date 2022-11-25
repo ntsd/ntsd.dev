@@ -6,7 +6,7 @@ subtitle: "learn how to use Apache Cassandra and Spring Data Cassandra"
 author: "ntsd"
 catalog: true
 categories:
-    - Programming
+    - Software Development
 header-img: "../img/in-post/LegendsofCodeandMagic.png"
 tags:
     - Programming

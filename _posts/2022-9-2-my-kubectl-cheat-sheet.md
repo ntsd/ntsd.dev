@@ -6,7 +6,7 @@ subtitle: "My useful kubectl commands cheat sheet and Google Kubernetes Engine c
 author: "ntsd"
 catalog: true
 categories:
-  - Cloud
+  - Software Development
 tags:
   - Kubernetes
   - Google Cloud Platform

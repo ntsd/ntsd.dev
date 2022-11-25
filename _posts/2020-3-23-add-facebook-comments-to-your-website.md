@@ -2,11 +2,11 @@
 layout: post
 title:  "Add Facebook comments to a website in 5 minutes"
 date:   2020-3-23 12:30:54
-subtitle: "A basic tutorial how to add Facebook comments to a website"
+subtitle: "A tutorial to add Facebook comments to a website"
 author: "ntsd"
 catalog: true
 categories:
-    - Programming
+    - Software Development
 tags:
     - Programming
     - Facebook Developer

@@ -6,7 +6,7 @@ subtitle: "Using Google TypeScript Style Guide on your TypeScript React project"
 author: "ntsd"
 catalog: true
 categories:
-    - Programming
+    - Software Development
 header-img: "../img/in-post/2020-5-3-typescript-code-quality-with-gts/clean.jpg"
 tags:
     - Programming

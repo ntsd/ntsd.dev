@@ -6,7 +6,7 @@ subtitle: "Add react app to Odoo module and using Odoo Javascript modules"
 author: "ntsd"
 catalog: true
 categories:
-    - Programming
+    - Software Development
 tags:
     - Programming
     - Odoo

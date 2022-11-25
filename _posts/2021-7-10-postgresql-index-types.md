@@ -6,7 +6,7 @@ subtitle: "Explain index types in PostgreSQL how it work and compare between Has
 author: "ntsd"
 catalog: true
 categories:
-  - Programming
+  - Software Development
 tags:
   - Programming
   - Database

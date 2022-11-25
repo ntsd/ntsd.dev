@@ -19,6 +19,7 @@ npm i
 - Fix 404 page
 - Imporve google tag manager <https://www.analyticsmania.com/post/google-tag-manager-impact-on-page-speed-and-how-to-improve/>
 - Use https://minimalanalytics.com/
+- Category dev, investment, health, science, journey
 
 ## Cloudflare Worker
 

@@ -6,7 +6,7 @@ subtitle: "A complete guide to build a high-performance static website with Gats
 author: "ntsd"
 catalog: true
 categories:
-    - Programming
+    - Software Development
 tags:
     - Programming
     - Gatsby

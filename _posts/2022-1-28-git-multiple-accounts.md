@@ -6,7 +6,7 @@ subtitle: "How I set up multi SSH keys for multiple git accounts, To make Git ca
 author: "ntsd"
 catalog: true
 categories:
-  - Security
+  - Software Development
 tags:
   - Git
   - Security
@@ -44,6 +44,9 @@ You have already generated the key pairs, Now let the Git provider know your SSH
    <https://github.com/settings/keys> for Gihub
    <https://gitlab.com/-/profile/keys> for Gitlab
 3. Paste the SSH public key and the Title you want
+4. Generate a signature using the giving token from provider `echo -n 'token' | ssh-keygen -Y sign -n <name-space> -f id_ed25519_git.pub` you can replace the namespace
+5. Apply the signature to the provider to verify
+
 
 Next, do another one for the Github personal `pbcopy < ~/.ssh/id_ed25519_git.pub` to your personal git provider.
 

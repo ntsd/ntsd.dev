@@ -6,7 +6,7 @@ subtitle: "เรียนรู้ Data Structure ที่จำเป็น�
 author: "ntsd"
 catalog: true
 categories:
-    - Programming
+    - Software Development
 header-img: "../img/in-post/2019-9-19-data-structures/post-bg-data-structure.jpg"
 tags:
     - Programming

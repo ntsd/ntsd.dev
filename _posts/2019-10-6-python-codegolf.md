@@ -6,7 +6,7 @@ subtitle: "Simple tricks to code-golf in Python"
 author: "ntsd"
 catalog: true
 categories:
-    - Programming
+    - Software Development
 header-img: "../img/in-post/2019-10-6-python-codegolf/post-code-golf.jpg"
 tags:
     - Programming

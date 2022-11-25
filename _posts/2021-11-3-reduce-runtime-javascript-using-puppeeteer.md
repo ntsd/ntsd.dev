@@ -6,7 +6,7 @@ subtitle: "How I remove some unnecessary JavaScript to make the page loading fas
 author: "ntsd"
 catalog: false
 categories:
-  - Programming
+  - Software Development
 tags:
   - Programming
   - Frontend
