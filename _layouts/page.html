@@ -9,7 +9,7 @@ layout: default
     }
 </style>
 <header>
-    <div class="w-full bg-center bg-cover bg-black header-bg">
+    <div class="w-full bg-center bg-cover bg-black header-bg backdrop-brightness-75">
         <div class="container mx-auto flex items-center justify-center w-full backdrop-filter backdrop-brightness-75 py-32 p-4">
             <div class="text-center text-white">
                 <h1 class="text-4xl font-semibold uppercase lg:text-5xl">
@@ -34,32 +34,37 @@ layout: default
 </header>
 
 <!-- Main Content -->
-<div class="container mx-auto grid grid-cols-12">
-    <div class="col-span-9 md:col-span-12 p-4">
+<div class="container mx-auto grid grid-cols-12 p-4 lg:space-x-8">
+    {% if page.sideBar %}
+    <div class="col-span-12 lg:col-span-9">
+    {% else %}
+    <div class="col-span-12">
+    {% endif %}
         {{ content }}
-        <hr class="mt-10 dark:border-gray-500 lg:hidden">
     </div>
     <!-- Sidebar Container -->
-    <div class="col-span-3 md:col-span-12 p-4 md:p-8">
-        <div class="pt-4 sticky top-28 divide-y">
-            <!-- Short About -->
-            <div class="py-4 md:text-center">
-                <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
-                <div>
-                    {% if site.sidebar-avatar %}
-                        <img alt="My Avartar" src="{{site.sidebar-avatar}}"/>
-                    {% endif %}
-                    {% if site.sidebar-about-description %}
-                        <div class="my-4">
-                            {{site.sidebar-about-description}}
+    {% if page.sideBar %}
+        <div class="col-span-3 hidden lg:block">
+            <div class="pt-4 sticky top-28 divide-y">
+                <!-- Short About -->
+                <div class="py-4 text-center">
+                    <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
+                    <div>
+                        {% if site.sidebar-avatar %}
+                            <img alt="My Avartar" src="{{site.sidebar-avatar}}"/>
+                        {% endif %}
+                        {% if site.sidebar-about-description %}
+                            <div class="my-4">
+                                {{site.sidebar-about-description}}
+                            </div>
+                        {% endif %}
+                        <!-- SNS Link -->
+                        <div class="flex justify-center my-4">
+                            {% include social.html %}
                         </div>
-                    {% endif %}
-                    <!-- SNS Link -->
-                    <div class="flex justify-left my-4 md:justify-center">
-                        {% include social.html %}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 </div>

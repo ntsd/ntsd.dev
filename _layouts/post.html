@@ -2,7 +2,6 @@
 layout: default
 ---
 <!-- Page Header -->
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/prism.css"/>
 <style type="text/css">
     header .header-bg {
         background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
@@ -15,12 +14,12 @@ layout: default
                 <div class="text-left text-white col-span-10 md:col-start-1 md:col-span-11 py-32 px-4">
                     <span class="categories">
                         {% for category in page.categories %}
-                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-500" href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
+                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-600" href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
                         {% endfor %}
                     </span>
                     <span class="tags">
                         {% for tag in page.tags %}
-                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-500" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-600" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
                         {% endfor %}
                     </span>
                     <h1 class="text-6xl my-4">{{ page.title }}</h1>
@@ -52,18 +51,18 @@ layout: default
 
             <ul class="grid grid-cols-2 text-center mt-8">
                 {% if page.previous.url %}
-                    <li class="col-span-1 border p-4 mr-4 hover:bg-gray-300">
+                    <li class="col-span-1 border p-4 mr-4 hover:bg-gray-800 hover:text-white">
                         <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
                             <div class="text-xl font-bold">Previous</div>
-                            <div class="text-gray-600">{{page.previous.title}}</div>
+                            <div class="text-gray-500">{{page.previous.title}}</div>
                         </a>
                     </li>
                 {% endif %}
                 {% if page.next.url %}
-                    <li class="col-span-1 border p-4 ml-4 hover:bg-gray-300">
+                    <li class="col-span-1 border p-4 ml-4 hover:bg-gray-800 hover:text-white">
                         <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
                             <div class="text-xl font-bold">Next</div>
-                            <div class="text-gray-600">{{page.next.title}}</div>
+                            <div class="text-gray-500">{{page.next.title}}</div>
                         </a>
                     </li>
                 {% endif %}
@@ -171,5 +170,8 @@ layout: default
 {% endif %}
 
 {% if site.prism %}
-    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/prism.js" data-post-js="true" ></script>
+    {% unless page.noCode %}
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/prism.css"/>
+        <script type="text/javascript" src="{{ site.baseurl }}/assets/js/prism.js" data-post-js="true" ></script>
+    {% endunless %}
 {% endif %}

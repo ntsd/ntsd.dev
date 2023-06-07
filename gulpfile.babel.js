@@ -10,12 +10,12 @@ import uglify from "gulp-uglify";
 import through2 from "through2";
 import crypto from "crypto";
 import path from "path";
-import axios from 'axios';
-import dotenv from 'dotenv';
-import puppeteer from 'puppeteer';
-import htmlmin from 'gulp-htmlmin';
-import tailwindConfigDefault from './tailwind.config.js';
-import express from 'express';
+import axios from "axios";
+import dotenv from "dotenv";
+import puppeteer from "puppeteer";
+import htmlmin from "gulp-htmlmin";
+import tailwindConfigDefault from "./tailwind.config.js";
+import express from "express";
 
 dotenv.config();
 
@@ -34,7 +34,7 @@ const POST_BUILD_STYLES = `${SITE_ROOT}/assets/css/`;
 const PRE_BUILD_JS = ["./src/js/*.js", "!./src/js/sw.js"];
 const POST_BUILD_JS = `${SITE_ROOT}/assets/js/`;
 
-const PRE_BUILD_SW = "./src/js/sw.js"
+const PRE_BUILD_SW = "./src/js/sw.js";
 const POST_BUILD_SW = `${SITE_ROOT}`;
 
 // const TAILWIND_CONFIG = "./tailwind.config.js";
@@ -47,7 +47,7 @@ gulp.task("buildJekyll", () => {
 
   const args = ["exec", jekyll, "build"];
 
-  args.push("--destination", SITE_ROOT)
+  args.push("--destination", SITE_ROOT);
   if (isDevelopmentBuild) {
     args.push("--incremental");
   }
@@ -58,125 +58,147 @@ gulp.task("buildJekyll", () => {
 gulp.task("processStyles", () => {
   browserSync.notify("Compiling styles...");
 
-  const tailwindConfig = Object.assign(
-    tailwindConfigDefault,
-    {
-      purge: {
-        enabled: true,
-        content: [SITE_ROOT_HTML],
-      },
-    }
-  );
+  const tailwindConfig = Object.assign(tailwindConfigDefault, {
+    purge: {
+      enabled: true,
+      content: [SITE_ROOT_HTML],
+    },
+  });
 
-  return gulp.src(PRE_BUILD_STYLES)
+  return gulp
+    .src(PRE_BUILD_STYLES)
     .pipe(
       postcss([
         atimport(),
         tailwindcss(tailwindConfig),
-        ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano({
-          preset: ["default", { discardComments: { removeAll: true } }],
-        })]),
+        ...(isDevelopmentBuild
+          ? []
+          : [
+              autoprefixer(),
+              cssnano({
+                preset: ["default", { discardComments: { removeAll: true } }],
+              }),
+            ]),
       ])
     )
     .pipe(gulp.dest(POST_BUILD_STYLES));
 });
 
 gulp.task("uglify", () => {
-  return gulp.src(PRE_BUILD_JS)
-    .pipe(uglify())
-    .pipe(gulp.dest(POST_BUILD_JS));
+  return gulp.src(PRE_BUILD_JS).pipe(uglify()).pipe(gulp.dest(POST_BUILD_JS));
 });
 
 gulp.task("uglify-sw", () => {
-  return gulp.src(PRE_BUILD_SW)
-    .pipe(uglify())
-    .pipe(gulp.dest(POST_BUILD_SW));
+  return gulp.src(PRE_BUILD_SW).pipe(uglify()).pipe(gulp.dest(POST_BUILD_SW));
 });
 
 gulp.task("bust-cache", () => {
-  return gulp.src(CACHE_BUST_PATH)
-    .pipe(through2.obj(function (file, _, cb) {
-      if (!file.isBuffer()) { // not support type
+  return gulp.src(CACHE_BUST_PATH).pipe(
+    through2.obj(function (file, _, cb) {
+      if (!file.isBuffer()) {
+        // not support type
         return cb(null, file);
       }
 
-      const hash = crypto.createHash('md5');
+      const hash = crypto.createHash("md5");
 
       hash.end(file.contents);
 
-      const fileHash = hash.read().toString('hex').substr(0, this.checksumLength);
+      const fileHash = hash
+        .read()
+        .toString("hex")
+        .substr(0, this.checksumLength);
       const relativeRootPath = path.relative(process.cwd(), file.path);
       const relativePath = path.relative(SITE_ROOT, relativeRootPath);
 
       const cachePath = `${CLOUDFLARE_WORKER_HOST}/cache-bust/${relativePath}`;
-      axios.get(cachePath).then((res) => {
-        if (res.data === fileHash) { // when cache no update
-          return;
-        }
-        axios.post(cachePath, fileHash, {
-          headers: { 'Authorization': CLOUDFLARE_WORKER_API_KEY }
+      axios
+        .get(cachePath)
+        .then((res) => {
+          if (res.data === fileHash) {
+            // when cache no update
+            return;
+          }
+          axios
+            .post(cachePath, fileHash, {
+              headers: { Authorization: CLOUDFLARE_WORKER_API_KEY },
+            })
+            .then(() => {
+              console.log(`cache bust success: ${relativePath} ${fileHash}`);
+            })
+            .catch((error) => {
+              console.error(
+                `cache bust failed ${relativePath} ${fileHash} ${error}`
+              );
+            });
         })
-          .then(() => {
-            console.log(`cache bust success: ${relativePath} ${fileHash}`);
-          })
-          .catch(error => {
-            console.error(`cache bust failed ${relativePath} ${fileHash} ${error}`)
-          });
-      }).catch(error => {
-        console.error(`get cache failed ${relativePath} ${fileHash} ${error}`)
-      });
+        .catch((error) => {
+          console.error(
+            `get cache failed ${relativePath} ${fileHash} ${error}`
+          );
+        });
 
       cb(null, file);
-    }));
+    })
+  );
 });
 
-gulp.task("post-js", async () => {
+gulp.task("post-js", () => {
   var server = express();
   server.use(express.static(SITE_ROOT));
   server.listen(6969);
 
-  await new Promise(resolve => setTimeout(resolve, 3000)); // wait express running
-
-  return gulp.src(SITE_ROOT_HTML, { base: SITE_ROOT })
-    .pipe(through2.obj(async (file, _, cb) => {
-      if (!file.isBuffer()) { // not support type
-        return cb(null, file);
-      }
-
-      const relativeRootPath = path.relative(process.cwd(), file.path);
-      const relativePath = path.relative(SITE_ROOT, relativeRootPath);
-
-      console.log(`Rendering ${relativePath}`);
-
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-
-      await page.goto(`http://localhost:6969/${relativePath}`, { waitUntil: 'networkidle0' });
-
-      let body = await page.evaluate(() => {
-        // remove data-post-js script
-        const unusedElements = document.querySelectorAll('script[data-post-js="true"]');
-        for (let i = 0; i < unusedElements.length; i++) {
-          unusedElements[i].parentNode.removeChild(unusedElements[i]);
+  return gulp
+    .src(SITE_ROOT_HTML, { base: SITE_ROOT })
+    .pipe(
+      through2.obj(async (file, _, cb) => {
+        if (!file.isBuffer()) {
+          // not support type
+          return cb(null, file);
         }
-        return document.documentElement.outerHTML;
-      });
 
-      // replace script type text/runtime-javascript to text/javascript
-      body = body.replace(/type\=\"text\/runtime\-javascript\"/g, 'type="text/javascript"');
-      body = '<!DOCTYPE html>' + body; // DOCTYPE is gone when puppeteer run
+        const relativeRootPath = path.relative(process.cwd(), file.path);
+        const relativePath = path.relative(SITE_ROOT, relativeRootPath);
 
-      file.contents = Buffer.from(body);
+        console.log(`Rendering ${relativePath}`);
 
-      await browser.close();
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
 
-      cb(null, file);
-    }))
+        await page.goto(`http://localhost:6969/${relativePath}`, {
+          waitUntil: "networkidle0",
+        });
+
+        let body = await page.evaluate(() => {
+          // remove data-post-js script
+          const unusedElements = document.querySelectorAll(
+            'script[data-post-js="true"]'
+          );
+          for (let i = 0; i < unusedElements.length; i++) {
+            unusedElements[i].parentNode.removeChild(unusedElements[i]);
+          }
+          return document.documentElement.outerHTML;
+        });
+
+        // replace script type text/runtime-javascript to text/javascript
+        body = body.replace(
+          /type\=\"text\/runtime\-javascript\"/g,
+          'type="text/javascript"'
+        );
+        body = "<!DOCTYPE html>" + body; // DOCTYPE is gone when puppeteer run
+
+        file.contents = Buffer.from(body);
+
+        await browser.close();
+
+        cb(null, file);
+      })
+    )
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest(SITE_ROOT))
-    .on('end', () => {
+    .on("end", () => {
       // TODO: close express server
-      console.log('post-js finished');
+      console.log("post-js finished");
     });
 });
 

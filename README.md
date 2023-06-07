@@ -39,8 +39,6 @@ Pre render JavaScript libraries:
 
 <https://merakiui.com/>
 
-<https://coolicons.cool/>
-
 <https://storyset.com/>
 
 <https://stackoverflow.com/questions/66937676/how-can-i-disable-javascript-in-pupeeter>

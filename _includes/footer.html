@@ -2,10 +2,10 @@
 <footer>
   <hr class="mt-10 dark:border-gray-500" />
   <div class="container px-4 py-8 mx-auto">
-    <div class="grid grid-cols-12 text-gray-800">
-      <div class="col-span-6 justify-left">{% include social.html %}</div>
-      <div class="col-span-6 text-right">
-        <div>&copy; {{ site.title }} {{ site.time | date: '%Y' }}</div>
+    <div class="flex flex-col lg:flex-row justify-between text-gray-800 space-y-4 lg:space-y-0">
+      <div class="flex justify-center lg:justify-start">{% include social.html %}</div>
+      <div class="text-center lg:text-right">
+        <div>Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}</div>
         <!-- <div>
           Made by
           <a class="text-gray-600" href="{{ site.url }}">ntsd</a>
