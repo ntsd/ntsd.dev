@@ -1,16 +1,16 @@
-const PRE_CACHE = "p1";
-const RUNTIME_CACHE = "r1";
+const PRE_CACHE = "p2";
+const RUNTIME_CACHE = "r2";
 
 // A list of local resources we always want to be cached.
 const PRE_CACHE_URLS = [
   "./assets/css/style.css",
-	"./assets/css/prism.css",
+  "./assets/css/prism.css",
   "./pwa/manifest.json",
   "./pwa/icons/icon-min.svg",
 ];
 
 // whitelist hostname to cache
-const HOSTNAME_WHITELIST = ["ntsd.dev", "giscus.app"];
+const HOSTNAME_WHITELIST = ["ntsd.dev", "giscus.app", "githubusercontent.com"];
 
 const cacheFirst = async (event) => {
   const cache = await caches.open(RUNTIME_CACHE);
@@ -46,7 +46,7 @@ self.addEventListener("activate", (event) => {
     (async () => {
       // remove old cache
       for (const key of await caches.keys()) {
-        if (key !== CACHE) await caches.delete(key);
+        await caches.delete(key);
       }
 
       // enable navigation preload
