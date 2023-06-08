@@ -26,7 +26,7 @@ sideBar: true
                             {{ post.subtitle }}
                         </p>
                     {% endif %}
-                    <p class="mt-2 text-gray-600">
+                    <p class="mt-2 text-gray-600 overflow-hidden">
                         {{ post.content | strip_html | truncate:200 }}
                     </p>
                 </div>
@@ -53,9 +53,9 @@ sideBar: true
     <div class="grid justify-items-end md:justify-items-center">
         <div class="flex">
             {% if paginator.previous_page %}
-                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white hover:bg-gray-600 hover:text-white" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Previous</a>
+                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white hover:bg-gray-600 hover:text-white" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">{{"<"}}</a>
             {% else %}
-                <a class="flex items-center px-4 py-2 mx-1 text-gray-500 bg-white pointer-events-none" href="#">Previous</a>
+                <a class="flex items-center px-4 py-2 mx-1 text-gray-300 bg-white pointer-events-none" href="#">{{"<"}}</a>
             {% endif %}
             {% if paginator.page_trail %}
                 {% for trail in paginator.page_trail %}
@@ -67,9 +67,9 @@ sideBar: true
                 {% endfor %}
             {% endif %}
             {% if paginator.next_page %}
-                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white hover:bg-gray-600 hover:text-white" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next</a>
+                <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white hover:bg-gray-600 hover:text-white" href="{{ paginator.next_page_path | prepend: site.baseurl }}">{{">"}}</a>
             {% else %}
-                <a class="flex items-center px-4 py-2 mx-1 text-gray-500 bg-white pointer-events-none" href="#">Next</a>
+                <a class="flex items-center px-4 py-2 mx-1 text-gray-300 bg-white pointer-events-none" href="#">{{">"}}</a>
             {% endif %}
         </div>
     </div>
