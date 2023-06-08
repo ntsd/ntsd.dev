@@ -10,7 +10,7 @@ const PRE_CACHE_URLS = [
 ];
 
 // whitelist hostname to cache
-const HOSTNAME_WHITELIST = ["ntsd.dev", "giscus.app", "githubusercontent.com"];
+const HOSTNAME_WHITELIST = ["ntsd.dev", "giscus.app"];
 
 const cacheFirst = async (event) => {
   const cache = await caches.open(RUNTIME_CACHE);
