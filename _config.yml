@@ -129,6 +129,12 @@ projects:
     date: 2023 - present
     github: https://github.com/ntsd/zero-share
     web: https://zero-share.github.io
+  - auto-evm-wallet:
+    name: Auto EVM Wallet
+    description: EVM wallet that allow to schedule or automate smart contract call.
+    date: 2023 - present
+    github: https://github.com/ntsd/auto-evm-wallet
+    web: https://ntsd.github.io/auto-evm-wallet
   - sdp-compress:
     name: SDP Compact
     description: Shorten WebRTC Session Description Protocol (SDP) based on Unified Plan SDP.
@@ -180,6 +186,12 @@ projects:
     description: A Google Sheet custom function add-on used for web scraping and supporting cache created by Google Apps Script.
     date: 2021
     github: https://github.com/ntsd/google-sheet-import-cache
+  - ruamrat:
+    name: Ruamrat Website
+    description: Website for Ruamrat Aluminium Glass Business.
+    date: 2019
+    github: https://github.com/ntsd/ruamrat
+    web: https://ruamrat.com
 
 # About
 about:
