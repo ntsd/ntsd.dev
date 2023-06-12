@@ -79,21 +79,14 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /pwa/icons/icon-min.svg
+      image: /pwa/icons/legacy/512.png # can't use svg
 logo: /pwa/icons/icon-min.svg
-twitter:
-  username: ntsd_me
-  card: summary
-facebook:
-  app_id: 523337598616322
-  publisher: ntsd.dev
-  admins: jo.ntsd
 social:
   name: Jirawat Boonkumnerd
   links:
-    - https://web.facebook.com/ntsd.dev
     - https://github.com/ntsd
     - https://www.linkedin.com/in/ntsd
+    - https://facebook.com/ntsd.dev
 
 # Markdown settings http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
