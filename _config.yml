@@ -79,8 +79,13 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /pwa/icons/legacy/512.png # can't use svg
+      image: /pwa/icons/512.png # can't use svg
 logo: /pwa/icons/icon-min.svg
+# twitter:
+#   username: ntsd_me
+#   card: summary
+facebook:
+  app_id: 1034059654428260
 social:
   name: Jirawat Boonkumnerd
   links:
