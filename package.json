@@ -1,7 +1,7 @@
 {
-  "name": "jekyll-starter-tailwind",
-  "version": "6.0.0",
-  "description": "A starter kit for using Tailwind with Jekyll",
+  "name": "ntsd-dev",
+  "version": "1.0.0",
+  "description": "ntsd.dev website",
   "main": "gulpfile.babel.js",
   "devDependencies": {
     "@tailwindcss/typography": "^0.4.1",
@@ -37,12 +37,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/taylorbryant/jekyll-starter-tailwind.git"
+    "url": "https://github.com/ntsd/ntsd.dev"
   },
-  "author": "Taylor Bryant",
+  "author": "Jirawat Boonkumnerd",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/taylorbryant/jekyll-starter-tailwind/issues"
+    "url": "https://github.com/ntsd/ntsd.dev/issues"
   },
   "publishConfig": {
     "access": "public"

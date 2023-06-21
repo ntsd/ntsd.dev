@@ -34,13 +34,8 @@ sideBar: true
 
             <div class="flex items-center justify-end mt-4">
                 <div class="flex items-center text-sm">
-                    <span class="text-gray-600">Posted by&nbsp;</span>
-                    <a class="font-bold text-gray-700 cursor-pointer" href="#">
-                        {% if post.author %}
-                            {{ post.author }}
-                        {% else %}
-                            {{ site.title }}
-                        {% endif %}
+                    <a class="font-bold text-gray-700 cursor-pointer" href="{{ post.url | prepend: site.baseurl }}">
+                        Read More
                     </a>
                 </div>
             </div>

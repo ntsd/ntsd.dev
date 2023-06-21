@@ -3,7 +3,6 @@ layout: post
 title:  "Speed testing and compare free static web hosting (Netlify vs Github Page vs Fast.io)"
 date:   2020-05-30 15:14:54
 subtitle: ""
-author: "ntsd"
 categories:
     - Software Development
 tags:

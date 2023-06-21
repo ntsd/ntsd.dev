@@ -3,7 +3,6 @@ layout: post
 title:  "Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms"
 date:   2018-08-5 12:30:54
 subtitle: "สร้างบอทเกมเพื่อเล่นเกมไพ่แข่งกับคนอื่น"
-author: "ntsd"
 catalog: true
 categories:
     - Software Development

@@ -3,7 +3,6 @@ layout: post
 title: "My kubectl commands cheat sheet"
 date: 2022-9-2
 subtitle: "My useful kubectl commands cheat sheet and Google Kubernetes Engine cluster (GKE) set up"
-author: "ntsd"
 catalog: true
 categories:
   - Software Development

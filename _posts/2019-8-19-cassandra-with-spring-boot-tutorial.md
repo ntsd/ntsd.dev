@@ -3,7 +3,6 @@ layout: post
 title:  "Apache Cassandra with Spring Boot tutorial"
 date:   2019-09-19 12:30:54
 subtitle: "learn how to use Apache Cassandra and Spring Data Cassandra"
-author: "ntsd"
 catalog: true
 categories:
     - Software Development

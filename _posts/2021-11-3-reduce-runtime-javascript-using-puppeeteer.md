@@ -3,7 +3,6 @@ layout: post
 title: "Reduce runtime JavaScript to improve page speed using Puppeteer"
 date: 2021-11-3
 subtitle: "How I remove some unnecessary JavaScript to make the page loading faster in runtime using Puppeteer"
-author: "ntsd"
 catalog: false
 categories:
   - Software Development

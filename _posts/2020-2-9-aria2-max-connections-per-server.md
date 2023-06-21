@@ -3,7 +3,6 @@ layout: post
 title:  "Recompile aria2 to increment max connections per server"
 date:   2020-2-9 12:30:54
 subtitle: "Edit a line of code and re-complie aria2 to unlock aria 2 connections limit"
-author: "ntsd"
 catalog: true
 categories:
     - Software Development

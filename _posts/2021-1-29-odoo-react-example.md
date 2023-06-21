@@ -3,7 +3,6 @@ layout: post
 title:  "Using React app inside Odoo module"
 date:   2021-1-29
 subtitle: "Add react app to Odoo module and using Odoo Javascript modules"
-author: "ntsd"
 catalog: true
 categories:
     - Software Development
