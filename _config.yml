@@ -148,7 +148,7 @@ projects:
     description: An open source cross-platform clipboard sharing.
     date: 2022 - present
     github: https://github.com/ntsd/cross-clipboard
-    stacks: [Go, LibP2P]
+    stacks: [Go, libp2p]
   - freqtrade-configs:
     name: Freqtrade Configs
     description: My Freqtrade strategies and config.

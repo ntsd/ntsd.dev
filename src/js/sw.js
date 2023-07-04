@@ -1,5 +1,5 @@
-const PRE_CACHE = "p2";
-const RUNTIME_CACHE = "r2";
+const PRE_CACHE = "pre-version"; // will replace to the random version
+const RUNTIME_CACHE = "runtime-version";
 
 // A list of local resources we always want to be cached.
 const PRE_CACHE_URLS = [
@@ -46,7 +46,7 @@ self.addEventListener("activate", (event) => {
     (async () => {
       // remove old cache
       for (const key of await caches.keys()) {
-        await caches.delete(key);
+        if (key !== PRE_CACHE && key != RUNTIME_CACHE) await caches.delete(key);
       }
 
       // enable navigation preload

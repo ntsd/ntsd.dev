@@ -7,6 +7,7 @@ import postcss from "gulp-postcss";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
 import uglify from "gulp-uglify";
+import replace from "gulp-replace";
 import through2 from "through2";
 import crypto from "crypto";
 import path from "path";
@@ -89,7 +90,12 @@ gulp.task("uglify", () => {
 });
 
 gulp.task("uglify-sw", () => {
-  return gulp.src(PRE_BUILD_SW).pipe(uglify()).pipe(gulp.dest(POST_BUILD_SW));
+  return gulp
+    .src(PRE_BUILD_SW)
+    .pipe(replace("pre-version", Math.random().toString(36)))
+    .pipe(replace("runtime-version", Math.random().toString(36)))
+    .pipe(uglify())
+    .pipe(gulp.dest(POST_BUILD_SW));
 });
 
 gulp.task("bust-cache", () => {
