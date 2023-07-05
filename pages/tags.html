@@ -35,6 +35,37 @@ sideBar: true
     {% endfor %}
 </div>
 
+<!-- async load function async(url, callback, delay, isPostJS) -->
+<script>
+  function async(u, c, t, p) {
+    function l() {
+      var d = document,
+        s = "script",
+        o = d.createElement(s),
+        e = d.getElementsByTagName(s)[0];
+      o.src = u;
+      o.async = true;
+      if (p) {
+        o.setAttribute("data-post-js", true);
+      }
+      if (c) {
+        o.addEventListener(
+          "load",
+          function (e) {
+            c(e);
+          },
+          false
+        );
+      }
+      e.parentNode.insertBefore(o, e);
+    }
+    if (t) {
+      setTimeout(l, t);
+    } else {
+      l();
+    }
+  }
+</script>
 <script type="text/javascript" data-post-js="true">
     async(
         "https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js",

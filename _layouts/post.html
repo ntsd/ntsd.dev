@@ -3,116 +3,189 @@ layout: default
 ---
 <!-- Page Header -->
 <style type="text/css">
-    header .header-bg {
-        background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
-    }
+  header .header-bg {
+    background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
+  }
 </style>
 <header>
-    <div class="w-full bg-center bg-cover bg-black header-bg">
-        <div class="backdrop-filter backdrop-brightness-75">
-            <div class="container mx-auto grid grid-cols-12">
-                <div class="text-left text-white col-span-10 md:col-start-1 md:col-span-11 py-32 px-4">
-                    <span class="categories">
-                        {% for category in page.categories %}
-                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-600" href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
-                        {% endfor %}
-                    </span>
-                    <span class="tags">
-                        {% for tag in page.tags %}
-                            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-600" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-                        {% endfor %}
-                    </span>
-                    <h1 class="text-6xl my-4">{{ page.title }}</h1>
-                    <h2 class="text-2xl my-4">{{ page.subtitle }}</h2>
-                    <span class="meta">
-                        <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-                    </span>
-                </div>
-            </div>
+  <div class="w-full bg-center bg-cover bg-black header-bg">
+    <div class="backdrop-filter backdrop-brightness-75">
+      <div class="container mx-auto grid grid-cols-12">
+        <div class="text-left text-white col-span-10 md:col-start-1 md:col-span-11 py-32 px-4">
+          <span class="categories">
+            {% for category in page.categories %}
+            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-600"
+              href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category
+              }}</a>
+            {% endfor %}
+          </span>
+          <span class="tags">
+            {% for tag in page.tags %}
+            <a class="py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-600"
+              href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+            {% endfor %}
+          </span>
+          <h1 class="text-6xl my-4">{{ page.title }}</h1>
+          <h2 class="text-2xl my-4">{{ page.subtitle }}</h2>
+          <span class="meta">
+            <time datetime="{{ page.date | date:" %Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          </span>
         </div>
+      </div>
     </div>
+  </div>
 </header>
 
 <!-- Post Content -->
 <article class="container mx-auto grid grid-cols-12">
-    <!-- Post Container -->
-    <div class="col-span-10 md:col-start-1 md:col-span-12 py-4 px-4">
-        <div class="py-8">
-            <div class="post-container prose max-w-none">
-                {{ content }}
-            </div>
+  <!-- Post Container -->
+  <div class="col-span-10 md:col-start-1 md:col-span-12 py-4 px-4">
+    <div class="py-8">
+      <div class="post-container prose max-w-none">
+        {{ content }}
+      </div>
 
-            <ul class="grid grid-cols-2 text-center mt-8">
-                {% if page.previous.url %}
-                    <li class="col-span-1 border p-4 mr-4 hover:bg-gray-800 hover:text-white">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                            <div class="text-xl font-bold">Previous</div>
-                            <div class="text-gray-500">{{page.previous.title}}</div>
-                        </a>
-                    </li>
-                {% endif %}
-                {% if page.next.url %}
-                    <li class="col-span-1 border p-4 ml-4 hover:bg-gray-800 hover:text-white">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                            <div class="text-xl font-bold">Next</div>
-                            <div class="text-gray-500">{{page.next.title}}</div>
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-
-        {% if site.giscus %}
-            <div class="comment giscus py-8"></div>
+      <ul class="grid grid-cols-2 text-center mt-8">
+        {% if page.previous.url %}
+        <li class="col-span-1 border p-4 mr-4 hover:bg-gray-800 hover:text-white">
+          <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+            data-placement="top" title="{{page.previous.title}}">
+            <div class="text-xl font-bold">Previous</div>
+            <div class="text-gray-500">{{page.previous.title}}</div>
+          </a>
+        </li>
         {% endif %}
-
-        {% include featured_tags.html %}
+        {% if page.next.url %}
+        <li class="col-span-1 border p-4 ml-4 hover:bg-gray-800 hover:text-white">
+          <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
+            data-placement="top" title="{{page.next.title}}">
+            <div class="text-xl font-bold">Next</div>
+            <div class="text-gray-500">{{page.next.title}}</div>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
 
-    <!-- Right Side Catalog Container -->
-    {% if page.catalog %}
-        <div class="col-span-2 md:hidden py-4 pl-4">
-            <div class="on-page-nav sticky top-28 text-gray-500 font-medium py-8">
-                <div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div>
-            </div>
-        </div>
+    {% if site.giscus %}
+    <div class="comment giscus py-8"></div>
     {% endif %}
+
+    {% include featured_tags.html %}
+  </div>
+
+  <!-- Right Side Catalog Container -->
+  {% if page.catalog %}
+  <div class="col-span-2 md:hidden py-4 pl-4">
+    <div class="on-page-nav sticky top-28 text-gray-500 font-medium py-8">
+      <div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div>
+    </div>
+  </div>
+  {% endif %}
 </article>
 
+{% if page.catalog or site.anchorjs %}
+<!-- async load function async(url, callback, delay, isPostJS) -->
+<script>
+  function async(u, c, t, p) {
+    function l() {
+      var d = document,
+        s = "script",
+        o = d.createElement(s),
+        e = d.getElementsByTagName(s)[0];
+      o.src = u;
+      o.async = true;
+      if (p) {
+        o.setAttribute("data-post-js", true);
+      }
+      if (c) {
+        o.addEventListener(
+          "load",
+          function (e) {
+            c(e);
+          },
+          false
+        );
+      }
+      e.parentNode.insertBefore(o, e);
+    }
+    if (t) {
+      setTimeout(l, t);
+    } else {
+      l();
+    }
+  }
+</script>
+{% endif %}
+
 {% if page.catalog %}
-    <script type="text/javascript" data-post-js="true" >
-    async(
-        "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js",
-        function () {
-            const content = document.querySelector('.post-container');
-            const insertTarget = document.querySelector('.on-page-nav');
-            scrollnav.init(content, { 
-                debug: false,
-                insertTarget: insertTarget,
-                insertLocation: 'append',
-            });
-        },
-        0,
-        true
-    );
-    </script>
-    <style>
-        nav.scroll-nav a.scroll-nav__link {
-            display: block;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-        }
-        nav.scroll-nav li.scroll-nav__item.scroll-nav__item--active {
-            color: #000;
-        }
-        nav.scroll-nav a.scroll-nav__link:hover {
-            color: #000;
-        }
-    </style>
+<script type="text/javascript" data-post-js="true">
+  async(
+    "https://cdn.jsdelivr.net/npm/scrollnav@3.0.1/dist/scrollnav.min.umd.js",
+    function () {
+      const content = document.querySelector('.post-container');
+      const insertTarget = document.querySelector('.on-page-nav');
+      scrollnav.init(content, {
+        debug: false,
+        insertTarget: insertTarget,
+        insertLocation: 'append',
+      });
+    },
+    0,
+    true
+  );
+</script>
+<style>
+  nav.scroll-nav a.scroll-nav__link {
+    display: block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  nav.scroll-nav li.scroll-nav__item.scroll-nav__item--active {
+    color: #000;
+  }
+
+  nav.scroll-nav a.scroll-nav__link:hover {
+    color: #000;
+  }
+</style>
+{% endif %}
+
+{% if site.anchorjs %}
+<script type="text/javascript" data-post-js="true">
+  async(
+    "https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js",
+    function () {
+      anchors.options = {
+        visible: "always",
+        placement: "right",
+        icon: '',
+      };
+      anchors.add(".post-container h1, .post-container h2, .post-container h3");
+    },
+    0,
+    true
+  );
+</script>
+<style>
+  .anchorjs-link {
+    color: #777 !important;
+    text-decoration: none !important;
+  }
+
+  .anchorjs-link:hover {
+    color: #000 !important;
+  }
+
+  .anchorjs-link::before {
+    content: "#";
+  }
+</style>
 {% endif %}
 
 {% if site.giscus %}
-    <script type="text/runtime-javascript" >
+<script type="text/runtime-javascript">
         setTimeout(function () {
           var d = document, s = d.createElement("script");
           s.src = " https://giscus.app/client.js";
@@ -132,39 +205,9 @@ layout: default
     </script>
 {% endif %}
 
-{% if site.anchorjs %}
-    <script type="text/javascript" data-post-js="true">
-    async(
-        "https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js",
-        function () {
-            anchors.options = {
-                visible: "always",
-                placement: "right",
-                icon: '',
-            };
-            anchors.add(".post-container h1, .post-container h2, .post-container h3");
-        },
-        0,
-        true
-    );
-    </script>
-    <style>
-        .anchorjs-link {
-            color: #777 !important;
-            text-decoration: none !important;
-        }
-        .anchorjs-link:hover {
-            color: #000 !important;
-        }
-        .anchorjs-link::before {
-            content: "#";
-        }
-    </style>
-{% endif %}
-
 {% if site.prism %}
-    {% unless page.noCode %}
-        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/prism.css"/>
-        <script type="text/javascript" src="{{ site.baseurl }}/assets/js/prism.js" data-post-js="true" ></script>
-    {% endunless %}
+{% unless page.noCode %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/prism.css" />
+<script type="text/javascript" src="{{ site.baseurl }}/assets/js/prism.js" data-post-js="true"></script>
+{% endunless %}
 {% endif %}

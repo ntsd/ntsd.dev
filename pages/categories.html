@@ -25,6 +25,39 @@ sideBar: true
 </div>
 
 {% if site.anchorjs %}
+<!-- async load function async(url, callback, delay, isPostJS) -->
+<script>
+  function async(u, c, t, p) {
+    function l() {
+      var d = document,
+        s = "script",
+        o = d.createElement(s),
+        e = d.getElementsByTagName(s)[0];
+      o.src = u;
+      o.async = true;
+      if (p) {
+        o.setAttribute("data-post-js", true);
+      }
+      if (c) {
+        o.addEventListener(
+          "load",
+          function (e) {
+            c(e);
+          },
+          false
+        );
+      }
+      e.parentNode.insertBefore(o, e);
+    }
+    if (t) {
+      setTimeout(l, t);
+    } else {
+      l();
+    }
+  }
+</script>
+{% endif %}
+{% if site.anchorjs %}
     <script type="text/javascript" data-post-js="true">
     async(
         "https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js",

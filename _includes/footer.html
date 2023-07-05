@@ -33,17 +33,17 @@
     navigator.serviceWorker.register('/sw.js').catch((err) => {
       console.error("service worker register error:", err);
     });
-
-    navigator.serviceWorker.onmessage = (e) => {
-      const data = e.data;
-      if(data.command == "UPDATE_FOUND"){
-        console.log("UPDATE_FOUND_BY_SW", data);
-        location.reload();
-      }
-    };
   }
 </script>
 {% endif %}
+
+<!-- navigator.serviceWorker.onmessage = (e) => {
+  const data = e.data;
+  if(data.command == "UPDATE_FOUND"){
+    console.log("UPDATE_FOUND_BY_SW", data);
+    location.reload();
+  }
+}; -->
 
 <!-- Google Analytics -->
 {% if site.ga_track_id %}
