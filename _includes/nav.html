@@ -39,40 +39,32 @@
     </div>
 </nav>
 <script type="text/runtime-javascript" async >
-    var navbar = document.querySelector("#navbar");
     var toggle = document.querySelector("#nav-toggle");
     var navLeft = document.querySelector("#nav-left");
     var navRight = document.querySelector("#nav-right");
 
-    var nav = {
-        close: function () {
+    toggle.addEventListener("click", function (e) {
+        if (toggle.className.indexOf("nav-open") > 0) {
             navLeft.classList.add("md:hidden");
             navRight.classList.add("md:hidden");
             toggle.classList.remove("nav-open");
-        },
-        open: function () {
-            navLeft.classList.remove("md:hidden");
-            navRight.classList.remove("md:hidden");
-            toggle.classList.add("nav-open");
+            return;
         }
-    };
-
-    toggle.addEventListener("click", function (e) {
-        if (toggle.className.indexOf("nav-open") > 0) {
-            nav.close();
-        } else {
-            nav.open();
-        }
+        navLeft.classList.remove("md:hidden");
+        navRight.classList.remove("md:hidden");
+        toggle.classList.add("nav-open");
     });
 
+    
+    var navbar = document.querySelector("#navbar");
     var prevScrollPos = window.pageYOffset;
     window.onscroll = function () {
         var curScrollPos = window.pageYOffset;
         if (curScrollPos > navbar.offsetHeight) {
             if (prevScrollPos > curScrollPos) {
-                navbar.classList.remove("lg:-translate-y-full");
+                navbar.classList.remove("-translate-y-full");
             } else {
-                navbar.classList.add("lg:-translate-y-full");
+                navbar.classList.add("-translate-y-full");
             }
             prevScrollPos = curScrollPos;
         }

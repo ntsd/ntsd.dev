@@ -17,7 +17,7 @@ published: true
 
 ## Capacitor Preferences
 
-Capacitor Preferences is a Capacitor plugin to allow Capacitor applications to store persistent data.
+[Capacitor Preferences](https://capacitorjs.com/docs/apis/preferences) is a Capacitor plugin to allow Capacitor applications to store persistent data.
 
 The Preferences API provides a simple key/value persistent store for lightweight data.
 
