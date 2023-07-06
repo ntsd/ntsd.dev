@@ -1,7 +1,8 @@
 module.exports = {
   purge: {
     enabled: true,
-    content: ['_site/**/*.html'],
+    content: ["_site/**/*.html"],
+    safelist: ["lg:-translate-y-full"],
   },
   theme: {
     extend: {
@@ -9,7 +10,7 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              'line-break': 'anywhere',
+              "line-break": "anywhere",
             },
             code: null,
           },
@@ -17,21 +18,19 @@ module.exports = {
       },
     },
     screens: {
-      'md': { 'max': '1023px' },
-      'lg': { 'min': '1024px' },
+      md: { max: "1023px" },
+      lg: { min: "1024px" },
     },
     container: {
       screens: {
         sm: "100%",
         md: "100%",
         lg: "1024px",
-        xl: "1280px"
+        xl: "1280px",
       },
     },
   },
   variants: {},
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-  darkMode: 'class',
+  plugins: [require("@tailwindcss/typography")],
+  darkMode: "class",
 };

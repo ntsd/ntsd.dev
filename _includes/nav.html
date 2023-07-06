@@ -62,9 +62,9 @@
         var curScrollPos = window.pageYOffset;
         if (curScrollPos > navbar.offsetHeight) {
             if (prevScrollPos > curScrollPos) {
-                navbar.classList.remove("-translate-y-full");
+                navbar.classList.remove("lg:-translate-y-full");
             } else {
-                navbar.classList.add("-translate-y-full");
+                navbar.classList.add("lg:-translate-y-full");
             }
             prevScrollPos = curScrollPos;
         }
