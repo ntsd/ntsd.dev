@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Persistent store for cross-platform React applications with Recoil and Capacitor Preferences."
+title: "Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences"
 date: 2023-7-6
-subtitle: "Make Recoil persistent for Cross-Platform React Applications, worked for iOS, Android, Website, and PWA."
+subtitle: "Make Recoil persistent for Cross-Platform React Applications. worked for iOS, Android, Website, and PWA."
 catalog: true
 categories:
   - Software Development
@@ -29,7 +29,9 @@ This plugin will use UserDefaults on iOS and SharedPreferences on Android. Store
 
 The customize for Atom Effect to store data in Capacitor Preferences instead of Memory for persistent data.
 
-This code makes customized to get, set, and remove the data by key.
+This code makes customized to get, set, and remove the data by the store key.
+
+* Instead of Capacitor Preferences you can replace with any Library you want.
 
 ```javascript
 import { Preferences } from "@capacitor/preferences";
