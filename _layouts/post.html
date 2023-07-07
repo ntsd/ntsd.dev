@@ -11,9 +11,9 @@ layout: default
   <div class="w-full bg-center bg-cover bg-black header-bg">
     <div class="backdrop-filter backdrop-brightness-75">
       <div class="container mx-auto grid grid-cols-12">
-        <div class="text-left text-white col-span-10 md:col-start-1 md:col-span-11 py-24 px-4">
+        <div class="text-left text-white col-span-12 lg:col-span-10 py-24 px-4">
           <span class="categories">
-            {% for category in page.categories %}
+            {% for category in page.categories %} 
             <a class="text-sm py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-600"
               href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category
               }}</a>
@@ -39,28 +39,28 @@ layout: default
 <!-- Post Content -->
 <article class="container mx-auto grid grid-cols-12">
   <!-- Post Container -->
-  <div class="col-span-10 md:col-start-1 md:col-span-12 py-4 px-4">
+  <div class="col-span-12 lg:col-span-10 py-4 px-4">
     <div class="py-8">
       <div class="post-container prose max-w-none">
         {{ content }}
       </div>
 
-      <ul class="grid grid-cols-2 text-center mt-8">
+      <ul class="grid grid-cols-2 text-center mt-8 gap-8">
         {% if page.previous.url %}
-        <li class="col-span-1 border p-4 mr-4 hover:bg-gray-800 hover:text-white">
+        <li class="col-span-2 lg:col-span-1 border p-4 hover:bg-gray-800 hover:text-white">
           <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
             data-placement="top" title="{{page.previous.title}}">
             <div class="text-xl font-bold">Previous</div>
-            <div class="text-gray-500">{{page.previous.title}}</div>
+            <div class="font-thin">{{page.previous.title}}</div>
           </a>
         </li>
         {% endif %}
         {% if page.next.url %}
-        <li class="col-span-1 border p-4 ml-4 hover:bg-gray-800 hover:text-white">
+        <li class="col-span-2 lg:col-span-1 border p-4 hover:bg-gray-800 hover:text-white">
           <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip"
             data-placement="top" title="{{page.next.title}}">
             <div class="text-xl font-bold">Next</div>
-            <div class="text-gray-500">{{page.next.title}}</div>
+            <div class="font-light">{{page.next.title}}</div>
           </a>
         </li>
         {% endif %}
@@ -76,7 +76,7 @@ layout: default
 
   <!-- Right Side Catalog Container -->
   {% if page.catalog %}
-  <div class="col-span-2 md:hidden py-4 pl-4">
+  <div class="hidden lg:block col-span-2 py-4 pl-4">
     <div class="on-page-nav sticky top-28 text-gray-500 font-medium py-8">
       <div class="text-gray-900 tracking-wide font-semibold mb-3 text-sm">ON THIS PAGE</div>
     </div>

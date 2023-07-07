@@ -21,7 +21,10 @@
   <link href="https://api.github.com" rel="preconnect" />
   {% endif %}
   <!-- Styles -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="./index.css" />
+  <!-- Non-Critical CSS -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" async />
   <!-- Web App Manifest -->
   <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json" async />
   <!-- Favicon -->

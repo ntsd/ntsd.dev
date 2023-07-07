@@ -2,7 +2,7 @@
 layout: page
 title: "Privacy Policy"
 description: ""
-permalink: /privacy-policy
+permalink: /privacy-policy/
 sideBar: false
 ---
 

@@ -7,11 +7,13 @@ catalog: true
 categories:
   - Software Development
 tags:
-  - Mobile
-  - Application
+  - Mobile Development
+  - Web Development
   - Recoil
   - Capacitor
   - React
+  - Programming
+  - Frontend
 published: true
 ---
 

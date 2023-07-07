@@ -17,6 +17,7 @@ import puppeteer from "puppeteer";
 import htmlmin from "gulp-htmlmin";
 import tailwindConfigDefault from "./tailwind.config.js";
 import express from "express";
+import { stream as critical } from "critical";
 
 dotenv.config();
 
@@ -208,6 +209,46 @@ gulp.task("post-js", () => {
     });
 });
 
+// Generate & Inline Critical-path CSS
+gulp.task("critical", () => {
+  return gulp
+    .src(SITE_ROOT_HTML)
+    .pipe(
+      // https://github.com/addyosmani/critical#options
+      critical({
+        // base directory
+        base: SITE_ROOT,
+        // Inline the generated critical-path CSS
+        // - true generates HTML
+        // - false generates CSS
+        inline: false,
+        // Extract inlined styles from referenced stylesheets
+        extract: false,
+        // ignore CSS rules
+        ignore: {},
+				// strict true
+				strict: true,
+				// css files
+        css: [`${POST_BUILD_STYLES}style.css`],
+				// screen dimensions
+        dimensions: [
+          {
+            width: 876,
+            height: 2142,
+          }, // vertical max height
+          {
+            width: 3240,
+            height: 2160,
+          }, // horizontial max height
+        ],
+      })
+    )
+    .on("error", (err) => {
+      console.log(err.message);
+    })
+    .pipe(gulp.dest(SITE_ROOT));
+});
+
 gulp.task("startServer", () => {
   browserSync.init({
     files: [SITE_ROOT + "/**"],
@@ -242,7 +283,7 @@ gulp.task("startServer", () => {
 });
 
 const jekyllSeries = gulp.series("buildJekyll", "processStyles");
-const buildSite = gulp.series(jekyllSeries, "uglify", "uglify-sw");
+const buildSite = gulp.series(jekyllSeries, "uglify", "uglify-sw", "critical");
 
 exports.serve = gulp.series(buildSite, "startServer");
 exports.default = gulp.series(buildSite, "post-js");

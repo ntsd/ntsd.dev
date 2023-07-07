@@ -42,7 +42,7 @@ sideBar: true
 
 <!-- Pagination -->
 {% if paginator.total_pages > 1 %}
-    <div class="grid justify-items-end md:justify-items-center">
+    <div class="grid justify-items-center lg:justify-items-end">
         <div class="flex">
             {% if paginator.previous_page %}
                 <a class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-200 transform bg-white hover:bg-gray-600 hover:text-white" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">{{"<"}}</a>

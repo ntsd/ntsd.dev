@@ -1,5 +1,6 @@
 {
-  "presets": ["env"],
+  "presets": ["es2015"],
+  "retainLines": true,
   "plugins": [
     [
       "transform-runtime",
