@@ -20,23 +20,19 @@
   {% if site.github_btn %}
   <link href="https://api.github.com" rel="preconnect" />
   {% endif %}
-  <!-- Non-Critical -->
+  <!-- Non-Critical CSS -->
   <link rel="preload" href="{{ site.baseurl }}/assets/css/style.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="{{ site.baseurl }}/pwa/manifest.json" as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <!-- Non-Critical CSS -->
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json" />
   </noscript>
 
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json" />
   <!-- Favicon -->
-  <link rel="shortcut icon" href="{{ site.baseurl }}/pwa/icons/icon-min.svg" async />
+  <link rel="icon" href="{{ site.baseurl }}/pwa/icons/icon-min.svg" />
   <!-- apple-touch-icon -->
-  <link rel="apple-touch-icon" href="{{ site.baseurl }}/pwa/icons/icon-min.svg" async />
-
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/pwa/icons/icon-min.svg" />
   <!-- <script>
     function asyncStyle(u) {
       var d = document,
