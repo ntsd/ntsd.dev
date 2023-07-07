@@ -53,6 +53,9 @@
 <lastmod>2023-07-06T00:00:00+07:00</lastmod>
 </url>
 <url>
+<loc>https://ntsd.dev/404/</loc>
+</url>
+<url>
 <loc>https://ntsd.dev/about/</loc>
 </url>
 <url>
@@ -62,10 +65,10 @@
 <loc>https://ntsd.dev/</loc>
 </url>
 <url>
-<loc>https://ntsd.dev/offline.html</loc>
+<loc>https://ntsd.dev/offline/</loc>
 </url>
 <url>
-<loc>https://ntsd.dev/privacy-policy</loc>
+<loc>https://ntsd.dev/privacy-policy/</loc>
 </url>
 <url>
 <loc>https://ntsd.dev/projects/</loc>
