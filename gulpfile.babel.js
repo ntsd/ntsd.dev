@@ -221,7 +221,7 @@ gulp.task("critical", () => {
         // Inline the generated critical-path CSS
         // - true generates HTML
         // - false generates CSS
-        inline: false,
+        inline: true,
         // Extract inlined styles from referenced stylesheets
         extract: false,
         // ignore CSS rules
