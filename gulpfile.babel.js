@@ -226,11 +226,11 @@ gulp.task("critical", () => {
         extract: false,
         // ignore CSS rules
         ignore: {},
-				// strict true
-				strict: true,
-				// css files
-        css: [`${POST_BUILD_STYLES}style.css`],
-				// screen dimensions
+        // strict true
+        strict: true,
+        // css files
+        css: [path.join(POST_BUILD_STYLES, "style.css")],
+        // screen dimensions
         dimensions: [
           {
             width: 876,

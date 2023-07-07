@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-07-07T21:45:09+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences</title><link href="https://ntsd.dev/recoil-persistent-with-capacitor-preferences/" rel="alternate" type="text/html" title="Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences" /><published>2023-07-06T00:00:00+07:00</published><updated>2023-07-06T00:00:00+07:00</updated><id>https://ntsd.dev/recoil-persistent-with-capacitor-preferences</id><content type="html" xml:base="https://ntsd.dev/recoil-persistent-with-capacitor-preferences/"><![CDATA[<h2 id="capacitor-preferences">Capacitor Preferences</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-07-07T21:56:21+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Separate critical CSS and non-critical CSS for faster page load</title><link href="https://ntsd.dev/extract-cricital-css/" rel="alternate" type="text/html" title="Separate critical CSS and non-critical CSS for faster page load" /><published>2023-07-07T00:00:00+07:00</published><updated>2023-07-07T00:00:00+07:00</updated><id>https://ntsd.dev/extract-cricital-css</id><content type="html" xml:base="https://ntsd.dev/extract-cricital-css/"><![CDATA[<h2 id="why-inline-critical-css">Why inline Critical CSS?</h2>
+
+<p>Critical CSS includes only the styles needed to render the Above the Fold of a webpage.</p>
+
+<p>By delivering these styles inline in the HTML document, the browser can render this content without having to wait for the entire external CSS file to load. Non-critical CSS can load later in Asynchronous without render-blocking.</p>
+
+<h2 id="above-the-fold">Above the fold</h2>
+
+<p>“Above the fold” content refers to the portion of a webpage that is visible without scrolling.</p>
+
+<p>To consider Above the Fold Dimension normally we specify the supporting media queries of the CSS framework and Breakpoints.</p>
+
+<p>For example, In a Tailwind page that only has <code class="language-plaintext highlighter-rouge">lg</code> breakpoints means If the width size is less than <code class="language-plaintext highlighter-rouge">1024</code> will be considered as Vertical Aspect Ratios (Mobile or Tablet).</p>
+
+<p>To calculate the Above the fold resolution size and Dimension, If the website only scrolls down so we should use the highest height possible.</p>
+
+<p>From my research, the longest aspect ratio in mobile devices is Motorola Razr at <code class="language-plaintext highlighter-rouge">146:357</code> aspect ratio with a resolution <code class="language-plaintext highlighter-rouge">W 876 x H 2142</code> in vertical mode.</p>
+
+<p>For Horizontal mode or screen width of more than 1024, we can use Surface Book at <code class="language-plaintext highlighter-rouge">3∶2</code> aspect ratio with a resolution of <code class="language-plaintext highlighter-rouge">W 3240	 × H 2160</code>.</p>
+
+<h2 id="install-critical-on-gulp">Install Critical on Gulp</h2>
+
+<p>Because I am using Gulp for my website so I will show example in Gulp, but you can install it globally as you want.</p>
+
+<p>The Library Github and document: <a href="https://github.com/addyosmani/critical">https://github.com/addyosmani/critical</a></p>
+
+<p>Install package</p>
+
+<p><code class="language-plaintext highlighter-rouge">npm install --save-dev critical</code></p>
+
+<p>Create a gulp task</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">gulp</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">gulp</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">path</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">stream</span> <span class="k">as</span> <span class="nx">critical</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">critical</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">SITE_ROOT</span> <span class="o">=</span> <span class="nx">isDevelopmentBuild</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">./_watch</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">./_site</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">SITE_ROOT_HTML</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">SITE_ROOT</span><span class="p">}</span><span class="s2">/**/*.html`</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">POST_BUILD_STYLES</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">SITE_ROOT</span><span class="p">}</span><span class="s2">/assets/css/`</span><span class="p">;</span>
+
+<span class="c1">// Generate &amp; Inline Critical-path CSS</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="dl">"</span><span class="s2">critical</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span>
+    <span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">SITE_ROOT_HTML</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+      <span class="c1">// https://github.com/addyosmani/critical#options</span>
+      <span class="nx">critical</span><span class="p">({</span>
+        <span class="c1">// base directory</span>
+        <span class="na">base</span><span class="p">:</span> <span class="nx">SITE_ROOT</span><span class="p">,</span>
+        <span class="c1">// Inline the generated critical-path CSS</span>
+        <span class="c1">// - true generates HTML</span>
+        <span class="c1">// - false generates CSS</span>
+        <span class="na">inline</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="c1">// Extract inlined styles from referenced stylesheets</span>
+        <span class="na">extract</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="c1">// ignore CSS rules</span>
+        <span class="na">ignore</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="c1">// strict true</span>
+        <span class="na">strict</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="c1">// css files</span>
+        <span class="na">css</span><span class="p">:</span> <span class="p">[</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">POST_BUILD_STYLES</span><span class="p">,</span> <span class="dl">"</span><span class="s2">style.css</span><span class="dl">"</span><span class="p">)],</span>
+        <span class="c1">// screen dimensions</span>
+        <span class="na">dimensions</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="na">width</span><span class="p">:</span> <span class="mi">876</span><span class="p">,</span>
+            <span class="na">height</span><span class="p">:</span> <span class="mi">2142</span><span class="p">,</span>
+          <span class="p">},</span> <span class="c1">// vertical max height</span>
+          <span class="p">{</span>
+            <span class="na">width</span><span class="p">:</span> <span class="mi">3240</span><span class="p">,</span>
+            <span class="na">height</span><span class="p">:</span> <span class="mi">2160</span><span class="p">,</span>
+          <span class="p">},</span> <span class="c1">// horizontial max height</span>
+        <span class="p">],</span>
+      <span class="p">})</span>
+    <span class="p">)</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">SITE_ROOT</span><span class="p">));</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Then change the style load to async load, May consider add <code class="language-plaintext highlighter-rouge">noscript</code> for non javascript support browser.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span>
+  <span class="na">rel=</span><span class="s">"preload"</span>
+  <span class="na">href=</span><span class="s">"/assets/css/style.css"</span>
+  <span class="na">as=</span><span class="s">"style"</span>
+  <span class="na">onload=</span><span class="s">"this.onload=null;this.rel='stylesheet'"</span>
+<span class="nt">/&gt;</span>
+<span class="c">&lt;!-- below is optional --&gt;</span>
+<span class="nt">&lt;noscript&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/css/style.css"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/noscript&gt;</span>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Frontend" /><category term="Web Development" /><category term="Web Performance" /><category term="CSS" /><summary type="html"><![CDATA[Why inline Critical CSS? Critical CSS includes only the styles needed to render the Above the Fold of a webpage. By delivering these styles inline in the HTML document, the browser can render this content without having to wait for the entire external CSS file to load. Non-critical CSS can load later in Asynchronous without render-blocking. Above the fold “Above the fold” content refers to the portion of a webpage that is visible without scrolling. To consider Above the Fold Dimension normally we specify the supporting media queries of the CSS framework and Breakpoints. For example, In a Tailwind page that only has lg breakpoints means If the width size is less than 1024 will be considered as Vertical Aspect Ratios (Mobile or Tablet). To calculate the Above the fold resolution size and Dimension, If the website only scrolls down so we should use the highest height possible. From my research, the longest aspect ratio in mobile devices is Motorola Razr at 146:357 aspect ratio with a resolution W 876 x H 2142 in vertical mode. For Horizontal mode or screen width of more than 1024, we can use Surface Book at 3∶2 aspect ratio with a resolution of W 3240 × H 2160. Install Critical on Gulp Because I am using Gulp for my website so I will show example in Gulp, but you can install it globally as you want. The Library Github and document: https://github.com/addyosmani/critical Install package npm install --save-dev critical Create a gulp task import gulp from "gulp"; import path from "path"; import { stream as critical } from "critical"; const SITE_ROOT = isDevelopmentBuild ? "./_watch" : "./_site"; const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.html`; const POST_BUILD_STYLES = `${SITE_ROOT}/assets/css/`; // Generate &amp; Inline Critical-path CSS gulp.task("critical", () =&gt; { return gulp .src(SITE_ROOT_HTML) .pipe( // https://github.com/addyosmani/critical#options critical({ // base directory base: SITE_ROOT, // Inline the generated critical-path CSS // - true generates HTML // - false generates CSS inline: true, // Extract inlined styles from referenced stylesheets extract: false, // ignore CSS rules ignore: {}, // strict true strict: true, // css files css: [path.join(POST_BUILD_STYLES, "style.css")], // screen dimensions dimensions: [ { width: 876, height: 2142, }, // vertical max height { width: 3240, height: 2160, }, // horizontial max height ], }) ) .on("error", (err) =&gt; { console.log(err.message); }) .pipe(gulp.dest(SITE_ROOT)); }); Then change the style load to async load, May consider add noscript for non javascript support browser. &lt;link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" /&gt; &lt;!-- below is optional --&gt; &lt;noscript&gt; &lt;link rel="stylesheet" href="/assets/css/style.css" /&gt; &lt;/noscript&gt;]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences</title><link href="https://ntsd.dev/recoil-persistent-with-capacitor-preferences/" rel="alternate" type="text/html" title="Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences" /><published>2023-07-06T00:00:00+07:00</published><updated>2023-07-06T00:00:00+07:00</updated><id>https://ntsd.dev/recoil-persistent-with-capacitor-preferences</id><content type="html" xml:base="https://ntsd.dev/recoil-persistent-with-capacitor-preferences/"><![CDATA[<h2 id="capacitor-preferences">Capacitor Preferences</h2>
 
 <p><a href="https://capacitorjs.com/docs/apis/preferences">Capacitor Preferences</a> is a Capacitor plugin to allow Capacitor applications to store persistent data.</p>
 

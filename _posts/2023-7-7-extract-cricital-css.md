@@ -12,12 +12,12 @@ tags:
   - Web Development
   - Web Performance
   - CSS
-published: false
+published: true
 ---
 
 ## Why inline Critical CSS?
 
-Critical CSS includes only the styles needed to render the Above the Fold of a webpage. 
+Critical CSS includes only the styles needed to render the Above the Fold of a webpage.
 
 By delivering these styles inline in the HTML document, the browser can render this content without having to wait for the entire external CSS file to load. Non-critical CSS can load later in Asynchronous without render-blocking.
 
@@ -45,4 +45,69 @@ Install package
 
 `npm install --save-dev critical`
 
+Create a gulp task
 
+```javascript
+import gulp from "gulp";
+import path from "path";
+import { stream as critical } from "critical";
+
+const SITE_ROOT = isDevelopmentBuild ? "./_watch" : "./_site";
+const SITE_ROOT_HTML = `${SITE_ROOT}/**/*.html`;
+const POST_BUILD_STYLES = `${SITE_ROOT}/assets/css/`;
+
+// Generate & Inline Critical-path CSS
+gulp.task("critical", () => {
+  return gulp
+    .src(SITE_ROOT_HTML)
+    .pipe(
+      // https://github.com/addyosmani/critical#options
+      critical({
+        // base directory
+        base: SITE_ROOT,
+        // Inline the generated critical-path CSS
+        // - true generates HTML
+        // - false generates CSS
+        inline: true,
+        // Extract inlined styles from referenced stylesheets
+        extract: false,
+        // ignore CSS rules
+        ignore: {},
+        // strict true
+        strict: true,
+        // css files
+        css: [path.join(POST_BUILD_STYLES, "style.css")],
+        // screen dimensions
+        dimensions: [
+          {
+            width: 876,
+            height: 2142,
+          }, // vertical max height
+          {
+            width: 3240,
+            height: 2160,
+          }, // horizontial max height
+        ],
+      })
+    )
+    .on("error", (err) => {
+      console.log(err.message);
+    })
+    .pipe(gulp.dest(SITE_ROOT));
+});
+```
+
+Then change the style load to async load, May consider add `noscript` for non javascript support browser.
+
+```html
+<link
+  rel="preload"
+  href="{{ site.baseurl }}/assets/css/style.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<!-- below is optional -->
+<noscript>
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
+</noscript>
+```
