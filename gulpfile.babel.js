@@ -283,9 +283,9 @@ gulp.task("startServer", () => {
 });
 
 const jekyllSeries = gulp.series("buildJekyll", "processStyles");
-const buildSite = gulp.series(jekyllSeries, "uglify", "uglify-sw", "critical");
+const buildSite = gulp.series(jekyllSeries, "uglify", "uglify-sw");
 
 exports.serve = gulp.series(buildSite, "startServer");
-exports.default = gulp.series(buildSite, "post-js");
+exports.default = gulp.series(buildSite, "post-js", "critical");
 exports.bustCache = gulp.series("bust-cache");
-exports.postJS = gulp.series("post-js");
+exports.postJS = gulp.series("post-js", "critical");
