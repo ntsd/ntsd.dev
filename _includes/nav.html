@@ -1,23 +1,29 @@
 <!-- Navigation -->
 <nav class="bg-white shadow-md sticky top-0 z-50 transition-transform duration-300 transform" id="navbar">
-    <div class="container mx-auto p-4 lg:flex lg:justify-between lg:items-center">
+    <div class="container mx-auto py-2 px-4 lg:py-4 lg:flex lg:justify-between lg:items-center">
         <div class="lg:flex lg:items-center">
             <div class="flex items-center justify-between">
                 <div>
-                    <a class="text-xl lg:text-2xl font-bold text-gray-800 hover:text-gray-700" href="{{ site.baseurl }}/">{{ site.title }}</a>
+                    <a class="text-lg lg:text-2xl font-bold text-gray-800 hover:text-gray-700"
+                        href="{{ site.baseurl }}/">{{ site.title }}</a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="flex lg:hidden">
-                    <button aria-label="toggle menu" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" id="nav-toggle" type="button">
+                    <button aria-label="toggle menu"
+                        class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" id="nav-toggle"
+                        type="button">
                         <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
-                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" fill-rule="evenodd"></path>
+                            <path
+                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                                fill-rule="evenodd"></path>
                         </svg>
                     </button>
                 </div>
             </div>
 
-            <div class="flex flex-col text-gray-600 capitalize lg:flex lg:space-x-4 lg:px-16 lg:flex-row lg:items-center md:hidden" id="nav-left">
+            <div class="flex flex-col text-gray-600 capitalize lg:flex lg:space-x-4 lg:px-16 lg:flex-row lg:items-center md:hidden"
+                id="nav-left">
                 <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/">HOME</a>
                 <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/blog/">BLOG</a>
                 <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/projects/">PROJECTS</a>
@@ -38,33 +44,43 @@
         </div>
     </div>
 </nav>
-<script type="text/runtime-javascript" async >
+<script type="text/javascript">
     var toggle = document.querySelector("#nav-toggle");
     var navLeft = document.querySelector("#nav-left");
     var navRight = document.querySelector("#nav-right");
 
+    function hidden() {
+        navLeft.classList.add("md:hidden");
+        navRight.classList.add("md:hidden");
+        toggle.classList.remove("nav-open");
+    }
+
     toggle.addEventListener("click", function (e) {
+        const onscrollBak = window.onscroll;
+        window.onscroll = null;
+
         if (toggle.className.indexOf("nav-open") > 0) {
-            navLeft.classList.add("md:hidden");
-            navRight.classList.add("md:hidden");
-            toggle.classList.remove("nav-open");
-            return;
+            hidden();
+        } else {
+            navLeft.classList.remove("md:hidden");
+            navRight.classList.remove("md:hidden");
+            toggle.classList.add("nav-open");
         }
-        navLeft.classList.remove("md:hidden");
-        navRight.classList.remove("md:hidden");
-        toggle.classList.add("nav-open");
+
+        setTimeout(function () { window.onscroll = onscrollBak }, 1000);
     });
 
-    
+
     var navbar = document.querySelector("#navbar");
     var prevScrollPos = window.pageYOffset;
     window.onscroll = function () {
         var curScrollPos = window.pageYOffset;
         if (curScrollPos > navbar.offsetHeight) {
             if (prevScrollPos > curScrollPos) {
-                navbar.classList.remove("lg:-translate-y-full");
+                navbar.classList.remove("-translate-y-full");
             } else {
-                navbar.classList.add("lg:-translate-y-full");
+                navbar.classList.add("-translate-y-full");
+                hidden();
             }
             prevScrollPos = curScrollPos;
         }

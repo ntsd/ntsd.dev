@@ -2,7 +2,7 @@ module.exports = {
   purge: {
     enabled: true,
     content: ["_site/**/*.html"],
-    safelist: ["lg:-translate-y-full"],
+    safelist: ["-translate-y-full"],
   },
   theme: {
     extend: {

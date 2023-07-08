@@ -64,6 +64,7 @@ gulp.task("processStyles", () => {
     purge: {
       enabled: true,
       content: [SITE_ROOT_HTML],
+			safelist: ["-translate-y-full"],
     },
   });
 
