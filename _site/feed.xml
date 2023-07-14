@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-07-09T00:23:44+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Separate critical CSS and non-critical CSS for faster page load</title><link href="https://ntsd.dev/extract-cricital-css/" rel="alternate" type="text/html" title="Separate critical CSS and non-critical CSS for faster page load" /><published>2023-07-07T00:00:00+07:00</published><updated>2023-07-07T00:00:00+07:00</updated><id>https://ntsd.dev/extract-cricital-css</id><content type="html" xml:base="https://ntsd.dev/extract-cricital-css/"><![CDATA[<h2 id="why-inline-critical-css">Why inline Critical CSS?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-07-14T17:27:53+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Separate critical CSS and non-critical CSS for faster page load</title><link href="https://ntsd.dev/extract-cricital-css/" rel="alternate" type="text/html" title="Separate critical CSS and non-critical CSS for faster page load" /><published>2023-07-07T00:00:00+07:00</published><updated>2023-07-07T00:00:00+07:00</updated><id>https://ntsd.dev/extract-cricital-css</id><content type="html" xml:base="https://ntsd.dev/extract-cricital-css/"><![CDATA[<h2 id="why-inline-critical-css">Why inline Critical CSS?</h2>
 
 <p>Critical CSS includes only the styles needed to render the Above the Fold of a webpage.</p>
 
@@ -210,6 +210,32 @@ kubectl config view
 
 <h2 id="kubectl-commands">Kubectl commands</h2>
 
+<h3 id="config">Config</h3>
+
+<p>The cluster is the physical platform where all Kubernetes components, capabilities, and workloads are configured.</p>
+
+<p>The context is a set of access parameters that contains a Kubernetes cluster, a user, and a namespace.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list contexts</span>
+kubectl config get-contexts
+
+<span class="c"># set context</span>
+kubectl config set-context &lt;context-name&gt;
+
+<span class="c"># list clusters</span>
+kubectl config get-clusters
+
+<span class="c"># set cluster</span>
+kubectl config set-cluster &lt;cluster-name&gt;
+</code></pre></div></div>
+
+<h3 id="kubectl-apply">Kubectl apply</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f ./my-manifest.yaml
+kubectl apply -f ./my1.yaml -f ./my2.yaml
+kubectl apply -f ./dir
+</code></pre></div></div>
+
 <h3 id="find-resource-name">Find resource name</h3>
 
 <p>Resource name will help to identify the Kubernates resource and target such as Service, Pod, Deployment, etc.</p>
@@ -236,6 +262,24 @@ kubectl get all <span class="nt">-n</span> &lt;name-space&gt;
 
 <span class="c"># list service, pod, and deployment by namespace</span>
 kubectl get service,pod,deployment <span class="nt">-n</span> &lt;name-space&gt;
+</code></pre></div></div>
+
+<h4 id="describe">Describe</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe nodes &lt;name-node&gt;
+kubectl describe pods &lt;name-pod&gt;
+</code></pre></div></div>
+
+<h4 id="logs">Logs</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># get pod logs</span>
+kubectl logs &lt;pod-name&gt;
+
+<span class="c"># get pod logs stream</span>
+kubectl logs <span class="nt">-f</span> &lt;pod-name&gt;
+
+<span class="c"># get deployment logs</span>
+kubectl logs deploy/&lt;deployment-name&gt;
 </code></pre></div></div>
 
 <h4 id="get-expose-port">Get expose port</h4>
@@ -279,7 +323,7 @@ kubectl <span class="nt">-n</span> &lt;name-space&gt; <span class="nb">exec</spa
 
 <span class="c"># interactive mode</span>
 kubectl <span class="nt">-n</span> &lt;name-space&gt; <span class="nb">exec</span> <span class="nt">-it</span> &lt;pod-name&gt; <span class="nt">--</span> bash
-</code></pre></div></div>]]></content><author><name></name></author><category term="Software Development" /><category term="Kubernetes" /><category term="Google Cloud Platform" /><summary type="html"><![CDATA[As a developer sometimes I need to debug or investigate problems on the cloud machine. so I create this cheat sheet to note the commands. And it might be good to share with people who are just getting started with the Kubernetes. Pod, Namespace, and Deployment to using kubectl, the reader need to know some knowledge about pod, namespace, and containers in Kubernetes. Container Kubernates Container is similar to Docker Container it will include software or package to runnning on it environments or OS. And the pre running container is calling Container Image similar to Docker Image. Pod Pod is the smallest computing unit in Kubernetes that will share resource and storage. One pod can have multiple containers. Namespace namespace will use to define the unique name of group or cluster for multiple objects. normally they will use namespace to specific team or project for make it easier to manage and avoid the effect between team or project. Deployment A resource object in Kubernetes that provides declarative updates to applications. for example image, number of pods, etc. normallt it will write in .yaml format. Google Kubernetes Engine Cluster to make the kubectl work, we need to set the config. for manual set can follow this guide https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/. I am using Google Kubernetes Engine (GKE) they have the gcloud container command to allow me to manage containers and cluster easier. to map configuration with gcloud cli # init gcloud gcloud init # login gcloud auth login # list gcloud config gcloud config list # list project gcloud projects list # list clusters by project gcloud container clusters list --project &lt;project-name&gt; # map kubectl config, for zone copy from the `Location` when list cluster gcloud container clusters get-credentials &lt;cluster-name&gt; --zone &lt;zone&gt; # check kubectl config kubectl config view After this your kubectl will using access from the gcloud cluster Kubectl commands Find resource name Resource name will help to identify the Kubernates resource and target such as Service, Pod, Deployment, etc. List pods # list pods by all namespaces kubectl get pod -A # list pods by namespace kubectl get pod -n &lt;name-space&gt; List deployment # list deployment by namespace kubectl get deployment -n &lt;name-space&gt; List all # list all by namespace kubectl get all -n &lt;name-space&gt; # list service, pod, and deployment by namespace kubectl get service,pod,deployment -n &lt;name-space&gt; Get expose port kubectl get svc -n &lt;name-space&gt; Environment # set env kubectl set env &lt;resource-name&gt; -n &lt;name-space&gt; {ENV_NAME}={ENV_VALUE} # remove env, to remove env need to add `-` after the env name kubectl set env &lt;resource-name&gt; -n &lt;name-space&gt; {ENV_NAME}- # list all pods env kubectl set env pods --all --list Forward port Forward port will allow you access to the Kubernates cluster and mapping with your local port kubectl port-forward -n &lt;name-space&gt; &lt;resource-name&gt; &lt;local-port&gt;:&lt;resource-port&gt; # example kubectl port-forward -n &lt;name-space&gt; &lt;resource-name&gt; 8080:80 Exec runnning shell on Kubectl pod if you familiar to Docker it work similar to docker exec # run shell command kubectl -n &lt;name-space&gt; exec &lt;pod-name&gt; -- &lt;cmd&gt; # get env of pod by shell kubectl -n &lt;name-space&gt; exec &lt;pod-name&gt; -- env # interactive mode kubectl -n &lt;name-space&gt; exec -it &lt;pod-name&gt; -- bash]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to manage multiple Git accounts</title><link href="https://ntsd.dev/git-multiple-accounts/" rel="alternate" type="text/html" title="How to manage multiple Git accounts" /><published>2022-01-28T00:00:00+07:00</published><updated>2022-01-28T00:00:00+07:00</updated><id>https://ntsd.dev/git-multiple-accounts</id><content type="html" xml:base="https://ntsd.dev/git-multiple-accounts/"><![CDATA[<h2 id="set-up-ssh-keys-for-multi-git-accounts">Set up SSH keys for multi git accounts</h2>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Software Development" /><category term="Kubernetes" /><category term="Google Cloud Platform" /><summary type="html"><![CDATA[As a developer sometimes I need to debug or investigate problems on the cloud machine. so I create this cheat sheet to note the commands. And it might be good to share with people who are just getting started with the Kubernetes. Pod, Namespace, and Deployment to using kubectl, the reader need to know some knowledge about pod, namespace, and containers in Kubernetes. Container Kubernates Container is similar to Docker Container it will include software or package to runnning on it environments or OS. And the pre running container is calling Container Image similar to Docker Image. Pod Pod is the smallest computing unit in Kubernetes that will share resource and storage. One pod can have multiple containers. Namespace namespace will use to define the unique name of group or cluster for multiple objects. normally they will use namespace to specific team or project for make it easier to manage and avoid the effect between team or project. Deployment A resource object in Kubernetes that provides declarative updates to applications. for example image, number of pods, etc. normallt it will write in .yaml format. Google Kubernetes Engine Cluster to make the kubectl work, we need to set the config. for manual set can follow this guide https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/. I am using Google Kubernetes Engine (GKE) they have the gcloud container command to allow me to manage containers and cluster easier. to map configuration with gcloud cli # init gcloud gcloud init # login gcloud auth login # list gcloud config gcloud config list # list project gcloud projects list # list clusters by project gcloud container clusters list --project &lt;project-name&gt; # map kubectl config, for zone copy from the `Location` when list cluster gcloud container clusters get-credentials &lt;cluster-name&gt; --zone &lt;zone&gt; # check kubectl config kubectl config view After this your kubectl will using access from the gcloud cluster Kubectl commands Config The cluster is the physical platform where all Kubernetes components, capabilities, and workloads are configured. The context is a set of access parameters that contains a Kubernetes cluster, a user, and a namespace. # list contexts kubectl config get-contexts # set context kubectl config set-context &lt;context-name&gt; # list clusters kubectl config get-clusters # set cluster kubectl config set-cluster &lt;cluster-name&gt; Kubectl apply kubectl apply -f ./my-manifest.yaml kubectl apply -f ./my1.yaml -f ./my2.yaml kubectl apply -f ./dir Find resource name Resource name will help to identify the Kubernates resource and target such as Service, Pod, Deployment, etc. List pods # list pods by all namespaces kubectl get pod -A # list pods by namespace kubectl get pod -n &lt;name-space&gt; List deployment # list deployment by namespace kubectl get deployment -n &lt;name-space&gt; List all # list all by namespace kubectl get all -n &lt;name-space&gt; # list service, pod, and deployment by namespace kubectl get service,pod,deployment -n &lt;name-space&gt; Describe kubectl describe nodes &lt;name-node&gt; kubectl describe pods &lt;name-pod&gt; Logs # get pod logs kubectl logs &lt;pod-name&gt; # get pod logs stream kubectl logs -f &lt;pod-name&gt; # get deployment logs kubectl logs deploy/&lt;deployment-name&gt; Get expose port kubectl get svc -n &lt;name-space&gt; Environment # set env kubectl set env &lt;resource-name&gt; -n &lt;name-space&gt; {ENV_NAME}={ENV_VALUE} # remove env, to remove env need to add `-` after the env name kubectl set env &lt;resource-name&gt; -n &lt;name-space&gt; {ENV_NAME}- # list all pods env kubectl set env pods --all --list Forward port Forward port will allow you access to the Kubernates cluster and mapping with your local port kubectl port-forward -n &lt;name-space&gt; &lt;resource-name&gt; &lt;local-port&gt;:&lt;resource-port&gt; # example kubectl port-forward -n &lt;name-space&gt; &lt;resource-name&gt; 8080:80 Exec runnning shell on Kubectl pod if you familiar to Docker it work similar to docker exec # run shell command kubectl -n &lt;name-space&gt; exec &lt;pod-name&gt; -- &lt;cmd&gt; # get env of pod by shell kubectl -n &lt;name-space&gt; exec &lt;pod-name&gt; -- env # interactive mode kubectl -n &lt;name-space&gt; exec -it &lt;pod-name&gt; -- bash]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to manage multiple Git accounts</title><link href="https://ntsd.dev/git-multiple-accounts/" rel="alternate" type="text/html" title="How to manage multiple Git accounts" /><published>2022-01-28T00:00:00+07:00</published><updated>2022-01-28T00:00:00+07:00</updated><id>https://ntsd.dev/git-multiple-accounts</id><content type="html" xml:base="https://ntsd.dev/git-multiple-accounts/"><![CDATA[<h2 id="set-up-ssh-keys-for-multi-git-accounts">Set up SSH keys for multi git accounts</h2>
 
 <h3 id="1-generate-ssh-keys">1. Generate SSH keys</h3>
 

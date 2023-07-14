@@ -69,6 +69,34 @@ After this your kubectl will using access from the gcloud cluster
 
 ## Kubectl commands
 
+### Config
+
+The cluster is the physical platform where all Kubernetes components, capabilities, and workloads are configured.
+
+The context is a set of access parameters that contains a Kubernetes cluster, a user, and a namespace.
+
+```bash
+# list contexts
+kubectl config get-contexts
+
+# set context
+kubectl config set-context <context-name>
+
+# list clusters
+kubectl config get-clusters
+
+# set cluster
+kubectl config set-cluster <cluster-name>
+```
+
+### Kubectl apply
+
+```
+kubectl apply -f ./my-manifest.yaml
+kubectl apply -f ./my1.yaml -f ./my2.yaml
+kubectl apply -f ./dir
+```
+
 ### Find resource name
 
 Resource name will help to identify the Kubernates resource and target such as Service, Pod, Deployment, etc.
@@ -98,6 +126,26 @@ kubectl get all -n <name-space>
 
 # list service, pod, and deployment by namespace
 kubectl get service,pod,deployment -n <name-space>
+```
+
+#### Describe
+
+```bash
+kubectl describe nodes <name-node>
+kubectl describe pods <name-pod>
+```
+
+#### Logs
+
+```bash
+# get pod logs
+kubectl logs <pod-name>
+
+# get pod logs stream
+kubectl logs -f <pod-name>
+
+# get deployment logs
+kubectl logs deploy/<deployment-name>
 ```
 
 #### Get expose port
