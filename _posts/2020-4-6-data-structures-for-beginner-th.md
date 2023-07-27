@@ -2,7 +2,7 @@
 layout: post
 title:  "Python Data Structures สำหรับผู้เริ่มต้น"
 date:   2020-04-6 12:30:54
-subtitle: "เรียนรู้ Data Structure ที่จำเป็นสำหรับภาษา Python สำหรับผู้เริ่มต้น"
+description: "เรียนรู้ Data Structure ที่จำเป็นสำหรับภาษา Python สำหรับผู้เริ่มต้น"
 catalog: true
 categories:
     - Software Development

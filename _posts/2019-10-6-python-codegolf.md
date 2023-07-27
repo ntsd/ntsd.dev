@@ -2,7 +2,7 @@
 layout: post
 title:  "Python Code Golf Cheat Sheet"
 date:   2019-10-6 12:30:54
-subtitle: "Simple tricks to code-golf in Python"
+description: "Simple tricks to code-golf in Python"
 catalog: true
 categories:
     - Software Development

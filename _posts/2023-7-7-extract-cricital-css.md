@@ -2,7 +2,7 @@
 layout: post
 title: "Separate critical CSS and non-critical CSS for faster page load"
 date: 2023-7-7
-subtitle: "Separate critical CSS for inline HTML and non-critical CSS for asynchronous load for a better performance page load."
+description: "Separate critical CSS for inline HTML and non-critical CSS for asynchronous load for a better performance page load."
 catalog: true
 categories:
   - Software Development

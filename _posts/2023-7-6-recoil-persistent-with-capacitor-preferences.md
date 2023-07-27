@@ -2,7 +2,7 @@
 layout: post
 title: "Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences"
 date: 2023-7-6
-subtitle: "Make Recoil persistent for Cross-Platform React Applications. worked for iOS, Android, Website, and PWA."
+description: "Make Recoil persistent for Cross-Platform React Applications. worked for iOS, Android, Website, and PWA."
 catalog: true
 categories:
   - Software Development

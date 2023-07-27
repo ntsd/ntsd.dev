@@ -2,7 +2,7 @@
 layout: post
 title: "My kubectl commands cheat sheet"
 date: 2022-9-2
-subtitle: "My useful kubectl commands cheat sheet and Google Kubernetes Engine cluster (GKE) set up"
+description: "My useful kubectl commands cheat sheet and Google Kubernetes Engine cluster (GKE) set up"
 catalog: true
 categories:
   - Software Development
@@ -96,6 +96,10 @@ kubectl apply -f ./my-manifest.yaml
 kubectl apply -f ./my1.yaml -f ./my2.yaml
 kubectl apply -f ./dir
 ```
+
+### Run a Pod
+
+`kubectl run busybox --image=busybox --command --restart=Never -- tail -f /dev/null`
 
 ### Find resource name
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Build and Install OpenWRT on Banana Pi R64"
 date:   2020-3-3 12:30:54
-subtitle: "Getting start to build and install OpenWRT on Banana Pi R64 by using macOS"
+description: "Getting start to build and install OpenWRT on Banana Pi R64 by using macOS"
 catalog: true
 categories:
     - Software Development

@@ -2,7 +2,7 @@
 layout: post
 title: "Explain Full Text Search in PostgreSQL"
 date: 2021-10-10
-subtitle: "Explain index types in PostgreSQL how it work and compare between Hash and B-Tree index"
+description: "Explain index types in PostgreSQL how it work and compare between Hash and B-Tree index"
 catalog: true
 categories:
   - Software Development

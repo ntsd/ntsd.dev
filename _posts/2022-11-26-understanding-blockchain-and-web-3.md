@@ -2,7 +2,7 @@
 layout: post
 title: "Understanding Distributed Ledger Technology (DLT), Blockchain, and Web3"
 date: 2022-11-26
-subtitle: ""
+description: ""
 catalog: true
 categories:
   - Software Development

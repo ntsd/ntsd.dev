@@ -22,9 +22,9 @@ sideBar: true
                                 {{ post.title }}
                                 <time class="text-sm font-light text-gray-600" datetime="{{ post.date | date:"%Y-%m-%d" }}">&nbsp;{{ post.date | date: "%B %-d, %Y" }}</time>
                             </h2>
-                            {% if post.subtitle %}
+                            {% if post.description %}
                                 <h3 class="font-light">
-                                    {{ post.subtitle }}
+                                    {{ post.description }}
                                 </h3>
                             {% endif %}
                         </a>

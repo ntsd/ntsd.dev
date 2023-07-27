@@ -2,7 +2,7 @@
 layout: post
 title:  "Recompile aria2 to increment max connections per server"
 date:   2020-2-9 12:30:54
-subtitle: "Edit a line of code and re-complie aria2 to unlock aria 2 connections limit"
+description: "Edit a line of code and re-complie aria2 to unlock aria 2 connections limit"
 catalog: true
 categories:
     - Software Development
