@@ -3,6 +3,7 @@
   description: A client-side secure P2P file sharing using WebRTC.
   since: 2023 - present
   github: ntsd/zero-share
+  readme: https://raw.githubusercontent.com/ntsd/zero-share/master/README.md
   web: https://zero-share.github.io
   stacks: [Svelte , TypeScript, WebRTC]
 - id: cross-clipboard
@@ -10,17 +11,20 @@
   description: An open source cross-platform clipboard sharing.
   since: 2022 - present
   github: ntsd/cross-clipboard
+  readme: https://raw.githubusercontent.com/ntsd/cross-clipboard/master/Readme.md
   stacks: [Go, libp2p]
 - id: freqtrade-configs
   name: Freqtrade Configs
   description: My Freqtrade strategies and config.
   since: 2022
   github: ntsd/freqtrade-configs
+  readme: https://raw.githubusercontent.com/ntsd/freqtrade-configs/master/README.md
   stacks: [Python]
 - id: auto-evm-wallet
   name: Auto EVM Wallet
   description: EVM wallet that allow to schedule or automate smart contract call.
   since: 2023 - present
   github: ntsd/auto-evm-wallet
+  readme: https://raw.githubusercontent.com/ntsd/auto-evm-wallet/main/README.md
   web: https://ntsd.github.io/auto-evm-wallet
   stacks: [Svelte , TypeScript, Web3.js]

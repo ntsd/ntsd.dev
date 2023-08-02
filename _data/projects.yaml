@@ -1,8 +1,17 @@
+- id: jekyll-http-request
+  name: Jekyll HTTP Request
+  description: Jekyll Liquid Filter for HTTP requests, helps you get HTTP response data to the page content
+  since: 2023 - present
+  github: ntsd/jekyll-http-request
+  readme: https://raw.githubusercontent.com/ntsd/jekyll-http-request/main/README.md
+  web: https://rubygems.org/gems/jekyll-http-request
+  stacks: [Ruby, Jekyll]
 - id: sdp-compress
   name: SDP Compact
   description: Shorten WebRTC Session Description Protocol (SDP) based on Unified Plan SDP.
   since: 2023 - present
   github: ntsd/sdp-compact
+  readme: https://raw.githubusercontent.com/ntsd/sdp-compact/main/README.md
   web: https://ntsd.github.io/sdp-compact
   npm: https://www.npmjs.com/package/sdp-compact
   stacks: [TypeScript]
@@ -11,6 +20,7 @@
   description: My website created by Jekyll and Tailwind.
   since: 2020 - present
   github: ntsd/ntsd.dev
+  readme: https://raw.githubusercontent.com/ntsd/ntsd.dev/master/README.md
   web: https://ntsd.dev
   stacks: [Jekyll, JavaScript, Gulp]
 - id: github-profile-repositories
@@ -18,6 +28,7 @@
   description: Automatically create repositories list for your Github Profile.
   since: 2022
   github: ntsd/github-profile-repositories
+  readme: https://raw.githubusercontent.com/ntsd/github-profile-repositories/master/README.md
   web: https://github.com/marketplace/actions/github-profile-repositories
   stacks: [TypeScript, Github Action]
 - id: liquidjs-action
@@ -25,6 +36,7 @@
   description: Github Action to render LiquidJS.
   since: 2022
   github: ntsd/liquidjs-action
+  readme: https://raw.githubusercontent.com/ntsd/liquidjs-action/master/README.md
   web: https://github.com/marketplace/actions/liquidjs-render
   stacks: [TypeScript, Github Action]
 - id: auto-request-changes-action
@@ -32,6 +44,7 @@
   description: GitHub Action for automatically request changes GitHub pull requests.
   since: 2022
   github: ntsd/auto-request-changes-action
+  readme: https://raw.githubusercontent.com/ntsd/auto-request-changes-action/master/README.md
   web: https://github.com/marketplace/actions/auto-request-changes
   stacks: [TypeScript, Github Action]
 - id: binance-auto-limit-price
@@ -39,12 +52,14 @@
   description: A Binance extension to auto change limit price to the best ask/bid orders.
   since: 2021
   github: ntsd/binance-auto-limit-price
+  readme: https://raw.githubusercontent.com/ntsd/binance-auto-limit-price/master/README.md
   stacks: [JavaScript]
 - id: threejs-merry-christmas
   name: Three.js Merry Christmas
   description: 3D Christmas Theme by Three.js.
   since: 2021
   github: ntsd/threejs-merry-christmas
+  readme: https://raw.githubusercontent.com/ntsd/threejs-merry-christmas/master/README.md
   web: https://ntsd.github.io/threejs-merry-christmas
   stacks: [JavaScript, Three.js]
 - id: google-sheet-import-cache
@@ -52,11 +67,13 @@
   description: A Google Sheet custom function add-on used for web scraping and supporting cache created by Google Apps Script.
   since: 2021
   github: ntsd/google-sheet-import-cache
+  readme: https://raw.githubusercontent.com/ntsd/google-sheet-import-cache/master/README.md
   stacks: [Google Apps Script]
 - id: ruamrat
   name: Ruamrat Website
   description: Website for Ruamrat Aluminium Glass Business.
   since: 2019
   github: ntsd/ruamrat
+  # readme: https://raw.githubusercontent.com/ntsd/ruamrat/master/README.md
   web: https://ruamrat.com
   stacks: [TypeScript, React, Gatsby]

@@ -39,8 +39,9 @@ layout: default
 <div class="container mx-auto grid grid-cols-12 p-4 lg:space-x-8">
     <div class="col-span-12">
         <div class="post-container prose max-w-none">
-            {% capture url %}https://raw.githubusercontent.com/{{ page.github }}/main/README.md{% endcapture %}
-            {{ url | http_request: 'GET', '', '' | markdownify }}
+            {% if page.readme %}
+            {{ page.readme | http_request: 'GET', '', '' | markdownify }}
+            {% endif %}
         </div>
     </div>
 </div>

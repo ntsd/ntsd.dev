@@ -130,11 +130,11 @@ about:
 # datapage-generator https://github.com/avillafiorita/jekyll-datapage_gen
 page_gen-dirs: true
 page_gen:
-  # - data: projects
-  #   template: project
-  #   name: "id"
-  #   dir: projects
-  #   title: "name"
+  - data: projects
+    template: project
+    name: "id"
+    dir: projects
+    title: "name"
   - data: notable-projects
     template: project
     name: "id"
