@@ -8,13 +8,17 @@ keyword: "Programming, Web Development, Coding, Artificial Intelligence, Machine
 url: "https://ntsd.dev" # host for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
-# Gems
+# Plugins
 plugins:
   - jekyll-paginate-v2
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-lazy-load-image
   - jekyll-feed
+  - jekyll-datapage-generator
+  - jekyll-http-request
+# Disable Plugins safe mode
+safe: true
 
 # Build settings
 permalink: /:title/
@@ -119,97 +123,20 @@ featured-condition-size: 0 # A tag will be featured if the size of it is more th
 chrome-tab-theme-color: "#000000"
 service-worker: true
 
-# Projects
-projects:
-  - zero-share:
-    name: Zero Share
-    description: A client-side secure P2P file sharing using WebRTC.
-    date: 2023 - present
-    github: https://github.com/ntsd/zero-share
-    web: https://zero-share.github.io
-    stacks: [Svelte , TypeScript, WebRTC]
-  - auto-evm-wallet:
-    name: Auto EVM Wallet
-    description: EVM wallet that allow to schedule or automate smart contract call.
-    date: 2023 - present
-    github: https://github.com/ntsd/auto-evm-wallet
-    web: https://ntsd.github.io/auto-evm-wallet
-    stacks: [Svelte , TypeScript, Web3.js]
-  - sdp-compress:
-    name: SDP Compact
-    description: Shorten WebRTC Session Description Protocol (SDP) based on Unified Plan SDP.
-    date: 2023 - present
-    github: https://github.com/ntsd/sdp-compact
-    web: https://ntsd.github.io/sdp-compact
-    npm: https://www.npmjs.com/package/sdp-compact
-    stacks: [TypeScript]
-  - cross-clipboard:
-    name: Cross Clipboard
-    description: An open source cross-platform clipboard sharing.
-    date: 2022 - present
-    github: https://github.com/ntsd/cross-clipboard
-    stacks: [Go, libp2p]
-  - freqtrade-configs:
-    name: Freqtrade Configs
-    description: My Freqtrade strategies and config.
-    date: 2022
-    github: https://github.com/ntsd/freqtrade-configs
-    stacks: [Python]
-  - ntsd.dev:
-    name: ntsd.dev
-    description: My website created by Jekyll and Tailwind.
-    date: 2020 - present
-    github: https://github.com/ntsd/ntsd.dev
-    web: https://ntsd.dev
-    stacks: [Jekyll, JavaScript, Gulp]
-  - github-profile-repositories:
-    name: Github Profile Repositories
-    description: Automatically create repositories list for your Github Profile.
-    date: 2022
-    github: https://github.com/ntsd/github-profile-repositories
-    web: https://github.com/marketplace/actions/github-profile-repositories
-    stacks: [TypeScript, Github Action]
-  - liquidjs-action:
-    name: LiquidJS Github Action
-    description: Github Action to render LiquidJS.
-    date: 2022
-    github: https://github.com/ntsd/liquidjs-action
-    web: https://github.com/marketplace/actions/liquidjs-render
-    stacks: [TypeScript, Github Action]
-  - auto-request-changes-action:
-    name: Auto Request Changes GitHub Action
-    description: GitHub Action for automatically request changes GitHub pull requests.
-    date: 2022
-    github: https://github.com/ntsd/auto-request-changes-action
-    web: https://github.com/marketplace/actions/auto-request-changes
-    stacks: [TypeScript, Github Action]
-  - binance-auto-limit-price:
-    name: Binance Auto Limit Price
-    description: A Binance extension to auto change limit price to the best ask/bid orders.
-    date: 2021
-    github: https://github.com/ntsd/binance-auto-limit-price
-    stacks: [JavaScript]
-  - threejs-merry-christmas:
-    name: Three.js Merry Christmas
-    description: 3D Christmas Theme by Three.js.
-    date: 2021
-    github: https://github.com/ntsd/threejs-merry-christmas
-    web: https://ntsd.github.io/threejs-merry-christmas
-    stacks: [JavaScript, Three.js]
-  - google-sheet-import-cache:
-    name: Google Sheet Import Cache
-    description: A Google Sheet custom function add-on used for web scraping and supporting cache created by Google Apps Script.
-    date: 2021
-    github: https://github.com/ntsd/google-sheet-import-cache
-    stacks: [Google Apps Script]
-  - ruamrat:
-    name: Ruamrat Website
-    description: Website for Ruamrat Aluminium Glass Business.
-    date: 2019
-    github: https://github.com/ntsd/ruamrat
-    web: https://ruamrat.com
-    stacks: [TypeScript, React, Gatsby]
-
 # About
 about:
   intro: I am Jirawat Boonkumnerd (Jo), A Software Engineer from Thailand who loves programming and problem-solving. I always learning new things every day.
+
+# datapage-generator https://github.com/avillafiorita/jekyll-datapage_gen
+page_gen-dirs: true
+page_gen:
+  # - data: projects
+  #   template: project
+  #   name: "id"
+  #   dir: projects
+  #   title: "name"
+  - data: notable-projects
+    template: project
+    name: "id"
+    dir: projects
+    title: "name"

@@ -1,111 +1,72 @@
 ---
 layout: default
 ---
+<!-- Hero -->
+<section id="hero" class="container mx-auto px-4 py-24">
+    <h1 class="text-5xl font-semibold text-gray-900">Welcome!</h1>
+    <p class="text-xl text-gray-600 mt-4">
+        Explore my blog posts and projects.
+    </p>
+</section>
 
-<div class="">
-    <!-- Hero -->
-    <section id="hero" class="container mx-auto px-4 py-24">
-        <h1 class="text-5xl font-semibold text-gray-900">Welcome!</h1>
-        <p class="text-xl text-gray-600 mt-4">
-            Explore my blog posts and projects.
-        </p>
-    </section>
+<hr class="dark:border-gray-500" />
 
-    <hr class="dark:border-gray-500" />
+<!-- Blog -->
+<section id="blog" class="container mx-auto px-4 py-24">
+    <a href="{{ site.baseurl }}/blog/">
+        <h2 class="text-4xl font-semibold text-gray-900 mb-8">Blog</h2>
+    </a>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {% for post in site.posts limit: 4 %}
+        <div class="lg:py-4 lg:px-6 mx-auto bg-white lg:shadow-lg flex flex-col w-full">
+            <div class="flex items-center justify-between">
+                <time class="text-xs font-light text-gray-600" datetime="{{ post.date | date:" %Y-%m-%d" }}">{{
+                    post.date | date: "%B %-d, %Y" }}</time>
+                {% for category in post.categories %}
+                <a class="px-2 py-1 text-xs font-bold text-gray-100 transition-colors duration-200 transform bg-gray-800 cursor-pointer hover:bg-gray-600"
+                    href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
+                {% endfor %}
+            </div>
 
-    <!-- Blog -->
-    <section id="blog" class="container mx-auto px-4 py-24">
-        <a href="{{ site.baseurl }}/blog/">
-            <h2 class="text-4xl font-semibold text-gray-900 mb-8">Blog</h2>
-        </a>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {% for post in site.posts limit: 4 %}
-            <div class="lg:py-4 lg:px-6 mx-auto bg-white lg:shadow-lg flex flex-col w-full">
-                <div class="flex items-center justify-between">
-                    <time class="text-xs font-light text-gray-600" datetime="{{ post.date | date:" %Y-%m-%d" }}">{{
-                        post.date | date: "%B %-d, %Y" }}</time>
-                    {% for category in post.categories %}
-                    <a class="px-2 py-1 text-xs font-bold text-gray-100 transition-colors duration-200 transform bg-gray-800 cursor-pointer hover:bg-gray-600"
-                        href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category }}</a>
-                    {% endfor %}
+            <a class="mt-4 hover:underline" href="{{ post.url | prepend: site.baseurl }}">
+                <div class="text-xl font-bold text-gray-900 hover:text-gray-800">{{ post.title
+                    }}
                 </div>
+                {% if post.description %}
+                <p class="font-bold text-gray-500">
+                    {{ post.description }}
+                </p>
+                {% endif %}
+            </a>
 
-                <a class="mt-4 hover:underline" href="{{ post.url | prepend: site.baseurl }}">
-                    <div class="text-xl font-bold text-gray-900 hover:text-gray-800">{{ post.title
-                        }}
-                    </div>
-                    {% if post.description %}
-                    <p class="font-bold text-gray-500">
-                        {{ post.description }}
-                    </p>
-                    {% endif %}
-                </a>
-
-                <div class="flex items-center justify-end mt-auto">
-                    <div class="flex items-center mt-8 text-sm">
-                    </div>
+            <div class="flex items-center justify-end mt-auto">
+                <div class="flex items-center mt-8 text-sm">
                 </div>
             </div>
-            <hr class="dark:border-gray-500 lg:hidden" />
-            {% endfor %}
         </div>
-        <div class="mt-8 flex justify-end">
-            <a class="px-4 py-2 text-2xl font-bold text-gray-100 transition-colors duration-200 transform bg-gray-800 cursor-pointer hover:bg-gray-600"
-                href="{{ site.baseurl }}/blog/">More Posts →</a>
-        </div>
-    </section>
+        <hr class="dark:border-gray-500 lg:hidden" />
+        {% endfor %}
+    </div>
+    <div class="mt-8 flex justify-end">
+        <a class="px-4 py-2 text-2xl font-bold text-gray-100 transition-colors duration-200 transform bg-gray-800 cursor-pointer hover:bg-gray-600"
+            href="{{ site.baseurl }}/blog/">More Posts →</a>
+    </div>
+</section>
 
-    <hr class="dark:border-gray-500" />
+<hr class="dark:border-gray-500" />
 
-    <!-- Projects -->
-    <section id="projects" class="container mx-auto px-4 py-24">
-        <a href="{{ site.baseurl }}/projects/">
-            <h2 class="text-4xl font-semibold text-gray-900 mb-8">Projects</h2>
-        </a>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {% for project in site.projects limit: 4 %}
-            <div class="lg:py-4 lg:px-6 mx-auto bg-white lg:shadow-lg flex flex-col w-full">
-                <div class="flex items-center justify-between">
-                    <time class="text-xs font-light text-gray-600">{{ project.date }}</time>
-                </div>
-
-                <div class="mt-2">
-                    <div class="text-xl font-bold text-gray-900 hover:text-gray-800">{{ project.name }}
-                    </div>
-                    <p class="font-bold text-gray-500">
-                        {{ project.description }}
-                    </p>
-                </div>
-                <div class="flex items-center mt-auto">
-                    <div class="flex flex-row items-center mt-8 justify-between w-full">
-                        <div class="flex text-xs font-bold">
-                            {% for stack in project.stacks %}
-                            {{ stack }}
-                            {% endfor %}
-                        </div>
-                        <div class="flex text-sm gap-2">
-                            {% if project.web %}
-                            <a aria-label="Website" class="text-gray-600 hover:text-gray-400" href="{{ project.web }}"
-                                rel="noopener noreferrer" target="_blank">
-                                {% include icon_web.html %}
-                            </a>
-                            {% endif %}
-                            {% if project.github %}
-                            <a aria-label="Github" class="text-gray-600 hover:text-gray-400" href="{{ project.github }}"
-                                rel="noopener noreferrer" target="_blank">
-                                {% include icon_github.html %}
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr class="dark:border-gray-500 lg:hidden" />
-            {% endfor %}
-        </div>
-        <div class="mt-8 flex justify-end">
-            <a class="px-4 py-2 text-2xl font-bold text-gray-100 transition-colors duration-200 transform bg-gray-800 cursor-pointer hover:bg-gray-600"
-                href="{{ site.baseurl }}/projects/">More Projects →</a>
-        </div>
-    </section>
-</div>
+<!-- Projects -->
+<section id="projects" class="container mx-auto px-4 py-24">
+    <a href="{{ site.baseurl }}/projects/">
+        <h2 class="text-4xl font-semibold text-gray-900 mb-8">Projects</h2>
+    </a>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {% for project in site.data.notable-projects limit: 4 %}
+        {% include project.html %}
+        {% endfor %}
+    </div>
+    <div class="mt-8 flex justify-end">
+        <a class="px-4 py-2 text-2xl font-bold text-gray-100 transition-colors duration-200 transform bg-gray-800 cursor-pointer hover:bg-gray-600"
+            href="{{ site.baseurl }}/projects/">More Projects →</a>
+    </div>
+</section>

@@ -29,7 +29,10 @@ GEM
       rouge (~> 3.0)
       safe_yaml (~> 1.0)
       terminal-table (~> 2.0)
+    jekyll-datapage-generator (1.4.0)
     jekyll-feed (0.16.0)
+      jekyll (>= 3.7, < 5.0)
+    jekyll-http-request (0.0.1)
       jekyll (>= 3.7, < 5.0)
     jekyll-lazy-load-image (0.3.3)
       jekyll (>= 3.8)
@@ -78,11 +81,13 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
+  jekyll-datapage-generator
   jekyll-feed
+  jekyll-http-request
   jekyll-lazy-load-image
   jekyll-paginate-v2
   jekyll-seo-tag
   jekyll-sitemap
 
 BUNDLED WITH
-   2.1.4
+   2.3.10

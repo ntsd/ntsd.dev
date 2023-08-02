@@ -1,5 +1,11 @@
 # ntsd.dev
 
+```
+{% capture readme %}{%- http_request GET;https://raw.githubusercontent.com/{{ page.github }}/main/README.md;{} -%}{% endcapture %}{{ readme | markdownify }}
+```
+
+`{%- http_request GET;https://api.github.com/repos/{{ page.github }}/contents/README.md;{"headers":[{"key":"X-GitHub-Api-Version","value":"2022-11-28"},{"key":"Accept","value":"application/vnd.github+json"}]} -%}`
+
 ## Installation
 
 ```
@@ -10,11 +16,10 @@ bundler install
 npm i
 ```
 
-* If you got an puppeteer errors check <https://gist.github.com/winuxue/cfef08e2f5fe9dfc16a1d67a4ad38a01#file-puppeteer-ubuntu-1804-md>
+- If you got an puppeteer errors check <https://gist.github.com/winuxue/cfef08e2f5fe9dfc16a1d67a4ad38a01#file-puppeteer-ubuntu-1804-md>
 
 ## Todos
 
-- Apply service worker reload page <https://whatwebcando.today/articles/handling-service-worker-updates>, <https://github.com/GoogleChrome/workbox/issues/1120>
 - Fix offline page
 - Fix 404 page
 - Imporve google tag manager <https://www.analyticsmania.com/post/google-tag-manager-impact-on-page-speed-and-how-to-improve/>
@@ -40,5 +45,3 @@ Pre render JavaScript libraries:
 <https://merakiui.com/>
 
 <https://storyset.com/>
-
-<https://stackoverflow.com/questions/66937676/how-can-i-disable-javascript-in-pupeeter>
