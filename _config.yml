@@ -135,7 +135,7 @@ page_gen:
     name: "id"
     dir: projects
     title: "name"
-  - data: notable-projects
+  - data: featured-projects
     template: project
     name: "id"
     dir: projects

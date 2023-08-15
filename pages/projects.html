@@ -8,9 +8,9 @@ sideBar: false
 
 <div class="flex flex-col divide-y">
     <section class="pt-8 pb-24">
-        <div class="text-4xl font-semibold text-gray-900 mb-8 text-center">Notable Projects</div>
+        <div class="text-4xl font-semibold text-gray-900 mb-8 text-center">Featured Projects</div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {% for project in site.data.notable-projects %}
+            {% for project in site.data.featured-projects %}
             {% include project.html %}
             {% endfor %}
         </div>

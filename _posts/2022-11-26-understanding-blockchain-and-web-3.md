@@ -174,7 +174,7 @@ One of the key advantages of DAG is its ability to process transactions in paral
 
 Overall, the choice between blockchain and DAG depends on the specific use case and requirements of the application. Blockchain may be better suited for applications that require high security and immutability, while DAG may be better suited for applications that require high transaction throughput and faster confirmation times.
 
-# Blockchain usecase
+# Blockchain Usecases
 
 Blockchain technology has a wide range of use cases in various industries, and is being increasingly adopted for its ability to provide secure, transparent, and immutable record-keeping. Some of the most prominent use cases of blockchain technology include:
 
@@ -187,8 +187,6 @@ Blockchain technology has a wide range of use cases in various industries, and i
 4. Voting Systems: Blockchain can be used to create a secure and transparent voting system, allowing for anonymous and tamper-proof voting records.
 
 5. Smart Contracts: Blockchain can be used to create smart contracts, which are self-executing contracts with the terms of the agreement written into code. These contracts can be used for a wide range of applications, from financial transactions to supply chain management.
-
-6. Real Estate: Blockchain can be used to create a secure and transparent record of real estate transactions, allowing for faster and more secure property transfers and eliminating the need for intermediaries.
 
 These are just a few examples of the many ways in which blockchain technology can be used to create secure and transparent record-keeping systems. As blockchain technology continues to evolve and mature, we can expect to see even more innovative use cases emerge across a wide range of industries.
 

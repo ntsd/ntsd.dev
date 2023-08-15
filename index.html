@@ -61,7 +61,7 @@ layout: default
         <h2 class="text-4xl font-semibold text-gray-900 mb-8">Projects</h2>
     </a>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {% for project in site.data.notable-projects limit: 4 %}
+        {% for project in site.data.featured-projects limit: 4 %}
         {% include project.html %}
         {% endfor %}
     </div>
