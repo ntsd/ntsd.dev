@@ -17,7 +17,8 @@ plugins:
   - jekyll-feed
   - jekyll-datapage-generator
   - jekyll-http-request
-# Disable Plugins safe mode
+  - jekyll-commonmark-ghpages
+# Safe mode will disable custom plugins in `_plugins`
 safe: true
 
 # Build settings
@@ -97,10 +98,10 @@ social:
     - https://www.linkedin.com/in/ntsd
     - https://facebook.com/ntsd.dev
 
-# Markdown settings http://jekyllrb.com/docs/configuration/#kramdown
-markdown: kramdown
-kramdown:
-  input: GFM # use Github Flavored Markdown !important
+markdown: CommonMarkGhPages
+commonmark:
+  options: ["UNSAFE", "SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
 
 prism: true
 
@@ -130,11 +131,11 @@ about:
 # datapage-generator https://github.com/avillafiorita/jekyll-datapage_gen
 page_gen-dirs: true
 page_gen:
-  - data: projects
-    template: project
-    name: "id"
-    dir: projects
-    title: "name"
+  # - data: projects
+  #   template: project
+  #   name: "id"
+  #   dir: projects
+  #   title: "name"
   - data: featured-projects
     template: project
     name: "id"

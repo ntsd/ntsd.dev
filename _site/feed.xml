@@ -1,35 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-08-15T22:26:58+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Separate critical CSS and non-critical CSS for faster page load</title><link href="https://ntsd.dev/extract-cricital-css/" rel="alternate" type="text/html" title="Separate critical CSS and non-critical CSS for faster page load" /><published>2023-07-07T00:00:00+07:00</published><updated>2023-07-07T00:00:00+07:00</updated><id>https://ntsd.dev/extract-cricital-css</id><content type="html" xml:base="https://ntsd.dev/extract-cricital-css/"><![CDATA[<h2 id="why-inline-critical-css">Why inline Critical CSS?</h2>
-
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-08-29T20:13:26+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Separate critical CSS and non-critical CSS for faster page load</title><link href="https://ntsd.dev/extract-cricital-css/" rel="alternate" type="text/html" title="Separate critical CSS and non-critical CSS for faster page load" /><published>2023-07-07T00:00:00+07:00</published><updated>2023-07-07T00:00:00+07:00</updated><id>https://ntsd.dev/extract-cricital-css</id><content type="html" xml:base="https://ntsd.dev/extract-cricital-css/"><![CDATA[<h2 id="why-inline-critical-css">Why inline Critical CSS?</h2>
 <p>Critical CSS includes only the styles needed to render the Above the Fold of a webpage.</p>
-
 <p>By delivering these styles inline in the HTML document, the browser can render this content without having to wait for the entire external CSS file to load. Non-critical CSS can load later in Asynchronous without render-blocking.</p>
-
 <h2 id="above-the-fold">Above the fold</h2>
-
 <p>“Above the fold” content refers to the portion of a webpage that is visible without scrolling.</p>
-
 <p>To consider Above the Fold Dimension normally we specify the supporting media queries of the CSS framework and Breakpoints.</p>
-
-<p>For example, In a Tailwind page that only has <code class="language-plaintext highlighter-rouge">lg</code> breakpoints means If the width size is less than <code class="language-plaintext highlighter-rouge">1024</code> will be considered as Vertical Aspect Ratios (Mobile or Tablet).</p>
-
+<p>For example, In a Tailwind page that only has <code>lg</code> breakpoints means If the width size is less than <code>1024</code> will be considered as Vertical Aspect Ratios (Mobile or Tablet).</p>
 <p>To calculate the Above the fold resolution size and Dimension, If the website only scrolls down so we should use the highest height possible.</p>
-
-<p>From my research, the longest aspect ratio in mobile devices is Motorola Razr at <code class="language-plaintext highlighter-rouge">146:357</code> aspect ratio with a resolution <code class="language-plaintext highlighter-rouge">W 876 x H 2142</code> in vertical mode.</p>
-
-<p>For Horizontal mode or screen width of more than 1024, we can use Surface Book at <code class="language-plaintext highlighter-rouge">3∶2</code> aspect ratio with a resolution of <code class="language-plaintext highlighter-rouge">W 3240	 × H 2160</code>.</p>
-
+<p>From my research, the longest aspect ratio in mobile devices is Motorola Razr at <code>146:357</code> aspect ratio with a resolution <code>W 876 x H 2142</code> in vertical mode.</p>
+<p>For Horizontal mode or screen width of more than 1024, we can use Surface Book at <code>3∶2</code> aspect ratio with a resolution of <code>W 3240 × H 2160</code>.</p>
 <h2 id="install-critical-on-gulp">Install Critical on Gulp</h2>
-
 <p>Because I am using Gulp for my website so I will show example in Gulp, but you can install it globally as you want.</p>
-
 <p>The Library Github and document: <a href="https://github.com/addyosmani/critical">https://github.com/addyosmani/critical</a></p>
-
 <p>Install package</p>
-
-<p><code class="language-plaintext highlighter-rouge">npm install --save-dev critical</code></p>
-
+<p><code>npm install --save-dev critical</code></p>
 <p>Create a gulp task</p>
-
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">gulp</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">gulp</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">path</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">stream</span> <span class="k">as</span> <span class="nx">critical</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">critical</span><span class="dl">"</span><span class="p">;</span>
@@ -78,9 +62,7 @@
     <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">SITE_ROOT</span><span class="p">));</span>
 <span class="p">});</span>
 </code></pre></div></div>
-
-<p>Then change the style load to async load, May consider add <code class="language-plaintext highlighter-rouge">noscript</code> for non javascript support browser.</p>
-
+<p>Then change the style load to async load, May consider add <code>noscript</code> for non javascript support browser.</p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span>
   <span class="na">rel=</span><span class="s">"preload"</span>
   <span class="na">href=</span><span class="s">"/assets/css/style.css"</span>
@@ -92,25 +74,16 @@
   <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/css/style.css"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/noscript&gt;</span>
 </code></pre></div></div>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Frontend" /><category term="Web Development" /><category term="Web Performance" /><category term="CSS" /><summary type="html"><![CDATA[Separate critical CSS for inline HTML and non-critical CSS for asynchronous load for a better performance page load.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences</title><link href="https://ntsd.dev/recoil-persistent-with-capacitor-preferences/" rel="alternate" type="text/html" title="Persistent store for Cross-platform React applications with Recoil and Capacitor Preferences" /><published>2023-07-06T00:00:00+07:00</published><updated>2023-07-06T00:00:00+07:00</updated><id>https://ntsd.dev/recoil-persistent-with-capacitor-preferences</id><content type="html" xml:base="https://ntsd.dev/recoil-persistent-with-capacitor-preferences/"><![CDATA[<h2 id="capacitor-preferences">Capacitor Preferences</h2>
-
 <p><a href="https://capacitorjs.com/docs/apis/preferences">Capacitor Preferences</a> is a Capacitor plugin to allow Capacitor applications to store persistent data.</p>
-
 <p>The Preferences API provides a simple key/value persistent store for lightweight data.</p>
-
 <p>Mobile OSs may periodically clear data set in window.localStorage, so this API should be used instead. This API will fall back to using localStorage when running as a Progressive Web App.</p>
-
 <p>This plugin will use UserDefaults on iOS and SharedPreferences on Android. Stored data is cleared if the app is uninstalled.</p>
-
 <h2 id="custom-recoil-atom-effect">Custom Recoil Atom Effect</h2>
-
 <p>The customize for Atom Effect to store data in Capacitor Preferences instead of Memory for persistent data.</p>
-
 <p>This code makes customized to get, set, and remove the data by the store key.</p>
-
 <ul>
-  <li>Instead of Capacitor Preferences you can replace with any Library you want.</li>
+<li>Instead of Capacitor Preferences you can replace with any Library you want.</li>
 </ul>
-
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Preferences</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@capacitor/preferences</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">AtomEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">recoil</span><span class="dl">"</span><span class="p">;</span>
 
@@ -138,11 +111,8 @@
   <span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div></div>
-
 <h2 id="how-to-use-the-atom-effect">How to use the Atom Effect</h2>
-
 <p>You can simply put it in the Atom Options on effects parameters, you can also put other effects as well.</p>
-
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">atom</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">recoil</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">persistentStorageEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./utils</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">type</span> <span class="p">{</span> <span class="nx">Settings</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../types</span><span class="dl">"</span><span class="p">;</span>
@@ -155,35 +125,20 @@
   <span class="na">effects</span><span class="p">:</span> <span class="p">[</span><span class="nx">persistentStorageEffect</span><span class="o">&lt;</span><span class="nx">Settings</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">"</span><span class="s2">settings</span><span class="dl">"</span><span class="p">)],</span>
 <span class="p">});</span>
 </code></pre></div></div>]]></content><author><name></name></author><category term="Software Development" /><category term="Mobile Development" /><category term="Web Development" /><category term="Recoil" /><category term="Capacitor" /><category term="React" /><category term="Programming" /><category term="Frontend" /><summary type="html"><![CDATA[Make Recoil persistent for Cross-Platform React Applications. worked for iOS, Android, Website, and PWA.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">My kubectl commands cheat sheet</title><link href="https://ntsd.dev/my-kubectl-cheat-sheet/" rel="alternate" type="text/html" title="My kubectl commands cheat sheet" /><published>2022-09-02T00:00:00+07:00</published><updated>2022-09-02T00:00:00+07:00</updated><id>https://ntsd.dev/my-kubectl-cheat-sheet</id><content type="html" xml:base="https://ntsd.dev/my-kubectl-cheat-sheet/"><![CDATA[<p>As a developer sometimes I need to debug or investigate problems on the cloud machine. so I create this cheat sheet to note the commands. And it might be good to share with people who are just getting started with the Kubernetes.</p>
-
 <h2 id="pod-namespace-and-deployment">Pod, Namespace, and Deployment</h2>
-
 <p>to using kubectl, the reader need to know some knowledge about pod, namespace, and containers in Kubernetes.</p>
-
 <h3 id="container">Container</h3>
-
 <p>Kubernates Container is similar to Docker Container it will include software or package to runnning on it environments or OS. And the pre running container is calling Container Image similar to Docker Image.</p>
-
 <h3 id="pod">Pod</h3>
-
 <p>Pod is the smallest computing unit in Kubernetes that will share resource and storage. One pod can have multiple containers.</p>
-
 <h3 id="namespace">Namespace</h3>
-
 <p>namespace will use to define the unique name of group or cluster for multiple objects. normally they will use namespace to specific team or project for make it easier to manage and avoid the effect between team or project.</p>
-
 <h3 id="deployment">Deployment</h3>
-
-<p>A resource object in Kubernetes that provides declarative updates to applications. for example image, number of pods, etc. normallt it will write in <code class="language-plaintext highlighter-rouge">.yaml</code> format.</p>
-
+<p>A resource object in Kubernetes that provides declarative updates to applications. for example image, number of pods, etc. normallt it will write in <code>.yaml</code> format.</p>
 <h2 id="google-kubernetes-engine-cluster">Google Kubernetes Engine Cluster</h2>
-
 <p>to make the kubectl work, we need to set the config. for manual set can follow this guide <a href="https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/">https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/</a>.</p>
-
 <p>I am using Google Kubernetes Engine (GKE) they have the gcloud container command to allow me to manage containers and cluster easier.</p>
-
 <p>to map configuration with gcloud cli</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># init gcloud</span>
 gcloud init
 
@@ -205,17 +160,11 @@ gcloud container clusters get-credentials &lt;cluster-name&gt; <span class="nt">
 <span class="c"># check kubectl config</span>
 kubectl config view
 </code></pre></div></div>
-
 <p>After this your kubectl will using access from the gcloud cluster</p>
-
 <h2 id="kubectl-commands">Kubectl commands</h2>
-
 <h3 id="config">Config</h3>
-
 <p>The cluster is the physical platform where all Kubernetes components, capabilities, and workloads are configured.</p>
-
 <p>The context is a set of access parameters that contains a Kubernetes cluster, a user, and a namespace.</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list contexts</span>
 kubectl config get-contexts
 
@@ -228,54 +177,38 @@ kubectl config get-clusters
 <span class="c"># set cluster</span>
 kubectl config set-cluster &lt;cluster-name&gt;
 </code></pre></div></div>
-
 <h3 id="kubectl-apply">Kubectl apply</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply -f ./my-manifest.yaml
+<pre><code>kubectl apply -f ./my-manifest.yaml
 kubectl apply -f ./my1.yaml -f ./my2.yaml
 kubectl apply -f ./dir
-</code></pre></div></div>
-
+</code></pre>
 <h3 id="run-a-pod">Run a Pod</h3>
-
-<p><code class="language-plaintext highlighter-rouge">kubectl run busybox --image=busybox --command --restart=Never -- tail -f /dev/null</code></p>
-
+<p><code>kubectl run busybox --image=busybox --command --restart=Never -- tail -f /dev/null</code></p>
 <h3 id="find-resource-name">Find resource name</h3>
-
 <p>Resource name will help to identify the Kubernates resource and target such as Service, Pod, Deployment, etc.</p>
-
 <h4 id="list-pods">List pods</h4>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list pods by all namespaces</span>
 kubectl get pod <span class="nt">-A</span>
 
 <span class="c"># list pods by namespace</span>
 kubectl get pod <span class="nt">-n</span> &lt;name-space&gt;
 </code></pre></div></div>
-
 <h4 id="list-deployment">List deployment</h4>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list deployment by namespace</span>
 kubectl get deployment <span class="nt">-n</span> &lt;name-space&gt;
 </code></pre></div></div>
-
 <h4 id="list-all">List all</h4>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list all by namespace</span>
 kubectl get all <span class="nt">-n</span> &lt;name-space&gt;
 
 <span class="c"># list service, pod, and deployment by namespace</span>
 kubectl get service,pod,deployment <span class="nt">-n</span> &lt;name-space&gt;
 </code></pre></div></div>
-
 <h4 id="describe">Describe</h4>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl describe nodes &lt;name-node&gt;
 kubectl describe pods &lt;name-pod&gt;
 </code></pre></div></div>
-
 <h4 id="logs">Logs</h4>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># get pod logs</span>
 kubectl logs &lt;pod-name&gt;
 
@@ -285,14 +218,10 @@ kubectl logs <span class="nt">-f</span> &lt;pod-name&gt;
 <span class="c"># get deployment logs</span>
 kubectl logs deploy/&lt;deployment-name&gt;
 </code></pre></div></div>
-
 <h4 id="get-expose-port">Get expose port</h4>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc <span class="nt">-n</span> &lt;name-space&gt;
 </code></pre></div></div>
-
 <h3 id="environment">Environment</h3>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># set env</span>
 kubectl <span class="nb">set env</span> &lt;resource-name&gt; <span class="nt">-n</span> &lt;name-space&gt; <span class="o">{</span>ENV_NAME<span class="o">}={</span>ENV_VALUE<span class="o">}</span>
 
@@ -302,23 +231,16 @@ kubectl <span class="nb">set env</span> &lt;resource-name&gt; <span class="nt">-
 <span class="c"># list all pods env</span>
 kubectl <span class="nb">set env </span>pods <span class="nt">--all</span> <span class="nt">--list</span>
 </code></pre></div></div>
-
 <h3 id="forward-port">Forward port</h3>
-
 <p>Forward port will allow you access to the Kubernates cluster and mapping with your local port</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl port-forward <span class="nt">-n</span> &lt;name-space&gt; &lt;resource-name&gt; &lt;local-port&gt;:&lt;resource-port&gt;
 
 <span class="c"># example</span>
 kubectl port-forward <span class="nt">-n</span> &lt;name-space&gt; &lt;resource-name&gt; 8080:80
 </code></pre></div></div>
-
 <h3 id="exec">Exec</h3>
-
 <p>runnning shell on Kubectl pod</p>
-
-<p>if you familiar to Docker it work similar to <code class="language-plaintext highlighter-rouge">docker exec</code></p>
-
+<p>if you familiar to Docker it work similar to <code>docker exec</code></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run shell command</span>
 kubectl <span class="nt">-n</span> &lt;name-space&gt; <span class="nb">exec</span> &lt;pod-name&gt; <span class="nt">--</span> &lt;cmd&gt;
 
@@ -328,52 +250,35 @@ kubectl <span class="nt">-n</span> &lt;name-space&gt; <span class="nb">exec</spa
 <span class="c"># interactive mode</span>
 kubectl <span class="nt">-n</span> &lt;name-space&gt; <span class="nb">exec</span> <span class="nt">-it</span> &lt;pod-name&gt; <span class="nt">--</span> bash
 </code></pre></div></div>]]></content><author><name></name></author><category term="Software Development" /><category term="Kubernetes" /><category term="Google Cloud Platform" /><summary type="html"><![CDATA[My useful kubectl commands cheat sheet and Google Kubernetes Engine cluster (GKE) set up]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to manage multiple Git accounts</title><link href="https://ntsd.dev/git-multiple-accounts/" rel="alternate" type="text/html" title="How to manage multiple Git accounts" /><published>2022-01-28T00:00:00+07:00</published><updated>2022-01-28T00:00:00+07:00</updated><id>https://ntsd.dev/git-multiple-accounts</id><content type="html" xml:base="https://ntsd.dev/git-multiple-accounts/"><![CDATA[<h2 id="set-up-ssh-keys-for-multi-git-accounts">Set up SSH keys for multi git accounts</h2>
-
-<h3 id="1-generate-ssh-keys">1. Generate SSH keys</h3>
-
+<h3 id="generate-ssh-keys">1. Generate SSH keys</h3>
 <p>Generate multiple SSH keys one for work and one for personal. You can have many multiple ssh key-pair for multiple git accounts as you want.</p>
-
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/.ssh
 ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-C</span> <span class="s2">"your_personal_email@gmail.com"</span> <span class="nt">-f</span> <span class="s2">"id_ed25519_git"</span>
 ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-C</span> <span class="s2">"jirawat@opn.ooo"</span> <span class="nt">-f</span> <span class="s2">"id_ed25519_git_opn"</span>
 </code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">-t</code>: Specific key type <code class="language-plaintext highlighter-rouge">ed25519</code> or <code class="language-plaintext highlighter-rouge">rsa</code></p>
-
-<p><code class="language-plaintext highlighter-rouge">-C</code>: Specific comment</p>
-
+<p><code>-t</code>: Specific key type <code>ed25519</code> or <code>rsa</code></p>
+<p><code>-C</code>: Specific comment</p>
 <p>You will get 2 pairs of the SSH key-pair.</p>
-
-<p>Private keys will name <code class="language-plaintext highlighter-rouge">id_ed25519_git</code> and <code class="language-plaintext highlighter-rouge">id_ed25519_git_opn</code>.</p>
-
-<p>Public keys will name <code class="language-plaintext highlighter-rouge">id_ed25519_git.pub</code> and <code class="language-plaintext highlighter-rouge">id_ed25519_git_opn.pub</code>.</p>
-
-<h3 id="2-add-public-keys-to-the-git-provider-gihubgitlabetc">2. Add public keys to the Git Provider (Gihub/Gitlab/etc)</h3>
-
+<p>Private keys will name <code>id_ed25519_git</code> and <code>id_ed25519_git_opn</code>.</p>
+<p>Public keys will name <code>id_ed25519_git.pub</code> and <code>id_ed25519_git_opn.pub</code>.</p>
+<h3 id="add-public-keys-to-the-git-provider-gihubgitlabetc">2. Add public keys to the Git Provider (Gihub/Gitlab/etc)</h3>
 <p>You have already generated the key pairs, Now let the Git provider know your SSH public key.</p>
-
 <ol>
-  <li>Copy the public key <code class="language-plaintext highlighter-rouge">pbcopy &lt; ~/.ssh/id_ed25519_git_opn.pub</code> (avoid copy your private key)</li>
-  <li>Go to your git provider ssh setup panel
+<li>Copy the public key <code>pbcopy &lt; ~/.ssh/id_ed25519_git_opn.pub</code> (avoid copy your private key)</li>
+<li>Go to your git provider ssh setup panel
 <a href="https://github.com/settings/keys">https://github.com/settings/keys</a> for Gihub
 <a href="https://gitlab.com/-/profile/keys">https://gitlab.com/-/profile/keys</a> for Gitlab</li>
-  <li>Paste the SSH public key and the Title you want</li>
-  <li>Generate a signature using the giving token from provider <code class="language-plaintext highlighter-rouge">echo -n 'token' | ssh-keygen -Y sign -n &lt;name-space&gt; -f id_ed25519_git.pub</code> you can replace the namespace</li>
-  <li>Apply the signature to the provider to verify</li>
+<li>Paste the SSH public key and the Title you want</li>
+<li>Generate a signature using the giving token from provider <code>echo -n 'token' | ssh-keygen -Y sign -n &lt;name-space&gt; -f id_ed25519_git.pub</code> you can replace the namespace</li>
+<li>Apply the signature to the provider to verify</li>
 </ol>
-
-<p>Next, do another one for the Github personal <code class="language-plaintext highlighter-rouge">pbcopy &lt; ~/.ssh/id_ed25519_git.pub</code> to your personal git provider.</p>
-
-<h3 id="3-creating-the-ssh-config">3. Creating the SSH Config</h3>
-
+<p>Next, do another one for the Github personal <code>pbcopy &lt; ~/.ssh/id_ed25519_git.pub</code> to your personal git provider.</p>
+<h3 id="creating-the-ssh-config">3. Creating the SSH Config</h3>
 <p>The SSH Config will help you choose the SSH key when you try to sign in to a different host.</p>
-
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>config
 vi config
 </code></pre></div></div>
-
-<p>Create and edit the ssh config file at <code class="language-plaintext highlighter-rouge">~/.ssh/config</code></p>
-
+<p>Create and edit the ssh config file at <code>~/.ssh/config</code></p>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Personal Account
 Host github.com
    HostName github.com
@@ -386,126 +291,78 @@ Host github.com-jirawat-opn
    User git
    IdentityFile ~/.ssh/id_ed25519_git_opn
 </code></pre></div></div>
-
-<h3 id="4-set-remote-url">4. Set remote url</h3>
-
+<h3 id="set-remote-url">4. Set remote url</h3>
 <p>The setup was done. Now you can clone or update your git URL.</p>
-
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com-jirawat-opn:work_account/repo.git
 
 <span class="c"># or the set origin url for the current repo</span>
 
 git remote set-url origin git@github.com-jirawat-opn:work_account/repo.git
 </code></pre></div></div>
-
 <p>For the personal git you can just do the normal way</p>
-
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:personal_account/repo.git
 
 <span class="c"># or the set origin url for the current repo</span>
 
 git remote set-url origin git@github.com:personal_account/repo.git
 </code></pre></div></div>
-
 <h2 id="set-up-gpg-keys-for-multi-git-accounts-optional">Set up GPG keys for multi git accounts (optional)</h2>
-
-<h3 id="1-generate-a-new-gpg-key">1. Generate a new GPG key</h3>
-
-<p><code class="language-plaintext highlighter-rouge">gpg --default-new-key-algo ed25519 --gen-key</code></p>
-
+<h3 id="generate-a-new-gpg-key">1. Generate a new GPG key</h3>
+<p><code>gpg --default-new-key-algo ed25519 --gen-key</code></p>
 <p>and follow the prompt dialog.</p>
-
-<h3 id="2-generate-public-key">2. Generate public key</h3>
-
+<h3 id="generate-public-key">2. Generate public key</h3>
 <p>First, list all your GPG private keys</p>
-
-<p><code class="language-plaintext highlighter-rouge">gpg --list-secret-keys --keyid-format=long</code></p>
-
-<p>The key id will follow the key method <code class="language-plaintext highlighter-rouge">ed25519/</code></p>
-
+<p><code>gpg --list-secret-keys --keyid-format=long</code></p>
+<p>The key id will follow the key method <code>ed25519/</code></p>
 <p>for example</p>
-
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sec   ed25519/3AA5C34371567BD2 2021-11-23 <span class="o">[</span>SC]
 uid                 <span class="o">[</span>ultimate] Jirawat Boonkumnerd &lt;jirawat@opn.ooo&gt;
 ssb   cv25519/127C6D28828B3B8C 2021-11-23 <span class="o">[</span>E]
 </code></pre></div></div>
-
-<p>in this case the key id is <code class="language-plaintext highlighter-rouge">3AA5C34371567BD2</code></p>
-
-<h3 id="3-add-a-new-uid-and-email-to-the-key">3. Add a new uid and email to the key</h3>
-
-<p>3.1 <code class="language-plaintext highlighter-rouge">gpg --edit-key 3AA5C34371567BD2</code> to edit the key</p>
-
-<p>3.2 <code class="language-plaintext highlighter-rouge">adduid</code> to add a new uid then fill your uid info and the another email</p>
-
-<p>3.3 <code class="language-plaintext highlighter-rouge">uid</code> to show uid list</p>
-
-<p>3.4 <code class="language-plaintext highlighter-rouge">uid 2</code> to choose uid 2</p>
-
-<p>3.5 <code class="language-plaintext highlighter-rouge">trust</code> to trust the uid type <code class="language-plaintext highlighter-rouge">5</code> to ultimate trust then <code class="language-plaintext highlighter-rouge">y</code></p>
-
-<p>3.6 <code class="language-plaintext highlighter-rouge">save</code> the save edit</p>
-
-<h3 id="4-add-public-keys-to-the-git-provider">4. Add public keys to the Git Provider</h3>
-
+<p>in this case the key id is <code>3AA5C34371567BD2</code></p>
+<h3 id="add-a-new-uid-and-email-to-the-key">3. Add a new uid and email to the key</h3>
+<p>3.1 <code>gpg --edit-key 3AA5C34371567BD2</code> to edit the key</p>
+<p>3.2 <code>adduid</code> to add a new uid then fill your uid info and the another email</p>
+<p>3.3 <code>uid</code> to show uid list</p>
+<p>3.4 <code>uid 2</code> to choose uid 2</p>
+<p>3.5 <code>trust</code> to trust the uid type <code>5</code> to ultimate trust then <code>y</code></p>
+<p>3.6 <code>save</code> the save edit</p>
+<h3 id="add-public-keys-to-the-git-provider">4. Add public keys to the Git Provider</h3>
 <p>export the public key</p>
-
-<p><code class="language-plaintext highlighter-rouge">gpg --armor --export 3AA5C34371567BD2</code></p>
-
+<p><code>gpg --armor --export 3AA5C34371567BD2</code></p>
 <p>Copy your GPG key and add to the Git provider. It may the same page as the SSH key.</p>
-
 <p>If it ask to verify by a token, you can generate signature by using</p>
-
-<p><code class="language-plaintext highlighter-rouge">echo "token" | gpg -a --default-key 3AA5C34371567BD2 --detach-sig</code></p>
-
-<h3 id="5-set-up-git-config-to-use-the-gpg-key">5. Set up git config to use the GPG key</h3>
-
-<p><code class="language-plaintext highlighter-rouge">git config --global user.signingkey 3AA5C34371567BD2</code></p>
-
-<p>You can also edit the <code class="language-plaintext highlighter-rouge">~/.gitconfig</code></p>
-
+<p><code>echo &quot;token&quot; | gpg -a --default-key 3AA5C34371567BD2 --detach-sig</code></p>
+<h3 id="set-up-git-config-to-use-the-gpg-key">5. Set up git config to use the GPG key</h3>
+<p><code>git config --global user.signingkey 3AA5C34371567BD2</code></p>
+<p>You can also edit the <code>~/.gitconfig</code></p>
 <p>or for specific repo</p>
-
-<p><code class="language-plaintext highlighter-rouge">git config user.signingkey 3AA5C34371567BD2</code></p>
-
+<p><code>git config user.signingkey 3AA5C34371567BD2</code></p>
 <p>craete a sign commit</p>
-
-<p><code class="language-plaintext highlighter-rouge">git commit -S -m 'test'</code></p>
-
+<p><code>git commit -S -m 'test'</code></p>
 <p>to make it automatically sign commits</p>
-
-<p><code class="language-plaintext highlighter-rouge">git config --global commit.gpgsign true</code></p>
-
+<p><code>git config --global commit.gpgsign true</code></p>
 <h2 id="reference">Reference</h2>
-
 <p><a href="https://docs.github.com/">https://docs.github.com/</a></p>]]></content><author><name></name></author><category term="Software Development" /><category term="Git" /><category term="Security" /><summary type="html"><![CDATA[How I set up multi SSH keys for multiple git accounts, To make Git can use the personal git and work git at the same time.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Reduce runtime JavaScript to improve page speed using Puppeteer</title><link href="https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer/" rel="alternate" type="text/html" title="Reduce runtime JavaScript to improve page speed using Puppeteer" /><published>2021-11-03T00:00:00+07:00</published><updated>2021-11-03T00:00:00+07:00</updated><id>https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer</id><content type="html" xml:base="https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer/"><![CDATA[<p>The problem is when I am using many JavaScript libraries with big sizes and unnecessary to run in runtime such as <a href="https://github.com/PrismJS/prism">PrismJS</a>, <a href="https://github.com/bryanbraun/anchorjs">AnchorJS</a>, and <a href="https://github.com/timdream/wordcloud2.js/">Wordcloud2</a>. All of these JavaScript libraries will load content from HTML and render it component by adding element classes and styles.</p>
-
 <p>In this example, I will show how to use <a href="https://github.com/PrismJS/prism">PrismJS</a> without runtime JavaScript because it’s the biggest library I’m using. To do that I need <a href="https://github.com/puppeteer/puppeteer">Puppeteer</a> headless Chrome for NodeAPI.</p>
-
 <p>First of all, I download PrismJS from the <a href="https://prismjs.com/download.html">download page</a> and just select all languages then download JavaScript and CSS files. Put both on the HTML page. It took 500kb of JavaScript and 14kb of CSS.</p>
-
-<pre><code class="language-HTML">&lt;script type="text/javascript" src="/assets/js/prism.js" data-post-js="true" &gt;&lt;/script&gt;
+<pre><code class="language-HTML">>&lt;script type=&quot;text/javascript&quot; src=&quot;/assets/js/prism.js&quot; data-post-js=&quot;true&quot; &gt;&lt;/script&gt;
 </code></pre>
-
-<p>I have a custom <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">data attributes</a> name <code class="language-plaintext highlighter-rouge">data-post-js</code> which I’ll use to specific JavaScript tag for render before runtime. I call it Post JS because it works like PostCSS that will run on build only.</p>
-
-<p>For JavaScript I want it to run on runtime I use to type <code class="language-plaintext highlighter-rouge">text/runtime-javascript</code> to avoid running in the Puppeteer.</p>
-
-<pre><code class="language-HTML">&lt;script type='text/runtime-javascript' async&gt;
+<p>I have a custom <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">data attributes</a> name <code>data-post-js</code> which I’ll use to specific JavaScript tag for render before runtime. I call it Post JS because it works like PostCSS that will run on build only.</p>
+<p>For JavaScript I want it to run on runtime I use to type <code>text/runtime-javascript</code> to avoid running in the Puppeteer.</p>
+<pre><code class="language-HTML">>&lt;script type='text/runtime-javascript' async&gt;
 &lt;/script&gt;
 </code></pre>
-
 <p>To make it work I create a <a href="https://github.com/gulpjs/gulp">Gulp</a> task when building the page. I want to make Puppeteer run and render the HTML page. Explain below.</p>
-
-<pre class="line-numbers"><code class="language-JavaScript">gulp.task("post-js", async () =&gt; {
+<pre><code class="language-JavaScript">>gulp.task(&quot;post-js&quot;, async () =&gt; {
   browserSync.init({
-    files: [SITE_ROOT + "/**"],
+    files: [SITE_ROOT + &quot;/**&quot;],
     open: false,
     port: 7000,
     server: {
       baseDir: SITE_ROOT,
       serveStaticOptions: {
-        extensions: ["html"],
+        extensions: [&quot;html&quot;],
       },
     },
   });
@@ -530,15 +387,15 @@ ssb   cv25519/127C6D28828B3B8C 2021-11-23 <span class="o">[</span>E]
 
       let body = await page.evaluate(() =&gt; {
         // remove data-post-js script
-        const unusedElements = document.querySelectorAll('script[data-post-js="true"]');
+        const unusedElements = document.querySelectorAll('script[data-post-js=&quot;true&quot;]');
         for (let i = 0; i &lt; unusedElements.length; i++) {
           unusedElements[i].parentNode.removeChild(unusedElements[i]);
         }
         return document.documentElement.outerHTML;
       });
 
-      // replace script type type="text/runtime-javascript" to type"text/javascript"
-      body = body.replace(/type\=\"text\/runtime\-javascript\"/g, 'type="text/javascript"');
+      // replace script type type=&quot;text/runtime-javascript&quot; to type&quot;text/javascript&quot;
+      body = body.replace(/type\=\&quot;text\/runtime\-javascript\&quot;/g, 'type=&quot;text/javascript&quot;');
 
       // DOCTYPE is gone when puppeteer run
       body = '&lt;!DOCTYPE html&gt;' + body;
@@ -557,32 +414,20 @@ ssb   cv25519/127C6D28828B3B8C 2021-11-23 <span class="o">[</span>E]
     });
 });
 </code></pre>
-
+<p>{: .line-numbers}</p>
 <p>First, use <a href="https://github.com/BrowserSync/browser-sync">BrowserSync</a> to serve the whole site. (lines 2-12)</p>
-
 <p>And then use Puppeteer to open the pages and run all of the JavaScript tags. (lines 27-30)</p>
-
-<p>After the page ran, Remove used JavaScript with the <code class="language-plaintext highlighter-rouge">data-post-js</code> attribute. (lines 32-39)</p>
-
-<p>Then replace <code class="language-plaintext highlighter-rouge">text/runtime-javascript</code> with <code class="language-plaintext highlighter-rouge">text/javascript</code> to make it a normal run in runtime. (line 42)</p>
-
-<p>Because <code class="language-plaintext highlighter-rouge">&lt;!DOCTYPE html&gt;</code> will remove when Puppeteer runs so I need to add it again. (line 45)</p>
-
+<p>After the page ran, Remove used JavaScript with the <code>data-post-js</code> attribute. (lines 32-39)</p>
+<p>Then replace <code>text/runtime-javascript</code> with <code>text/javascript</code> to make it a normal run in runtime. (line 42)</p>
+<p>Because <code>&lt;!DOCTYPE html&gt;</code> will remove when Puppeteer runs so I need to add it again. (line 45)</p>
 <p>Now the page will render PrismJS and remove it from runtime JavaScript. This will make the page faster to not download the 500kb size of PrismJS and no need to wait for the script to render in runtime.</p>
-
 <p>This method will also work with many JavaScript libraries which not need to run in runtime. The concept is basically the same as <a href="https://nextjs.org/docs/basic-features/pages#pre-rendering">Pre-rendering</a> and <a href="https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation">getStaticProps</a> in NextJS.</p>
-
 <p><a href="https://github.com/ntsd/ntsd.dev/blob/e2db2c0f4677b49bb928dcef20ba5b441a67fdbb/gulpfile.babel.js#L132-L188">See in Github</a></p>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Frontend" /><category term="Web Development" /><category term="Web Performance" /><summary type="html"><![CDATA[How I remove some unnecessary JavaScript to make the page loading faster in runtime using Puppeteer]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Explain index types in PostgreSQL</title><link href="https://ntsd.dev/postgresql-index-types/" rel="alternate" type="text/html" title="Explain index types in PostgreSQL" /><published>2021-07-10T00:00:00+07:00</published><updated>2021-07-10T00:00:00+07:00</updated><id>https://ntsd.dev/postgresql-index-types</id><content type="html" xml:base="https://ntsd.dev/postgresql-index-types/"><![CDATA[<p>Postgres provides many index types such as B-tree, hash, GiST, and GIN. This article is about commons indexes like B-Tree and Hash to tell what is difference and which one should use for the situation. GiST and GIN are indexes for supporting Full-Text Search which I’ll explain in the new blog post.</p>
-
 <h2 id="hash-index">Hash index</h2>
-
 <p>Hash index is probably the fastest and the simplest index with O(1) the data will store in hashmap structure. for example when you query and the key index hit the hash map will return address to data storage is instantly. Hash index in Postgres doesn’t support composite or multi-columns index and Hash index don’t have ability for ordering or select between range, Unlike B-tree index it can do the job.</p>
-
 <h3 id="examples">Examples</h3>
-
 <p>Prepare schema and Create an Hash indexes for first_name and last_name.</p>
-
-<pre><code class="language-SQL">CREATE TABLE persons (
+<pre><code class="language-SQL">>CREATE TABLE persons (
   id int PRIMARY KEY,
   first_name text,
   last_name text
@@ -596,68 +441,53 @@ INSERT INTO persons VALUES (2, 'jane', 'doe');
 INSERT INTO persons VALUES (3, 'jack', 'doe');
 INSERT INTO persons VALUES (4, 'john', 'connor');
 </code></pre>
-
 <p>persons table</p>
-
 <table>
-  <thead>
-    <tr>
-      <th>id (PK)</th>
-      <th>first_name</th>
-      <th>last_name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>john</td>
-      <td>doe</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>jane</td>
-      <td>doe</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>jack</td>
-      <td>doe</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>john</td>
-      <td>connor</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>id (PK)</th>
+<th>first_name</th>
+<th>last_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>john</td>
+<td>doe</td>
+</tr>
+<tr>
+<td>2</td>
+<td>jane</td>
+<td>doe</td>
+</tr>
+<tr>
+<td>3</td>
+<td>jack</td>
+<td>doe</td>
+</tr>
+<tr>
+<td>4</td>
+<td>john</td>
+<td>connor</td>
+</tr>
+</tbody>
 </table>
-
 <p>Example 1. When query by column</p>
-
-<pre><code class="language-SQL">EXPLAIN SELECT * FROM persons WHERE last_name='doe';
+<pre><code class="language-SQL">>EXPLAIN SELECT * FROM persons WHERE last_name='doe';
 </code></pre>
-
-<p>The query will hit <code class="language-plaintext highlighter-rouge">last_name_idx</code> index and the index will return all addresses to all rows which last_name is ‘doe’ instantly.</p>
-
+<p>The query will hit <code>last_name_idx</code> index and the index will return all addresses to all rows which last_name is ‘doe’ instantly.</p>
 <p><img src="/img/in-post/2021-7-10-postgresql-index-types/hash-query-1.png" alt="hash  query by column" /></p>
-
 <p>Example 2. When query by multi columns</p>
-
-<pre><code class="language-SQL">EXPLAIN SELECT * FROM persons WHERE first_name='john' AND last_name='doe';
+<pre><code class="language-SQL">>EXPLAIN SELECT * FROM persons WHERE first_name='john' AND last_name='doe';
 </code></pre>
-
-<p>The query will using <code class="language-plaintext highlighter-rouge">first_name_idx</code> index and <code class="language-plaintext highlighter-rouge">last_name_idx</code> index. I have no idea why it checks <code class="language-plaintext highlighter-rouge">last_name_idx</code> first. I tried to swap where condition but the plan still the same.</p>
-
+<p>The query will using <code>first_name_idx</code> index and <code>last_name_idx</code> index. I have no idea why it checks <code>last_name_idx</code> first. I tried to swap where condition but the plan still the same.</p>
 <p><img src="/img/in-post/2021-7-10-postgresql-index-types/hash-query-2.png" alt="hash query by multi columns" /></p>
-
 <h2 id="b-tree-index">B-Tree index</h2>
-
 <p>B-tree index will store data in tree structure that allow for sorted, search, and sequence data in O(log n). B-tree structure is not like normal binary search tree, a node can have more than one key and more than two children. That’s why B-tree is suit for database because allow more complexity in search condition.</p>
-
 <h3 id="examples-1">Examples</h3>
-
 <p>Prepare schema and Create an B-Tree indexes for salary and multi columns index with age and salary.</p>
-
-<pre><code class="language-SQL">CREATE TABLE employees (
+<pre><code class="language-SQL">>CREATE TABLE employees (
   id int PRIMARY KEY,
   name text,
   salary int,
@@ -672,200 +502,123 @@ INSERT INTO employees VALUES (2, 'jane', 1000, 30);
 INSERT INTO employees VALUES (3, 'jack', 2000, 40);
 INSERT INTO employees VALUES (4, 'jill', 5000, 50);
 </code></pre>
-
 <p>employees table</p>
-
 <table>
-  <thead>
-    <tr>
-      <th>id (PK)</th>
-      <th>name</th>
-      <th>salary</th>
-      <th>age</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>john</td>
-      <td>3000</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>jane</td>
-      <td>1000</td>
-      <td>25</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>jack</td>
-      <td>2000</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>jill</td>
-      <td>5000</td>
-      <td>25</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>id (PK)</th>
+<th>name</th>
+<th>salary</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>john</td>
+<td>3000</td>
+<td>25</td>
+</tr>
+<tr>
+<td>2</td>
+<td>jane</td>
+<td>1000</td>
+<td>25</td>
+</tr>
+<tr>
+<td>3</td>
+<td>jack</td>
+<td>2000</td>
+<td>40</td>
+</tr>
+<tr>
+<td>3</td>
+<td>jill</td>
+<td>5000</td>
+<td>25</td>
+</tr>
+</tbody>
 </table>
-
 <p>Example 1. When query all ordering by index</p>
-
-<pre><code class="language-SQL">EXPLAIN SELECT * FROM employees ORDER BY salary;
+<pre><code class="language-SQL">>EXPLAIN SELECT * FROM employees ORDER BY salary;
 </code></pre>
-
-<p>the query will using index <code class="language-plaintext highlighter-rouge">salary_idx</code> to order all employees.</p>
-
+<p>the query will using index <code>salary_idx</code> to order all employees.</p>
 <p><img src="/img/in-post/2021-7-10-postgresql-index-types/btree-query-1.png" alt="B-Tree query all ordering by index" /></p>
-
 <p>Example 2. When query all ordering by composite index</p>
-
-<pre><code class="language-SQL">EXPLAIN SELECT * FROM employees ORDER BY age;
+<pre><code class="language-SQL">>EXPLAIN SELECT * FROM employees ORDER BY age;
 </code></pre>
-
-<p>the query will use index <code class="language-plaintext highlighter-rouge">age_salary_idx</code> to order all employees. This proves that the multi-columns index can also order by one field.</p>
-
+<p>the query will use index <code>age_salary_idx</code> to order all employees. This proves that the multi-columns index can also order by one field.</p>
 <p><img src="/img/in-post/2021-7-10-postgresql-index-types/btree-query-2.png" alt="B-Tree query all ordering by composite index" /></p>
-
 <p>Example 3. When query by a column using index</p>
-
-<pre><code class="language-SQL">EXPLAIN SELECT * FROM employees WHERE salary = 3000;
+<pre><code class="language-SQL">>EXPLAIN SELECT * FROM employees WHERE salary = 3000;
 </code></pre>
-
 <p>As the query plan after the index hit still needs to bitmap Heap scan after and it took 4.20..13.67 cost which means startup cost is 4.2 and the total cost is 13.67. that is why the b-tree index is not O(1).</p>
-
 <p><img src="/img/in-post/2021-7-10-postgresql-index-types/btree-query-3.png" alt="B-Tree query by a column using index" /></p>
-
 <p>Example 4. When query by multiple column using composite index</p>
-
-<pre><code class="language-SQL">EXPLAIN SELECT * FROM employees WHERE age = 25 AND salary = 3000;
+<pre><code class="language-SQL">>EXPLAIN SELECT * FROM employees WHERE age = 25 AND salary = 3000;
 </code></pre>
-
 <p>This is a bit surprising. when query exactly multi-columns to the composite index after it hit the index it will return the result instantly. This is probably O(1) in this situation.</p>
-
 <p><img src="/img/in-post/2021-7-10-postgresql-index-types/btree-query-4.png" alt="B-Tree query by multiple column using composite index" /></p>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>The key point is to create an index base on the queries you are using. B-tree for ordering query and hash for non-ordering. You can create many indexes as you want to improve the read performance. The disk space or the block size might not a big deal nowadays. Once a query doesn’t hit any index and it’s often used, you should consider how to indexing it.</p>
-
 <h2 id="reference">Reference</h2>
-
 <p><a href="https://www.postgresql.org/docs/current/indexes-types.html">https://www.postgresql.org/docs/current/indexes-types.html</a></p>
-
 <p><a href="http://itdoc.hitachi.co.jp/manuals/3020/3020635200e/W3520279.HTM">http://itdoc.hitachi.co.jp/manuals/3020/3020635200e/W3520279.HTM</a></p>
-
 <p><a href="https://user3141592.medium.com/single-vs-composite-indexes-in-relational-databases-58d0eb045cbe">https://user3141592.medium.com/single-vs-composite-indexes-in-relational-databases-58d0eb045cbe</a></p>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Database" /><category term="PostgreSQL" /><category term="Performance" /><category term="Backend" /><summary type="html"><![CDATA[Explain index types in PostgreSQL how it work and compare between Hash and B-Tree index]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Speed testing and compare free static web hosting (Netlify vs Github Page vs Fast.io)</title><link href="https://ntsd.dev/speed-testing-free-static-web-hosting/" rel="alternate" type="text/html" title="Speed testing and compare free static web hosting (Netlify vs Github Page vs Fast.io)" /><published>2020-05-30T22:14:54+07:00</published><updated>2020-05-30T22:14:54+07:00</updated><id>https://ntsd.dev/speed-testing-free-static-web-hosting</id><content type="html" xml:base="https://ntsd.dev/speed-testing-free-static-web-hosting/"><![CDATA[<p>Edit: Since Fast.io Archive and Cloudflare Page come I did tested it and it worked well so now I moved to Cloudflare Page.</p>
-
-<p>I did create a website from Jekyll and I’m looking for static web hosting to store it. What’s the fastest and lowest latency for free web hosting\? Here is a topic that I testing about it.</p>
-
+<p>I did create a website from Jekyll and I’m looking for static web hosting to store it. What’s the fastest and lowest latency for free web hosting? Here is a topic that I testing about it.</p>
 <h2 id="static-web-hosting">Static Web Hosting</h2>
-
 <p>I’ll deploy the site to a different web hosting to check what’s the best. My choices are following here.</p>
-
 <h3 id="github-page">Github Page</h3>
-
 <p>Github Page is a free web hosting that supports to build Jekyll static web. It standalone running in Github repository so you can’t use it with Gitlab or other git platforms.</p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/github-page-panel.png" alt="Github Page Panel" /></p>
-
 <h3 id="netlify">Netlify</h3>
-
 <p>Netlify also a free web hosting but there’s a build limit for free user Netlify is supporting a lot of Static web generators.
 Netlify also allows to use their DNS for a faster routes.</p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/netlify-panel.png" alt="Netlify Panel" /></p>
-
 <h3 id="fastio">Fast.io</h3>
-
 <p>Fast.io is super fast file hosting. but I use it as a static web storage. Fast.io provide many features such as Auto minify, Mirage (help speed up loading depend on device), Polish (automate compress image), Scrape Shield (protect site from scraping).</p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/fast.io-panel.png" alt="Fast.io Panel" /></p>
-
 <h2 id="testing-tools">Testing Tools</h2>
-
 <p>Because of every hosting have Global CDN and The result can be difference in difference tools so I need to test every host on every tools for the best estimate result as I can.</p>
-
 <h3 id="dotcom-monitor-website-speed-test">Dotcom-Monitor website speed test</h3>
-
 <p>Dotcom-Monitor allow to test website multiple locations worldwide. I think this is the best tool testing because it has testing server around the world.</p>
-
 <p>Site: <a href="https://www.dotcom-tools.com/website-speed-test.aspx">https://www.dotcom-tools.com/website-speed-test.aspx</a></p>
-
 <h4 id="config-locations">Config locations</h4>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/dotcom-monitor-config.png" alt="Dotcom-Monitor config" /></p>
-
 <h4 id="dotcom-monitor-github-page-result">Dotcom-Monitor Github Page Result</h4>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/dotcom-monitor-github.png" alt="Dotcom-Monitor Github Page Result" /></p>
-
 <h4 id="dotcom-monitor-netlify-result">Dotcom-Monitor Netlify Result</h4>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/dotcom-monitor-netlify.png" alt="Dotcom-Monitor Netlify Result" /></p>
-
 <h4 id="dotcom-monitor-fastio-result">Dotcom-Monitor Fast.io Result</h4>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/dotcom-monitor-imfast.png" alt="Dotcom-Monitor Fast.io Result" /></p>
-
 <h3 id="google-pagespeed-insights">Google PageSpeed Insights</h3>
-
 <p>Google PageSpeed Insights will analyze a web page. It can simulate screen size, 3G/4G mobile connection, and CPU speed the check that your site is working well on mobile devices. it can generate suggestions to make the page faster. but there’s no server location config so we don’t know the location of the testing server.</p>
-
 <p>Site: <a href="https://developers.google.com/speed/pagespeed/insights/">https://developers.google.com/speed/pagespeed/insights/</a></p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/pagespeed-insights-panel.png" alt="Google PageSpeed Insights" /></p>
-
 <h4 id="pagespeed-insights-github-page-result">PageSpeed Insights Github Page Result</h4>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/pagespeed-insights-github-mobile.png" alt="PageSpeed Insights Github Page Mobile Result" /></p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/pagespeed-insights-github-desktop.png" alt="PageSpeed Insights Github Page Desktop Result" /></p>
-
 <h4 id="pagespeed-insights-netlify-result">PageSpeed Insights Netlify Result</h4>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/pagespeed-insights-netlify-mobile.png" alt="PageSpeed Insights Netlify Mobile Result" /></p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/pagespeed-insights-netlify-desktop.png" alt="PageSpeed Insights Netlify Desktop Result" /></p>
-
 <h4 id="pagespeed-insights-fastio-result">PageSpeed Insights Fast.io Result</h4>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/pagespeed-insights-imfast-mobile.png" alt="PageSpeed Insights Fast.io Mobile Result" /></p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/pagespeed-insights-imfast-desktop.png" alt="PageSpeed Insights Fast.io Desktop Result" /></p>
-
 <h3 id="gtmetrix">GTmetrix</h3>
-
 <p>GTmetrix is a testing tool that has rich features and comparison graphs to show you what site is loading faster.</p>
-
 <p>Site: <a href="https://gtmetrix.com/">https://gtmetrix.com/</a></p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/gtmetrix-panel.png" alt="GTmetrix" /></p>
-
 <p>To compare these site I’ll set the server location to Australia because It’s closet to my country.</p>
-
 <h3 id="gtmetrix-results">GTmetrix Results</h3>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/gtmetrix-compare-1.png" alt="GTmetrix Compare" /></p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/gtmetrix-compare-4.png" alt="GTmetrix Compare" /></p>
-
 <p><img src="/img/in-post/2020-6-28-speed-test-free-static-web-hosting/gtmetrix-compare-5.png" alt="GTmetrix Compare" /></p>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>After tests all hosting services with all tools. I think Fast.io is clearly the winner as performance static file hosting. This test might not the optimal test because I haven’t tuned the web enough as you see Fast.io minify and compress feature can still reduce data size. For Netlify, I forgot to set response headers and cache policy and Github Page still can’t config header response. By the way, Fast.io is just a static hosting service you can’t build your static site on it like Github Page or Netlify so You need to build before push to the git.</p>
-
-<p>For the rich features, CICD, and build function, I think Netlify is still the best for me.</p>]]></content><author><name></name></author><category term="Software Development" /><category term="Hosting" /><category term="Website" /><category term="Web Performance" /><category term="Frontend" /><category term="Network" /><summary type="html"><![CDATA[Edit: Since Fast.io Archive and Cloudflare Page come I did tested it and it worked well so now I moved to Cloudflare Page. I did create a website from Jekyll and I’m looking for static web hosting to store it. What’s the fastest and lowest latency for free web hosting\? Here is a topic that I testing about it. Static Web Hosting I’ll deploy the site to a different web hosting to check what’s the best. My choices are following here. Github Page Github Page is a free web hosting that supports to build Jekyll static web. It standalone running in Github repository so you can’t use it with Gitlab or other git platforms. Netlify Netlify also a free web hosting but there’s a build limit for free user Netlify is supporting a lot of Static web generators. Netlify also allows to use their DNS for a faster routes. Fast.io Fast.io is super fast file hosting. but I use it as a static web storage. Fast.io provide many features such as Auto minify, Mirage (help speed up loading depend on device), Polish (automate compress image), Scrape Shield (protect site from scraping). Testing Tools Because of every hosting have Global CDN and The result can be difference in difference tools so I need to test every host on every tools for the best estimate result as I can. Dotcom-Monitor website speed test Dotcom-Monitor allow to test website multiple locations worldwide. I think this is the best tool testing because it has testing server around the world. Site: https://www.dotcom-tools.com/website-speed-test.aspx Config locations Dotcom-Monitor Github Page Result Dotcom-Monitor Netlify Result Dotcom-Monitor Fast.io Result Google PageSpeed Insights Google PageSpeed Insights will analyze a web page. It can simulate screen size, 3G/4G mobile connection, and CPU speed the check that your site is working well on mobile devices. it can generate suggestions to make the page faster. but there’s no server location config so we don’t know the location of the testing server. Site: https://developers.google.com/speed/pagespeed/insights/ PageSpeed Insights Github Page Result PageSpeed Insights Netlify Result PageSpeed Insights Fast.io Result GTmetrix GTmetrix is a testing tool that has rich features and comparison graphs to show you what site is loading faster. Site: https://gtmetrix.com/ To compare these site I’ll set the server location to Australia because It’s closet to my country. GTmetrix Results Conclusion After tests all hosting services with all tools. I think Fast.io is clearly the winner as performance static file hosting. This test might not the optimal test because I haven’t tuned the web enough as you see Fast.io minify and compress feature can still reduce data size. For Netlify, I forgot to set response headers and cache policy and Github Page still can’t config header response. By the way, Fast.io is just a static hosting service you can’t build your static site on it like Github Page or Netlify so You need to build before push to the git. For the rich features, CICD, and build function, I think Netlify is still the best for me.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Improve TypeScript code quality with Google TypeScript Style Guide</title><link href="https://ntsd.dev/typescript-code-quality-with-gts/" rel="alternate" type="text/html" title="Improve TypeScript code quality with Google TypeScript Style Guide" /><published>2020-05-03T19:30:54+07:00</published><updated>2020-05-03T19:30:54+07:00</updated><id>https://ntsd.dev/typescript-code-quality-with-gts</id><content type="html" xml:base="https://ntsd.dev/typescript-code-quality-with-gts/"><![CDATA[<p>GTS is Google’s TypeScript style guide, and the configuration for formatter, linter, and automatic code fixer. No lint rules to edit, no configuration to update, no more bike shedding over syntax.</p>
-
+<p>For the rich features, CICD, and build function, I think Netlify is still the best for me.</p>]]></content><author><name></name></author><category term="Software Development" /><category term="Hosting" /><category term="Website" /><category term="Web Performance" /><category term="Frontend" /><category term="Network" /><summary type="html"><![CDATA[Edit: Since Fast.io Archive and Cloudflare Page come I did tested it and it worked well so now I moved to Cloudflare Page. I did create a website from Jekyll and I’m looking for static web hosting to store it. What’s the fastest and lowest latency for free web hosting? Here is a topic that I testing about it. Static Web Hosting I’ll deploy the site to a different web hosting to check what’s the best. My choices are following here. Github Page Github Page is a free web hosting that supports to build Jekyll static web. It standalone running in Github repository so you can’t use it with Gitlab or other git platforms. Netlify Netlify also a free web hosting but there’s a build limit for free user Netlify is supporting a lot of Static web generators. Netlify also allows to use their DNS for a faster routes. Fast.io Fast.io is super fast file hosting. but I use it as a static web storage. Fast.io provide many features such as Auto minify, Mirage (help speed up loading depend on device), Polish (automate compress image), Scrape Shield (protect site from scraping). Testing Tools Because of every hosting have Global CDN and The result can be difference in difference tools so I need to test every host on every tools for the best estimate result as I can. Dotcom-Monitor website speed test Dotcom-Monitor allow to test website multiple locations worldwide. I think this is the best tool testing because it has testing server around the world. Site: https://www.dotcom-tools.com/website-speed-test.aspx Config locations Dotcom-Monitor Github Page Result Dotcom-Monitor Netlify Result Dotcom-Monitor Fast.io Result Google PageSpeed Insights Google PageSpeed Insights will analyze a web page. It can simulate screen size, 3G/4G mobile connection, and CPU speed the check that your site is working well on mobile devices. it can generate suggestions to make the page faster. but there’s no server location config so we don’t know the location of the testing server. Site: https://developers.google.com/speed/pagespeed/insights/ PageSpeed Insights Github Page Result PageSpeed Insights Netlify Result PageSpeed Insights Fast.io Result GTmetrix GTmetrix is a testing tool that has rich features and comparison graphs to show you what site is loading faster. Site: https://gtmetrix.com/ To compare these site I’ll set the server location to Australia because It’s closet to my country. GTmetrix Results Conclusion After tests all hosting services with all tools. I think Fast.io is clearly the winner as performance static file hosting. This test might not the optimal test because I haven’t tuned the web enough as you see Fast.io minify and compress feature can still reduce data size. For Netlify, I forgot to set response headers and cache policy and Github Page still can’t config header response. By the way, Fast.io is just a static hosting service you can’t build your static site on it like Github Page or Netlify so You need to build before push to the git. For the rich features, CICD, and build function, I think Netlify is still the best for me.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Improve TypeScript code quality with Google TypeScript Style Guide</title><link href="https://ntsd.dev/typescript-code-quality-with-gts/" rel="alternate" type="text/html" title="Improve TypeScript code quality with Google TypeScript Style Guide" /><published>2020-05-03T19:30:54+07:00</published><updated>2020-05-03T19:30:54+07:00</updated><id>https://ntsd.dev/typescript-code-quality-with-gts</id><content type="html" xml:base="https://ntsd.dev/typescript-code-quality-with-gts/"><![CDATA[<p>GTS is Google’s TypeScript style guide, and the configuration for formatter, linter, and automatic code fixer. No lint rules to edit, no configuration to update, no more bike shedding over syntax.</p>
 <h2 id="prepare-a-typescript-project">Prepare a TypeScript Project</h2>
-
 <p>For this tutorial I’ll initialize a TypeScript React project using Create React App.</p>
-
-<pre><code class="language-Bash"># Install create-react-app cli
+<pre><code class="language-Bash">># Install create-react-app cli
 npm install -g create-react-app
 
 # Initialize Create React App project
@@ -874,186 +627,142 @@ npx create-react-app my-app --template typescript
 # Change directory to the app
 cd my-app
 </code></pre>
-
 <h2 id="installing-gts">Installing GTS</h2>
-
 <p>To install GTS you can install it global and run init script.</p>
-
-<pre><code class="language-Bash"># Install gts cli
+<pre><code class="language-Bash">># Install gts cli
 npm install -g gts
 
 # Add gts to the project
 npx gts init
 </code></pre>
-
-<p>After you overwrite the <code class="language-plaintext highlighter-rouge">tsconfig.json</code>.</p>
-
-<p>Then you can bring back <code class="language-plaintext highlighter-rouge">compilerOptions</code> for React to make it support JSX and DOM format.</p>
-
-<p>Full <code class="language-plaintext highlighter-rouge">tsconfig.json</code></p>
-
-<pre><code class="language-JSON">{
-  "extends": "./node_modules/gts/tsconfig-google.json",
-  "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "build",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+<p>After you overwrite the <code>tsconfig.json</code>.</p>
+<p>Then you can bring back <code>compilerOptions</code> for React to make it support JSX and DOM format.</p>
+<p>Full <code>tsconfig.json</code></p>
+<pre><code class="language-JSON">>{
+  &quot;extends&quot;: &quot;./node_modules/gts/tsconfig-google.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;rootDir&quot;: &quot;.&quot;,
+    &quot;outDir&quot;: &quot;build&quot;,
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;lib&quot;: [
+      &quot;dom&quot;,
+      &quot;dom.iterable&quot;,
+      &quot;esnext&quot;
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
+    &quot;allowJs&quot;: true,
+    &quot;skipLibCheck&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;allowSyntheticDefaultImports&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react&quot;
   },
-  "include": [
-    "src"
+  &quot;include&quot;: [
+    &quot;src&quot;
   ]
 }
 </code></pre>
-
-<p>You can edit <code class="language-plaintext highlighter-rouge">compilerOptions</code> rules by yourself and you can <code class="language-plaintext highlighter-rouge">cat ./node_modules/gts/tsconfig-google.json</code> to view GTS current setting.</p>
-
+<p>You can edit <code>compilerOptions</code> rules by yourself and you can <code>cat ./node_modules/gts/tsconfig-google.json</code> to view GTS current setting.</p>
 <h2 id="installing-eslint-plugin-react">Installing eslint-plugin-react</h2>
-
-<p>GTS will create you the <code class="language-plaintext highlighter-rouge">.eslintrc.json</code> file but the default rules is not support for React App.</p>
-
-<p>You can view the current GTS ESLint config by <code class="language-plaintext highlighter-rouge">cat ./node_modules/gts/.eslintrc.json</code>.</p>
-
+<p>GTS will create you the <code>.eslintrc.json</code> file but the default rules is not support for React App.</p>
+<p>You can view the current GTS ESLint config by <code>cat ./node_modules/gts/.eslintrc.json</code>.</p>
 <p>This step is how to add React plugin for ESLint.</p>
-
-<p>Install <code class="language-plaintext highlighter-rouge">eslint-plugin-react</code> Eslint Plugin.</p>
-
-<pre><code class="language-Bash">npm install eslint-plugin-react --save-dev
+<p>Install <code>eslint-plugin-react</code> Eslint Plugin.</p>
+<pre><code class="language-Bash">>npm install eslint-plugin-react --save-dev
 </code></pre>
-
-<p>Add <code class="language-plaintext highlighter-rouge">"plugin:react/recommended"</code> to extends to load the plugin.</p>
-
-<p>Add the following <code class="language-plaintext highlighter-rouge">env</code> config.</p>
-
-<p><code class="language-plaintext highlighter-rouge">"browser": true</code> to allow browser JavaScript (window, document).</p>
-
-<p><code class="language-plaintext highlighter-rouge">"jest": true</code> to allow Global Jest script.</p>
-
-<p>Full <code class="language-plaintext highlighter-rouge">.eslintrc.json</code></p>
-
-<pre><code class="language-JSON">{
-  "extends": [
-    "./node_modules/gts/",
-    "plugin:react/recommended"
+<p>Add <code>&quot;plugin:react/recommended&quot;</code> to extends to load the plugin.</p>
+<p>Add the following <code>env</code> config.</p>
+<p><code>&quot;browser&quot;: true</code> to allow browser JavaScript (window, document).</p>
+<p><code>&quot;jest&quot;: true</code> to allow Global Jest script.</p>
+<p>Full <code>.eslintrc.json</code></p>
+<pre><code class="language-JSON">>{
+  &quot;extends&quot;: [
+    &quot;./node_modules/gts/&quot;,
+    &quot;plugin:react/recommended&quot;
   ],
-  "env": {
-    "browser": true,
-    "jest": true
+  &quot;env&quot;: {
+    &quot;browser&quot;: true,
+    &quot;jest&quot;: true
   }
 }
 </code></pre>
-
 <h2 id="fix-eslint-and-tsconfig">Fix ESLint and TSConfig</h2>
-
 <p>If you’re using VS Code with ESLint Extension you’ll see errors in your code.</p>
-
-<p>You can run <code class="language-plaintext highlighter-rouge">npx gts check</code> or <code class="language-plaintext highlighter-rouge">npm run check</code> to check current ESLint and TypeScript error</p>
-
-<p>For automatic fix code format you can use <code class="language-plaintext highlighter-rouge">npx gts fix</code> or <code class="language-plaintext highlighter-rouge">npm run fix</code>. But for some error you need to fix it yourself because sometimes auto format is not support a type of ESLint error.</p>
-
+<p>You can run <code>npx gts check</code> or <code>npm run check</code> to check current ESLint and TypeScript error</p>
+<p>For automatic fix code format you can use <code>npx gts fix</code> or <code>npm run fix</code>. But for some error you need to fix it yourself because sometimes auto format is not support a type of ESLint error.</p>
 <h2 id="add-husky-and-git-pre-commit">Add Husky and Git pre-commit</h2>
-
 <p>To make sure you and your team will not put a dirty code to git. You’ll need Husky to make Git pre-commit to check before you commit.</p>
-
 <p>Install Husky dependency</p>
-
-<pre><code class="language-Bash">npm install husky --save-dev
+<pre><code class="language-Bash">>npm install husky --save-dev
 </code></pre>
-
-<p>And then add husky hook command to <code class="language-plaintext highlighter-rouge">package.json</code></p>
-
-<pre><code class="language-JSON">{
-  "husky": {
-    "hooks": {
-      "pre-commit": "gts check",
+<p>And then add husky hook command to <code>package.json</code></p>
+<pre><code class="language-JSON">>{
+  &quot;husky&quot;: {
+    &quot;hooks&quot;: {
+      &quot;pre-commit&quot;: &quot;gts check&quot;,
     }
   }
 }
 </code></pre>
-
-<p>Now every time you commit It will run <code class="language-plaintext highlighter-rouge">gts check</code> command before you commit and it will fail if there’s an error.</p>
-
+<p>Now every time you commit It will run <code>gts check</code> command before you commit and it will fail if there’s an error.</p>
 <p>Done! Enjoy your code.</p>
-
 <h2 id="reference">Reference</h2>
-
 <p><a href="https://github.com/google/gts">https://github.com/google/gts</a></p>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="TypeScript" /><category term="ESLint" /><category term="Frontend" /><summary type="html"><![CDATA[Using Google TypeScript Style Guide on your TypeScript React project]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Add Facebook comments to a website in 5 minutes</title><link href="https://ntsd.dev/add-facebook-comments-to-your-website/" rel="alternate" type="text/html" title="Add Facebook comments to a website in 5 minutes" /><published>2020-03-23T19:30:54+07:00</published><updated>2020-03-23T19:30:54+07:00</updated><id>https://ntsd.dev/add-facebook-comments-to-your-website</id><content type="html" xml:base="https://ntsd.dev/add-facebook-comments-to-your-website/"><![CDATA[<h2 id="create-a-facebook-app">Create a Facebook App</h2>
-
 <p>before creating the Facebook comments you need to have your Facebook App first if you already have you just skip this step.</p>
-
 <ol>
-  <li>
-    <p>Go to <a href="https://developers.facebook.com/apps/">https://developers.facebook.com/apps/</a></p>
-  </li>
-  <li>
-    <p>click <code class="language-plaintext highlighter-rouge">Add a New App</code></p>
-  </li>
-  <li>
-    <p>fill <code class="language-plaintext highlighter-rouge">Display Name</code> and <code class="language-plaintext highlighter-rouge">Contact Email</code></p>
-  </li>
-  <li>
-    <p>click <code class="language-plaintext highlighter-rouge">Create App ID</code></p>
-  </li>
+<li>
+<p>Go to <a href="https://developers.facebook.com/apps/">https://developers.facebook.com/apps/</a></p>
+</li>
+<li>
+<p>click <code>Add a New App</code></p>
+</li>
+<li>
+<p>fill <code>Display Name</code> and <code>Contact Email</code></p>
+</li>
+<li>
+<p>click <code>Create App ID</code></p>
+</li>
 </ol>
-
 <p><img src="/img/in-post/2020-3-23-add-facebook-comments-to-your-website/0.png" alt="Create a Facebook App" /></p>
-
 <h2 id="generate-comments-plugin-code">Generate Comments Plugin Code</h2>
-
 <p>Generate code and import Facebook SDK from the Facebook developer page</p>
-
 <ol>
-  <li>
-    <p>go to <a href="https://developers.facebook.com/docs/plugins/comments">https://developers.facebook.com/docs/plugins/comments</a></p>
-  </li>
-  <li>
-    <p>add initial URL at field <code class="language-plaintext highlighter-rouge">URL to comment on</code> don’t worry you can change it later</p>
-  </li>
-  <li>
-    <p>set the width to 100%</p>
-  </li>
-  <li>
-    <p>set number of posts mean number of posts will show immediately and for other user need to click show more for it</p>
-  </li>
-  <li>
-    <p>click get code
+<li>
+<p>go to <a href="https://developers.facebook.com/docs/plugins/comments">https://developers.facebook.com/docs/plugins/comments</a></p>
+</li>
+<li>
+<p>add initial URL at field <code>URL to comment on</code> don’t worry you can change it later</p>
+</li>
+<li>
+<p>set the width to 100%</p>
+</li>
+<li>
+<p>set number of posts mean number of posts will show immediately and for other user need to click show more for it</p>
+</li>
+<li>
+<p>click get code
 <img src="/img/in-post/2020-3-23-add-facebook-comments-to-your-website/1.png" alt="get Facebook comment code" /></p>
-  </li>
-  <li>
-    <p>select your app ID you need to use the API for and select language you want for the SDK
+</li>
+<li>
+<p>select your app ID you need to use the API for and select language you want for the SDK
 <img src="/img/in-post/2020-3-23-add-facebook-comments-to-your-website/2.png" alt="select your app ID you need to use the API for and select language you want for the SDK" /></p>
-  </li>
-  <li>
-    <p>copy these code and drop to your page</p>
-  </li>
-  <li>
-    <p>change <code class="language-plaintext highlighter-rouge">data-herf</code> to your page URL</p>
-  </li>
+</li>
+<li>
+<p>copy these code and drop to your page</p>
+</li>
+<li>
+<p>change <code>data-herf</code> to your page URL</p>
+</li>
 </ol>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Facebook Developer" /><category term="Frontend" /><summary type="html"><![CDATA[A tutorial to add Facebook comments to a website]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Build a static website with Gatsby and TypeScript</title><link href="https://ntsd.dev/build-a-static-website-with-gatsby/" rel="alternate" type="text/html" title="Build a static website with Gatsby and TypeScript" /><published>2020-03-11T19:30:54+07:00</published><updated>2020-03-11T19:30:54+07:00</updated><id>https://ntsd.dev/build-a-static-website-with-gatsby</id><content type="html" xml:base="https://ntsd.dev/build-a-static-website-with-gatsby/"><![CDATA[<h2 id="install-gatsby">Install Gatsby</h2>
-
 <p>if you’re a beginner you should follow the getting start from Gatsby</p>
-
 <p><a href="https://www.gatsbyjs.org/docs/quick-start/">https://www.gatsbyjs.org/docs/quick-start/</a></p>
-
 <p>I’ll skip this step because it’s too easy just follow the guide</p>
-
-<pre><code class="language-Shell"># Install the Gatsby CLI
+<pre><code class="language-Shell">># Install the Gatsby CLI
 npm install -g gatsby-cli
 
 # Create a new site
@@ -1065,59 +774,42 @@ cd gatsby-site
 # gatsby develop
 gatsby develop
 </code></pre>
-
 <p>now you’ll get the Gatsby default page</p>
-
-<p><img src="/img/in-post/2020-3-11-build-a-static-website-with-gatsby/1.png" alt="now you'll get the Gatsby default page" /></p>
-
+<p><img src="/img/in-post/2020-3-11-build-a-static-website-with-gatsby/1.png" alt="now you’ll get the Gatsby default page" /></p>
 <h2 id="add-typescript-support">Add TypeScript support</h2>
-
-<p>Install <code class="language-plaintext highlighter-rouge">gatsby-plugin-typescript</code> and <code class="language-plaintext highlighter-rouge">typeScript</code>  dependencies</p>
-
-<pre><code class="language-Shell">npm install gatsby-plugin-typescript
+<p>Install <code>gatsby-plugin-typescript</code> and <code>typeScript</code>  dependencies</p>
+<pre><code class="language-Shell">>npm install gatsby-plugin-typescript
 npm install -D typescript
 </code></pre>
-
 <p>Change all .js file to .tsx</p>
-
 <p>Add “gatsby-plugin-typescript” to gatsby-config.js</p>
-
-<pre><code class="language-JS">plugins: [`gatsby-plugin-typescript`]
+<pre><code class="language-JS">>plugins: [`gatsby-plugin-typescript`]
 </code></pre>
-
 <p>Add typescript eslint</p>
-
-<p>new files <code class="language-plaintext highlighter-rouge">tsconfig.json</code> and <code class="language-plaintext highlighter-rouge">.eslintrc.js</code> to the root project directory</p>
-
-<p>To generate <code class="language-plaintext highlighter-rouge">tsconfig.json</code> you can use this script to generate a sample config</p>
-
-<pre><code class="language-Shell">./node_modules/typescript/bin/tsc --init
+<p>new files <code>tsconfig.json</code> and <code>.eslintrc.js</code> to the root project directory</p>
+<p>To generate <code>tsconfig.json</code> you can use this script to generate a sample config</p>
+<pre><code class="language-Shell">>./node_modules/typescript/bin/tsc --init
 </code></pre>
-
 <p>tsconfig.json</p>
-
-<pre><code class="language-JS">{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "esnext",
-    "jsx": "preserve",
-    "lib": ["dom", "esnext"],
-    "strict": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "noUnusedLocals": false,
-    "allowJs": true
+<pre><code class="language-JS">>{
+  &quot;compilerOptions&quot;: {
+    &quot;module&quot;: &quot;commonjs&quot;,
+    &quot;target&quot;: &quot;esnext&quot;,
+    &quot;jsx&quot;: &quot;preserve&quot;,
+    &quot;lib&quot;: [&quot;dom&quot;, &quot;esnext&quot;],
+    &quot;strict&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;noUnusedLocals&quot;: false,
+    &quot;allowJs&quot;: true
   },
-  "exclude": ["node_modules", "public", ".cache"]
+  &quot;exclude&quot;: [&quot;node_modules&quot;, &quot;public&quot;, &quot;.cache&quot;]
 }
 </code></pre>
-
-<p>edit <code class="language-plaintext highlighter-rouge">.eslintrc.js</code></p>
-
+<p>edit <code>.eslintrc.js</code></p>
 <p>you can enable or disable rules as you want</p>
-
-<pre><code class="language-JS">module.exports = {
+<pre><code class="language-JS">>module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
@@ -1159,28 +851,18 @@ npm install -D typescript
   ]
 };
 </code></pre>
-
-<p>Install <code class="language-plaintext highlighter-rouge">eslint</code> and <code class="language-plaintext highlighter-rouge">typescript</code> packages to dev dependencies</p>
-
-<pre><code class="language-Shell">npm install -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint
+<p>Install <code>eslint</code> and <code>typescript</code> packages to dev dependencies</p>
+<pre><code class="language-Shell">>npm install -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint
 </code></pre>
-
 <p>Now you need to refactor all codes to fix TypeScript lint errors</p>
-
 <h2 id="setup-progressive-web-app">Setup Progressive Web App</h2>
-
-<p>Install <code class="language-plaintext highlighter-rouge">gatsby-plugin-manifest</code> plugin to allow gatsby use <a href="https://www.w3.org/TR/appmanifest/">Web App Manifest</a></p>
-
+<p>Install <code>gatsby-plugin-manifest</code> plugin to allow gatsby use <a href="https://www.w3.org/TR/appmanifest/">Web App Manifest</a></p>
 <p>Web App Manifest will allow users to save PWA app to the home screen</p>
-
 <p>and it includes information like the Web App’s name, icons, start_url, background-color and <a href="https://web.dev/add-manifest/">more</a></p>
-
-<pre><code class="language-Shell">npm install gatsby-plugin-manifest
+<pre><code class="language-Shell">>npm install gatsby-plugin-manifest
 </code></pre>
-
-<p>then you can config Web App Manifest in <code class="language-plaintext highlighter-rouge">gatsby-config.js</code></p>
-
-<pre><code class="language-JS">module.exports = {
+<p>then you can config Web App Manifest in <code>gatsby-config.js</code></p>
+<pre><code class="language-JS">>module.exports = {
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
@@ -1197,270 +879,161 @@ npm install -D typescript
   ],
 }
 </code></pre>
-
-<p>Add <code class="language-plaintext highlighter-rouge">gatsby-plugin-offline</code> to make the site work offline</p>
-
-<pre><code class="language-Shell">npm install --save gatsby-plugin-offline
+<p>Add <code>gatsby-plugin-offline</code> to make the site work offline</p>
+<pre><code class="language-Shell">>npm install --save gatsby-plugin-offline
 </code></pre>
-
-<p>Add <code class="language-plaintext highlighter-rouge">gatsby-plugin-offline</code> to plugins in <code class="language-plaintext highlighter-rouge">gatsby-config.js</code></p>
-
+<p>Add <code>gatsby-plugin-offline</code> to plugins in <code>gatsby-config.js</code></p>
 <p>Gatsby will generate <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a> to make it offline support and cache the page</p>
-
 <p>you can read the <a href="https://www.gatsbyjs.org/packages/gatsby-plugin-offline#available-options">available options</a> to change the config</p>
-
 <h2 id="deploy-to-netlify">Deploy to Netlify</h2>
-
 <p>In your Netlify dashboard New site from Git</p>
-
 <p><img src="/img/in-post/2020-3-11-build-a-static-website-with-gatsby/2.png" alt="New site from Git" /></p>
-
 <p>choose your repository in Github or Gitlab to deploy</p>
-
 <p>and the default setting should work</p>
-
-<p>set Build command to <code class="language-plaintext highlighter-rouge">gatsby build</code></p>
-
-<p>set Publish directory to <code class="language-plaintext highlighter-rouge">public/</code></p>
-
+<p>set Build command to <code>gatsby build</code></p>
+<p>set Publish directory to <code>public/</code></p>
 <p><img src="/img/in-post/2020-3-11-build-a-static-website-with-gatsby/3.png" alt="Setup netlify" /></p>
-
 <p>Finish!! the web will deploy to Netlify static host</p>
-
 <p>The web will automatically deploy when you update the master branch</p>
-
 <p>Audits Google Lighthouse score with Google Chrome</p>
-
 <p>open inspect mode</p>
-
 <p>go to audits tab</p>
-
 <p>click generate report</p>
-
 <p><img src="/img/in-post/2020-3-11-build-a-static-website-with-gatsby/4.png" alt="Setup netlify" /></p>
-
 <p>Wow! you get max score</p>
-
 <h2 id="references">References</h2>
-
 <ul>
-  <li><a href="https://www.gatsbyjs.org/">https://www.gatsbyjs.org/</a></li>
-  <li><a href="https://blog.logrocket.com/set-up-a-typescript-gatsby-app/">https://blog.logrocket.com/set-up-a-typescript-gatsby-app/</a></li>
+<li><a href="https://www.gatsbyjs.org/">https://www.gatsbyjs.org/</a></li>
+<li><a href="https://blog.logrocket.com/set-up-a-typescript-gatsby-app/">https://blog.logrocket.com/set-up-a-typescript-gatsby-app/</a></li>
 </ul>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Gatsby" /><category term="React" /><category term="GraphQL" /><category term="Progressive Web App" /><category term="TypeScript" /><category term="Frontend" /><summary type="html"><![CDATA[A complete guide to build a high-performance static website with Gatsby and get 100% score on Google Lighthouse]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Build and Install OpenWRT on Banana Pi R64</title><link href="https://ntsd.dev/install-openwrt-on-banana-pi-r64/" rel="alternate" type="text/html" title="Build and Install OpenWRT on Banana Pi R64" /><published>2020-03-03T19:30:54+07:00</published><updated>2020-03-03T19:30:54+07:00</updated><id>https://ntsd.dev/install-openwrt-on-banana-pi-r64</id><content type="html" xml:base="https://ntsd.dev/install-openwrt-on-banana-pi-r64/"><![CDATA[<p>This tutorial is a getting start to build OpenWRT image and install on Banana Pi R64, This guide also works with the Banana Pi R2 but it will be a difference in some steps.</p>
-
 <h2 id="what-is-banana-pi-r64">What is Banana Pi R64</h2>
-
 <p>The Banana Pi R64 is a router-based development board running with ARM Chipset MediaTek MT7622. So you can install operating systems which support to this ARM CPU including OpenWrt, Ubuntu, or many Linux distributions. It has many interfaces support such as on board Wifi/Bluetooth, 1GB Ethernet, USB 3.0, 40 GPIO, etc. Banana Pi R64 can add a Mini-PCI Express Modules and PoE module. And It also has a performance, resource, and interfaces good enough to be a high-end router.</p>
-
 <h3 id="banana-pi-r64-specifications">Banana Pi R64 Specifications</h3>
-
 <ul>
-  <li>MediaTek MT7622,1.35GHZ 64 bit dual-core ARM Cortex-A53</li>
-  <li>1G DDR3 SDRAM</li>
-  <li>Mini PCIE interface support 4G module</li>
-  <li>Built-in 4x4n 802.11n/Bluetooth 5.0 system-on-chip</li>
-  <li>MTK7615 4x4ac wifi on board</li>
-  <li>Support 1 SATA interface</li>
-  <li>MicroSD slot supports up to 256GB expansion</li>
-  <li>8G eMMC flash (option 16/32/64G)</li>
-  <li>5 port 10/100/1000 Mb Ethernet port</li>
-  <li>1 Port USB 3.0</li>
-  <li>Slow I/O:ADC, Audio Amplifier, GPIO, I2C, I2S, IR, PMIC I/F, PWM, RTC, SPI, UART</li>
-  <li>POE function support</li>
+<li>MediaTek MT7622,1.35GHZ 64 bit dual-core ARM Cortex-A53</li>
+<li>1G DDR3 SDRAM</li>
+<li>Mini PCIE interface support 4G module</li>
+<li>Built-in 4x4n 802.11n/Bluetooth 5.0 system-on-chip</li>
+<li>MTK7615 4x4ac wifi on board</li>
+<li>Support 1 SATA interface</li>
+<li>MicroSD slot supports up to 256GB expansion</li>
+<li>8G eMMC flash (option 16/32/64G)</li>
+<li>5 port 10/100/1000 Mb Ethernet port</li>
+<li>1 Port USB 3.0</li>
+<li>Slow I/O:ADC, Audio Amplifier, GPIO, I2C, I2S, IR, PMIC I/F, PWM, RTC, SPI, UART</li>
+<li>POE function support</li>
 </ul>
-
 <h2 id="requirements">Requirements</h2>
-
 <ul>
-  <li>macOS (I used 10.15.3) *for Ubuntu, will easier to build the image</li>
-  <li>Banana Pi R64</li>
-  <li>MicroSD Card</li>
-  <li>MicroSD Card Reader</li>
-  <li>USB to UART</li>
+<li>macOS (I used 10.15.3) *for Ubuntu, will easier to build the image</li>
+<li>Banana Pi R64</li>
+<li>MicroSD Card</li>
+<li>MicroSD Card Reader</li>
+<li>USB to UART</li>
 </ul>
-
 <h2 id="preparation">Preparation</h2>
-
 <h3 id="install-usb-to-uart-driver">Install USB to UART Driver</h3>
-
 <p>Just follow this link if you’re using FTDI</p>
-
 <p><a href="https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/all">https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers/all</a></p>
-
 <p>here is for CP2102</p>
-
 <p><a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers</a></p>
-
 <h3 id="terminal-software-for-serial">Terminal software for serial</h3>
-
 <p>you can use whatever serial console Putty, screen, minicom</p>
-
-<p>for this tutorial I use <code class="language-plaintext highlighter-rouge">screen</code></p>
-
+<p>for this tutorial I use <code>screen</code></p>
 <h3 id="download-images">Download images</h3>
-
 <h4 id="sd-card-image">SD card image</h4>
-
 <p><a href="https://drive.google.com/open?id=1Ap7lt-pjpG-pAOAEqpH13-SMOSkRkZI0">https://drive.google.com/open?id=1Ap7lt-pjpG-pAOAEqpH13-SMOSkRkZI0</a></p>
-
 <h4 id="emmc-all-in-one-single-image">eMMC all-in-one single image</h4>
-
 <p>includes GPT, ATF, u-boot, and Linux kernel image</p>
-
 <p><a href="https://drive.google.com/open?id=1w8kO3klbPfdHK6lTI8Ub8sR_7ViISORM">https://drive.google.com/open?id=1w8kO3klbPfdHK6lTI8Ub8sR_7ViISORM</a></p>
-
 <h4 id="emmc-preloader">eMMC preloader</h4>
-
 <p><a href="https://drive.google.com/open?id=1Fy__GpNSWRcITEmzH4Z_jxnjrCS3BpQJ">https://drive.google.com/open?id=1Fy__GpNSWRcITEmzH4Z_jxnjrCS3BpQJ</a></p>
-
 <h2 id="setup-boot-from-emmc">Setup boot from eMMC</h2>
-
 <p>this step will allow you to build image to eMMC storage on the board instead sd card</p>
-
 <h3 id="write-sd-card-image-into-sd-card">Write SD card image into SD card</h3>
-
 <p>You need to boot via sd card first to write preloader and eMMC all-in-one single image</p>
-
-<p><code class="language-plaintext highlighter-rouge">dd if=sdcardimage.img of=/dev/sdX</code></p>
-
-<p>replace <code class="language-plaintext highlighter-rouge">sdX</code> with your drive</p>
-
+<p><code>dd if=sdcardimage.img of=/dev/sdX</code></p>
+<p>replace <code>sdX</code> with your drive</p>
 <h3 id="run-tftp-server">Run TFTP server</h3>
-
 <p>You can your system TFTP Server but for easy on and off the service so I use 3rd party TFTP Server.</p>
-
 <h4 id="tftp-server">TFTP server</h4>
-
 <p>you can download here <a href="http://ww2.unime.it/flr/tftpserver">http://ww2.unime.it/flr/tftpserver</a></p>
-
 <h4 id="macos-build-in-tftp-optional">MacOS build-in tftp (optional)</h4>
-
 <p>If you don’t like to install 3rd party software you can use system TFTP Service</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>launchctl load <span class="nt">-F</span> /System/Library/LaunchDaemons/tftp.plist
 
 <span class="nb">sudo </span>launchctl start com.apple.tftpd
 
 <span class="nb">cd</span> /var/tftpboot <span class="nb">touch</span> <span class="c"># make initial tftp directory</span>
 </code></pre></div></div>
-
 <h4 id="copy-file-to-tftp-folder">Copy file to tftp folder</h4>
-
 <p>change mode your directory to allow other users to read and write files</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>777 /private/tftpboot
 </code></pre></div></div>
-
 <p>copy the binary file into TFTP root directory</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/1.png" alt="copy the binary file into TFTP root directory" /></p>
-
 <h3 id="connect-to-board-by-uart">Connect to board by UART</h3>
-
 <p>use serial 115200 baud for Bananapi r64</p>
-
-<p><code class="language-plaintext highlighter-rouge">sudo screen /dev/cu.usbserial-A50285BI 115200</code></p>
-
-<p>replace <code class="language-plaintext highlighter-rouge">cu.usbserial-A50285BI</code> with your serial driver</p>
-
+<p><code>sudo screen /dev/cu.usbserial-A50285BI 115200</code></p>
+<p>replace <code>cu.usbserial-A50285BI</code> with your serial driver</p>
 <h3 id="set-u-boot-env">Set u-boot env</h3>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setenv ipaddr 192.168.1.126 <span class="c"># your bpi ip address</span>
 setenv serverip 192.168.1.1 <span class="c"># your tfto server</span>
 setenv netmask 255.255.255.0
 saveenv
 </code></pre></div></div>
-
+<p>[comment]: &lt;&gt; (load ROM to address 1080000)</p>
+<p>[comment]: &lt;&gt; (<code>tftp 1080000 preloader_emmc.bin</code>)</p>
 <p>check u-boot env</p>
-
-<p><code class="language-plaintext highlighter-rouge">printenv</code></p>
-
+<p><code>printenv</code></p>
 <p>return to u-boot menu</p>
-
-<p><code class="language-plaintext highlighter-rouge">bootmenu</code></p>
-
+<p><code>bootmenu</code></p>
 <h3 id="write-emmc-image-to-flash-via-tftp">Write eMMC image to flash via TFTP</h3>
-
 <p>Put Ethernet to WLAN port for connect to the router</p>
-
 <p>make sure your TFTP server in the same network with your bpi board</p>
-
 <h4 id="install-emmc-flash-image-to-flash">Install eMMC flash image to flash</h4>
-
 <p>in u-boot menu choose “b. System Load flash image then write to Flash via TFTP”</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/2.png" alt="b. System Load flash image then write to Flash via TFTP" /></p>
-
 <p>Set TFTP server IP and flash image file name</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/3.png" alt="Set TFTP server ip and flash image file name" /></p>
-
 <h4 id="install-preloader-to-flash">Install preloader to flash</h4>
-
 <p>back to U-Boot menu choose “7. System Load Preloader then write to Flash via TFTP”</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/4.png" alt="7. System Load Preloader then write to Flash via TFTP" /></p>
-
 <p>Set TFTP server IP address and preloader file name</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/5.png" alt="Set TFTP server ip and preloader file name" /></p>
-
 <p>Remove sd card and power-off The Banana pi, Remove SD card, and Power on.</p>
-
 <p>Now you’ll get U-BOOT installed on eMMC storage</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/6.png" alt="U-BOOT install on eMMC on board storage" /></p>
-
 <h2 id="build-your-openwrt-image">Build your OpenWRT image</h2>
-
 <h3 id="preparation-to-build-openwrt-image">Preparation to build OpenWRT image</h3>
-
 <p>follow the link for more information
 <a href="https://openwrt.org/docs/guide-developer/buildroot.exigence.macosx">https://openwrt.org/docs/guide-developer/buildroot.exigence.macosx</a></p>
-
 <h4 id="setup-macosx-as-an-openwrt-build-environment">Setup MacOSX as an OpenWrt build environment</h4>
-
 <p>Install these package by Homebrew</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>coreutils diffutils findutils gawk gnu-getopt gnu-tar <span class="nb">grep </span>wget quilt xz
 
 <span class="c"># Link gnu-getopt to local gnugetopt</span>
 <span class="nb">ln</span> <span class="nt">-s</span> <span class="sb">`</span>brew <span class="nt">--prefix</span> gnu-getopt<span class="sb">`</span>/bin/getopt <span class="sb">`</span>brew <span class="nt">--prefix</span><span class="sb">`</span>/bin/gnugetopt
 </code></pre></div></div>
-
 <p>add gnu-getopt to your path</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/opt/gnu-getopt/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div></div>
-
 <h4 id="create-case-insensitive-filesystem">Create case-insensitive filesystem</h4>
-
 <p>OS X by default comes with a case-insensitive filesystem. OpenWrt won’t build on that. As a workaround, create a (Sparse) case-sensitive disk-image that you then mount in the finder and use as build directory</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hdiutil create <span class="nt">-size</span> 20g <span class="nt">-type</span> SPARSE <span class="nt">-fs</span> <span class="s2">"Case-sensitive HFS+"</span> <span class="nt">-volname</span> OpenWrt OpenWrt.sparseimage
 
 <span class="c"># mount the image</span>
 hdiutil attach OpenWrt.sparseimage
 </code></pre></div></div>
-
 <p>change directory to /Volumes/OpenWrt</p>
-
-<p><code class="language-plaintext highlighter-rouge">cd /Volumes/OpenWrt</code></p>
-
+<p><code>cd /Volumes/OpenWrt</code></p>
 <h3 id="build-openwrt-image-for-mt7622">Build OpenWRT Image for MT7622</h3>
-
 <h4 id="clone-openwrt-project">Clone OpenWRT project</h4>
-
-<p><code class="language-plaintext highlighter-rouge">git clone https://github.com/openwrt/openwrt.git</code></p>
-
+<p><code>git clone https://github.com/openwrt/openwrt.git</code></p>
 <h4 id="set-parametres">Set parametres</h4>
-
 <p>Target System: MediaTek Ralink ARM</p>
-
 <p>Subtarget: MT7622</p>
-
 <p>Target Profile: Banana Pi R64</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>openwrt
 
 ./scripts/feeds update <span class="nt">-a</span>
@@ -1468,13 +1041,9 @@ hdiutil attach OpenWrt.sparseimage
 
 make menuconfig
 </code></pre></div></div>
-
 <p>Set config and include built-in dependency that you want (Luci is not included by default)</p>
-
-<p>then save to <code class="language-plaintext highlighter-rouge">.config</code></p>
-
+<p>then save to <code>.config</code></p>
 <h4 id="build-openwrt-image">Build OpenWRT image</h4>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># for 10.15 need set deploy target it to 10.14</span>
 <span class="nv">MACOSX_DEPLOYMENT_TARGET</span><span class="o">=</span>10.14
 
@@ -1483,71 +1052,47 @@ make menuconfig
 <span class="c"># add -j4 mean use quard core</span>
 make <span class="nt">-j4</span> <span class="nv">V</span><span class="o">=</span>1
 </code></pre></div></div>
-
 <p>Kernel image file will be at ./bin/targets/mediatek/mt7622/openwrt-mediatek-mt7622-bpi_bananapi-r64-initramfs-kernel.bin</p>
-
 <h4 id="install-openwrt-image-to-bananapi-via-tftp">Install OpenWRT Image to Bananapi via TFTP</h4>
-
 <p>Copy the kernel image to TFTP folder</p>
-
-<p><code class="language-plaintext highlighter-rouge">cp ./bin/targets/mediatek/mt7622/openwrt-mediatek-mt7622-bpi_bananapi-r64-initramfs-kernel.bin /private/tftpboot/</code></p>
-
+<p><code>cp ./bin/targets/mediatek/mt7622/openwrt-mediatek-mt7622-bpi_bananapi-r64-initramfs-kernel.bin /private/tftpboot/</code></p>
 <p>Enter to the U-Boot menu</p>
-
 <p>Install kernel image from TFTP</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/8.png" alt="Install kernel image from TFTP" /></p>
-
 <p>Finally, I got The OpenWRT image installed</p>
-
 <p><img src="/img/in-post/2020-1-3-install-openwrt-on-banana-pi-r64/7.png" alt="OpenWRT installed" /></p>
-
 <h2 id="references">References</h2>
-
 <ul>
-  <li><a href="http://wiki.banana-pi.org/Banana_Pi_BPI-R64">http://wiki.banana-pi.org/Banana_Pi_BPI-R64</a></li>
-  <li><a href="http://forum.banana-pi.org/t/bpi-r64-loading-openwrt-built-files-into-the-board/9960">http://forum.banana-pi.org/t/bpi-r64-loading-openwrt-built-files-into-the-board/9960</a></li>
-  <li><a href="http://forum.banana-pi.org/t/bpi-r64-quick-start-boot-from-emmc/9809">http://forum.banana-pi.org/t/bpi-r64-quick-start-boot-from-emmc/9809</a></li>
-  <li><a href="https://openwrt.org/docs/guide-developer">https://openwrt.org/docs/guide-developer</a></li>
+<li><a href="http://wiki.banana-pi.org/Banana_Pi_BPI-R64">http://wiki.banana-pi.org/Banana_Pi_BPI-R64</a></li>
+<li><a href="http://forum.banana-pi.org/t/bpi-r64-loading-openwrt-built-files-into-the-board/9960">http://forum.banana-pi.org/t/bpi-r64-loading-openwrt-built-files-into-the-board/9960</a></li>
+<li><a href="http://forum.banana-pi.org/t/bpi-r64-quick-start-boot-from-emmc/9809">http://forum.banana-pi.org/t/bpi-r64-quick-start-boot-from-emmc/9809</a></li>
+<li><a href="https://openwrt.org/docs/guide-developer">https://openwrt.org/docs/guide-developer</a></li>
 </ul>]]></content><author><name></name></author><category term="Software Development" /><category term="OpenWRT" /><category term="Router" /><category term="Network" /><category term="Embedded" /><summary type="html"><![CDATA[Getting start to build and install OpenWRT on Banana Pi R64 by using macOS]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Recompile aria2 to increment max connections per server</title><link href="https://ntsd.dev/aria2-max-connections-per-server/" rel="alternate" type="text/html" title="Recompile aria2 to increment max connections per server" /><published>2020-02-09T19:30:54+07:00</published><updated>2020-02-09T19:30:54+07:00</updated><id>https://ntsd.dev/aria2-max-connections-per-server</id><content type="html" xml:base="https://ntsd.dev/aria2-max-connections-per-server/"><![CDATA[<p>There’s a maximum number 16 connections hard code in aria2 so when I want to add more connections I need to edit a line of code and recompile it</p>
-
 <h2 id="edit-max-connections-per-server">Edit max connections per server</h2>
-
 <p>Edit number arguments in NumberOptionHandler for MAX_CONNECTION_PER_SERVER in file “OptionHandlerFactory.cc”</p>
-
 <p>from 16 to 64 the number is as you want.</p>
-
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">OptionHandler</span><span class="o">*</span> <span class="nf">op</span><span class="p">(</span><span class="k">new</span> <span class="n">NumberOptionHandler</span><span class="p">(</span><span class="n">PREF_MAX_CONNECTION_PER_SERVER</span><span class="p">,</span>
                                               <span class="n">TEXT_MAX_CONNECTION_PER_SERVER</span><span class="p">,</span>
                                               <span class="s">"1"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="sc">'x'</span><span class="p">));</span>
 </code></pre></div></div>
-
 <h2 id="build-the-aria-2">Build the aria 2</h2>
-
 <p>Install following packages.</p>
-
 <ul>
-  <li>libxml2-dev</li>
-  <li>libcppunit-dev</li>
-  <li>autoconf (gettext)</li>
-  <li>automake</li>
-  <li>autotools-dev</li>
-  <li>autopoint</li>
-  <li>libtool</li>
+<li>libxml2-dev</li>
+<li>libcppunit-dev</li>
+<li>autoconf (gettext)</li>
+<li>automake</li>
+<li>autotools-dev</li>
+<li>autopoint</li>
+<li>libtool</li>
 </ul>
-
 <p>You can install all of it by running this command.</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>gettext automake autoconf libtool libxml2 cppunit
 </code></pre></div></div>
-
-<p>If you install LibXML with brew you also need to link it to <code class="language-plaintext highlighter-rouge">/usr/local/include/</code>.</p>
-
+<p>If you install LibXML with brew you also need to link it to <code>/usr/local/include/</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-s</span> /usr/local/opt/libxml2/include/libxml2/libxml /usr/local/include/libxml
 </code></pre></div></div>
-
-<p>Add Gettext and libxml2 to your path for me it’s <code class="language-plaintext highlighter-rouge">~/.zshrc</code>.</p>
-
+<p>Add Gettext and libxml2 to your path for me it’s <code>~/.zshrc</code>.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># gettext</span>
 <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span>:/usr/local/opt/gettext/bin
 
@@ -1556,96 +1101,61 @@ make <span class="nt">-j4</span> <span class="nv">V</span><span class="o">=</spa
 <span class="nb">export </span><span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"-L/usr/local/opt/libxml2/lib"</span>
 <span class="nb">export </span><span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">"-I/usr/local/opt/libxml2/include"</span>
 </code></pre></div></div>
-
 <p>Generate configs.</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>autoreconf <span class="nt">-i</span>
 </code></pre></div></div>
-
 <p>Run config that you just create.</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./configure
 </code></pre></div></div>
-
 <p>I’ll just use the default configuration.</p>
-
 <p>If you want more details of it you can just copy steps from the homebrew script here <a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/aria2.rb">https://github.com/Homebrew/homebrew-core/blob/master/Formula/aria2.rb</a>.</p>
-
 <p>Use make file to compile the code</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
 </code></pre></div></div>
-
 <p>Test all code (you can skip this step).</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make check
 </code></pre></div></div>
-
 <p>Run make install to generate the binary file.</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make <span class="nb">install</span>
 </code></pre></div></div>
-
-<p>Then you’ll get a new aria2c binary file complied in <code class="language-plaintext highlighter-rouge">/usr/local/bin/</code> directory.</p>
-
+<p>Then you’ll get a new aria2c binary file complied in <code>/usr/local/bin/</code> directory.</p>
 <p>You can check by the command.</p>
-
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">-latr</span> /usr/local/bin/
 </code></pre></div></div>
-
 <h2 id="test-the-compiled-aria2-binary-file">Test the compiled aria2 binary file</h2>
-
-<p>Make sure <code class="language-plaintext highlighter-rouge">/usr/local/bin/</code> is in your path.</p>
-
+<p>Make sure <code>/usr/local/bin/</code> is in your path.</p>
 <p>Now you can test the aria2c binary file that you just compile.</p>
-
-<p><code class="language-plaintext highlighter-rouge">aria2c -k 1M -s 64 -x 64 http://ipv4.download.thinkbroadband.com/1GB.zip</code></p>
-
+<p><code>aria2c -k 1M -s 64 -x 64 http://ipv4.download.thinkbroadband.com/1GB.zip</code></p>
 <p>Basic Options</p>
-
 <p>-k, –min-split-size=&lt;SIZE&gt;</p>
-
 <ul>
-  <li>minimum split size</li>
+<li>minimum split size</li>
 </ul>
-
 <p>-s, –split=&lt;N&gt;</p>
-
 <ul>
-  <li>split file to N part</li>
+<li>split file to N part</li>
 </ul>
-
 <p>-x, –max-connection-per-server=&lt;NUM&gt;</p>
-
 <ul>
-  <li>maximum number of connections to one server.</li>
+<li>maximum number of connections to one server.</li>
 </ul>
-
 <p>You’ll see the number of connections is 64.</p>
-
 <p><img src="/img/in-post/2020-2-9-aria2-max-connections-per-server/aria.png" alt="the number of connections is 64" /></p>
-
 <p>Done, Now you can use the binary file and unlock the aria 2 connections limit.</p>
-
 <h2 id="references">references</h2>
-
 <ul>
-  <li><a href="https://github.com/aria2/aria2">https://github.com/aria2/aria2</a></li>
-  <li><a href="https://github.com/aria2/aria2/issues/580">https://github.com/aria2/aria2/issues/580</a></li>
-  <li><a href="https://github.com/aria2/aria2/issues/810">https://github.com/aria2/aria2/issues/810</a></li>
-  <li><a href="https://aria2.github.io/manual/en/html/README.html#how-to-build">https://aria2.github.io/manual/en/html/README.html#how-to-build</a></li>
+<li><a href="https://github.com/aria2/aria2">https://github.com/aria2/aria2</a></li>
+<li><a href="https://github.com/aria2/aria2/issues/580">https://github.com/aria2/aria2/issues/580</a></li>
+<li><a href="https://github.com/aria2/aria2/issues/810">https://github.com/aria2/aria2/issues/810</a></li>
+<li><a href="https://aria2.github.io/manual/en/html/README.html#how-to-build">https://aria2.github.io/manual/en/html/README.html#how-to-build</a></li>
 </ul>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="C++" /><category term="aria2" /><category term="Network" /><summary type="html"><![CDATA[Edit a line of code and re-complie aria2 to unlock aria 2 connections limit]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Python Code Golf Cheat Sheet</title><link href="https://ntsd.dev/python-codegolf/" rel="alternate" type="text/html" title="Python Code Golf Cheat Sheet" /><published>2019-10-06T19:30:54+07:00</published><updated>2019-10-06T19:30:54+07:00</updated><id>https://ntsd.dev/python-codegolf</id><content type="html" xml:base="https://ntsd.dev/python-codegolf/"><![CDATA[<h2 id="operator">Operator</h2>
-
 <h3 id="negating-boolean">Negating Boolean</h3>
-
-<pre><code class="language-Python">if not C:
+<pre><code class="language-Python">>if not C:
 if C&lt;1:
 if~-C:
 </code></pre>
-
 <h3 id="and-operator">And operator</h3>
-
-<pre><code class="language-Python">if a and b:
+<pre><code class="language-Python">>if a and b:
 if a*b:
 
 if i==4 and j==4:
@@ -1653,10 +1163,8 @@ if i==4and j==4:
 if(i,j)==(4,4):
 if i==j==4:
 </code></pre>
-
 <h3 id="increment-or-decrement-1-in-statement">Increment or decrement 1 in statement</h3>
-
-<pre><code class="language-Python">c/(n-1)
+<pre><code class="language-Python">>c/(n-1)
 c/~-n
 
 c/(n+1)
@@ -1668,17 +1176,13 @@ while~-n:
 or n+1
 or-~n
 </code></pre>
-
 <h3 id="while-n1">While n!=1</h3>
-
-<pre><code class="language-Python">while n!=1:
+<pre><code class="language-Python">>while n!=1:
 while n-1:
 while~-n:
 </code></pre>
-
 <h3 id="shorter-than-the-list-selection">shorter than the list selection</h3>
-
-<pre><code class="language-Python">[0,y][b] -&gt; y*b
+<pre><code class="language-Python">>[0,y][b] -&gt; y*b
 [1,y][b] -&gt; y**b
 [x,1][b] -&gt; b or x
 [x,x+1][b] -&gt; x+b
@@ -1686,84 +1190,62 @@ while~-n:
 [1,-1][b] -&gt; 1|-b
 [x,~x][b] -&gt; x^-b
 </code></pre>
-
 <h3 id="ceil-and-floor">Ceil and Floor</h3>
-
-<pre><code class="language-Python">math.floor(n)
+<pre><code class="language-Python">>math.floor(n)
 n//1
 
 math.ceil(n)
 -(-n//1)
 </code></pre>
-
 <h2 id="types">Types</h2>
-
 <h3 id="check-type-of-a-variable">Check type of a variable</h3>
-
-<pre><code class="language-Python">x*0is 0 # integer
-x*0=="" # string
+<pre><code class="language-Python">>x*0is 0 # integer
+x*0==&quot;&quot; # string
 x*0==[] # array
 </code></pre>
-
 <h3 id="convert-integer-to-string">Convert integer to string</h3>
-
-<pre><code class="language-Python">str(n)
+<pre><code class="language-Python">>str(n)
 `n`
 </code></pre>
-
 <h3 id="join-list-of-string-or-integer">Join list of string or integer</h3>
-
-<pre><code class="language-Python">L=['a', 'b', 'c']
+<pre><code class="language-Python">>L=['a', 'b', 'c']
 ''.join(L)
 `L`[2::5]
 
 L=[1, 2, 3]
 `L`[1::3]
 </code></pre>
-
-<h3 id="2-string-same-length-or-1-length-diff">2 String same length or 1 length diff</h3>
-
-<pre><code class="language-Python">'ftarlusee'[C::2]
+<h3 id="string-same-length-or-1-length-diff">2 String same length or 1 length diff</h3>
+<pre><code class="language-Python">>'ftarlusee'[C::2]
 </code></pre>
-
 <h3 id="list-all-substrings">List all substrings</h3>
-
-<pre><code class="language-Python"># with repeat
+<pre><code class="language-Python">># with repeat
 f=lambda s:[*s]and[s]+f(s[1:])+f(s[:-1])
 
 # avoid repeat
 f=lambda s:{*s}and{s}|f(s[1:])|f(s[:-1])
 </code></pre>
-
-<h2 id="iterable--iterator">Iterable &amp; Iterator</h2>
-
+<h2 id="iterable-amp-iterator">Iterable &amp; Iterator</h2>
 <h3 id="list-of-range">List of range</h3>
-
-<pre><code class="language-Python">L=list(range(10))
+<pre><code class="language-Python">>L=list(range(10))
 *L,=range(10)
 </code></pre>
-
 <h3 id="get-last-and-first-element-from-a-list">Get last and first element from a list</h3>
-
-<pre><code class="language-Python">e=L[-1]
+<pre><code class="language-Python">>e=L[-1]
 *_,e=L
 
 e=(L)[0]
 e,*_=L
 </code></pre>
-
 <h3 id="append-and-extend-to-list">Append and Extend to list</h3>
-
-<pre><code class="language-Python">L.append(e)  
+<pre><code class="language-Python">>L.append(e)  
 L+=e,
 
 L.extend(e)
 L+=e
 </code></pre>
-
 <h3 id="for-in-range">For in range</h3>
-
-<pre><code class="language-Python">for i in range(x):pass
+<pre><code class="language-Python">>for i in range(x):pass
 
 # if x less than 4
 for x in 0,1,2:pass
@@ -1779,10 +1261,8 @@ for _ in r*-~x:pass
 # use exec with multiply string
 exec'pass;'*x
 </code></pre>
-
 <h3 id="multiple-numerical-loops">Multiple numerical loops</h3>
-
-<pre><code class="language-Python">for i in range(m):
+<pre><code class="language-Python">>for i in range(m):
  for j in range(n):
   do_stuff(i,j)
 
@@ -1798,55 +1278,39 @@ for i in range(m):
 for k in range(m*n*b):
  do_stuff(k/n/o,k%(n*o)/o,k%o)
 </code></pre>
-
 <h3 id="check-element-in-iterable">Check element in iterable</h3>
-
-<pre><code class="language-Python">if e in S
+<pre><code class="language-Python">>if e in S
 if{e}&amp;S
 </code></pre>
-
 <h3 id="reverse-list">Reverse List</h3>
-
-<pre><code class="language-Python">L.reverse()
+<pre><code class="language-Python">>L.reverse()
 L[::-1]
 </code></pre>
-
 <h3 id="check-negative-integer-in-a-list">Check negative integer in a list</h3>
-
-<pre><code class="language-Python">min(L)&lt;0
+<pre><code class="language-Python">>min(L)&lt;0
 '-'in`L`
 </code></pre>
-
 <h3 id="checking-the-length-of-a-list">Checking the length of a list</h3>
-
-<pre><code class="language-Python">a==[] # a is empty
+<pre><code class="language-Python">>a==[] # a is empty
 []==a # for [] in the front and reduce 1 space
 a # a is not empty
 a&gt;a[:i] # len(a) &lt; i
 </code></pre>
-
 <h3 id="copyclone-a-list">Copy/Clone a list</h3>
-
-<pre><code class="language-Python">a=x[:]
+<pre><code class="language-Python">>a=x[:]
 b=[*x]
 c=x*1
 </code></pre>
-
 <h3 id="multiple-if-statements-in-comprehensions">Multiple if statements in comprehensions</h3>
-
-<pre><code class="language-Python">[a for a in 'abc'if cond1()and cond2()or cond3()and cond4()and cond5()]
+<pre><code class="language-Python">>[a for a in 'abc'if cond1()and cond2()or cond3()and cond4()and cond5()]
 [a for a in 'abc'if cond1()if cond2()or cond3()if cond4()if cond5()]
 </code></pre>
-
 <h3 id="split-into-chunks">Split into chunks</h3>
-
-<pre><code class="language-Python">l=(n for n in range(18))
+<pre><code class="language-Python">>l=(n for n in range(18))
 zip(*[l]*4)
 </code></pre>
-
 <h3 id="unpack-generator">Unpack generator</h3>
-
-<pre><code class="language-Python">set(G)
+<pre><code class="language-Python">>set(G)
 {*G}
 
 list(G)
@@ -1857,100 +1321,68 @@ tuple(G)
 (*G,)
 T=*G,
 </code></pre>
-
 <h2 id="others">Others</h2>
-
 <h3 id="reading-from-stdin">Reading from stdin</h3>
-
-<pre><code class="language-Python">import os;A=os.read(0,9**9)
+<pre><code class="language-Python">>import os;A=os.read(0,9**9)
 import os;A=os.read(0,99) # input is always less than 100 bytes.
 </code></pre>
-
 <h3 id="multiline-input-to-list">Multiline input to list</h3>
-
-<pre><code class="language-Python">list(sys.stdin.readlines())
+<pre><code class="language-Python">>list(sys.stdin.readlines())
 
 eof='' # End of line you want to stop
 list(iter(input,eof))
 </code></pre>
-
 <h3 id="import-when-use-once">Import when use once</h3>
-
-<pre><code class="language-Python">import itertools
+<pre><code class="language-Python">>import itertools
 itertools.groupby()
 
-__import__("itertools").groupby()
+__import__(&quot;itertools&quot;).groupby()
 </code></pre>
-
 <h2 id="reference">Reference</h2>
-
 <ul>
-  <li>
-    <p><a href="https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python">https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python</a></p>
-  </li>
-  <li>
-    <p><a href="https://noe.mearie.org/python_code_golfing_tips/">https://noe.mearie.org/python_code_golfing_tips/</a></p>
-  </li>
+<li>
+<p><a href="https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python">https://codegolf.stackexchange.com/questions/54/tips-for-golfing-in-python</a></p>
+</li>
+<li>
+<p><a href="https://noe.mearie.org/python_code_golfing_tips/">https://noe.mearie.org/python_code_golfing_tips/</a></p>
+</li>
 </ul>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Python" /><category term="Code golf" /><summary type="html"><![CDATA[Simple tricks to code-golf in Python]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms</title><link href="https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/" rel="alternate" type="text/html" title="Legends of Code and Magic เล่น Bot Programming ด้วย Basic Algorithms" /><published>2018-08-05T19:30:54+07:00</published><updated>2018-08-05T19:30:54+07:00</updated><id>https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms</id><content type="html" xml:base="https://ntsd.dev/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/"><![CDATA[<p>Codingame เป็นเว็บที่มีเว็บโปรแกรมมิ่งแนว Bot Programming ที่ให้ผู้เล่นเขียนโค๊ดเพื่อให้บอทไปสู้กับบอทคนอื่น</p>
-
 <p>สามารถเล่นได้ที่นี่ <a href="https://www.codingame.com/contests/legends-of-code-and-magic-marathon">Link</a></p>
-
 <p>สำหรับคนที่ยังไม่ค่อยเข้าใจระบบเกม ให้ลองเลื่อนลงไปดู Game loops and Input ก่อน</p>
-
 <h2 id="requirement-skills">Requirement skills</h2>
-
 <ul>
-  <li>Programming (Python Syntax)</li>
-  <li>Basic Algorithms</li>
-  <li>OOP นิดหน่อย</li>
+<li>Programming (Python Syntax)</li>
+<li>Basic Algorithms</li>
+<li>OOP นิดหน่อย</li>
 </ul>
-
 <p>LEGENDS OF CODE AND MAGIC เป็นเกมนี้จะเป็นบอร์ดเกมคล้าย Hearthstone</p>
-
 <p>ตัวอย่างเกม <a href="https://www.codingame.com/replay/328489470">https://www.codingame.com/replay/328489470</a></p>
-
 <p>มีผู้เล่นสองคนใช้ไพ่ต่อสู้กันใครเลือดหมดก่อนแพ้</p>
-
 <p>โดยจะแบ่งเป็น 2 phases</p>
-
 <p>phase แรกจะเป็นการเลือกไพ่ 1 ใน 3 จากไพ่ที่สุ่มมา จนครบ 30 ใบ</p>
-
 <p>phase ที่สองจะเป็นการ Battle</p>
-
 <p>โดยใน battle phase จะมีมานาเริ่มต้น 1 และเพิ่ม 1 ทุกๆเทริน</p>
-
 <p>โดยมานาสามารถนำไปจ่ายเพื่อใช้ไพ่</p>
-
 <p>ในเกมจะมีไพ่ 2 ชนิด คือไพ่ creatures กับ items
 แต่ผมจะอธิบายแค่ creature</p>
-
 <p>เมื่อใช้ไพ่ creature จากบนมือจะลงไปบนบอร์ด โดย creature สามารถโจมตีได้เมื่ออยู่บนบอร์ด</p>
-
 <p>เลือดจะลดหากโจมตี creature ด้วยกันเอง</p>
-
 <h2 id="creature-abilities">creature abilities</h2>
-
 <p>creature จะมีความสามามารถพิเศษแตกต่างกันดังนี้</p>
-
-<pre><code class="language-Text">Breakthrough: Creatures with Breakthrough can deal extra damage to the opponent when they attack enemy creatures. If their attack damage is greater than the defending creature's defense, the excess damage is dealt to the opponent.
+<pre><code class="language-Text">>Breakthrough: Creatures with Breakthrough can deal extra damage to the opponent when they attack enemy creatures. If their attack damage is greater than the defending creature's defense, the excess damage is dealt to the opponent.
 Charge: Creatures with Charge can attack the turn they are summoned.
 Drain: Creatures with Drain heal the player of the amount of the damage they deal (when attacking only).
 Guard: Enemy creatures must attack creatures with Guard first.
 Lethal: Creatures with Lethal kill the creatures they deal damage to.
-Ward: Creatures with Ward ignore once the next damage they would receive from any source. The "shield" given by the Ward ability is then lost.
+Ward: Creatures with Ward ignore once the next damage they would receive from any source. The &quot;shield&quot; given by the Ward ability is then lost.
 </code></pre>
-
 <h2 id="class">Class</h2>
-
-<h3 id="import-อะไรให้พร้อม">import อะไรให้พร้อม</h3>
-
-<pre><code class="language-Python">import sys # ใช้เพื่อ print log
+<h3 id="import-">import อะไรให้พร้อม</h3>
+<pre><code class="language-Python">>import sys # ใช้เพื่อ print log
 from copy import deepcopy  # deepcopy เพื่อให้ object ต่างๆ ไม่ reference เวลา simulate
 </code></pre>
-
 <h3 id="class-player">class Player</h3>
-
-<pre><code class="language-Python">class Player:
+<pre><code class="language-Python">>class Player:
     def __init__(self):
         self.mana_curve = [0, 7, 6, 5, 4, 3, 0, 0, 0, 0, 0, 0, 0] # mana curve ใช่เพื่อเลือไพ่ให้ได้ curve ตามต้องการ
     def setEnemy(self, player):
@@ -1964,10 +1396,8 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
     def addBoard(self, card):  # ใช้เพื่อเพิ่มไพ่บอร์ด
         self.boards.append(card)
 </code></pre>
-
 <h3 id="class-card">class Card</h3>
-
-<pre><code class="language-Python">class Card:
+<pre><code class="language-Python">>class Card:
     def __init__(self, card_number, instance_id, location, card_type, cost, attack, defense, abilities, my_health_change, opponent_health_change, card_draw):
         self.__dict__.update(l for l in locals().items() if l[0] != 'self')
         self.action = 1
@@ -1986,10 +1416,8 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
             self.instance_id == other.instance_id
         )
 </code></pre>
-
 <h3 id="class-creature">class Creature</h3>
-
-<pre><code class="language-Python">class Creature(Card): # inheritance Card เพื่อบอกว่าเป็น Subclass ของ Card
+<pre><code class="language-Python">>class Creature(Card): # inheritance Card เพื่อบอกว่าเป็น Subclass ของ Card
     def attackTarget(self, target): # ใช้เมื่อโจมตี Creature ตัวอื่น
         self.action = 0
         if self.shield: # เมื่อดาเมจโดน shield จะหาย
@@ -2005,23 +1433,16 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
             if target.defense &lt;=0 or (self.lethal and type(target) is Creature):
                 target.live = 0
 </code></pre>
-
 <h3 id="class-item">class Item</h3>
-
-<pre><code class="language-Python">class Item(Card):
+<pre><code class="language-Python">>class Item(Card):
     def use(self, target):
         pass
 </code></pre>
-
 <h2 id="algorithms">Algorithms</h2>
-
 <p>โดยวิธีที่ผมใช้เป็น Basic Algorithms ในการสร้าง Rules ต่างๆ ในการเล่นเกม เพื่อทำให้ชนะการเล่น โดยผมจะใส่เป็น Method ของ Player ดังนี้</p>
-
 <h3 id="draft-card">Draft Card</h3>
-
 <p>โดยผมจะเลือกตาม mana curve เป็นหลักและ value ของไพ่ โดยผมใช้ attack * defence เป็น vaule ของไพ่</p>
-
-<pre><code class="language-Python">def draft(self, draft_list): # เลือกไพ่ 1 ใน 3
+<pre><code class="language-Python">>def draft(self, draft_list): # เลือกไพ่ 1 ใน 3
         max_value = 0
         card_no=0
         for i, card in enumerate(draft_list):
@@ -2035,14 +1456,10 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
         self.mana_curve[draft_list[card_no].cost]-=1
         print('PICK {}'.format(card_no))
 </code></pre>
-
 <h3 id="battle-parse">Battle Parse</h3>
-
 <p>โดยผมจะ summon creatures ก่อน แล้วจึงโจมตีฝั่งตรงข้าม</p>
-
 <p>โดยจะทำเป็น action list ดังนี้</p>
-
-<pre><code class="language-Python">    def useItem(self): # ผมยังไม่ได้ทำให้ใช้ item ได้เลยว่างไว้ก่อน
+<pre><code class="language-Python">>    def useItem(self): # ผมยังไม่ได้ทำให้ใช้ item ได้เลยว่างไว้ก่อน
         return []
 
     def play(self):
@@ -2052,12 +1469,9 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
         action_list += self.creatureAttack()
         print(';'.join(action_list)) #  actions จะแบ่งด้วย ;
 </code></pre>
-
 <h3 id="summon">Summon</h3>
-
 <p>ต่อมาเป็นการเรียก Creature จากบนมือ โดยผมจะเลือกตัวที่มานามากที่สุดก่อน</p>
-
-<pre><code class="language-Python">def summon(self):
+<pre><code class="language-Python">>def summon(self):
         mana=self.player_mana
         action_list = []
         boards_count = len(self.boards)
@@ -2066,37 +1480,29 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
             if boards_count &lt; 6: # เช็คถ้าบอร์ดยังไม่เต็ม
                 if c.cost&lt;=mana: # เช็คว่ายังเหลือมานายังพอเรียก
                     mana-=c.cost
-                    action_list.append("SUMMON {}".format(c.instance_id))
+                    action_list.append(&quot;SUMMON {}&quot;.format(c.instance_id))
                     if c.charge: # ถ้ามี charge ability จะสามารถตีได้เลย ผมเลยใส่ในบอร์ด
                         self.boards.append(c)
                     boards_count += 1
         return action_list # return action list
 </code></pre>
-
 <h3 id="attack">Attack</h3>
-
 <p>ในการโจมตีของ creature ผมจะสร้าง rules ลำดับความสำคัญให้มันว่าจะต้องทำอะไรก่อน โดยผมจะสร้าง Rule Class โดยจะใส่ lambda functions ให้กับมันดังนี้</p>
-
 <ul>
-  <li>mySort  - เรียง creatures ของเรา</li>
-  <li>myFilter - filter creatures ของเรา</li>
-  <li>opSort - เรียง creatures ของคู่ต่อสู้</li>
-  <li>opFilter - filter creatures ของคู่ต่อสู้</li>
-  <li>rule - กฏเพื่อให้เข้าเงื่อนไข</li>
+<li>mySort  - เรียง creatures ของเรา</li>
+<li>myFilter - filter creatures ของเรา</li>
+<li>opSort - เรียง creatures ของคู่ต่อสู้</li>
+<li>opFilter - filter creatures ของคู่ต่อสู้</li>
+<li>rule - กฏเพื่อให้เข้าเงื่อนไข</li>
 </ul>
-
 <h3 id="rule-class">Rule Class</h3>
-
-<pre><code class="language-Python">class AttackRule:
+<pre><code class="language-Python">>class AttackRule:
     def __init__(self, mySort, myFilter, opSort, opFilter, rule):
         self.__dict__.update(l for l in locals().items() if l[0] != 'self')
 </code></pre>
-
 <h3 id="creature-attack">Creature Attack</h3>
-
 <p>ผมจะ simulate เพื่อให้ creature โจมตี crature ฝั่งตรงข้ามก่อนตามเงื่อนไขที่กำหนด จากนั้นถ้าเข้าเงื่อนไขจึงเก็บ action และบันทึกค่าว่าโจมตีจริงๆ</p>
-
-<pre><code class="language-Python">def creatureAttack(self):
+<pre><code class="language-Python">>def creatureAttack(self):
         action_list = []
 
         attack_rules=[
@@ -2132,7 +1538,7 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
                     if attack_rule.rule(my_c_temp, op_c_temp): # ถ้าลองโจมตีแล้วเข้าเงื่อนไขให้ทำการบันทึก action
                         my_c = my_c_temp
                         op_c = op_c_temp
-                        action_list.append("ATTACK {} {} Pika!".format(my_c.instance_id, op_c.instance_id))
+                        action_list.append(&quot;ATTACK {} {} Pika!&quot;.format(my_c.instance_id, op_c.instance_id))
                         my_c.action = 0 # เมื่อโจมตีแล้วจะตีไม่ได้อีก
                         if not my_c.live:
                             self.boards.remove(my_c) # ถ้าตายจำออกจากบอร์ด
@@ -2143,35 +1549,23 @@ from copy import deepcopy  # deepcopy เพื่อให้ object ต่า�
         # สั่งให้ตีฮีโร่ฝั่งตรงข้ามเมื่อไม่เข้าเงื่อนไขข้างบน
         for my_c in self.boards:
             if my_c.action:
-                action_list.append("ATTACK {} {} Pikachu!!".format(my_c.instance_id, -1))
+                action_list.append(&quot;ATTACK {} {} Pikachu!!&quot;.format(my_c.instance_id, -1))
                 my_c.action = 0
 
         return action_list
 </code></pre>
-
 <h3 id="game-loops-and-input">Game loops and Input</h3>
-
 <p>main ของ Bot ใช้เพื่ออัพเดตค่าต่างๆของเกมโดยผู้เล่นจะสลับฝั่งกันเล่นและอัพเดตค่าผ่านทาง input, output</p>
-
 <p>โดย Bot Game ใน Codingame นั้นจะประมวลผลเกมเป็น loop ดังนี้</p>
-
 <p>game ประมวลผล</p>
-
 <p>player 1 รับค่า และ ประมวลผล</p>
-
 <p>player 1 ส่งค่า</p>
-
 <p>game ประมวลผล</p>
-
 <p>player 2 รับค่า และ ประมวลผล</p>
-
 <p>player 2 ส่งค่า</p>
-
 <p>เป็น loop จนกว่าจะจบเกม</p>
-
 <h3 id="main">Main</h3>
-
-<pre><code class="language-Python">my_player = Player()
+<pre><code class="language-Python">>my_player = Player()
 op_player = Player()
 my_player.setEnemy(op_player)
 while True:
@@ -2204,10 +1598,8 @@ while True:
     else:
         my_player.play()
 </code></pre>
-
 <h2 id="full-code">Full Code</h2>
-
-<pre><code class="language-Python">import sys
+<pre><code class="language-Python">>import sys
 from copy import deepcopy
 
 def log(*args,**kwargs):
@@ -2254,7 +1646,7 @@ class Player:
             if boards_count &lt; 6 or 1: # to do need to check summon again after trade
                 if c.cost&lt;=mana:
                     mana-=c.cost
-                    action_list.append("SUMMON {}".format(c.instance_id))
+                    action_list.append(&quot;SUMMON {}&quot;.format(c.instance_id))
                     if c.charge:
                         self.boards.append(c)
                     boards_count += 1
@@ -2299,7 +1691,7 @@ class Player:
                     if attack_rule.rule(my_c_temp, op_c_temp):
                         my_c = my_c_temp
                         op_c = op_c_temp
-                        action_list.append("ATTACK {} {} Pika!".format(my_c.instance_id, op_c.instance_id))
+                        action_list.append(&quot;ATTACK {} {} Pika!&quot;.format(my_c.instance_id, op_c.instance_id))
                         my_c.action = 0
                         if not my_c.live:
                             self.boards.remove(my_c)
@@ -2309,7 +1701,7 @@ class Player:
         # go face
         for my_c in self.boards:
             if my_c.action:
-                action_list.append("ATTACK {} {} Pikachu!!".format(my_c.instance_id, -1))
+                action_list.append(&quot;ATTACK {} {} Pikachu!!&quot;.format(my_c.instance_id, -1))
                 my_c.action = 0
 
         return action_list
@@ -2396,5 +1788,4 @@ while True:
     else:
         my_player.play()
 </code></pre>
-
 <p>การเขียนอาจะจะเข้าใจยากไปหน่อย สามารถติชมกันได้ครับ</p>]]></content><author><name></name></author><category term="Software Development" /><category term="Artificial Intelligence" /><category term="Programming" /><category term="Python" /><summary type="html"><![CDATA[สร้างบอทเกมเพื่อเล่นเกมไพ่แข่งกับคนอื่น]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

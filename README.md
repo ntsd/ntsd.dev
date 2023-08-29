@@ -1,17 +1,11 @@
 # ntsd.dev
 
-```
-{% capture readme %}{%- http_request GET;https://raw.githubusercontent.com/{{ page.github }}/main/README.md;{} -%}{% endcapture %}{{ readme | markdownify }}
-```
-
-`{%- http_request GET;https://api.github.com/repos/{{ page.github }}/contents/README.md;{"headers":[{"key":"X-GitHub-Api-Version","value":"2022-11-28"},{"key":"Accept","value":"application/vnd.github+json"}]} -%}`
-
 ## Installation
 
 ```
-sudo apt install ruby-full
-sudo apt install rubygems
-sudo gem install bundler
+apt install ruby-full
+apt install rubygems
+gem install bundler
 bundler install
 npm i
 ```
