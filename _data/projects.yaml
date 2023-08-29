@@ -11,7 +11,7 @@
   description: Sveltekit Adapter to Minify the preload HTML page
   since: 2023 - present
   github: ntsd/sveltekit-html-minifier
-  readme: https://raw.githubusercontent.com/ntsd/sveltekit-html-minifier/main/README.md
+  readme: https://raw.githubusercontent.com/ntsd/sveltekit-html-minifier/master/README.md
   web: https://www.npmjs.com/package/sveltekit-html-minifier
   stacks: [TypeScript, Svelte]
 - id: svelte-tex

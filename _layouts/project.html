@@ -20,20 +20,9 @@ layout: default
                             title="{{ stack }}">{{ stack }}</a>
                         {% endfor %}
                     </div>
-                    <div class="flex gap-2">
-                        {% if page.web %}
-                        <a aria-label="Website" class="text-white hover:text-gray-400" href="{{ page.web }}"
-                            rel="noopener noreferrer" target="_blank">
-                            {% include icon_web.html %}
-                        </a>
-                        {% endif %}
-                        {% if page.github %}
-                        <a aria-label="Github" class="text-white hover:text-gray-400"
-                            href="https://github.com/{{ page.github }}" rel="noopener noreferrer" target="_blank">
-                            {% include icon_github.html %}
-                        </a>
-                        {% endif %}
-                    </div>
+                    <span class="meta">
+                        <time>{{ page.since }}</time>
+                    </span>
                 </div>
                 <h1 class="text-2xl lg:text-5xl my-4">
                     {% if page.title %}
@@ -51,9 +40,20 @@ layout: default
                     {{site.description}}
                 </h2>
                 {% endif %}
-                <span class="meta">
-                    <time>Since {{ page.since }}</time>
-                </span>
+                <div class="flex gap-2">
+                    {% if page.web %}
+                    <a aria-label="Website" class="text-white hover:text-gray-400" href="{{ page.web }}"
+                        rel="noopener noreferrer" target="_blank">
+                        {% include icon_web.html %}
+                    </a>
+                    {% endif %}
+                    {% if page.github %}
+                    <a aria-label="Github" class="text-white hover:text-gray-400"
+                        href="https://github.com/{{ page.github }}" rel="noopener noreferrer" target="_blank">
+                        {% include icon_github.html %}
+                    </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
