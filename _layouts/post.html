@@ -13,7 +13,7 @@ layout: default
       <div class="container mx-auto grid grid-cols-12">
         <div class="text-left text-white col-span-12 lg:col-span-10 py-24 px-4">
           <span class="categories">
-            {% for category in page.categories %} 
+            {% for category in page.categories %}
             <a class="text-sm py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-600"
               href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category
               }}</a>
@@ -86,7 +86,7 @@ layout: default
 
 {% if page.catalog or site.anchorjs %}
 <!-- async load function async(url, callback, delay, isPostJS) -->
-<script>
+<script type="text/javascript" data-post-js="true">
   function async(u, c, t, p) {
     function l() {
       var d = document,
@@ -144,12 +144,36 @@ layout: default
 
   nav.scroll-nav li.scroll-nav__item.scroll-nav__item--active {
     color: #000;
+    font-weight: bold;
   }
 
   nav.scroll-nav a.scroll-nav__link:hover {
     color: #000;
   }
 </style>
+<script type="text/javascript" async>
+  var sections = document.querySelector('.post-container').getElementsByTagName('h2');
+  var navs = document.querySelector('.on-page-nav').getElementsByClassName('scroll-nav__item');
+  if (sections.length > 0 && sections.length === navs.length) {
+    window.addEventListener('scroll', function () {
+      var boundryTop = window.scrollY || window.pageYOffset || document.body.scrollTop;
+      var boundryBottom = boundryTop + window.innerHeight * 0.4;
+      var activeId = 0;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop > boundryBottom) {
+          if (!activeId && sections[i].offsetTop < boundryTop) activeId = i;
+        } else {
+          activeId = i;
+        }
+      }
+      var previousActive = document.getElementsByClassName('scroll-nav__item--active');
+      if (previousActive.length > 0) {
+        previousActive[0].classList.remove('scroll-nav__item--active');
+      }
+      navs[activeId].classList.add('scroll-nav__item--active');
+    });
+  }
+</script>
 {% endif %}
 
 {% if site.anchorjs %}
@@ -185,7 +209,7 @@ layout: default
 {% endif %}
 
 {% if site.giscus %}
-<script type="text/runtime-javascript">
+<script type="text/runtime-javascript" async>
         setTimeout(function () {
           var d = document, s = d.createElement("script");
           s.src = " https://giscus.app/client.js";
