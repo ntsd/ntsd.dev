@@ -11,10 +11,31 @@ layout: default
 </style>
 <header>
     <div class="w-full bg-center bg-cover bg-black header-bg backdrop-brightness-75">
-        <div
-            class="container mx-auto flex items-center justify-center w-full backdrop-filter backdrop-brightness-75 py-32 p-4">
-            <div class="text-center text-white">
-                <h1 class="text-4xl font-semibold uppercase lg:text-5xl">
+        <div class="container mx-auto">
+            <div class="text-left text-white py-24 px-4">
+                <div class="flex justify-between">
+                    <div class="flex gap-2">
+                        {% for stack in page.stacks %}
+                        <a class="text-sm py-1 px-2 inline-block border border-white hover:bg-gray-600" href=""
+                            title="{{ stack }}">{{ stack }}</a>
+                        {% endfor %}
+                    </div>
+                    <div class="flex gap-2">
+                        {% if page.web %}
+                        <a aria-label="Website" class="text-white hover:text-gray-400" href="{{ page.web }}"
+                            rel="noopener noreferrer" target="_blank">
+                            {% include icon_web.html %}
+                        </a>
+                        {% endif %}
+                        {% if page.github %}
+                        <a aria-label="Github" class="text-white hover:text-gray-400"
+                            href="https://github.com/{{ page.github }}" rel="noopener noreferrer" target="_blank">
+                            {% include icon_github.html %}
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <h1 class="text-2xl lg:text-5xl my-4">
                     {% if page.title %}
                     {{ page.title }}
                     {% else %}
@@ -22,14 +43,17 @@ layout: default
                     {% endif %}
                 </h1>
                 {% if page.description %}
-                <p class="mt-2 text-sm lg:text-base">
+                <h2 class="lg:text-xl my-4">
                     {{ page.description }}
-                </p>
+                </h2>
                 {% else %}
-                <p class="mt-2 text-sm lg:text-base">
+                <h2 class="lg:text-xl my-4">
                     {{site.description}}
-                </p>
+                </h2>
                 {% endif %}
+                <span class="meta">
+                    <time>Since {{ page.since }}</time>
+                </span>
             </div>
         </div>
     </div>

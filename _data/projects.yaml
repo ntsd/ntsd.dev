@@ -1,3 +1,28 @@
+- id: astro-svelte-tailwind
+  name: Astro Svelte Tailwind
+  description: Astro Starter Template with Svelte, Tailwind, DaisyUI, and Service Worker
+  since: 2023 - present
+  github: ntsd/astro-svelte-tailwind
+  readme: https://raw.githubusercontent.com/ntsd/astro-svelte-tailwind/main/README.md
+  web: https://ntsd.github.io/astro-svelte-tailwind
+  stacks: [TypeScript, Astro]
+- id: sveltekit-html-minifier
+  name: Sveltekit HTML Minifier
+  description: Sveltekit Adapter to Minify the preload HTML page
+  since: 2023 - present
+  github: ntsd/sveltekit-html-minifier
+  readme: https://raw.githubusercontent.com/ntsd/sveltekit-html-minifier/main/README.md
+  web: https://www.npmjs.com/package/sveltekit-html-minifier
+  stacks: [TypeScript, Svelte]
+- id: svelte-tex
+  name: Svelte Tex
+  description: Svelte component to convert TeX/LaTeX to MathML or SVG
+  since: 2023 - present
+  github: ntsd/svelte-tex
+  readme: https://raw.githubusercontent.com/ntsd/svelte-tex/main/README.md
+  web: https://ntsd.github.io/svelte-tex
+  npm: https://www.npmjs.com/package/svelte-tex
+  stacks: [TypeScript, Svelte]
 - id: jekyll-http-request
   name: Jekyll HTTP Request
   description: Jekyll Liquid Filter for HTTP requests, helps you get HTTP response data to the page content
