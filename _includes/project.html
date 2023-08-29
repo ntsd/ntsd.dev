@@ -3,13 +3,13 @@
         <time class="text-xs font-light text-gray-600">{{ project.since }}</time>
     </div>
 
-    <div class="mt-2">
+    <a class="mt-2 hover:underline" href="{{ project.id | prepend: '/projects/' | prepend: site.baseurl }}">
         <div class="text-xl font-bold text-gray-900 hover:text-gray-800">{{ project.name }}
         </div>
         <p class="font-bold text-gray-500">
             {{ project.description }}
         </p>
-    </div>
+    </a>
 
     <div class="flex items-center mt-auto">
         <div class="flex flex-row items-center mt-8 justify-between w-full">
