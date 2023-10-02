@@ -12,7 +12,19 @@ module.exports = {
             a: {
               "line-break": "anywhere",
             },
-            code: null,
+            code: {
+              color: "#ccc",
+              background: "#2d2d2d",
+              padding: "0.1em",
+              "border-radius": "0.3em",
+              "white-space": "normal",
+              "&::before": {
+                display: "none",
+              },
+              "&::after": {
+                display: "none",
+              },
+            },
           },
         },
       },

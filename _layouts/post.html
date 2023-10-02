@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 <!-- Page Header -->
 <style type="text/css">
   header .header-bg {
@@ -12,22 +13,22 @@ layout: default
     <div class="backdrop-filter backdrop-brightness-75">
       <div class="container mx-auto grid grid-cols-12">
         <div class="text-left text-white col-span-12 lg:col-span-10 py-24 px-4">
-          <span class="categories">
+          <span>
             {% for category in page.categories %}
             <a class="text-sm py-1 px-2 mr-1 mb-2 inline-block border border-white hover:bg-gray-600"
               href="{{ site.baseurl }}/categories/#{{ category }}" title="{{ category }}">{{ category
               }}</a>
             {% endfor %}
           </span>
-          <span class="tags">
+          <span>
             {% for tag in page.tags %}
             <a class="text-sm py-1 px-2 mr-1 mb-2 inline-block border border-white rounded-full hover:bg-gray-600"
               href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
             {% endfor %}
           </span>
-          <h1 class="text-2xl lg:text-5xl my-4">{{ page.title }}</h1>
+          <h1 class="text-2xl lg:text-4xl my-4">{{ page.title }}</h1>
           <h2 class="lg:text-xl my-4">{{ page.description }}</h2>
-          <span class="meta">
+          <span class="text-sm font-light text-gray-300">
             <time datetime="{{ page.date | date:" %Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
           </span>
         </div>
@@ -235,3 +236,5 @@ layout: default
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/prism.js" data-post-js="true"></script>
 {% endunless %}
 {% endif %}
+
+<div id="read-progress"></div>
