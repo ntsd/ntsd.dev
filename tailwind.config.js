@@ -6,6 +6,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      transitionProperty: {
+        height: "height",
+      },
       typography: {
         DEFAULT: {
           css: {

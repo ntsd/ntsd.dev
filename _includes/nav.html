@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="bg-white shadow-md sticky top-0 z-50 transition-transform duration-300 transform" id="navbar">
-    <div class="container mx-auto py-3 px-4 lg:py-4 lg:flex lg:justify-between lg:items-center">
-        <div class="lg:flex lg:items-center">
+    <div class="container mx-auto py-3 px-4 lg:py-4 flex flex-col lg:flex-row lg:justify-between lg:items-center">
+        <div class="flex flex-col lg:flex-row justify-between lg:items-center w-full">
             <div class="flex items-center justify-between">
                 <div>
                     <a class="text-lg lg:text-2xl font-bold text-gray-800 hover:text-gray-700"
@@ -22,13 +22,15 @@
                 </div>
             </div>
 
-            <div class="flex flex-col text-gray-600 capitalize lg:flex lg:space-x-4 lg:px-16 lg:flex-row lg:items-center md:hidden"
-                id="nav-left">
-                <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/">HOME</a>
-                <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/blog/">BLOG</a>
-                <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/projects/">PROJECTS</a>
-                <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/tags/">TAGS</a>
-                <a class="mt-4 lg:mt-0 hover:text-gray-900" href="{{ site.baseurl }}/about/">ABOUT</a>
+            <div class="flex-grow flex flex-col justify-between text-gray-600 capitalize lg:space-x-4 lg:px-16 lg:flex-row lg:items-center overflow-hidden max-h-screen md:max-h-0 transition-all ease-in-out duration-500"
+                id="menu">
+                <div class="flex flex-col lg:flex-row gap-4 md:mt-4 justify-start">
+                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/">HOME</a>
+                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/blog/">BLOG</a>
+                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/projects/">PROJECTS</a>
+                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/tags/">TAGS</a>
+                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/about/">ABOUT</a>
+                </div>
                 <!-- {% for page in site.pages %}
                     {% if page.title %}
                         {% unless page.pagination_info %}
@@ -36,22 +38,19 @@
                         {% endunless %}
                     {% endif %}
                 {% endfor %} -->
+                <div class="flex justify-center pt-6 lg:flex lg:pt-0">
+                    {% include social.html %}
+                </div>
             </div>
-        </div>
-
-        <div class="flex justify-center mt-6 lg:flex lg:mt-0 md:hidden" id="nav-right">
-            {% include social.html %}
         </div>
     </div>
 </nav>
 <script type="text/runtime-javascript" async>
     var toggle = document.querySelector("#nav-toggle");
-    var navLeft = document.querySelector("#nav-left");
-    var navRight = document.querySelector("#nav-right");
+    var menu = document.querySelector("#menu");
 
     function hidden() {
-        navLeft.classList.add("md:hidden");
-        navRight.classList.add("md:hidden");
+        menu.classList.add("md:max-h-0");
         toggle.classList.remove("nav-open");
     }
 
@@ -62,8 +61,7 @@
         if (toggle.className.indexOf("nav-open") > 0) {
             hidden();
         } else {
-            navLeft.classList.remove("md:hidden");
-            navRight.classList.remove("md:hidden");
+            menu.classList.remove("md:max-h-0");
             toggle.classList.add("nav-open");
         }
 
