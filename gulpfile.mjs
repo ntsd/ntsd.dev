@@ -64,7 +64,7 @@ gulp.task("processStyles", () => {
     purge: {
       enabled: true,
       content: [SITE_ROOT_HTML],
-			safelist: ["-translate-y-full"],
+      safelist: ["-translate-y-full"],
     },
   });
 
@@ -170,7 +170,9 @@ gulp.task("post-js", () => {
 
         console.log(`Rendering ${relativePath}`);
 
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+          headless: "new",
+        });
         const page = await browser.newPage();
 
         await page.goto(`http://localhost:6969/${relativePath}`, {
@@ -226,13 +228,31 @@ gulp.task("critical", () => {
         // Extract inlined styles from referenced stylesheets
         extract: false,
         // ignore CSS rules
-        ignore: {},
+        ignore: [],
         // strict true
         strict: true,
+        // Configuration options for CleanCSS
+        cleanCSS: {
+          level: {
+            1: { all: true },
+            2: {
+              all: false,
+              removeDuplicateFontRules: true,
+              removeDuplicateMediaBlocks: false,
+              removeDuplicateRules: true,
+              removeEmpty: true,
+              mergeMedia: false,
+            },
+          },
+        },
         // css files
         css: [path.join(POST_BUILD_STYLES, "style.css")],
         // screen dimensions
         dimensions: [
+          {
+            width: 375,
+            height: 667,
+          },
           {
             width: 876,
             height: 2142,
@@ -286,7 +306,9 @@ gulp.task("startServer", () => {
 const jekyllSeries = gulp.series("buildJekyll", "processStyles");
 const buildSite = gulp.series(jekyllSeries, "uglify", "uglify-sw");
 
-exports.serve = gulp.series(buildSite, "startServer");
-exports.default = gulp.series(buildSite, "post-js", "critical");
-exports.bustCache = gulp.series("bust-cache");
-exports.postJS = gulp.series("post-js", "critical");
+const serve = gulp.series(buildSite, "startServer");
+const defaultBuild = gulp.series(buildSite, "post-js", "critical");
+const bustCache = gulp.series("bust-cache");
+const postJS = gulp.series("post-js", "critical");
+
+export { serve, defaultBuild as default, bustCache, postJS };

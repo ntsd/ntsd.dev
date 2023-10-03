@@ -1,9 +1,6 @@
 module.exports = {
-  purge: {
-    enabled: true,
-    content: ["_site/**/*.html"],
-    safelist: ["-translate-y-full"],
-  },
+  content: ["_site/**/*.html"],
+  safelist: ["-translate-y-full", "max-h-screen"],
   theme: {
     extend: {
       transitionProperty: {
