@@ -231,28 +231,16 @@ gulp.task("critical", () => {
         ignore: [],
         // strict true
         strict: true,
-        // Configuration options for CleanCSS
+        // Configuration options for CleanCSS <https://github.com/clean-css/clean-css>
         cleanCSS: {
           level: {
             1: { all: true },
-            2: {
-              all: false,
-              removeDuplicateFontRules: true,
-              removeDuplicateMediaBlocks: false,
-              removeDuplicateRules: true,
-              removeEmpty: true,
-              mergeMedia: false,
-            },
           },
         },
         // css files
         css: [path.join(POST_BUILD_STYLES, "style.css")],
         // screen dimensions
         dimensions: [
-          {
-            width: 375,
-            height: 667,
-          },
           {
             width: 876,
             height: 2142,

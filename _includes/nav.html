@@ -1,86 +1,110 @@
 <!-- Navigation -->
-<nav class="bg-white shadow-md sticky top-0 z-50 transition-transform duration-300 transform" id="navbar">
-    <div class="container mx-auto py-3 px-4 lg:py-4 flex flex-col lg:flex-row lg:justify-between lg:items-center">
-        <div class="flex flex-col lg:flex-row justify-between lg:items-center w-full">
-            <div class="flex items-center justify-between w-auto md:w-full">
-                <div>
-                    <a class="text-lg lg:text-2xl font-bold text-gray-800 hover:text-gray-700"
-                        href="{{ site.baseurl }}/">{{ site.title }}</a>
-                </div>
+<nav
+  class="bg-white shadow-md sticky top-0 z-50 transition-transform duration-300 transform"
+  id="navbar"
+>
+  <div
+    class="container mx-auto py-3 px-4 lg:py-4 flex flex-col lg:flex-row lg:justify-between lg:items-center"
+  >
+    <div
+      class="flex flex-col lg:flex-row justify-between lg:items-center w-full"
+    >
+      <div class="flex items-center justify-between w-full lg:w-auto">
+        <div>
+          <a
+            class="text-lg lg:text-2xl font-bold text-gray-800 hover:text-gray-700"
+            href="{{ site.baseurl }}/"
+            >{{ site.title }}</a
+          >
+        </div>
 
-                <!-- Mobile menu button -->
-                <div class="flex lg:hidden">
-                    <button aria-label="toggle menu"
-                        class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" id="nav-toggle"
-                        type="button">
-                        <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
-                            <path
-                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                                fill-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+        <!-- Mobile menu button -->
+        <div class="flex lg:hidden">
+          <button
+            aria-label="toggle menu"
+            class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+            id="nav-toggle"
+            type="button"
+          >
+            <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
+              <path
+                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
 
-            <div class="flex-grow flex flex-col justify-between text-gray-600 capitalize lg:space-x-4 lg:px-16 lg:flex-row lg:items-center overflow-hidden max-h-screen md:max-h-0 transition-all ease-in-out duration-500"
-                id="menu">
-                <div class="flex flex-col lg:flex-row gap-4 md:mt-4 justify-start">
-                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/">HOME</a>
-                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/blog/">BLOG</a>
-                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/projects/">PROJECTS</a>
-                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/tags/">TAGS</a>
-                    <a class="hover:text-gray-900" href="{{ site.baseurl }}/about/">ABOUT</a>
-                </div>
-                <!-- {% for page in site.pages %}
+      <div
+        class="flex-grow flex flex-col justify-between text-gray-600 capitalize lg:space-x-4 lg:px-16 lg:flex-row lg:items-center overflow-hidden max-h-0 lg:max-h-screen transition-all duration-500"
+        id="menu"
+      >
+        <div class="flex flex-col lg:flex-row gap-4 mt-4 lg:mt-0 justify-start">
+          <a class="hover:text-gray-900" href="{{ site.baseurl }}/">HOME</a>
+          <a class="hover:text-gray-900" href="{{ site.baseurl }}/blog/"
+            >BLOG</a
+          >
+          <a class="hover:text-gray-900" href="{{ site.baseurl }}/projects/"
+            >PROJECTS</a
+          >
+          <a class="hover:text-gray-900" href="{{ site.baseurl }}/tags/"
+            >TAGS</a
+          >
+          <a class="hover:text-gray-900" href="{{ site.baseurl }}/about/"
+            >ABOUT</a
+          >
+        </div>
+        <!-- {% for page in site.pages %}
                     {% if page.title %}
                         {% unless page.pagination_info %}
                             <a class="mt-2 lg:mt-0 hover:text-gray-900 uppercase" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
                         {% endunless %}
                     {% endif %}
                 {% endfor %} -->
-                <div class="flex justify-center pt-6 lg:flex lg:pt-0">
-                    {% include social.html %}
-                </div>
-            </div>
+        <div class="flex justify-center pt-6 lg:flex lg:pt-0">
+          {% include social.html %}
         </div>
+      </div>
     </div>
+  </div>
 </nav>
 <script type="text/runtime-javascript" async>
-    var toggle = document.querySelector("#nav-toggle");
-    var menu = document.querySelector("#menu");
+  var toggle = document.querySelector("#nav-toggle");
+  var menu = document.querySelector("#menu");
 
-    function hidden() {
-        menu.classList.add("md:max-h-0");
-        toggle.classList.remove("nav-open");
-    }
+  function hidden() {
+      menu.classList.add("max-h-screen");
+      toggle.classList.remove("nav-open");
+  }
 
-    toggle.addEventListener("click", function (e) {
-        const onscrollBak = window.onscroll;
-        window.onscroll = null;
+  toggle.addEventListener("click", function (e) {
+      const onscrollBak = window.onscroll;
+      window.onscroll = null;
 
-        if (toggle.className.indexOf("nav-open") > 0) {
-            hidden();
-        } else {
-            menu.classList.remove("md:max-h-0");
-            toggle.classList.add("nav-open");
-        }
+      if (toggle.className.indexOf("nav-open") > 0) {
+          hidden();
+      } else {
+          menu.classList.remove("max-h-screen");
+          toggle.classList.add("nav-open");
+      }
 
-        setTimeout(function () { window.onscroll = onscrollBak }, 1000);
-    });
+      setTimeout(function () { window.onscroll = onscrollBak }, 1000);
+  });
 
 
-    var navbar = document.querySelector("#navbar");
-    var prevScrollPos = window.pageYOffset;
-    window.onscroll = function () {
-        var curScrollPos = window.pageYOffset;
-        if (curScrollPos > navbar.offsetHeight) {
-            if (prevScrollPos > curScrollPos) {
-                navbar.classList.remove("-translate-y-full");
-            } else {
-                navbar.classList.add("-translate-y-full");
-                hidden();
-            }
-            prevScrollPos = curScrollPos;
-        }
-    };
+  var navbar = document.querySelector("#navbar");
+  var prevScrollPos = window.pageYOffset;
+  window.onscroll = function () {
+      var curScrollPos = window.pageYOffset;
+      if (curScrollPos > navbar.offsetHeight) {
+          if (prevScrollPos > curScrollPos) {
+              navbar.classList.remove("-translate-y-full");
+          } else {
+              navbar.classList.add("-translate-y-full");
+              hidden();
+          }
+          prevScrollPos = curScrollPos;
+      }
+  };
 </script>

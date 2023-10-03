@@ -3,9 +3,6 @@ module.exports = {
   safelist: ["-translate-y-full", "max-h-screen"],
   theme: {
     extend: {
-      transitionProperty: {
-        height: "height",
-      },
       typography: {
         DEFAULT: {
           css: {
@@ -30,7 +27,6 @@ module.exports = {
       },
     },
     screens: {
-      md: { max: "1023px" },
       lg: { min: "1024px" },
     },
     container: {

@@ -14,6 +14,7 @@ npm i
 
 ## Todos
 
+- Fix critical CSS remove @media
 - Fix offline page
 - Fix 404 page
 - Imporve google tag manager <https://www.analyticsmania.com/post/google-tag-manager-impact-on-page-speed-and-how-to-improve/>
