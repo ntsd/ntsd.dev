@@ -57,6 +57,10 @@
 <lastmod>2023-07-07T00:00:00+07:00</lastmod>
 </url>
 <url>
+<loc>https://ntsd.dev/deploy-astro-on-clouflare-page/</loc>
+<lastmod>2023-09-22T00:00:00+07:00</lastmod>
+</url>
+<url>
 <loc>https://ntsd.dev/404/</loc>
 </url>
 <url>
@@ -136,5 +140,8 @@
 </url>
 <url>
 <loc>https://ntsd.dev/blog/page/2/</loc>
+</url>
+<url>
+<loc>https://ntsd.dev/blog/page/3/</loc>
 </url>
 </urlset>

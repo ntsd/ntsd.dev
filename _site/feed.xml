@@ -1,4 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-10-03T11:04:00+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Separate critical CSS and non-critical CSS for faster page load</title><link href="https://ntsd.dev/extract-cricital-css/" rel="alternate" type="text/html" title="Separate critical CSS and non-critical CSS for faster page load" /><published>2023-07-07T00:00:00+07:00</published><updated>2023-07-07T00:00:00+07:00</updated><id>https://ntsd.dev/extract-cricital-css</id><content type="html" xml:base="https://ntsd.dev/extract-cricital-css/"><![CDATA[<h2 id="why-inline-critical-css">Why inline Critical CSS?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2023-11-01T12:50:49+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Deploy Astro Hybrid rendering site on Clouldflare Pages</title><link href="https://ntsd.dev/deploy-astro-on-clouflare-page/" rel="alternate" type="text/html" title="Deploy Astro Hybrid rendering site on Clouldflare Pages" /><published>2023-09-22T00:00:00+07:00</published><updated>2023-09-22T00:00:00+07:00</updated><id>https://ntsd.dev/deploy-astro-on-clouflare-page</id><content type="html" xml:base="https://ntsd.dev/deploy-astro-on-clouflare-page/"><![CDATA[<p>This tutorial will show how to deploy Astro hybrid rendering site on Cloudflare Pages</p>
+<h2 id="introduction">Introduction</h2>
+<p>Since Astro allow to determines which pages should be static or service side rendering (SSR).</p>
+<p><a href="https://astro.build/blog/hybrid-rendering/">read more about hybrid rendering</a></p>
+<p>Github Example <a href="https://github.com/lisuify/lisuify/tree/perf/web/packages/lisuify-web">https://github.com/lisuify/lisuify/tree/perf/web/packages/lisuify-web</a></p>
+<p>Project Structure Explain</p>
+<pre><code class="language-tree">>.
+├── dist
+│   ├── _astro                  - Astro Bundle by Vite (CSS, JS)
+│   └── docs                    - HTML files for documentation static pages
+├── functions
+│   ├── _image.js               - Cloudflare Function for image
+│   ├── _middleware.ts          - Middleware Cloudflare Function
+│   ├── docs
+│   │   └── [[id]].js           - Cloudflare Function for document (not using because it will replace by static HTML)
+│   ├── index.js                - Cloudflare Function for Index route
+│   └── tsconfig.json           - TS config for Cloudflare Function
+├── package.json
+├── public
+├── src
+│   ├── pages
+│   │   ├── docs
+│   │   │   └── [...id].astro   - Astro static page (prerender = true)
+│   │   └── index.astro         - Astro SSR page (prerender = false)
+│   └── env.d.ts                - Astro Environment Types
+└── tsconfig.json               - TS config for Astro
+├── astro.config.mjs            - Astro config
+</code></pre>
+<h2 id="add-cloudflare-astro-adaptor">Add Cloudflare Astro Adaptor</h2>
+<p>astro.config.mjs</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">cloudflare</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@astrojs/cloudflare</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">({</span>
+  <span class="p">...</span>
+  <span class="na">adapter</span><span class="p">:</span> <span class="nx">cloudflare</span><span class="p">({</span>
+    <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">directory</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">functionPerRoute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">}),</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>We are using <code>directory</code> mode, this mode will generate routing to <code>/functions</code> directory for <a href="https://developers.cloudflare.com/pages/platform/functions/">Cloudflare Functions</a>. This allow you to customize <a href="https://developers.cloudflare.com/pages/platform/functions/middleware/">Middleware</a> and other Cloudflare Functions features.</p>
+<p><code>functionPerRoute</code> is <code>true</code> mean it will generate function files for each path. This is important if you want to separate SSR page and static page. For example, <code>/functions/docs/[[id]].js</code> is documents for the site and we want to to be static pre-rendered page for the faster load and <code>/functions/index.js</code> is the main application and it should be SSR for dynamic caching on server side to decrement API calling.</p>
+<h2 id="create-kv-namespace">Create KV Namespace</h2>
+<p>In example, I created KV namespace name <code>LISUIFY_KV_NAMESPACE</code></p>
+<p><img src="/img/in-post/2023-9-22-deploy-astro-on-clouflare-page/cloudflare-kv-namespace.png" alt="cloudflare kv namespace" /></p>
+<h2 id="typing">Typing</h2>
+<p>Before using Cloudflare Functions on your TypeScript code, you need to define type for the project by using Astro <code>env.d.ts</code>.</p>
+<p>env.d.ts</p>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">/// &lt;reference types="astro/client" /&gt;</span>
+
+<span class="kd">type</span> <span class="nx">KVNamespace</span> <span class="o">=</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">@cloudflare/workers-types</span><span class="dl">"</span><span class="p">).</span><span class="nx">KVNamespace</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">ENV</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// replace `LISUIFY_KV_NAMESPACE` with your KV namespace</span>
+  <span class="na">LISUIFY_KV_NAMESPACE</span><span class="p">:</span> <span class="nx">KVNamespace</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// use `AdvanceRuntime&lt;ENV&gt;` for advance runtime mode</span>
+<span class="kd">type</span> <span class="nx">Runtime</span> <span class="o">=</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">@astrojs/cloudflare</span><span class="dl">"</span><span class="p">).</span><span class="nx">DirectoryRuntime</span><span class="o">&lt;</span><span class="nx">ENV</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kr">declare</span> <span class="k">namespace</span> <span class="nx">App</span> <span class="p">{</span>
+  <span class="kr">interface</span> <span class="nx">Locals</span> <span class="kd">extends</span> <span class="nx">Runtime</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="use-cloudflare-kv-on-astro-page">Use Cloudflare KV on Astro Page</h2>
+<p>The example code show how to use Cloudflare KV inside <code>.astro</code> page to render the content before response to client (SSR).</p>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">chacheKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">stats</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">kvNamespace</span> <span class="o">=</span> <span class="nx">Astro</span><span class="p">.</span><span class="nx">locals</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LISUIFY_KV_NAMESPACE</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">statsKV</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">kvNamespace</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">chacheKey</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">statsKV</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// stats cache hitted</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// fetch stats</span>
+<span class="p">}</span>
+
+<span class="c1">// put to kv, for the next api call</span>
+<span class="k">await</span> <span class="nx">kvNamespace</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">chacheKey</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">stats</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">expirationTtl</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span> <span class="c1">// remove in 600 seconds</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>This code create to reduce numbers of stats fetching by cache into Cloudflare KV on the server side because the stats is the same on every clients to see at the time and use <code>expirationTtl: 600</code> to make it update every 600 seconds.</p>
+<h2 id="client-cache-control-headers">Client Cache Control Headers</h2>
+<p>tell client brower to cache the page by Cache-Control headers and Functions Middleware</p>
+<p>_middleware.ts</p>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">onRequestOptions</span><span class="p">:</span> <span class="nx">PagesFunction</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">204</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">Access-Control-Allow-Methods</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET, OPTIONS</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Access-Control-Max-Age</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">86400</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">onRequest</span><span class="p">:</span> <span class="nx">PagesFunction</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">context</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cache-Control</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">public, max-age=600</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+<p>the cache is <code>max-age=600</code> mean 600 seconds or 10 minutes, <code>public</code> it will store in shared cache include CDN.</p>
+<p>Read more about Functions Middleware: <a href="https://developers.cloudflare.com/pages/platform/functions/middleware">https://developers.cloudflare.com/pages/platform/functions/middleware</a></p>
+<h2 id="cloudflare-function-binding">Cloudflare Function Binding</h2>
+<p>Before deploy you need to add binding mapping Cloudflare Functions to your Cloudflare KV.</p>
+<p>The following image shows how to map KV name space name <code>LISUIFY_KV_NAMESPACE</code> to <code>LISUIFY_KV_NAMESPACE</code> Cloudflare Functions KV variable</p>
+<p><img src="/img/in-post/2023-9-22-deploy-astro-on-clouflare-page/cloudflare-functions-binding.png" alt="Cloudflare Functions Binding" /></p>
+<p>Read more about Binding (I also wrote the section): <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/#use-bindings-in-your-astro-application">https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/#use-bindings-in-your-astro-application</a></p>]]></content><author><name></name></author><category term="Software Development" /><category term="Programming" /><category term="Frontend" /><category term="Cloudflare" /><summary type="html"><![CDATA[A guild to deploy Astro Hybrid Rendering site on Cloudflare Pages and Cloudflare Functions. plus Cloudflare KV binding]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Separate critical CSS and non-critical CSS for faster page load</title><link href="https://ntsd.dev/extract-cricital-css/" rel="alternate" type="text/html" title="Separate critical CSS and non-critical CSS for faster page load" /><published>2023-07-07T00:00:00+07:00</published><updated>2023-07-07T00:00:00+07:00</updated><id>https://ntsd.dev/extract-cricital-css</id><content type="html" xml:base="https://ntsd.dev/extract-cricital-css/"><![CDATA[<h2 id="why-inline-critical-css">Why inline Critical CSS?</h2>
 <p>Critical CSS includes only the styles needed to render the Above the Fold of a webpage.</p>
 <p>By delivering these styles inline in the HTML document, the browser can render this content without having to wait for the entire external CSS file to load. Non-critical CSS can load later in Asynchronous without render-blocking.</p>
 <h2 id="above-the-fold">Above the fold</h2>
