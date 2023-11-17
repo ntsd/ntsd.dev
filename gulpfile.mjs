@@ -285,6 +285,8 @@ gulp.task("startServer", () => {
       "!node_modules/**/*",
       "_config.yml",
       "!assets/**/*",
+      "!.git/**/*",
+      "!.jekyll-cache/**/*",
     ],
     { interval: 500 },
     buildSite

@@ -72,39 +72,29 @@
 <script type="text/runtime-javascript" async>
   var toggle = document.querySelector("#nav-toggle");
   var menu = document.querySelector("#menu");
-
-  function hidden() {
-      menu.classList.add("max-h-screen");
-      toggle.classList.remove("nav-open");
-  }
+  var opening = false;
 
   toggle.addEventListener("click", function (e) {
-      const onscrollBak = window.onscroll;
-      window.onscroll = null;
-
-      if (toggle.className.indexOf("nav-open") > 0) {
-          hidden();
-      } else {
-          menu.classList.remove("max-h-screen");
-          toggle.classList.add("nav-open");
-      }
-
-      setTimeout(function () { window.onscroll = onscrollBak }, 1000);
+    if (opening) {
+      opening = false;
+      menu.classList.remove("max-h-screen");
+    } else {
+      opening = true;
+      menu.classList.add("max-h-screen");
+    }
   });
-
 
   var navbar = document.querySelector("#navbar");
   var prevScrollPos = window.pageYOffset;
   window.onscroll = function () {
-      var curScrollPos = window.pageYOffset;
-      if (curScrollPos > navbar.offsetHeight) {
-          if (prevScrollPos > curScrollPos) {
-              navbar.classList.remove("-translate-y-full");
-          } else {
-              navbar.classList.add("-translate-y-full");
-              hidden();
-          }
-          prevScrollPos = curScrollPos;
+    var curScrollPos = window.pageYOffset;
+    if (curScrollPos > navbar.offsetHeight && !opening) {
+      if (prevScrollPos > curScrollPos) {
+        navbar.classList.remove("-translate-y-full");
+      } else {
+        navbar.classList.add("-translate-y-full");
       }
+      prevScrollPos = curScrollPos;
+    }
   };
 </script>
