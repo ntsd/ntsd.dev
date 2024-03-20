@@ -5,7 +5,7 @@ description: "My new blog posts"
 permalink: /blog/
 pagination: 
   enabled: true
-sideBar: true
+sideBar: false
 ---
 
 <div class="divide-y">
@@ -27,7 +27,7 @@ sideBar: true
                         </p>
                     {% endif %}
                     <p class="mt-2 text-gray-600 overflow-hidden">
-                        {{ post.content | strip_html | truncate:200 }}
+                        {{ post.content | markdownify | strip_html | truncate: 300 }}
                     </p>
                 </div>
             </a>
