@@ -6,25 +6,30 @@
   readme: https://raw.githubusercontent.com/ntsd/zero-share/master/README.md
   web: https://zero-share.github.io
   stacks: [Svelte , TypeScript, WebRTC]
+  tags: [Featured]
 - id: cross-clipboard
   name: Cross Clipboard
-  description: An open source cross-platform clipboard sharing.
+  description: An open source cross-platform clipboard sharing over P2P network.
   since: 2022 - present
   github: ntsd/cross-clipboard
   readme: https://raw.githubusercontent.com/ntsd/cross-clipboard/master/Readme.md
   stacks: [Go, libp2p]
+  tags: [Featured]
 - id: freqtrade-configs
   name: Freqtrade Configs
-  description: My Freqtrade strategies and config.
+  description: My Freqtrade strategies and config. A free and open source crypto trading bot written in Python.
   since: 2022
   github: ntsd/freqtrade-configs
   readme: https://raw.githubusercontent.com/ntsd/freqtrade-configs/master/README.md
   stacks: [Python]
-- id: auto-evm-wallet
-  name: Auto EVM Wallet
-  description: EVM wallet that allow to schedule or automate smart contract call.
+  tags: [Featured]
+- id: svelte-tex
+  name: Svelte Tex
+  description: Svelte component to convert TeX/LaTeX to MathML or SVG
   since: 2023 - present
-  github: ntsd/auto-evm-wallet
-  readme: https://raw.githubusercontent.com/ntsd/auto-evm-wallet/main/README.md
-  web: https://ntsd.github.io/auto-evm-wallet
-  stacks: [Svelte , TypeScript, Web3.js]
+  github: ntsd/svelte-tex
+  readme: https://raw.githubusercontent.com/ntsd/svelte-tex/main/README.md
+  web: https://ntsd.github.io/svelte-tex
+  npm: https://www.npmjs.com/package/svelte-tex
+  stacks: [TypeScript, Svelte]
+  tags: [Featured]

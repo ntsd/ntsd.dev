@@ -1,11 +1,14 @@
 ---
 layout: default
+title: {{ page.data.title }}
+description: {{ page.data.description }}
+category: project
+tags: {{ page.data.stacks | join: ", " }}
 ---
-
 <!-- Page Header -->
 <style type="text/css">
   header .header-bg {
-    background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
+    background-image: url("{% if page.data.header-img %}{{ site.baseurl }}/{{ page.data.header-img }}{% else %}{{ site.header-img }}{% endif %}");
   }
 </style>
 <header>
@@ -15,29 +18,29 @@ layout: default
     <div class="container mx-auto">
       <div class="text-left text-white py-24 px-4">
         <span>
-          {% for stack in page.stacks %}
+          {% for stack in page.data.stacks %}
           <a
             class="text-sm py-1 px-2 inline-block border border-white hover:bg-gray-600"
-            href=""
+            href="/projects/?filter={{ stack | downcase }}"
             title="{{ stack }}"
             >{{ stack }}</a
           >
           {% endfor %}
         </span>
         <h1 class="text-2xl lg:text-4xl mt-4">
-          {% if page.title %} {{ page.title }} {% else %} {{ site.title }} {%
+          {% if page.data.title %} {{ page.data.title }} {% else %} {{ site.title }} {%
           endif %}
         </h1>
         <span class="text-xs font-light text-gray-300 mb-4">
-          <time>{{ page.since }}</time>
+          <time>{{ page.data.since }}</time>
         </span>
-        {% if page.description %}
-        <h2 class="lg:text-xl my-4">{{ page.description }}</h2>
+        {% if page.data.description %}
+        <h2 class="lg:text-xl my-4">{{ page.data.description }}</h2>
         {% else %}
         <h2 class="lg:text-xl my-4">{{site.description}}</h2>
         {% endif %}
         <div class="flex gap-2">
-          {% if page.web %}
+          {% if page.data.web %}
           <a
             aria-label="Website"
             class="text-white hover:text-gray-400"
@@ -47,7 +50,7 @@ layout: default
           >
             {% include icon_web.html %}
           </a>
-          {% endif %} {% if page.github %}
+          {% endif %} {% if page.data.github %}
           <a
             aria-label="Github"
             class="text-white hover:text-gray-400"
@@ -68,7 +71,7 @@ layout: default
 <div class="container mx-auto grid grid-cols-12 p-4 lg:space-x-8">
   <div class="col-span-12">
     <div class="post-container prose max-w-none">
-      {% if page.readme %} {{ page.readme | http_request: 'GET', '', '' |
+      {% if page.data.readme %} {{ page.data.readme | http_request: 'GET', '', '' |
       markdownify }} {% endif %}
     </div>
   </div>

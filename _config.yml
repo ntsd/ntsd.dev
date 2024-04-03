@@ -136,8 +136,10 @@ page_gen:
     name: "id"
     dir: projects
     title: "name"
+    page_data_prefix: data
   - data: featured-projects
     template: project
     name: "id"
     dir: projects
     title: "name"
+    page_data_prefix: data

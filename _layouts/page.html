@@ -4,67 +4,60 @@ layout: default
 
 <!-- Page Header -->
 <style type="text/css">
-    header .header-bg {
-        background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
-    }
+  header .header-bg {
+    background-image: url("{% if page.header-img %}{{ site.baseurl }}/{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}");
+  }
 </style>
 <header>
-    <div class="w-full bg-center bg-cover bg-black header-bg backdrop-brightness-75">
-        <div class="container mx-auto flex items-center justify-center w-full backdrop-filter backdrop-brightness-75 py-32 p-4">
-            <div class="text-center text-white">
-                <h1 class="text-4xl font-semibold uppercase lg:text-5xl">
-                    {% if page.title %}
-                        {{ page.title }}
-                    {% else %}
-                        {{ site.title }}
-                    {% endif %}
-                </h1>
-                {% if page.description %}
-                    <p class="mt-2 text-sm lg:text-base">
-                        {{ page.description }}
-                    </p>
-                {% else %}
-                    <p class="mt-2 text-sm lg:text-base">
-                        {{site.description}}
-                    </p>
-                {% endif %}
-            </div>
-        </div>
+  <div
+    class="w-full bg-center bg-cover bg-black header-bg backdrop-brightness-75"
+  >
+    <div
+      class="container mx-auto flex items-center justify-center w-full backdrop-filter backdrop-brightness-75 py-32 p-4"
+    >
+      <div class="text-center text-white">
+        <h1 class="text-4xl font-semibold uppercase lg:text-5xl" id="title">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif%}</h1>
+        {% if page.description %}
+        <p class="mt-2 text-sm lg:text-base">{{ page.description }}</p>
+        {% else %}
+        <p class="mt-2 text-sm lg:text-base">{{site.description}}</p>
+        {% endif %}
+      </div>
     </div>
+  </div>
 </header>
 
 <!-- Main Content -->
 <div class="container mx-auto grid grid-cols-12 p-4 lg:space-x-8">
-    {% if page.sideBar %}
-    <div class="col-span-12 lg:col-span-9">
+  {% if page.sideBar %}
+  <div class="col-span-12 lg:col-span-9">
     {% else %}
-    <div class="col-span-12">
-    {% endif %}
-        {{ content }}
-    </div>
+    <div class="col-span-12">{% endif %} {{ content }}</div>
     <!-- Sidebar Container -->
     {% if page.sideBar %}
-        <div class="col-span-3 hidden lg:block">
-            <div class="pt-4 sticky top-28 divide-y">
-                <!-- Short About -->
-                <div class="py-4 text-center">
-                    <a class="text-gray-700 font-bond" href="{{'/portfolio/' | prepend: site.baseurl }}">ABOUT ME</a>
-                    <div>
-                        {% if site.sidebar-avatar %}
-                            <img alt="My Avartar" src="{{site.sidebar-avatar}}"/>
-                        {% endif %}
-                        {% if site.sidebar-about-description %}
-                            <div class="my-4">
-                                {{site.sidebar-about-description}}
-                            </div>
-                        {% endif %}
-                        <!-- SNS Link -->
-                        <div class="flex justify-center my-4">
-                            {% include social.html %}
-                        </div>
-                    </div>
-                </div>
+    <div class="col-span-3 hidden lg:block">
+      <div class="pt-4 sticky top-28 divide-y">
+        <!-- Short About -->
+        <div class="py-4 text-center">
+          <a
+            class="text-gray-700 font-bond"
+            href="{{'/portfolio/' | prepend: site.baseurl }}"
+            >ABOUT ME</a
+          >
+          <div>
+            {% if site.sidebar-avatar %}
+            <img alt="My Avartar" src="{{site.sidebar-avatar}}" />
+            {% endif %} {% if site.sidebar-about-description %}
+            <div class="my-4">{{site.sidebar-about-description}}</div>
+            {% endif %}
+            <!-- SNS Link -->
+            <div class="flex justify-center my-4">
+              {% include social.html %}
             </div>
+          </div>
         </div>
+      </div>
+    </div>
     {% endif %}
+  </div>
 </div>

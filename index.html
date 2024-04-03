@@ -9,7 +9,7 @@ layout: default
     </p>
 </section>
 
-<hr class="dark:border-gray-500" />
+<hr/>
 
 <!-- Blog -->
 <section id="blog" class="container mx-auto px-4 py-24">
@@ -44,7 +44,7 @@ layout: default
                 </div>
             </div>
         </div>
-        <hr class="dark:border-gray-500 lg:hidden" />
+        <hr class="lg:hidden" />
         {% endfor %}
     </div>
     <div class="mt-8 flex justify-end">
@@ -53,16 +53,16 @@ layout: default
     </div>
 </section>
 
-<hr class="dark:border-gray-500" />
+<hr/>
 
 <!-- Projects -->
 <section id="projects" class="container mx-auto px-4 py-24">
     <a href="{{ site.baseurl }}/projects/">
         <h2 class="text-4xl font-semibold text-gray-900 mb-8">Projects</h2>
     </a>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
         {% for project in site.data.featured-projects limit: 4 %}
-        {% include project.html %}
+        {% include project_card.html %}
         {% endfor %}
     </div>
     <div class="mt-8 flex justify-end">

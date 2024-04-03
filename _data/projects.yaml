@@ -6,6 +6,14 @@
   readme: https://raw.githubusercontent.com/ntsd/astro-svelte-tailwind/main/README.md
   web: https://ntsd.github.io/astro-svelte-tailwind
   stacks: [TypeScript, Astro]
+- id: auto-evm-wallet
+  name: Auto EVM Wallet
+  description: EVM wallet that allow to schedule or automate smart contract call.
+  since: 2023 - present
+  github: ntsd/auto-evm-wallet
+  readme: https://raw.githubusercontent.com/ntsd/auto-evm-wallet/main/README.md
+  web: https://ntsd.github.io/auto-evm-wallet
+  stacks: [Svelte , TypeScript, Web3.js]
 - id: sveltekit-html-minifier
   name: Sveltekit HTML Minifier
   description: Sveltekit Adapter to Minify the preload HTML page
@@ -13,15 +21,6 @@
   github: ntsd/sveltekit-html-minifier
   readme: https://raw.githubusercontent.com/ntsd/sveltekit-html-minifier/master/README.md
   web: https://www.npmjs.com/package/sveltekit-html-minifier
-  stacks: [TypeScript, Svelte]
-- id: svelte-tex
-  name: Svelte Tex
-  description: Svelte component to convert TeX/LaTeX to MathML or SVG
-  since: 2023 - present
-  github: ntsd/svelte-tex
-  readme: https://raw.githubusercontent.com/ntsd/svelte-tex/main/README.md
-  web: https://ntsd.github.io/svelte-tex
-  npm: https://www.npmjs.com/package/svelte-tex
   stacks: [TypeScript, Svelte]
 - id: jekyll-http-request
   name: Jekyll HTTP Request
@@ -55,7 +54,7 @@
   github: ntsd/github-profile-repositories
   readme: https://raw.githubusercontent.com/ntsd/github-profile-repositories/master/README.md
   web: https://github.com/marketplace/actions/github-profile-repositories
-  stacks: [TypeScript, Github Action]
+  stacks: [TypeScript, Github-Action]
 - id: liquidjs-action
   name: LiquidJS Github Action
   description: Github Action to render LiquidJS.
@@ -63,7 +62,7 @@
   github: ntsd/liquidjs-action
   readme: https://raw.githubusercontent.com/ntsd/liquidjs-action/master/README.md
   web: https://github.com/marketplace/actions/liquidjs-render
-  stacks: [TypeScript, Github Action]
+  stacks: [TypeScript, Github-Action]
 - id: auto-request-changes-action
   name: Auto Request Changes GitHub Action
   description: GitHub Action for automatically request changes GitHub pull requests.
@@ -71,7 +70,7 @@
   github: ntsd/auto-request-changes-action
   readme: https://raw.githubusercontent.com/ntsd/auto-request-changes-action/master/README.md
   web: https://github.com/marketplace/actions/auto-request-changes
-  stacks: [TypeScript, Github Action]
+  stacks: [TypeScript, Github-Action]
 - id: binance-auto-limit-price
   name: Binance Auto Limit Price
   description: A Binance extension to auto change limit price to the best ask/bid orders.

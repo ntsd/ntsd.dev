@@ -10,8 +10,8 @@ module.exports = {
               "line-break": "anywhere",
             },
             code: {
-              color: "#ccc",
-              background: "#2d2d2d",
+              color: "#ccc!important",
+              background: "#2d2d2d!important",
               padding: "0.1em",
               "border-radius": "0.3em",
               "white-space": "normal",

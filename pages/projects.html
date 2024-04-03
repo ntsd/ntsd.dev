@@ -7,20 +7,30 @@ sideBar: false
 ---
 
 <div class="flex flex-col divide-y">
-    <section class="pt-8 pb-24">
-        <div class="text-4xl font-semibold text-gray-900 mb-8 text-center">Featured Projects</div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {% for project in site.data.featured-projects %}
-            {% include project.html %}
-            {% endfor %}
-        </div>
-    </section>
-    <section class="py-24">
-        <div class="text-4xl font-semibold text-gray-900 mb-8 text-center">Projects</div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {% for project in site.data.projects %}
-            {% include project.html %}
-            {% endfor %}
-        </div>
-    </section>
+  <section class="pt-8 pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
+      {% for project in site.data.featured-projects %}
+        {% include project_card.html %}
+      {% endfor %}
+      {% for project in site.data.projects %}
+        {% include project_card.html %}
+      {% endfor %}
+    </div>
+  </section>
 </div>
+
+<script type="text/javascript" async>
+  const urlParams = new URLSearchParams(window.location.search);
+  const filter = urlParams.get("filter");
+
+  if (filter) {
+    document.getElementById("title").innerText = `${filter} Projects`;
+    const projectStacks = document.getElementsByClassName("project-card");
+    for (let i = 0; i < projectStacks.length; i++) {
+      const stack = projectStacks[i];
+      if (!stack.classList.contains(filter)) {
+        stack.style.display = "none";
+      }
+    }
+  }
+</script>
