@@ -13,7 +13,7 @@
   since: 2022 - present
   github: ntsd/cross-clipboard
   readme: https://raw.githubusercontent.com/ntsd/cross-clipboard/master/Readme.md
-  stacks: [Go, libp2p]
+  stacks: [Golang, libp2p]
   tags: [Featured]
 - id: freqtrade-configs
   name: Freqtrade Configs
