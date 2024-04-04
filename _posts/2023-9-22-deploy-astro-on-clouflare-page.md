@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deploy Astro Hybrid rendering site on Clouldflare Pages"
+title: "Deploy Astro Hybrid rendering site on Cloudflare Pages"
 date: 2023-9-22
 description: "A guild to deploy Astro Hybrid Rendering site on Cloudflare Pages and Cloudflare Functions. plus Cloudflare KV binding"
 catalog: true
