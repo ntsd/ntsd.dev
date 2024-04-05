@@ -1,10 +1,11 @@
 ---
 layout: default
-title: {{ page.data.title }}
-description: {{ page.data.description }}
+title: { { page.data.title } }
+description: { { page.data.description } }
 category: project
-tags: {{ page.data.stacks | join: ", " }}
+tags: { { page.data.stacks | join: ", " } }
 ---
+
 <!-- Page Header -->
 <style type="text/css">
   header .header-bg {
@@ -28,8 +29,8 @@ tags: {{ page.data.stacks | join: ", " }}
           {% endfor %}
         </span>
         <h1 class="text-2xl lg:text-4xl mt-4">
-          {% if page.data.title %} {{ page.data.title }} {% else %} {{ site.title }} {%
-          endif %}
+          {% if page.data.title %} {{ page.data.title }} {% else %} {{
+          site.title }} {% endif %}
         </h1>
         <span class="text-xs font-light text-gray-300 mb-4">
           <time>{{ page.data.since }}</time>
@@ -71,8 +72,8 @@ tags: {{ page.data.stacks | join: ", " }}
 <div class="container mx-auto grid grid-cols-12 p-4 lg:space-x-8">
   <div class="col-span-12">
     <div class="post-container prose max-w-none">
-      {% if page.data.readme %} {{ page.data.readme | http_request: 'GET', '', '' |
-      markdownify }} {% endif %}
+      {% if page.data.readme %} {{ page.data.readme | http_request: 'GET', '',
+      '' | utf8_encode | markdownify }} {% endif %}
     </div>
   </div>
 </div>

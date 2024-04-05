@@ -1,3 +1,27 @@
+- id: websocket-benchmark
+  name: WebSocket Benchmark
+  description: Compares the speed of WebSocket frameworks for different languages.
+  since: 2023
+  github: ntsd/websocket-benchmark
+  readme: https://raw.githubusercontent.com/ntsd/websocket-benchmark/master/README.md
+  stacks: [Golang, Rust, TypeScript]
+- id: go-mutex-comparison
+  name: Go Mutex Comparision
+  description: Mutex vs RWMutex vs sync.Map, Concurrency map benchmark in different concurrent scenarios.
+  since: 2023
+  github: ntsd/go-mutex-comparison
+  readme: https://raw.githubusercontent.com/ntsd/go-mutex-comparison/main/README.md
+  stacks: [Golang]
+- id: svelte-tex
+  name: Svelte Tex
+  description: Svelte component to convert TeX/LaTeX to MathML or SVG
+  since: 2023 - present
+  github: ntsd/svelte-tex
+  readme: https://raw.githubusercontent.com/ntsd/svelte-tex/main/README.md
+  web: https://ntsd.github.io/svelte-tex
+  npm: https://www.npmjs.com/package/svelte-tex
+  stacks: [TypeScript, Svelte]
+  tags: [Featured]
 - id: astro-svelte-tailwind
   name: Astro Svelte Tailwind
   description: Astro Starter Template with Svelte, Tailwind, DaisyUI, and Service Worker
@@ -5,15 +29,7 @@
   github: ntsd/astro-svelte-tailwind
   readme: https://raw.githubusercontent.com/ntsd/astro-svelte-tailwind/main/README.md
   web: https://ntsd.github.io/astro-svelte-tailwind
-  stacks: [TypeScript, Astro]
-- id: auto-evm-wallet
-  name: Auto EVM Wallet
-  description: EVM wallet that allow to schedule or automate smart contract call.
-  since: 2023 - present
-  github: ntsd/auto-evm-wallet
-  readme: https://raw.githubusercontent.com/ntsd/auto-evm-wallet/main/README.md
-  web: https://ntsd.github.io/auto-evm-wallet
-  stacks: [Svelte , TypeScript, Web3.js]
+  stacks: [TypeScript, Astro, Svelte]
 - id: sveltekit-html-minifier
   name: Sveltekit HTML Minifier
   description: Sveltekit Adapter to Minify the preload HTML page
@@ -22,6 +38,14 @@
   readme: https://raw.githubusercontent.com/ntsd/sveltekit-html-minifier/master/README.md
   web: https://www.npmjs.com/package/sveltekit-html-minifier
   stacks: [TypeScript, Svelte]
+- id: auto-evm-wallet
+  name: Auto EVM Wallet
+  description: EVM wallet that allow to schedule or automate smart contract call.
+  since: 2023 - present
+  github: ntsd/auto-evm-wallet
+  readme: https://raw.githubusercontent.com/ntsd/auto-evm-wallet/main/README.md
+  web: https://ntsd.github.io/auto-evm-wallet
+  stacks: [Svelte , TypeScript, Web3.js]
 - id: jekyll-http-request
   name: Jekyll HTTP Request
   description: Jekyll Liquid Filter for HTTP requests, helps you get HTTP response data to the page content
@@ -39,6 +63,14 @@
   web: https://ntsd.github.io/sdp-compact
   npm: https://www.npmjs.com/package/sdp-compact
   stacks: [TypeScript]
+- id: freqtrade-configs
+  name: Freqtrade Configs
+  description: My Freqtrade strategies and config. A free and open source crypto trading bot written in Python.
+  since: 2022
+  github: ntsd/freqtrade-configs
+  readme: https://raw.githubusercontent.com/ntsd/freqtrade-configs/master/README.md
+  stacks: [Python]
+  tags: [Featured]
 - id: ntsd.dev
   name: ntsd.dev
   description: My website created by Jekyll and Tailwind.
@@ -93,6 +125,13 @@
   github: ntsd/google-sheet-import-cache
   readme: https://raw.githubusercontent.com/ntsd/google-sheet-import-cache/master/README.md
   stacks: [Google Apps Script]
+- id: esp32-uv-humidity-detector
+  name: ESP32 UV and Humidity Detector
+  description: ESP32 with UVM-30A (UV Detector) and DHT22 (Temperature and Humidity Sensor)
+  since: 2020
+  github: ntsd/esp32-uv-humidity-detector
+  readme: https://raw.githubusercontent.com/ntsd/esp32-uv-humidity-detector/master/README.md
+  stacks: [C++]
 - id: ruamrat
   name: Ruamrat Website
   description: Website for Ruamrat Aluminium Glass Business.

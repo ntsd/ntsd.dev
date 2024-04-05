@@ -15,21 +15,21 @@
   readme: https://raw.githubusercontent.com/ntsd/cross-clipboard/master/Readme.md
   stacks: [Golang, libp2p]
   tags: [Featured]
-- id: freqtrade-configs
-  name: Freqtrade Configs
-  description: My Freqtrade strategies and config. A free and open source crypto trading bot written in Python.
-  since: 2022
-  github: ntsd/freqtrade-configs
-  readme: https://raw.githubusercontent.com/ntsd/freqtrade-configs/master/README.md
-  stacks: [Python]
-  tags: [Featured]
-- id: svelte-tex
-  name: Svelte Tex
-  description: Svelte component to convert TeX/LaTeX to MathML or SVG
+- id: tools
+  name: Online Tools
+  description: Online tools, calculators, and visualizer such as Universal Scalability Law, Amdahl's Law, and Queuing Theory
   since: 2023 - present
-  github: ntsd/svelte-tex
-  readme: https://raw.githubusercontent.com/ntsd/svelte-tex/main/README.md
-  web: https://ntsd.github.io/svelte-tex
-  npm: https://www.npmjs.com/package/svelte-tex
-  stacks: [TypeScript, Svelte]
+  github: ntsd/tools
+  readme: https://raw.githubusercontent.com/ntsd/tools/main/README.md
+  web: https://tools.ntsd.dev
+  stacks: [TypeScript, Astro, Svelte]
+  tags: [Featured]
+- id: lisuify
+  name: LiSuify
+  description: A liquid staking platform for the SUI protocol, enabling users to stake their SUI or StakedSui object to wrap with a liquid token name liSUI return to the user.
+  since: 2023
+  github: lisuify/lisuify
+  readme: https://raw.githubusercontent.com/lisuify/lisuify/main/README.md
+  web: https://lisuify.com
+  stacks: [TypeScript, Astro, Svelte]
   tags: [Featured]
