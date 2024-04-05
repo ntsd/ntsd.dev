@@ -44,7 +44,7 @@ tags: {{ page.data.stacks | join: ", " }}
           <a
             aria-label="Website"
             class="text-white hover:text-gray-400"
-            href="{{ page.web }}"
+            href="{{ page.data.web }}"
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -54,7 +54,7 @@ tags: {{ page.data.stacks | join: ", " }}
           <a
             aria-label="Github"
             class="text-white hover:text-gray-400"
-            href="https://github.com/{{ page.github }}"
+            href="https://github.com/{{ page.data.github }}"
             rel="noopener noreferrer"
             target="_blank"
           >
