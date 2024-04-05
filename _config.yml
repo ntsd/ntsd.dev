@@ -8,6 +8,7 @@ description: "A software engineer who loves coding."
 keyword: "Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd"
 url: "https://ntsd.dev" # host for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
+encoding: utf-8
 
 # Plugins
 plugins:
