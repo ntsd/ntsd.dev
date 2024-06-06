@@ -29,7 +29,7 @@ tags: { { page.data.stacks | join: ", " } }
           {% endfor %}
         </span>
         <h1 class="text-2xl lg:text-4xl mt-4">
-          {% if page.data.title %} {{ page.data.title }} {% else %} {{
+          {% if page.data.name %} {{ page.data.name }} {% else %} {{
           site.title }} {% endif %}
         </h1>
         <span class="text-xs font-light text-gray-300 mb-4">
@@ -73,7 +73,7 @@ tags: { { page.data.stacks | join: ", " } }
   <div class="col-span-12">
     <div class="post-container prose max-w-none">
       {% if page.data.readme %} {{ page.data.readme | http_request: 'GET', '',
-      '' | utf8_encode | markdownify }} {% endif %}
+      '' | markdownify }} {% endif %}
     </div>
   </div>
 </div>

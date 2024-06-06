@@ -43,7 +43,7 @@ GEM
     jekyll-datapage-generator (1.4.0)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-http-request (0.0.1)
+    jekyll-http-request (0.0.2)
       jekyll (>= 3.7, < 5.0)
     jekyll-lazy-load-image (0.3.3)
       jekyll (>= 3.8)

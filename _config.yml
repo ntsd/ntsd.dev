@@ -21,7 +21,7 @@ plugins:
   - jekyll-http-request
   - jekyll-commonmark-ghpages
 # Safe mode will disable custom plugins in `_plugins`
-safe: false
+safe: true
 
 # Build settings
 permalink: /:title/
