@@ -37,7 +37,7 @@ To create your Cloudflare Zero Trust Organization,
 
 ## Cludflare Tunnel
 
-To access the private IP of the server from the public internet, you need to have a tunnel open for the server without requiring the NAT.
+To access the private IP of the server from the public internet without requiring Fixed IP, DNS, or NAT, you need to have a tunnel open for the server. This is work just like the VPN.
 
 1. Create a Cloudflare Tunnel.
 
