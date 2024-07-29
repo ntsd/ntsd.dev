@@ -1,4 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2024-06-07T02:11:21+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Deploy Astro Hybrid rendering site on Cloudflare Pages</title><link href="https://ntsd.dev/deploy-astro-on-clouflare-page/" rel="alternate" type="text/html" title="Deploy Astro Hybrid rendering site on Cloudflare Pages" /><published>2023-09-22T00:00:00+07:00</published><updated>2023-09-22T00:00:00+07:00</updated><id>https://ntsd.dev/deploy-astro-on-clouflare-page</id><content type="html" xml:base="https://ntsd.dev/deploy-astro-on-clouflare-page/"><![CDATA[<p>This tutorial will show how to deploy Astro hybrid rendering site on Cloudflare Pages</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2024-07-29T23:25:15+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Secure home server by Cloudflare Zero Trust and Cloudflare Tunnel</title><link href="https://ntsd.dev/secure-home-server-by-cloudflare-zero-trust-and-tunnel/" rel="alternate" type="text/html" title="Secure home server by Cloudflare Zero Trust and Cloudflare Tunnel" /><published>2023-12-22T00:00:00+07:00</published><updated>2023-12-22T00:00:00+07:00</updated><id>https://ntsd.dev/secure-home-server-by-cloudflare-zero-trust-and-tunnel</id><content type="html" xml:base="https://ntsd.dev/secure-home-server-by-cloudflare-zero-trust-and-tunnel/"><![CDATA[<p>This is an article about running a secure home server by Cloudflare Zero Trust and Cloudflare Tunnel. You can connect from the public internet using Cloudflare Warp Client and the SSH server.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Cloudflare Account (Free tier)</li>
+<li>Docker</li>
+<li>SSH Server</li>
+</ul>
+<h2 id="cloudflare-zero-trust">Cloudflare Zero Trust</h2>
+<p>Cloudflare Zero Trust is a security architecture that replaces traditional network security perimeters with a more granular approach to access control. Instead of trusting everyone inside a network, Zero Trust assumes that no one is inherently trustworthy.</p>
+<p>To create your Cloudflare Zero Trust Organization,</p>
+<ol>
+<li>Create a Cloudflare account.</li>
+<li>Go to <a href="https://one.dash.cloudflare.com/">https://one.dash.cloudflare.com/</a></li>
+<li>Choose a team name.</li>
+<li>Continuing the onboarding screen, you can choose “Zero Trust Free plan” for non subscription.</li>
+</ol>
+<h2 id="cludflare-tunnel">Cludflare Tunnel</h2>
+<p>To access the private IP of the server from the public internet, you need to have a tunnel open for the server without requiring the NAT.</p>
+<ol>
+<li>Create a Cloudflare Tunnel.</li>
+</ol>
+<p><img src="/img/in-post/2023-12-22-secure-home-server-by-cloudflare-zero-trust-and-tunnel/cloudflare-tunnel-1.png" alt="cloudflare tunnel create" /></p>
+<ol start="2">
+<li>Choose Cloudflared tunnel type.</li>
+</ol>
+<p><img src="/img/in-post/2023-12-22-secure-home-server-by-cloudflare-zero-trust-and-tunnel/cloudflare-tunnel-2.png" alt="cloudflare tunnel choose" /></p>
+<ol start="3">
+<li>Start the tunnel by Docker.</li>
+</ol>
+<p><code>docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token &lt;replace-with-token&gt;</code></p>
+<p>You can also choose another way to run the tunnel, but I prefer Docker because we can remove it whenever we want.</p>
+<p><img src="/img/in-post/2023-12-22-secure-home-server-by-cloudflare-zero-trust-and-tunnel/cloudflare-tunnel-3.png" alt="cloudflare tunnel start" /></p>
+<p>Now the tunnel is running.</p>
+<ol start="4">
+<li>Mapping the Private IP to the Tunnel</li>
+</ol>
+<p><img src="/img/in-post/2023-12-22-secure-home-server-by-cloudflare-zero-trust-and-tunnel/cloudflare-tunnel-4.png" alt="cloudflare tunnel mapping" /></p>
+<p>Put the CIDR and the description of the network.</p>
+<blockquote>
+<p>[!CAUTION]
+Set your subnet mask carefully, all the IPs will be allowed to call from the internet.</p>
+</blockquote>
+<p><img src="/img/in-post/2023-12-22-secure-home-server-by-cloudflare-zero-trust-and-tunnel/cloudflare-tunnel-5.png" alt="cloudflare tunnel mapping 2" /></p>
+<p>To find the Private IP of the server, you can use <code>ifconfig</code> the ip will start with <code>172.*.*.*</code>.</p>
+<h2 id="running-ssh-server">Running SSH Server</h2>
+<p>I will not write on this section because there are several ways to run the SSH server and expose the SSH port or Firewall.</p>
+<p>For Ubuntu you can go to <a href="https://ubuntu.com/server/docs/openssh-server">https://ubuntu.com/server/docs/openssh-server</a>.</p>
+<p>I would recommend creating a specific user for the SSH and generating the SSH key pair for it.</p>
+<h2 id="cloudflare-warp">Cloudflare Warp</h2>
+<p>Cloudflare Warp is a client software to connect to the Cloudflare Zero Trust and Cloudflare Tunnel on a secure private network.</p>
+<ol>
+<li>Download and install Cloudflare Warp from <a href="https://one.one.one.one/">https://one.one.one.one/</a></li>
+<li>Enter the organization name that you created in Cloudflare Zero Trust</li>
+<li>Connect and try to SSH by the Private IP of the server</li>
+</ol>
+<p>It’s worked.</p>]]></content><author><name></name></author><category term="Software Development" /><category term="Network" /><category term="Security" /><category term="Cloudflare" /><category term="Cloudflare Zero Trust" /><category term="Cloudflare Tunnel" /><category term="Tunnel" /><category term="SSH" /><summary type="html"><![CDATA[Running a secure home server by Cloudflare Zero Trust, Cloudflare Tunnel, and connecting from the public internet by Cloudflare Warp Client.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Deploy Astro Hybrid rendering site on Cloudflare Pages</title><link href="https://ntsd.dev/deploy-astro-on-clouflare-page/" rel="alternate" type="text/html" title="Deploy Astro Hybrid rendering site on Cloudflare Pages" /><published>2023-09-22T00:00:00+07:00</published><updated>2023-09-22T00:00:00+07:00</updated><id>https://ntsd.dev/deploy-astro-on-clouflare-page</id><content type="html" xml:base="https://ntsd.dev/deploy-astro-on-clouflare-page/"><![CDATA[<p>This tutorial will show how to deploy Astro hybrid rendering site on Cloudflare Pages</p>
 <h2 id="introduction">Introduction</h2>
 <p>Since Astro allow to determines which pages should be static or service side rendering (SSR).</p>
 <p><a href="https://astro.build/blog/hybrid-rendering/">read more about hybrid rendering</a></p>
