@@ -10,8 +10,7 @@ tags:
   - Network
   - Security
   - Cloudflare
-  - Cloudflare Zero Trust
-  - Cloudflare Tunnel
+  - Zero Trust
   - Tunnel
   - SSH
 published: true

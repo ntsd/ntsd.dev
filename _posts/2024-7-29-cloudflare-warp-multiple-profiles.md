@@ -3,16 +3,14 @@ layout: post
 title: "Switch between personal and work Cloudflare Warp profiles"
 date: 2024-7-29
 description: "A guide to setting up multiple profiles for Cloudflare Warp on a single device"
-catalog: true
+catalog: false
 categories:
   - Software Development
 tags:
   - Network
   - Security
   - Cloudflare
-  - Cloudflare Zero Trust
-  - Tunnel
-  - SSH
+  - Zero Trust
 published: true
 ---
 
