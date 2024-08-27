@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2024-07-30T08:22:50+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Switch between personal and work Cloudflare Warp profiles</title><link href="https://ntsd.dev/cloudflare-warp-multiple-profiles/" rel="alternate" type="text/html" title="Switch between personal and work Cloudflare Warp profiles" /><published>2024-07-29T00:00:00+07:00</published><updated>2024-07-29T00:00:00+07:00</updated><id>https://ntsd.dev/cloudflare-warp-multiple-profiles</id><content type="html" xml:base="https://ntsd.dev/cloudflare-warp-multiple-profiles/"><![CDATA[<p>If you are using the Cloudflare Zero Trust or Cloudflare Warp, And you have to switch between your personal and your work Cloudflare account. This article is for setting up a Mac profile for both workspaces.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2024-08-28T02:04:08+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">Switch between personal and work Cloudflare Warp profiles</title><link href="https://ntsd.dev/cloudflare-warp-multiple-profiles/" rel="alternate" type="text/html" title="Switch between personal and work Cloudflare Warp profiles" /><published>2024-07-29T00:00:00+07:00</published><updated>2024-07-29T00:00:00+07:00</updated><id>https://ntsd.dev/cloudflare-warp-multiple-profiles</id><content type="html" xml:base="https://ntsd.dev/cloudflare-warp-multiple-profiles/"><![CDATA[<p>If you are using the Cloudflare Zero Trust or Cloudflare Warp, And you have to switch between your personal and your work Cloudflare account. This article is for setting up a Mac profile for both workspaces.</p>
 <p>To do that Cloudflare provide 2 options for macOS,</p>
 <p>Option one is using the MDM file that supports multiple OS, the MDM file supports multiple MDM management tools that allow for network installation such as Jamf, Intune, MicroMDM, etc.</p>
 <p>Option two is using the <code>.mobileconfig</code> file for the macOS or iOS only. The file will be used to install profiles for your Apple devices. The config is similar to the MDM you can translate to the MDM file for the other OS.</p>
@@ -511,7 +511,7 @@ ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-C</span> <span c
 <li>Apply the signature to the provider to verify</li>
 </ol>
 <p>Next, do another one for the Github personal <code>pbcopy &lt; ~/.ssh/id_ed25519_git.pub</code> to your personal git provider.</p>
-<h3 id="creating-the-ssh-config">3. Creating the SSH Config</h3>
+<h3 id="creating-the-ssh-config-optional">3. Creating the SSH Config (optional)</h3>
 <p>The SSH Config will help you choose the SSH key when you try to sign in to a different host.</p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>config
 vi config
@@ -529,8 +529,7 @@ Host github.com-jirawat-opn
    User git
    IdentityFile ~/.ssh/id_ed25519_git_opn
 </code></pre></div></div>
-<h3 id="set-remote-url">4. Set remote url</h3>
-<p>The setup was done. Now you can clone or update your git URL.</p>
+<p>Now you can clone or update your git URL.</p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com-jirawat-opn:work_account/repo.git
 
 <span class="c"># or the set origin url for the current repo</span>
@@ -571,7 +570,7 @@ ssb   cv25519/127C6D28828B3B8C 2021-11-23 <span class="o">[</span>E]
 <p>Copy your GPG key and add to the Git provider. It may the same page as the SSH key.</p>
 <p>If it ask to verify by a token, you can generate signature by using</p>
 <p><code>echo &quot;token&quot; | gpg -a --default-key 3AA5C34371567BD2 --detach-sig</code></p>
-<h3 id="set-up-git-config-to-use-the-gpg-key">5. Set up git config to use the GPG key</h3>
+<h3 id="set-up-git-config-to-use-the-gpg-key-optional">5. Set up git config to use the GPG key (optional)</h3>
 <p><code>git config --global user.signingkey 3AA5C34371567BD2</code></p>
 <p>You can also edit the <code>~/.gitconfig</code></p>
 <p>or for specific repo</p>
@@ -580,8 +579,41 @@ ssb   cv25519/127C6D28828B3B8C 2021-11-23 <span class="o">[</span>E]
 <p><code>git commit -S -m 'test'</code></p>
 <p>to make it automatically sign commits</p>
 <p><code>git config --global commit.gpgsign true</code></p>
-<h2 id="reference">Reference</h2>
-<p><a href="https://docs.github.com/">https://docs.github.com/</a></p>]]></content><author><name></name></author><category term="Software Development" /><category term="Git" /><category term="Security" /><summary type="html"><![CDATA[How I set up multi SSH keys for multiple git accounts, To make Git can use the personal git and work git at the same time.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Reduce runtime JavaScript to improve page speed using Puppeteer</title><link href="https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer/" rel="alternate" type="text/html" title="Reduce runtime JavaScript to improve page speed using Puppeteer" /><published>2021-11-03T00:00:00+07:00</published><updated>2021-11-03T00:00:00+07:00</updated><id>https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer</id><content type="html" xml:base="https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer/"><![CDATA[<p>The problem is when I am using many JavaScript libraries with big sizes and unnecessary to run in runtime such as <a href="https://github.com/PrismJS/prism">PrismJS</a>, <a href="https://github.com/bryanbraun/anchorjs">AnchorJS</a>, and <a href="https://github.com/timdream/wordcloud2.js/">Wordcloud2</a>. All of these JavaScript libraries will load content from HTML and render it component by adding element classes and styles.</p>
+<h2 id="set-git-config-to-use-specific-ssh-and-gpg-keys">Set Git config to use specific SSH and GPG keys</h2>
+<p>Add <code>sshCommand</code> config to use the specific ssh key for personal account,</p>
+<p>and add include config for work account</p>
+<p><code>~/.gitconfig</code></p>
+<pre><code>[user]
+	name = ntsd
+   email = jo06942@gmail.com
+	signingkey = 3AA5C34371567BD2
+
+[github]
+	user = ntsd
+
+[commit]
+	gpgsign = true
+
+[core]
+   sshCommand = ssh -i ~/.ssh/id_ed25519_git
+
+# include config if the path for company repo
+[includeIf &quot;gitdir/i:opn/&quot;]
+   path = .gitconfig.opn
+</code></pre>
+<p>for includeIf config will include the work config if the git directory under folder <code>opn</code> which is my work directory</p>
+<p><code>~/.gitconfig.opn</code></p>
+<pre><code>[user]
+   name = Jirawat Boonkumnerd
+   email = jirawat@opn.ooo
+
+[github]
+	user = jirawat-opn
+
+[core]
+   # specific ssh key for git
+   sshCommand = ssh -i ~/.ssh/id_ed25519_git_opn
+</code></pre>]]></content><author><name></name></author><category term="Software Development" /><category term="Git" /><category term="Security" /><summary type="html"><![CDATA[How I set up multi SSH keys for multiple git accounts, To make Git can use the personal git and work git at the same time.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Reduce runtime JavaScript to improve page speed using Puppeteer</title><link href="https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer/" rel="alternate" type="text/html" title="Reduce runtime JavaScript to improve page speed using Puppeteer" /><published>2021-11-03T00:00:00+07:00</published><updated>2021-11-03T00:00:00+07:00</updated><id>https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer</id><content type="html" xml:base="https://ntsd.dev/reduce-runtime-javascript-using-puppeeteer/"><![CDATA[<p>The problem is when I am using many JavaScript libraries with big sizes and unnecessary to run in runtime such as <a href="https://github.com/PrismJS/prism">PrismJS</a>, <a href="https://github.com/bryanbraun/anchorjs">AnchorJS</a>, and <a href="https://github.com/timdream/wordcloud2.js/">Wordcloud2</a>. All of these JavaScript libraries will load content from HTML and render it component by adding element classes and styles.</p>
 <p>In this example, I will show how to use <a href="https://github.com/PrismJS/prism">PrismJS</a> without runtime JavaScript because it’s the biggest library I’m using. To do that I need <a href="https://github.com/puppeteer/puppeteer">Puppeteer</a> headless Chrome for NodeAPI.</p>
 <p>First of all, I download PrismJS from the <a href="https://prismjs.com/download.html">download page</a> and just select all languages then download JavaScript and CSS files. Put both on the HTML page. It took 500kb of JavaScript and 14kb of CSS.</p>
 <pre><code class="language-HTML">>&lt;script type=&quot;text/javascript&quot; src=&quot;/assets/js/prism.js&quot; data-post-js=&quot;true&quot; &gt;&lt;/script&gt;

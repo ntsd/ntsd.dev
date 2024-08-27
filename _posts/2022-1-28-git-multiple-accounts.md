@@ -46,10 +46,9 @@ You have already generated the key pairs, Now let the Git provider know your SSH
 4. Generate a signature using the giving token from provider `echo -n 'token' | ssh-keygen -Y sign -n <name-space> -f id_ed25519_git.pub` you can replace the namespace
 5. Apply the signature to the provider to verify
 
-
 Next, do another one for the Github personal `pbcopy < ~/.ssh/id_ed25519_git.pub` to your personal git provider.
 
-### 3. Creating the SSH Config
+### 3. Creating the SSH Config (optional)
 
 The SSH Config will help you choose the SSH key when you try to sign in to a different host.
 
@@ -74,9 +73,7 @@ Host github.com-jirawat-opn
    IdentityFile ~/.ssh/id_ed25519_git_opn
 ```
 
-### 4. Set remote url
-
-The setup was done. Now you can clone or update your git URL.
+Now you can clone or update your git URL.
 
 ```shell
 git clone git@github.com-jirawat-opn:work_account/repo.git
@@ -148,7 +145,7 @@ If it ask to verify by a token, you can generate signature by using
 
 `echo "token" | gpg -a --default-key 3AA5C34371567BD2 --detach-sig`
 
-### 5. Set up git config to use the GPG key
+### 5. Set up git config to use the GPG key (optional)
 
 `git config --global user.signingkey 3AA5C34371567BD2`
 
@@ -166,6 +163,47 @@ to make it automatically sign commits
 
 `git config --global commit.gpgsign true`
 
-## Reference
+## Set Git config to use specific SSH and GPG keys
 
-<https://docs.github.com/>
+Add `sshCommand` config to use the specific ssh key for personal account,
+
+and add include config for work account
+
+`~/.gitconfig`
+
+```
+[user]
+	name = ntsd
+   email = jo06942@gmail.com
+	signingkey = 3AA5C34371567BD2
+
+[github]
+	user = ntsd
+
+[commit]
+	gpgsign = true
+
+[core]
+   sshCommand = ssh -i ~/.ssh/id_ed25519_git
+
+# include config if the path for company repo
+[includeIf "gitdir/i:opn/"]
+   path = .gitconfig.opn
+```
+
+for includeIf config will include the work config if the git directory under folder `opn` which is my work directory
+
+`~/.gitconfig.opn`
+
+```
+[user]
+   name = Jirawat Boonkumnerd
+   email = jirawat@opn.ooo
+
+[github]
+	user = jirawat-opn
+
+[core]
+   # specific ssh key for git
+   sshCommand = ssh -i ~/.ssh/id_ed25519_git_opn
+```
