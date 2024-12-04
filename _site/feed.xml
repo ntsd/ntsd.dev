@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2024-11-25T00:02:33+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">How to use Stream Pipe and Transform in Node.js</title><link href="https://ntsd.dev/node-stream-pipe-and-transform/" rel="alternate" type="text/html" title="How to use Stream Pipe and Transform in Node.js" /><published>2024-11-23T00:00:00+07:00</published><updated>2024-11-23T00:00:00+07:00</updated><id>https://ntsd.dev/node-stream-pipe-and-transform</id><content type="html" xml:base="https://ntsd.dev/node-stream-pipe-and-transform/"><![CDATA[<p>If you want to perform data streaming in Node.js,</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://ntsd.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ntsd.dev/" rel="alternate" type="text/html" /><updated>2024-12-04T12:21:36+07:00</updated><id>https://ntsd.dev/feed.xml</id><title type="html">Jirawat Boonkumnerd</title><subtitle>A software engineer who loves coding.</subtitle><entry><title type="html">How to use Stream Pipe and Transform in Node.js</title><link href="https://ntsd.dev/node-stream-pipe-and-transform/" rel="alternate" type="text/html" title="How to use Stream Pipe and Transform in Node.js" /><published>2024-11-23T00:00:00+07:00</published><updated>2024-11-23T00:00:00+07:00</updated><id>https://ntsd.dev/node-stream-pipe-and-transform</id><content type="html" xml:base="https://ntsd.dev/node-stream-pipe-and-transform/"><![CDATA[<p>If you want to perform data streaming in Node.js,</p>
 <p>for example, to replace all strings using a global RegEx,</p>
 <p>reading the entire data and processing it at once will use more memory than processing the data in chunks or partially.</p>
 <p>The code below shows you how to replace the string <code>/Lorem\sipsum/g</code> with <code>muspi meroL</code>.</p>
 <p>However, the issue is that it will load the data all at once into memory, then process the replacement, and finally save the replaced data to a new file.</p>
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">fs</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">fs</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./test.txt</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 190MB lorem ipsum text</span>
 <span class="kd">const</span> <span class="nx">replaced</span> <span class="o">=</span> <span class="nx">reader</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/Lorem</span><span class="se">\s</span><span class="sr">ipsum/g</span><span class="p">,</span> <span class="dl">"</span><span class="s2">muspi meroL</span><span class="dl">"</span><span class="p">);</span>
@@ -11,28 +11,28 @@
 <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./test.out.txt</span><span class="dl">"</span><span class="p">,</span> <span class="nx">replaced</span><span class="p">);</span>
 </code></pre></div></div>
 <p>By print the memory use by <code>process.memoryUsage()</code> you can see that it use a lot of memory.</p>
-<pre><code>Memory usage by rss, 884.441088MB
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Memory usage by rss, 884.441088MB
 Memory usage by heapTotal, 585.957376MB
 Memory usage by heapUsed, 549.476792MB
 Memory usage by external, 198.597365MB
 Memory usage by arrayBuffers, 196.189773MB
 ✨  Done in 1.34s.
-</code></pre>
+</code></pre></div></div>
 <p>In case you want to process a very big file or have limited memory,</p>
 <p>you can process the data using <a href="https://nodejs.org/api/stream.html">Node.js stream</a>,</p>
 <p>which means the data will be processed in parts and then passed through another process.</p>
 <p>For example,</p>
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Transform</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">stream</span><span class="dl">"</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Transform</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">stream</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">fs</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">split2</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">split2</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">ReplaceTransformSplit2</span> <span class="kd">extends</span> <span class="nx">Transform</span> <span class="p">{</span>
-  <span class="nl">regex</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="nb">RegExp</span><span class="p">;</span>
-  <span class="nl">replacer</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="p">((</span><span class="nx">substring</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="kr">string</span><span class="p">);</span>
+  <span class="nl">regex</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nb">RegExp</span><span class="p">;</span>
+  <span class="nl">replacer</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="p">((</span><span class="nx">substring</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="nx">string</span><span class="p">);</span>
 
   <span class="kd">constructor</span><span class="p">(</span>
-    <span class="nx">regex</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="nb">RegExp</span><span class="p">,</span>
-    <span class="nx">replacer</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="p">((</span><span class="nx">substring</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="kr">string</span><span class="p">)</span>
+    <span class="nx">regex</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nb">RegExp</span><span class="p">,</span>
+    <span class="nx">replacer</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="p">((</span><span class="nx">substring</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="nx">string</span><span class="p">)</span>
   <span class="p">)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">();</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">regex</span> <span class="o">=</span> <span class="nx">regex</span><span class="p">;</span>
@@ -40,7 +40,7 @@ Memory usage by arrayBuffers, 196.189773MB
   <span class="p">}</span>
 
   <span class="c1">// you can also use encode to check the data encoding</span>
-  <span class="nx">_transform</span><span class="p">(</span><span class="nx">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">,</span> <span class="nx">encode</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">cb</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">_transform</span><span class="p">(</span><span class="nx">chunk</span><span class="p">:</span> <span class="nx">Buffer</span><span class="p">,</span> <span class="nx">encode</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">cb</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// push to pass the data to the next pipe process</span>
     <span class="c1">// add "\n" because split2 will remove the endline so we have to add it</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chunk</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">regex</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">replacer</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
@@ -61,13 +61,13 @@ Memory usage by arrayBuffers, 196.189773MB
 </code></pre></div></div>
 <p>Because we process the chunk line by line, this code does not have the ability to replace text that spans multiple lines.</p>
 <p>You can see that the memory usage is much lower because it reads a portion of the file, processes it, and then writes it directly without storing the entire buffer in memory.</p>
-<pre><code>Memory usage by rss, 220.135424MB
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Memory usage by rss, 220.135424MB
 Memory usage by heapTotal, 115.310592MB
 Memory usage by heapUsed, 94.128872MB
 Memory usage by external, 7.279535MB
 Memory usage by arrayBuffers, 4.796103MB
 ✨  Done in 1.38s.
-</code></pre>
+</code></pre></div></div>
 <p>Another case that you can replace the string without split2 is you can store chunk in the buffer incase the chunk split half of the word.</p>
 <p>You can see the example from this <a href="https://github.com/ChocolateLoverRaj/stream-replace-string/blob/master/index.js">stream-replace-string</a> library.</p>]]></content><author><name></name></author><category term="Software Development" /><category term="Node.js" /><category term="Programming" /><category term="Stream" /><summary type="html"><![CDATA[Example use of stream pipe and transform in Node.js. Useful for processing large data and passing it through another process.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://ntsd.dev/pwa/icons/512.png" /><media:content medium="image" url="https://ntsd.dev/pwa/icons/512.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Switch between personal and work Cloudflare Warp profiles</title><link href="https://ntsd.dev/cloudflare-warp-multiple-profiles/" rel="alternate" type="text/html" title="Switch between personal and work Cloudflare Warp profiles" /><published>2024-07-29T00:00:00+07:00</published><updated>2024-07-29T00:00:00+07:00</updated><id>https://ntsd.dev/cloudflare-warp-multiple-profiles</id><content type="html" xml:base="https://ntsd.dev/cloudflare-warp-multiple-profiles/"><![CDATA[<p>If you are using the Cloudflare Zero Trust or Cloudflare Warp, And you have to switch between your personal and your work Cloudflare account. This article is for setting up a Mac profile for both workspaces.</p>
 <p>To do that Cloudflare provide 2 options for macOS,</p>

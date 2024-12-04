@@ -23,7 +23,7 @@ The code below shows you how to replace the string `/Lorem\sipsum/g` with `muspi
 
 However, the issue is that it will load the data all at once into memory, then process the replacement, and finally save the replaced data to a new file.
 
-```ts
+```js
 import fs from "fs";
 
 const reader = fs.readFileSync("./test.txt"); // 190MB lorem ipsum text
@@ -34,7 +34,7 @@ fs.writeFileSync("./test.out.txt", replaced);
 
 By print the memory use by `process.memoryUsage()` you can see that it use a lot of memory.
 
-```
+```text
 Memory usage by rss, 884.441088MB
 Memory usage by heapTotal, 585.957376MB
 Memory usage by heapUsed, 549.476792MB
@@ -51,7 +51,7 @@ which means the data will be processed in parts and then passed through another 
 
 For example,
 
-```ts
+```js
 import { Transform } from "stream";
 import fs from "fs";
 import split2 from "split2";
@@ -94,7 +94,7 @@ Because we process the chunk line by line, this code does not have the ability t
 
 You can see that the memory usage is much lower because it reads a portion of the file, processes it, and then writes it directly without storing the entire buffer in memory.
 
-```
+```text
 Memory usage by rss, 220.135424MB
 Memory usage by heapTotal, 115.310592MB
 Memory usage by heapUsed, 94.128872MB
