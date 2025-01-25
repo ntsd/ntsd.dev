@@ -50,8 +50,17 @@ permalink: /about/
     <p class="text-gray-600 mb-6">
         Get in touch for inquiries or to discuss potential projects.
     </p>
-    <a href="mailto:{{ site.email }}"
-        class="bg-gray-800 hover:bg-gray-600 text-white font-semibold py-2 px-6 shadow-md">
-        Email me
-    </a>
+    {% if site.github_username %}
+        <p>
+          Github: <a aria-label="Github" href="https://github.com/{{ site.github_username }}" rel="noopener noreferrer" target="_blank">{{ site.github_username }}</a>
+        </p>
+    {% endif %}
+    {% if site.email %}
+      <p>
+        Email: <a aria-label="Email" href="mailto:{{ site.email }}" rel="noopener noreferrer" target="_blank">{{ site.email }}</a>
+      </p>
+      <a aria-label="Email" href="mailto:{{ site.email }}" class="bg-gray-800 hover:bg-gray-600 text-white font-semibold py-2 px-6 shadow-md" rel="noopener noreferrer" target="_blank">
+          Email me
+      </a>
+    {% endif %}
 </section>

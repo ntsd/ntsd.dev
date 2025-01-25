@@ -128,7 +128,7 @@ service-worker: true
 
 # About
 about:
-  intro: I am Jirawat Boonkumnerd (Jo), A Software Engineer from Thailand who loves programming and problem-solving. I always learning new things every day.
+  intro: I am Jirawat Boonkumnerd (Jo), A Software Engineer from Thailand who loves programming and problem-solving. I have a passion for software development, technology, and health.
 
 # datapage-generator https://github.com/avillafiorita/jekyll-datapage_gen
 page_gen-dirs: true
