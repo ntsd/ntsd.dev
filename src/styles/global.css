@@ -3,17 +3,29 @@
 @tailwind utilities;
 
 :root {
+  --astro-code-foreground: #e4e4e7;
+  --astro-code-background: #18181b;
+  --astro-code-token-constant: #79c0ff;
+  --astro-code-token-string: #a5d6ff;
+  --astro-code-token-comment: #8b949e;
+  --astro-code-token-keyword: #ff7b72;
+  --astro-code-token-parameter: #ffa657;
+  --astro-code-token-function: #d2a8ff;
+  --astro-code-token-string-expression: #a5d6ff;
+  --astro-code-token-punctuation: #c9d1d9;
+  --astro-code-token-link: #58a6ff;
+
   --shiki-color-text: #e4e4e7;
   --shiki-color-background: #18181b;
-  --shiki-token-constant: #f97316;
-  --shiki-token-string: #4ade80;
-  --shiki-token-comment: #71717a;
-  --shiki-token-keyword: #c084fc;
-  --shiki-token-parameter: #facc15;
-  --shiki-token-function: #38bdf8;
-  --shiki-token-string-expression: #4ade80;
-  --shiki-token-punctuation: #a1a1aa;
-  --shiki-token-link: #38bdf8;
+  --shiki-token-constant: #79c0ff;
+  --shiki-token-string: #a5d6ff;
+  --shiki-token-comment: #8b949e;
+  --shiki-token-keyword: #ff7b72;
+  --shiki-token-parameter: #ffa657;
+  --shiki-token-function: #d2a8ff;
+  --shiki-token-string-expression: #a5d6ff;
+  --shiki-token-punctuation: #c9d1d9;
+  --shiki-token-link: #58a6ff;
 }
 
 html {
@@ -34,27 +46,40 @@ body {
   color: #09090b;
 }
 
-/* Code block styles (Shiki compile-time highlighting) */
+/* Code block styles (Shiki & standard code blocks) */
+pre,
+pre.astro-code,
 pre.shiki {
   background-color: #18181b !important;
   color: #e4e4e7 !important;
-  padding: 1.25rem;
-  border-radius: 0.5rem;
-  border: 1px solid #27272a;
-  overflow-x: auto;
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  margin: 1.75rem 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #27272a !important;
+  overflow-x: auto !important;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  margin: 1.75rem 0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1) !important;
 }
 
+pre code,
+pre.astro-code code,
 pre.shiki code {
   background: transparent !important;
   color: inherit !important;
   padding: 0 !important;
   border-radius: 0 !important;
   font-size: inherit !important;
+  white-space: pre !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  display: block !important;
+}
+
+pre.astro-code .line {
+  display: block;
+  min-height: 1.4rem;
 }
 
 /* Heading anchor link styles */

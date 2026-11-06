@@ -66,7 +66,7 @@ export default defineConfig({
       ],
     ],
     shikiConfig: {
-      theme: 'css-variables',
+      theme: 'github-dark',
     },
   },
   integrations: [

@@ -12,18 +12,39 @@ export default {
             a: {
               'line-break': 'anywhere',
             },
-            code: {
-              color: '#ccc!important',
-              background: '#2d2d2d!important',
-              padding: '0.1em 0.3em',
-              'border-radius': '0.3em',
-              'white-space': 'normal',
-              '&::before': {
-                display: 'none',
-              },
-              '&::after': {
-                display: 'none',
-              },
+            ':not(pre) > code': {
+              color: '#e4e4e7',
+              backgroundColor: '#27272a',
+              padding: '0.2em 0.4em',
+              borderRadius: '0.25rem',
+              fontWeight: '400',
+              fontSize: '0.875em',
+              fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            },
+            ':not(pre) > code::before': {
+              content: '""',
+            },
+            ':not(pre) > code::after': {
+              content: '""',
+            },
+            pre: {
+              backgroundColor: '#18181b',
+              color: '#e4e4e7',
+              borderWidth: '1px',
+              borderColor: '#27272a',
+              borderRadius: '0.5rem',
+              padding: '1.25rem',
+              overflowX: 'auto',
+            },
+            'pre code': {
+              color: 'inherit',
+              backgroundColor: 'transparent',
+              padding: '0',
+              borderRadius: '0',
+              fontSize: '0.875rem',
+              lineHeight: '1.7',
+              whiteSpace: 'pre',
+              fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
             },
           },
         },
@@ -42,3 +63,4 @@ export default {
   plugins: [typography],
   darkMode: 'class',
 };
+
