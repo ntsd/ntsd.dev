@@ -71,6 +71,7 @@ export default defineConfig({
   },
   integrations: [
     tailwind({
+      configFile: './tailwind.config.js',
       applyBaseStyles: false,
     }),
     sitemap(),
