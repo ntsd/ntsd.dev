@@ -52,15 +52,40 @@ const featuredProjects = allProjects.filter((p) => p.data.featured);
       </div>
 
       <!-- Work Highlights -->
-      <div class="grid grid-cols-2 max-w-xs gap-8 pt-8 border-t border-zinc-200/80">
-        <div>
-          <div class="font-mono text-3xl font-extrabold text-zinc-950">{allPosts.length}</div>
-          <div class="text-xs font-mono text-zinc-500 mt-1 uppercase tracking-wider">Technical Articles</div>
-        </div>
-        <div>
-          <div class="font-mono text-3xl font-extrabold text-zinc-950">{allProjects.length}</div>
-          <div class="text-xs font-mono text-zinc-500 mt-1 uppercase tracking-wider">Open Source Systems</div>
-        </div>
+      <div class="pt-8 border-t border-zinc-200/80 flex flex-wrap items-center gap-6 sm:gap-10">
+        <a
+          href="/blog/"
+          class="group flex items-baseline gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg"
+        >
+          <span class="font-mono text-3xl font-extrabold text-zinc-950 group-hover:text-blue-600 transition-colors">
+            {allPosts.length}
+          </span>
+          <div class="flex flex-col">
+            <span class="text-xs font-mono font-medium text-zinc-900 group-hover:text-blue-600 transition-colors flex items-center gap-1">
+              Technical Articles
+              <span class="inline-block transition-transform duration-150 group-hover:translate-x-0.5 text-zinc-400 group-hover:text-blue-600">&rarr;</span>
+            </span>
+            <span class="text-[11px] font-mono text-zinc-400">Deep dives & benchmarks</span>
+          </div>
+        </a>
+
+        <div class="hidden sm:block w-px h-8 bg-zinc-200" aria-hidden="true"></div>
+
+        <a
+          href="/projects/"
+          class="group flex items-baseline gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg"
+        >
+          <span class="font-mono text-3xl font-extrabold text-zinc-950 group-hover:text-blue-600 transition-colors">
+            {allProjects.length}
+          </span>
+          <div class="flex flex-col">
+            <span class="text-xs font-mono font-medium text-zinc-900 group-hover:text-blue-600 transition-colors flex items-center gap-1">
+              Open Source Systems
+              <span class="inline-block transition-transform duration-150 group-hover:translate-x-0.5 text-zinc-400 group-hover:text-blue-600">&rarr;</span>
+            </span>
+            <span class="text-[11px] font-mono text-zinc-400">Tools, WebRTC & protocols</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
