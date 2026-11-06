@@ -28,6 +28,8 @@ const formattedDate = post.date.toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
 });
+
+const showCatalog = Boolean(post.catalog) && headings.length > 0;
 ---
 
 <BaseLayout
@@ -50,7 +52,8 @@ const formattedDate = post.date.toLocaleDateString("en-US", {
   <!-- Post Header -->
   <header class="bg-zinc-950 text-white border-b border-zinc-800">
     <div class="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
-      <div class="max-w-4xl">
+      <div class:list={["mx-auto", showCatalog ? "max-w-6xl" : "max-w-3xl"]}>
+        <div class="max-w-4xl">
         <!-- Categories & Tags -->
         <div class="flex flex-wrap items-center gap-2 mb-6">
           {post.categories?.map((cat) => (
@@ -95,12 +98,16 @@ const formattedDate = post.date.toLocaleDateString("en-US", {
         </div>
       </div>
     </div>
+  </div>
   </header>
 
   <!-- Main Article Content -->
   <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
-    <div class="grid grid-cols-12 gap-8 lg:gap-12 max-w-6xl mx-auto">
-      <article class="col-span-12 lg:col-span-8">
+    <div class:list={[
+      "mx-auto",
+      showCatalog ? "grid grid-cols-12 gap-8 lg:gap-12 max-w-6xl" : "max-w-3xl"
+    ]}>
+      <article class:list={[showCatalog ? "col-span-12 lg:col-span-8" : "w-full"]}>
         <div class="prose prose-zinc lg:prose-lg max-w-none prose-headings:scroll-mt-24 prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-600 hover:prose-a:underline prose-pre:border prose-pre:border-zinc-800 prose-img:rounded-xl prose-img:shadow-sm">
           <slot />
         </div>
@@ -133,7 +140,7 @@ const formattedDate = post.date.toLocaleDateString("en-US", {
       </article>
 
       <!-- Table of Contents Sidebar -->
-      {headings.length > 0 && (
+      {showCatalog && (
         <aside class="hidden lg:block col-span-4">
           <div class="sticky top-24 craft-card bg-white border border-zinc-200/80 rounded-xl p-6 shadow-sm">
             <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-600 mb-4">
