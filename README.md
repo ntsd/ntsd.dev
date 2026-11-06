@@ -1,42 +1,97 @@
 # ntsd.dev
 
-## Installation
+Personal website, engineering journal, and open source systems portfolio for **Jirawat Boonkumnerd** ([ntsd.dev](https://ntsd.dev)).
 
+Built with **Astro 7 (Static SSG)**, **Vite 8 / Rolldown**, and **Tailwind CSS**, designed for maximum performance, clean typography, zero framework client runtime JS, and instant edge delivery via Cloudflare Pages.
+
+---
+
+## ⚡ Architectural Highlights
+
+- **Zero Client Framework JS**: Pure static HTML/CSS output with zero JavaScript hydration or client bundle bloat.
+- **100/100 Lighthouse Scores**: Optimized for top-tier Performance, Accessibility, Best Practices, and SEO.
+- **100% Route Parity**: Preserves historical canonical URL structure and trailing slash conventions (`trailingSlash: 'always'`) with automated route audits.
+- **Dynamic Content & Project Aggregation**: Compiles 18 technical articles and 29 open-source projects, automatically fetching and caching upstream GitHub repository READMEs during build.
+- **Syntax Highlighting**: Shiki compile-time code highlighting with the `github-dark` theme and custom token styling.
+- **Discussion Continuity**: Giscus comments mapped directly to repository discussions with zero legacy comment loss.
+- **Offline Reliability**: Transitional PWA service worker (`sw.js`) that supports offline browsing while gracefully purging deprecated caches.
+- **AI & Syndication Ready**: Auto-generated `/llms.txt`, full Schema.org JSON-LD structured data, RSS feed (`/feed.xml`), and XML sitemaps.
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | [Astro 7](https://astro.build/) (`output: 'static'`) |
+| **Compiler & Bundler** | [Vite 8](https://vite.dev/) + [Rolldown](https://rolldown.rs/) |
+| **Styling** | [Tailwind CSS v3](https://tailwindcss.com/) via PostCSS + `@tailwindcss/typography` |
+| **Code Highlighting** | [Shiki](https://shiki.style/) (`github-dark`) |
+| **Markdown Pipeline** | `@astrojs/markdown-remark` (`rehype-slug`, `rehype-autolink-headings`, custom plugins) |
+| **Hosting & CDN** | [Cloudflare Pages](https://pages.cloudflare.com/) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js**: `v22.x` or higher
+- **npm**: `v10.x` or higher
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/ntsd/ntsd.dev.git
+cd ntsd.dev
+
+# Install dependencies
+npm install
 ```
-apt install ruby-full
-apt install rubygems
-gem install bundler
-bundler install
-npm i
+
+### Local Development
+
+```bash
+npm run dev
 ```
 
-- If you got an puppeteer errors check <https://gist.github.com/winuxue/cfef08e2f5fe9dfc16a1d67a4ad38a01#file-puppeteer-ubuntu-1804-md>
+Starts the local development server with Vite HMR at `http://localhost:4321`. Note that the service worker is automatically disabled during local development to avoid caching hot modules.
 
-## Todos
+---
 
-- Fix critical CSS remove @media
-- Fix offline page
-- Fix 404 page
-- Imporve google tag manager <https://www.analyticsmania.com/post/google-tag-manager-impact-on-page-speed-and-how-to-improve/>
-- Use https://minimalanalytics.com/
-- Category dev, investment, health, science, journey
+## 📦 Build & Verification
 
-## Cloudflare Worker
+```bash
+# Full static production build (fetches project READMEs and compiles to dist/)
+npm run build
 
-Read here: <https://github.com/ntsd/ntsd.dev/tree/master/ntsd-dev-worker>
+# Verify 100% URL route parity and canonical metadata across all 62 production routes
+npm run test:parity
 
-## Pre render JavaScript
+# Preview the production build locally
+npm run preview
+```
 
-using Puppeteer to pre render JavaScript in html file for some Javascript libraries that can pre render.
+---
 
-Pre render JavaScript libraries:
+## 🌐 Deployment (Cloudflare Pages)
 
-- [PrismJS](https://github.com/PrismJS/prism)
-- [AnchorJS](https://github.com/bryanbraun/anchorjs)
-- [wordcloud2.js](https://github.com/timdream/wordcloud2.js/)
+The site is continuously deployed via **Cloudflare Pages Git Integration**:
 
-## Resources
+- **Production Branch**: `main`
+- **Build Command**: `npm run build && npm run test:parity`
+- **Output Directory**: `dist`
+- **Environment Variable**: `NODE_VERSION=22`
 
-<https://merakiui.com/>
+Manual preview deployments can also be performed via Wrangler:
 
-<https://storyset.com/>
+```bash
+npm run deploy
+```
+
+---
+
+## 📄 License
+
+MIT © [Jirawat Boonkumnerd](https://github.com/ntsd)
