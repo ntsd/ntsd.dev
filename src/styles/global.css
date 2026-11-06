@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --shiki-color-text: #e4e4e7;
+  --shiki-color-background: #18181b;
+  --shiki-token-constant: #f97316;
+  --shiki-token-string: #4ade80;
+  --shiki-token-comment: #71717a;
+  --shiki-token-keyword: #c084fc;
+  --shiki-token-parameter: #facc15;
+  --shiki-token-function: #38bdf8;
+  --shiki-token-string-expression: #4ade80;
+  --shiki-token-punctuation: #a1a1aa;
+  --shiki-token-link: #38bdf8;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
+  color: #18181b;
+  background-color: #fafafa;
+}
+
+::selection {
+  background-color: #e4e4e7;
+  color: #09090b;
+}
+
+/* Code block styles (Shiki compile-time highlighting) */
+pre.shiki {
+  background-color: #18181b !important;
+  color: #e4e4e7 !important;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #27272a;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  margin: 1.75rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+pre.shiki code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+}
+
+/* Heading anchor link styles */
+.anchor-link {
+  color: #a1a1aa;
+  margin-left: 0.4rem;
+  text-decoration: none;
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  opacity: 1;
+}
+
+.anchor-link:hover {
+  color: #2563eb;
+}
+
+/* Reading progress bar */
+#read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #6366f1);
+  z-index: 9999;
+  transition: width 0.08s ease-out;
+}
+
+/* Taste hover micro-animations (cards, buttons) */
+.craft-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease-out;
+}
+
+.craft-card:hover {
+  transform: translateY(-2px);
+}
+
+.craft-button {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.craft-button:active {
+  transform: scale(0.98);
+}

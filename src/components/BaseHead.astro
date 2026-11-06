@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description = "A software engineer who loves coding.",
+  image = "/img/me.jpg",
+  type = "website"
+} = Astro.props;
+
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(pathname, Astro.site);
+const ogImage = (!image || image.startsWith('data:')) ? new URL('/img/me.jpg', Astro.site) : new URL(image, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" name="google-site-verification" />
+<meta name="keywords" content="Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd" />
+<meta name="theme-color" content="#212121" />
+
+<title>{title ? `${title} · Jirawat Boonkumnerd` : "Jirawat Boonkumnerd"}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- OpenGraph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title || "Jirawat Boonkumnerd"} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title || "Jirawat Boonkumnerd"} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- Preconnects -->
+<link href="https://www.google-analytics.com" rel="preconnect" />
+<link href="https://giscus.app" rel="preconnect" />
+
+<!-- Web App Manifest & Icons -->
+<link rel="manifest" href="/pwa/manifest.json" />
+<link rel="icon" type="image/svg+xml" href="/pwa/icons/icon-min.svg" />
+<link rel="apple-touch-icon" href="/pwa/icons/icon-min.svg" />
+<link rel="alternate" type="application/rss+xml" title="Jirawat Boonkumnerd" href="/feed.xml" />

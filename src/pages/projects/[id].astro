@@ -1,0 +1,77 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { getCollection } from 'astro:content';
+import { Marked } from 'marked';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+export async function getStaticPaths() {
+  const allProjects = await getCollection('projects');
+  return allProjects.map((project) => ({
+    params: { id: project.data.id },
+    props: { project: project.data },
+  }));
+}
+
+const { project } = Astro.props;
+
+let readmeHtml = '';
+const cachePath = path.resolve(process.cwd(), `.cache/readmes/${project.id}.md`);
+
+if (fs.existsSync(cachePath)) {
+  const rawMarkdown = fs.readFileSync(cachePath, 'utf8');
+
+  // Determine GitHub branch from readme URL or default to master
+  let branch = 'master';
+  if (project.readme && project.readme.includes('/main/')) {
+    branch = 'main';
+  }
+
+  // Create isolated Marked instance with repo-aware link & image resolving
+  const markedInstance = new Marked({
+    renderer: {
+      link({ href, title, text }) {
+        if (
+          href &&
+          !href.startsWith('http://') &&
+          !href.startsWith('https://') &&
+          !href.startsWith('#') &&
+          !href.startsWith('mailto:')
+        ) {
+          if (project.github) {
+            const cleanHref = href.replace(/^\.?\//, '');
+            const fullUrl = `https://github.com/${project.github}/blob/${branch}/${cleanHref}`;
+            const titleAttr = title ? ` title="${title}"` : '';
+            return `<a href="${fullUrl}" target="_blank" rel="noopener noreferrer"${titleAttr}>${text}</a>`;
+          }
+        }
+        return false;
+      },
+      image({ href, title, text }) {
+        if (
+          href &&
+          !href.startsWith('http://') &&
+          !href.startsWith('https://') &&
+          !href.startsWith('data:')
+        ) {
+          if (project.github) {
+            const cleanHref = href.replace(/^\.?\//, '');
+            const fullUrl = `https://raw.githubusercontent.com/${project.github}/${branch}/${cleanHref}`;
+            const titleAttr = title ? ` title="${title}"` : '';
+            return `<img src="${fullUrl}" alt="${text || ''}" loading="lazy"${titleAttr} />`;
+          }
+        }
+        return false;
+      },
+    },
+  });
+
+  readmeHtml = await markedInstance.parse(rawMarkdown);
+} else {
+  readmeHtml = `<p>${project.description}</p>`;
+}
+---
+
+<ProjectLayout project={project}>
+  <article set:html={readmeHtml} />
+</ProjectLayout>

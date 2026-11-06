@@ -1,0 +1,37 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  headerImg?: string;
+}
+
+const {
+  title,
+  description = "A software engineer who loves coding.",
+  headerImg
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={headerImg}>
+  <!-- Page Header -->
+  <header class="bg-zinc-950 text-white border-b border-zinc-800">
+    <div class="container mx-auto px-4 lg:px-8 py-16 lg:py-20 text-center">
+      <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3">
+          {title}
+        </h1>
+        {description && (
+          <p class="text-base sm:text-lg text-zinc-400 font-normal leading-relaxed">
+            {description}
+          </p>
+        )}
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto px-4 lg:px-8 py-12">
+    <slot />
+  </div>
+</BaseLayout>

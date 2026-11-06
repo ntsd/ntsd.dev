@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+
+const allPosts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Map categories to posts
+const categoryMap = new Map<string, typeof allPosts>();
+
+for (const post of allPosts) {
+  for (const cat of post.data.categories || []) {
+    const existing = categoryMap.get(cat) || [];
+    existing.push(post);
+    categoryMap.set(cat, existing);
+  }
+}
+
+const sortedCategories = Array.from(categoryMap.keys()).sort((a, b) =>
+  a.localeCompare(b)
+);
+---
+
+<PageLayout
+  title="Categories"
+  description="Technical articles organized by engineering domain and systems architecture"
+>
+  <div class="max-w-4xl mx-auto py-8">
+    <div class="space-y-10">
+      {sortedCategories.map((category) => {
+        const posts = categoryMap.get(category) || [];
+
+        return (
+          <section class="scroll-mt-24 craft-card bg-white border border-zinc-200/80 rounded-xl p-6 lg:p-7 shadow-sm" id={category}>
+            <div class="flex items-center justify-between border-b border-zinc-100 pb-3 mb-4">
+              <h2 class="text-xl font-bold tracking-tight text-zinc-950 font-mono">
+                {category}
+              </h2>
+              <span class="text-xs font-mono text-zinc-400">
+                {posts.length} {posts.length === 1 ? 'article' : 'articles'}
+              </span>
+            </div>
+
+            <ul class="space-y-2.5">
+              {posts.map((post) => {
+                const slug = post.id.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '');
+                const isoDate = post.data.date.toISOString().split('T')[0];
+
+                return (
+                  <li class="flex items-baseline gap-3 text-sm group">
+                    <time
+                      datetime={isoDate}
+                      class="text-xs font-mono text-zinc-400 whitespace-nowrap"
+                    >
+                      [{isoDate}]
+                    </time>
+                    <a
+                      href={`/${slug}/`}
+                      class="text-zinc-800 group-hover:text-blue-600 font-medium transition-colors hover:underline"
+                    >
+                      {post.data.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        );
+      })}
+    </div>
+  </div>
+</PageLayout>

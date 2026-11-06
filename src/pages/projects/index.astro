@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const allProjects = await getCollection('projects');
+const featured = allProjects.filter((p) => p.data.featured);
+const regular = allProjects.filter((p) => !p.data.featured);
+const projects = [...featured, ...regular];
+---
+
+<PageLayout
+  title="Open Source Projects"
+  description="Distributed systems, networking protocols, WebRTC engines, and developer tools"
+>
+  <div class="max-w-6xl mx-auto py-8">
+    <!-- Quick Filter Chips -->
+    <div class="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-zinc-200/80">
+      <span class="text-xs font-mono font-medium text-zinc-400 uppercase tracking-wider mr-2">Filter by stack:</span>
+      <a href="/projects/" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">All</a>
+      <a href="/projects/?filter=featured" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Featured</a>
+      <a href="/projects/?filter=golang" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Golang</a>
+      <a href="/projects/?filter=typescript" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">TypeScript</a>
+      <a href="/projects/?filter=webrtc" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">WebRTC</a>
+      <a href="/projects/?filter=astro" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Astro</a>
+      <a href="/projects/?filter=svelte" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Svelte</a>
+      <a href="/projects/?filter=python" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Python</a>
+    </div>
+
+    <!-- Active Filter Alert -->
+    <div id="filter-banner" class="hidden mb-8 p-4 bg-zinc-100 border border-zinc-300 rounded-xl flex items-center justify-between">
+      <span class="text-sm font-medium text-zinc-800" id="filter-text"></span>
+      <a href="/projects/" class="text-xs font-mono font-semibold text-blue-600 hover:underline">
+        Clear filter &times;
+      </a>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
+      {projects.map((project) => (
+        <ProjectCard project={project.data} />
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const filter = urlParams.get("filter");
+
+      if (filter) {
+        const normalizedFilter = filter.toLowerCase().replace(/[^a-z0-9_-]/g, "");
+        const banner = document.getElementById("filter-banner");
+        const filterText = document.getElementById("filter-text");
+        if (banner && filterText) {
+          banner.classList.remove("hidden");
+          filterText.textContent = `Showing projects matching "${filter}"`;
+        }
+
+        const cards = document.querySelectorAll(".project-card");
+        cards.forEach((card) => {
+          const cardClasses = card.className.toLowerCase();
+          if (!cardClasses.includes(normalizedFilter)) {
+            card.style.display = "none";
+          }
+        });
+      }
+    })();
+  </script>
+</PageLayout>

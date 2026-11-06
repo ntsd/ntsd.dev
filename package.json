@@ -1,54 +1,41 @@
 {
   "name": "ntsd-dev",
-  "version": "1.0.0",
-  "description": "ntsd.dev website",
-  "main": "gulpfile.babel.js",
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "autoprefixer": "10.4.16",
-    "axios": "^1.5.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "6.26.0",
-    "browser-sync": "2.29.3",
-    "browsersync": "0.0.1-security",
-    "critical": "^6.0.0",
-    "cross-env": "7.0.3",
-    "cross-spawn": "7.0.3",
-    "cssnano": "6.0.1",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "gulp": "4.0.2",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-postcss": "9.0.1",
-    "gulp-replace": "^1.1.4",
-    "gulp-uglify": "^3.0.2",
-    "postcss": "8.4.31",
-    "postcss-import": "15.1.0",
-    "puppeteer": "^23.9.0",
-    "tailwindcss": "3.3.3"
-  },
+  "version": "2.0.0",
+  "description": "ntsd.dev website powered by Astro",
+  "type": "module",
   "scripts": {
-    "build:production": "cross-env NODE_ENV=production gulp",
-    "build:dev": "cross-env NODE_ENV=development gulp",
-    "build": "npm run build:production",
-    "dev": "cross-env NODE_ENV=development gulp serve",
-    "start": "npm run dev",
-    "bust-cache": "cross-env gulp bustCache",
-    "post-js": "gulp postJS",
-    "critical-css": "gulp critical"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "prebuild": "node scripts/fetch-readmes.mjs",
+    "build": "node scripts/fetch-readmes.mjs && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test:parity": "node scripts/verify-parity.mjs"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.5",
+    "@shikijs/transformers": "^2.3.2",
+    "@tailwindcss/typography": "^0.5.16",
+    "astro": "^5.1.9",
+    "js-yaml": "^4.1.0",
+    "marked": "^15.0.6",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "schema-dts": "^1.1.2",
+    "tailwindcss": "^3.4.17",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.7",
+    "typescript": "^5.7.3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ntsd/ntsd.dev"
   },
   "author": "Jirawat Boonkumnerd",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ntsd/ntsd.dev/issues"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "license": "MIT"
 }

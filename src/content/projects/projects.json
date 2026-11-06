@@ -1,0 +1,340 @@
+[
+  {
+    "id": "zero-share",
+    "name": "Zero Share",
+    "description": "A client-side secure P2P file sharing using WebRTC.",
+    "since": "2023 - present",
+    "github": "ntsd/zero-share",
+    "readme": "https://raw.githubusercontent.com/ntsd/zero-share/master/README.md",
+    "web": "https://zero-share.github.io",
+    "stacks": [
+      "Svelte",
+      "TypeScript",
+      "WebRTC"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "cross-clipboard",
+    "name": "Cross Clipboard",
+    "description": "An open source cross-platform clipboard sharing over P2P network.",
+    "since": "2022 - present",
+    "github": "ntsd/cross-clipboard",
+    "readme": "https://raw.githubusercontent.com/ntsd/cross-clipboard/master/Readme.md",
+    "stacks": [
+      "Golang",
+      "libp2p"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "tools",
+    "name": "Online Tools",
+    "description": "Online tools, calculators, and visualizer such as Universal Scalability Law, Amdahl's Law, and Queuing Theory",
+    "since": "2023 - present",
+    "github": "ntsd/tools",
+    "readme": "https://raw.githubusercontent.com/ntsd/tools/main/README.md",
+    "web": "https://tools.ntsd.dev",
+    "stacks": [
+      "TypeScript",
+      "Astro",
+      "Svelte"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "lisuify",
+    "name": "LiSuify",
+    "description": "A liquid staking platform for the SUI protocol, enabling users to stake their SUI or StakedSui object to wrap with a liquid token name liSUI return to the user.",
+    "since": 2023,
+    "github": "lisuify/lisuify",
+    "readme": "https://raw.githubusercontent.com/lisuify/lisuify/main/README.md",
+    "web": "https://lisuify.com",
+    "stacks": [
+      "TypeScript",
+      "Astro",
+      "Svelte"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "websocket-benchmark",
+    "name": "WebSocket Benchmark",
+    "description": "Compares the speed of WebSocket frameworks for different languages.",
+    "since": 2023,
+    "github": "ntsd/websocket-benchmark",
+    "readme": "https://raw.githubusercontent.com/ntsd/websocket-benchmark/master/README.md",
+    "stacks": [
+      "Golang",
+      "Rust",
+      "TypeScript"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "go-mutex-comparison",
+    "name": "Go Mutex Comparision",
+    "description": "Mutex vs RWMutex vs sync.Map, Concurrency map benchmark in different concurrent scenarios.",
+    "since": 2023,
+    "github": "ntsd/go-mutex-comparison",
+    "readme": "https://raw.githubusercontent.com/ntsd/go-mutex-comparison/main/README.md",
+    "stacks": [
+      "Golang"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "svelte-tex",
+    "name": "Svelte Tex",
+    "description": "Svelte component to convert TeX/LaTeX to MathML or SVG",
+    "since": "2023 - present",
+    "github": "ntsd/svelte-tex",
+    "readme": "https://raw.githubusercontent.com/ntsd/svelte-tex/main/README.md",
+    "web": "https://ntsd.github.io/svelte-tex",
+    "npm": "https://www.npmjs.com/package/svelte-tex",
+    "stacks": [
+      "TypeScript",
+      "Svelte"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": false
+  },
+  {
+    "id": "astro-svelte-tailwind",
+    "name": "Astro Svelte Tailwind",
+    "description": "Astro Starter Template with Svelte, Tailwind, DaisyUI, and Service Worker",
+    "since": "2023 - present",
+    "github": "ntsd/astro-svelte-tailwind",
+    "readme": "https://raw.githubusercontent.com/ntsd/astro-svelte-tailwind/main/README.md",
+    "web": "https://ntsd.github.io/astro-svelte-tailwind",
+    "stacks": [
+      "TypeScript",
+      "Astro",
+      "Svelte"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "sveltekit-html-minifier",
+    "name": "Sveltekit HTML Minifier",
+    "description": "Sveltekit Adapter to Minify the preload HTML page",
+    "since": "2023 - present",
+    "github": "ntsd/sveltekit-html-minifier",
+    "readme": "https://raw.githubusercontent.com/ntsd/sveltekit-html-minifier/master/README.md",
+    "web": "https://www.npmjs.com/package/sveltekit-html-minifier",
+    "stacks": [
+      "TypeScript",
+      "Svelte"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "auto-evm-wallet",
+    "name": "Auto EVM Wallet",
+    "description": "EVM wallet that allow to schedule or automate smart contract call.",
+    "since": "2023 - present",
+    "github": "ntsd/auto-evm-wallet",
+    "readme": "https://raw.githubusercontent.com/ntsd/auto-evm-wallet/main/README.md",
+    "web": "https://ntsd.github.io/auto-evm-wallet",
+    "stacks": [
+      "Svelte",
+      "TypeScript",
+      "Web3.js"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "jekyll-http-request",
+    "name": "Jekyll HTTP Request",
+    "description": "Jekyll Liquid Filter for HTTP requests, helps you get HTTP response data to the page content",
+    "since": "2023 - present",
+    "github": "ntsd/jekyll-http-request",
+    "readme": "https://raw.githubusercontent.com/ntsd/jekyll-http-request/main/README.md",
+    "web": "https://rubygems.org/gems/jekyll-http-request",
+    "stacks": [
+      "Ruby",
+      "Jekyll"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "sdp-compress",
+    "name": "SDP Compact",
+    "description": "Shorten WebRTC Session Description Protocol (SDP) based on Unified Plan SDP.",
+    "since": "2023 - present",
+    "github": "ntsd/sdp-compact",
+    "readme": "https://raw.githubusercontent.com/ntsd/sdp-compact/main/README.md",
+    "web": "https://ntsd.github.io/sdp-compact",
+    "npm": "https://www.npmjs.com/package/sdp-compact",
+    "stacks": [
+      "TypeScript"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "freqtrade-configs",
+    "name": "Freqtrade Configs",
+    "description": "My Freqtrade strategies and config. A free and open source crypto trading bot written in Python.",
+    "since": 2022,
+    "github": "ntsd/freqtrade-configs",
+    "readme": "https://raw.githubusercontent.com/ntsd/freqtrade-configs/master/README.md",
+    "stacks": [
+      "Python"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ntsd.dev",
+    "name": "ntsd.dev",
+    "description": "My website created by Jekyll and Tailwind.",
+    "since": "2020 - present",
+    "github": "ntsd/ntsd.dev",
+    "readme": "https://raw.githubusercontent.com/ntsd/ntsd.dev/master/README.md",
+    "web": "https://ntsd.dev",
+    "stacks": [
+      "Jekyll",
+      "JavaScript",
+      "Gulp"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "github-profile-repositories",
+    "name": "Github Profile Repositories",
+    "description": "Automatically create repositories list for your Github Profile.",
+    "since": 2022,
+    "github": "ntsd/github-profile-repositories",
+    "readme": "https://raw.githubusercontent.com/ntsd/github-profile-repositories/master/README.md",
+    "web": "https://github.com/marketplace/actions/github-profile-repositories",
+    "stacks": [
+      "TypeScript",
+      "Github-Action"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "liquidjs-action",
+    "name": "LiquidJS Github Action",
+    "description": "Github Action to render LiquidJS.",
+    "since": 2022,
+    "github": "ntsd/liquidjs-action",
+    "readme": "https://raw.githubusercontent.com/ntsd/liquidjs-action/master/README.md",
+    "web": "https://github.com/marketplace/actions/liquidjs-render",
+    "stacks": [
+      "TypeScript",
+      "Github-Action"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "auto-request-changes-action",
+    "name": "Auto Request Changes GitHub Action",
+    "description": "GitHub Action for automatically request changes GitHub pull requests.",
+    "since": 2022,
+    "github": "ntsd/auto-request-changes-action",
+    "readme": "https://raw.githubusercontent.com/ntsd/auto-request-changes-action/master/README.md",
+    "web": "https://github.com/marketplace/actions/auto-request-changes",
+    "stacks": [
+      "TypeScript",
+      "Github-Action"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "binance-auto-limit-price",
+    "name": "Binance Auto Limit Price",
+    "description": "A Binance extension to auto change limit price to the best ask/bid orders.",
+    "since": 2021,
+    "github": "ntsd/binance-auto-limit-price",
+    "readme": "https://raw.githubusercontent.com/ntsd/binance-auto-limit-price/master/README.md",
+    "stacks": [
+      "JavaScript"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "threejs-merry-christmas",
+    "name": "Three.js Merry Christmas",
+    "description": "3D Christmas Theme by Three.js.",
+    "since": 2021,
+    "github": "ntsd/threejs-merry-christmas",
+    "readme": "https://raw.githubusercontent.com/ntsd/threejs-merry-christmas/master/README.md",
+    "web": "https://ntsd.github.io/threejs-merry-christmas",
+    "stacks": [
+      "JavaScript",
+      "Three.js"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "google-sheet-import-cache",
+    "name": "Google Sheet Import Cache",
+    "description": "A Google Sheet custom function add-on used for web scraping and supporting cache created by Google Apps Script.",
+    "since": 2021,
+    "github": "ntsd/google-sheet-import-cache",
+    "readme": "https://raw.githubusercontent.com/ntsd/google-sheet-import-cache/master/README.md",
+    "stacks": [
+      "Google Apps Script"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "esp32-uv-humidity-detector",
+    "name": "ESP32 UV and Humidity Detector",
+    "description": "ESP32 with UVM-30A (UV Detector) and DHT22 (Temperature and Humidity Sensor)",
+    "since": 2020,
+    "github": "ntsd/esp32-uv-humidity-detector",
+    "readme": "https://raw.githubusercontent.com/ntsd/esp32-uv-humidity-detector/master/README.md",
+    "stacks": [
+      "C++"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "ruamrat",
+    "name": "Ruamrat Website",
+    "description": "Website for Ruamrat Aluminium Glass Business.",
+    "since": 2019,
+    "github": "ntsd/ruamrat",
+    "web": "https://ruamrat.com",
+    "stacks": [
+      "TypeScript",
+      "React",
+      "Gatsby"
+    ],
+    "featured": false,
+    "tags": []
+  }
+]

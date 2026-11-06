@@ -1,0 +1,69 @@
+---
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  const RESERVED_SLUGS = new Set([
+    'about',
+    'blog',
+    'projects',
+    'tags',
+    'categories',
+    'feed.xml',
+    'llms.txt',
+    'sw.js',
+    '404',
+    'offline',
+    'privacy-policy',
+    'robots.txt',
+    'sitemap.xml',
+  ]);
+
+  const posts = (await getCollection('blog'))
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return posts.map((post, index) => {
+    const slug = post.id.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '');
+    if (RESERVED_SLUGS.has(slug)) {
+      throw new Error(`Collision: post slug "${slug}" conflicts with top-level route.`);
+    }
+
+    // Since posts are sorted descending (newest first):
+    // Newer post is at index - 1 (Next)
+    // Older post is at index + 1 (Previous)
+    const nextPost =
+      index > 0
+        ? {
+            url: `/${posts[index - 1].id.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '')}/`,
+            title: posts[index - 1].data.title,
+          }
+        : undefined;
+
+    const prevPost =
+      index < posts.length - 1
+        ? {
+            url: `/${posts[index + 1].id.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '')}/`,
+            title: posts[index + 1].data.title,
+          }
+        : undefined;
+
+    return {
+      params: { slug },
+      props: { post, prevPost, nextPost },
+    };
+  });
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<PostLayout
+  post={post.data}
+  prevPost={prevPost}
+  nextPost={nextPost}
+  headings={headings}
+>
+  <Content />
+</PostLayout>

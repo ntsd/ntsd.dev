@@ -1,0 +1,203 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const allPosts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const recentPosts = allPosts.slice(0, 4);
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects.filter((p) => p.data.featured).slice(0, 4);
+---
+
+<BaseLayout
+  title="Jirawat Boonkumnerd · Software Engineer"
+  description="Software engineer building distributed systems, WebRTC protocols, and zero-overhead web architectures."
+>
+  <!-- Hero Section (First Screen) -->
+  <section class="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+    <div class="max-w-4xl">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200/80 text-xs font-mono text-zinc-700 mb-6 font-medium">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>Software Engineer & Systems Architect</span>
+      </div>
+
+      <!-- Main Authority Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-zinc-950 tracking-tight leading-[1.08] mb-6">
+        Building distributed systems, protocols, and zero-overhead web architectures.
+      </h1>
+
+      <p class="text-lg sm:text-xl text-zinc-600 font-normal leading-relaxed max-w-2xl mb-8">
+        I'm Jirawat Boonkumnerd (Jo). I write deep technical analyses on Go concurrency, database index internals, WebRTC peer-to-peer data channels, and modern static infrastructure.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-4 mb-12">
+        <a
+          href="/blog/"
+          class="craft-button inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-zinc-900 hover:bg-zinc-800 rounded-lg shadow-sm transition-all"
+        >
+          Browse Articles &rarr;
+        </a>
+        <a
+          href="/projects/"
+          class="craft-button inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-zinc-800 bg-white border border-zinc-300 hover:bg-zinc-50 hover:border-zinc-400 rounded-lg transition-all"
+        >
+          Explore Projects
+        </a>
+      </div>
+
+      <!-- Hard Facts (First-Screen Proof Points) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-zinc-200/80">
+        <div>
+          <div class="font-mono text-3xl font-extrabold text-zinc-950">18</div>
+          <div class="text-xs font-mono text-zinc-500 mt-1 uppercase tracking-wider">Technical Articles</div>
+        </div>
+        <div>
+          <div class="font-mono text-3xl font-extrabold text-zinc-950">22</div>
+          <div class="text-xs font-mono text-zinc-500 mt-1 uppercase tracking-wider">Open Source Systems</div>
+        </div>
+        <div>
+          <div class="font-mono text-3xl font-extrabold text-zinc-950">0 KB</div>
+          <div class="text-xs font-mono text-zinc-500 mt-1 uppercase tracking-wider">Framework Runtime JS</div>
+        </div>
+        <div>
+          <div class="font-mono text-3xl font-extrabold text-zinc-950">100 / 100</div>
+          <div class="text-xs font-mono text-zinc-500 mt-1 uppercase tracking-wider">Lighthouse Benchmark</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-zinc-200/80" />
+
+  <!-- Latest Articles Section -->
+  <section class="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+    <div class="flex items-baseline justify-between mb-10">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-zinc-950">
+          Latest Technical Articles
+        </h2>
+        <p class="text-sm text-zinc-500 mt-1">Deep dives, benchmarks, and engineering guides.</p>
+      </div>
+      <a
+        href="/blog/"
+        class="hidden sm:inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+      >
+        View all articles &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {recentPosts.map((post) => {
+        const slug = post.id.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '');
+        const formattedDate = post.data.date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        });
+
+        return (
+          <article class="craft-card bg-white border border-zinc-200/80 hover:border-zinc-300 rounded-xl p-6 lg:p-7 shadow-sm hover:shadow transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <time
+                  datetime={post.data.date.toISOString().split('T')[0]}
+                  class="font-mono text-xs font-medium text-zinc-400"
+                >
+                  {formattedDate}
+                </time>
+                <div class="flex flex-wrap gap-1.5">
+                  {post.data.categories?.map((category) => (
+                    <a
+                      href={`/categories/#${encodeURIComponent(category)}`}
+                      class="px-2.5 py-0.5 text-[11px] font-mono font-medium text-zinc-700 bg-zinc-100 hover:bg-zinc-200/80 border border-zinc-200/60 rounded-full transition-colors"
+                      title={category}
+                    >
+                      {category}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <a href={`/${slug}/`} class="block group/title mt-1">
+                <h3 class="text-xl font-bold tracking-tight text-zinc-950 group-hover/title:text-blue-600 transition-colors leading-snug">
+                  {post.data.title}
+                </h3>
+                {post.data.description && (
+                  <p class="mt-2 text-sm text-zinc-600 line-clamp-2 leading-relaxed">
+                    {post.data.description}
+                  </p>
+                )}
+              </a>
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-zinc-100 flex items-center justify-between">
+              <div class="flex flex-wrap gap-2 text-xs font-mono text-zinc-500">
+                {post.data.tags?.slice(0, 3).map((tag) => (
+                  <a href={`/tags/#${encodeURIComponent(tag)}`} class="hover:text-zinc-900 transition-colors">
+                    #{tag}
+                  </a>
+                ))}
+              </div>
+              <a
+                href={`/${slug}/`}
+                class="text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+              >
+                Read &rarr;
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class="mt-10 sm:hidden flex justify-center">
+      <a
+        href="/blog/"
+        class="craft-button inline-block px-6 py-2.5 text-sm font-semibold text-white bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors shadow-sm"
+      >
+        View all articles &rarr;
+      </a>
+    </div>
+  </section>
+
+  <hr class="border-zinc-200/80" />
+
+  <!-- Featured Projects Section -->
+  <section class="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+    <div class="flex items-baseline justify-between mb-10">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-zinc-950">
+          Featured Projects
+        </h2>
+        <p class="text-sm text-zinc-500 mt-1">Open-source distributed tools, calculators, and protocols.</p>
+      </div>
+      <a
+        href="/projects/"
+        class="hidden sm:inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+      >
+        View all projects &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {featuredProjects.map((project) => (
+        <ProjectCard project={project.data} />
+      ))}
+    </div>
+
+    <div class="mt-10 sm:hidden flex justify-center">
+      <a
+        href="/projects/"
+        class="craft-button inline-block px-6 py-2.5 text-sm font-semibold text-white bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors shadow-sm"
+      >
+        View all projects &rarr;
+      </a>
+    </div>
+  </section>
+</BaseLayout>

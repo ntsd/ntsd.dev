@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../../layouts/PageLayout.astro';
+import BlogList from '../../../components/BlogList.astro';
+
+export async function getStaticPaths() {
+  const allPosts = (await getCollection('blog'))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  const pageSize = 7;
+  const totalPages = Math.ceil(allPosts.length / pageSize);
+
+  const paths = [];
+  for (let p = 2; p <= totalPages; p++) {
+    const start = (p - 1) * pageSize;
+    const pagePosts = allPosts.slice(start, start + pageSize);
+    const prevUrl = p === 2 ? '/blog/' : `/blog/page/${p - 1}/`;
+    const nextUrl = p < totalPages ? `/blog/page/${p + 1}/` : null;
+
+    paths.push({
+      params: { page: String(p) },
+      props: {
+        posts: pagePosts,
+        currentPage: p,
+        totalPages,
+        prevUrl,
+        nextUrl,
+      },
+    });
+  }
+
+  return paths;
+}
+
+const { posts, currentPage, totalPages, prevUrl, nextUrl } = Astro.props;
+---
+
+<PageLayout
+  title={`Blog - Page ${currentPage}`}
+  description="Technical articles, deep dives, benchmarks and tutorials"
+>
+  <div class="max-w-4xl mx-auto py-8">
+    <BlogList
+      posts={posts}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      prevUrl={prevUrl}
+      nextUrl={nextUrl}
+    />
+  </div>
+</PageLayout>
+
