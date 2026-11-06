@@ -153,6 +153,37 @@
     "featured": true
   },
   {
+    "id": "zero-market-radar",
+    "name": "Zero Market Radar",
+    "description": "Real-time stock news sentiment and alerter powered by a System One decision model (Jev) for ultra-fast reaction.",
+    "since": 2026,
+    "github": "ntsd/zero-market-radar",
+    "readme": "https://raw.githubusercontent.com/ntsd/zero-market-radar/main/README.md",
+    "web": "https://zeromarketradar.com",
+    "stacks": [
+      "TypeScript",
+      "AI",
+      "Financial"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
+    "id": "hermes-profile-manager",
+    "name": "Hermes Profile Manager",
+    "description": "Fast, zero-dependency CLI & manager for Hermes AI agent profiles: merge configs, SOUL prompts, cron jobs, and symlink shared skills/plugins.",
+    "since": 2026,
+    "github": "hotcode-dev/hermes-profile-manager",
+    "readme": "https://raw.githubusercontent.com/hotcode-dev/hermes-profile-manager/main/README.md",
+    "stacks": [
+      "TypeScript",
+      "CLI",
+      "AI Agents"
+    ],
+    "featured": false,
+    "tags": []
+  },
+  {
     "id": "websocket-benchmark",
     "name": "WebSocket Benchmark",
     "description": "Compares the speed of WebSocket frameworks for different languages.",
