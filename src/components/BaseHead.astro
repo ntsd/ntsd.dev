@@ -25,7 +25,7 @@ const ogImage = (!image || image.startsWith('data:')) ? new URL('/img/me.jpg', A
 <meta name="keywords" content="Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd" />
 <meta name="theme-color" content="#212121" />
 
-<title>{title ? `${title} · Jirawat Boonkumnerd` : "Jirawat Boonkumnerd"}</title>
+<title>{title ? (title.includes("Jirawat Boonkumnerd") ? title : `${title} · Jirawat Boonkumnerd`) : "Jirawat Boonkumnerd"}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 

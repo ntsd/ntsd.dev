@@ -37,7 +37,7 @@ const sortedCategories = Array.from(categoryMap.keys()).sort((a, b) =>
               <h2 class="text-xl font-bold tracking-tight text-zinc-950 font-mono">
                 {category}
               </h2>
-              <span class="text-xs font-mono text-zinc-400">
+              <span class="text-xs font-mono text-zinc-600">
                 {posts.length} {posts.length === 1 ? 'article' : 'articles'}
               </span>
             </div>
@@ -51,7 +51,7 @@ const sortedCategories = Array.from(categoryMap.keys()).sort((a, b) =>
                   <li class="flex items-baseline gap-3 text-sm group">
                     <time
                       datetime={isoDate}
-                      class="text-xs font-mono text-zinc-400 whitespace-nowrap"
+                      class="text-xs font-mono text-zinc-600 whitespace-nowrap"
                     >
                       [{isoDate}]
                     </time>

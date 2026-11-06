@@ -6,7 +6,7 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline' giscus.app *.googletagmanager.com *.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' *.google-analytics.com https://api.github.com; base-uri 'none'; form-action 'none'; frame-src giscus.app;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://giscus.app https://static.cloudflareinsights.com https://*.googletagmanager.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://api.github.com https://cloudflareinsights.com; manifest-src 'self'; worker-src 'self'; frame-src https://giscus.app; base-uri 'self'; form-action 'none';
 
 /sw.js
   Cache-Control: public, max-age=0, must-revalidate
