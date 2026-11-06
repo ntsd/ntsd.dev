@@ -1,0 +1,45 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Jirawat Boonkumnerd (ntsd.dev)",
+    "identifier": "ntsd.dev"
+  },
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:ntsd.dev:catalog:engineering-articles",
+      "displayName": "Technical Articles & System Benchmarks",
+      "type": "text/markdown",
+      "url": "https://ntsd.dev/llms.txt",
+      "capabilities": [
+        "SearchArticles",
+        "ReadBenchmarks",
+        "SystemDesignAnalysis"
+      ],
+      "description": "Technical analyses, benchmarks, and architectural deep dives covering Go concurrency, PostgreSQL internals, WebRTC peer-to-peer data channels, and static infrastructure.",
+      "representativeQueries": [
+        "Go mutex vs channel benchmark comparison",
+        "how to setup multiple Cloudflare Warp profiles on one machine",
+        "PostgreSQL index types btree gin gist brin explained",
+        "WebRTC peer to peer data channels architecture"
+      ]
+    },
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:ntsd.dev:catalog:open-source-projects",
+      "displayName": "Open Source Systems & Tools",
+      "type": "application/json",
+      "url": "https://ntsd.dev/projects/",
+      "capabilities": [
+        "DiscoverDistributedTools",
+        "ExploreWebRTCProtocols"
+      ],
+      "description": "Catalog of 29 open source distributed systems, WebRTC signaling servers, dev tools, and network benchmarks created by Jirawat Boonkumnerd.",
+      "representativeQueries": [
+        "open source WebRTC signaling server in Go and TypeScript",
+        "websocket performance benchmark tools",
+        "EVM wallet generator and compact SDP compressor"
+      ]
+    }
+  ]
+}

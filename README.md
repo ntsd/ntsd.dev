@@ -15,7 +15,7 @@ Built with **Astro 7 (Static SSG)**, **Vite 8 / Rolldown**, and **Tailwind CSS**
 - **Syntax Highlighting**: Shiki compile-time code highlighting with the `github-dark` theme and custom token styling.
 - **Discussion Continuity**: Giscus comments mapped directly to repository discussions with zero legacy comment loss.
 - **Offline Reliability**: Transitional PWA service worker (`sw.js`) that supports offline browsing while gracefully purging deprecated caches.
-- **AI & Syndication Ready**: Auto-generated `/llms.txt`, full Schema.org JSON-LD structured data, RSS feed (`/feed.xml`), and XML sitemaps.
+- **AI & Agentic Discovery Ready**: [Agentic Resource Discovery (ARD)](https://agenticresourcediscovery.org/spec/) manifest at `/.well-known/ard.json`, auto-generated `/llms.txt`, full Schema.org JSON-LD structured data, RSS feed (`/feed.xml`), and XML sitemaps.
 
 ---
 
@@ -66,7 +66,7 @@ Starts the local development server with Vite HMR at `http://localhost:4321`. No
 # Full static production build (fetches project READMEs and compiles to dist/)
 npm run build
 
-# Verify 100% URL route parity and canonical metadata across all 62 production routes
+# Verify 100% URL route parity and canonical metadata across all 64 production routes
 npm run test:parity
 
 # Preview the production build locally

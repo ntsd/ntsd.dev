@@ -1,5 +1,6 @@
 [
   "/",
+  "/.well-known/ard.json",
   "/404/",
   "/about/",
   "/add-facebook-comments-to-your-website/",
@@ -16,6 +17,7 @@
   "/git-multiple-accounts/",
   "/install-openwrt-on-banana-pi-r64/",
   "/legends-of-code-and-magic-play-bot-programming-with-basic-algorithms/",
+  "/llms.txt",
   "/my-kubectl-cheat-sheet/",
   "/node-stream-pipe-and-transform/",
   "/offline/",
