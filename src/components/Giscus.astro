@@ -1,12 +1,63 @@
 ---
-// Giscus comments component deferred via IntersectionObserver
+// Giscus comments component deferred via IntersectionObserver with skeleton loader
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
 ---
-<div id="giscus-container" class="comment giscus py-8"></div>
+
+<div class:list={["giscus-wrapper rounded-2xl border border-zinc-200/80 bg-white p-6 sm:p-8 shadow-sm", className]}>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-100">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-white shadow-sm shrink-0">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-lg font-bold text-zinc-950 tracking-tight">Discussion & Responses</h2>
+        <p class="text-xs text-zinc-500 mt-0.5">Powered by GitHub Discussions &middot; Sign in to participate</p>
+      </div>
+    </div>
+    <a
+      href="https://github.com/ntsd/ntsd.dev/discussions"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-zinc-600 hover:text-zinc-950 border border-zinc-200/80 hover:border-zinc-300 rounded-lg px-3 py-1.5 transition-colors self-start sm:self-auto bg-zinc-50/80 hover:bg-zinc-100/80"
+    >
+      <span>Open on GitHub</span>
+      <span aria-hidden="true">&nearr;</span>
+    </a>
+  </div>
+
+  <div id="giscus-container" class="comment giscus pt-6 min-h-[160px]">
+    <!-- Skeleton loader shown until Giscus iframe injects -->
+    <div id="giscus-skeleton" class="space-y-4">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200/60 animate-pulse shrink-0"></div>
+        <div class="flex-1 space-y-2">
+          <div class="h-24 bg-zinc-50 rounded-xl border border-zinc-200/60 w-full animate-pulse flex items-center justify-center text-xs text-zinc-400 font-mono">
+            Loading discussion thread...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .giscus-wrapper iframe.giscus-frame {
+    width: 100% !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+</style>
 
 <script is:inline>
   function loadGiscus() {
     const container = document.getElementById("giscus-container");
-    if (!container || container.hasChildNodes()) return;
+    if (!container || container.querySelector("script[src*='giscus']")) return;
 
     const script = document.createElement("script");
     script.src = "https://giscus.app/client.js";
@@ -15,13 +66,28 @@
     script.setAttribute("data-category", "General");
     script.setAttribute("data-category-id", "DIC_kwDOGQFuoc4CR2-u");
     script.setAttribute("data-mapping", "pathname");
-    script.setAttribute("data-reactions-enabled", "0");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
     script.setAttribute("data-emit-metadata", "0");
-    script.setAttribute("data-theme", "light");
+    script.setAttribute("data-input-position", "top");
+    script.setAttribute("data-theme", "noborder_light");
     script.setAttribute("data-lang", "en");
     script.setAttribute("data-loading", "lazy");
     script.setAttribute("crossorigin", "anonymous");
     script.async = true;
+
+    // Listen for Giscus message to hide skeleton
+    window.addEventListener("message", function onGiscusMessage(event) {
+      if (event.origin !== "https://giscus.app") return;
+      if (typeof event.data === "object" && event.data.giscus) {
+        const skeleton = document.getElementById("giscus-skeleton");
+        if (skeleton) {
+          skeleton.style.display = "none";
+        }
+        window.removeEventListener("message", onGiscusMessage);
+      }
+    });
+
     container.appendChild(script);
   }
 
@@ -33,7 +99,7 @@
           observer.disconnect();
         }
       });
-    }, { rootMargin: "200px" });
+    }, { rootMargin: "300px" });
 
     const target = document.getElementById("giscus-container");
     if (target) observer.observe(target);
@@ -41,4 +107,3 @@
     window.addEventListener("load", loadGiscus);
   }
 </script>
-
