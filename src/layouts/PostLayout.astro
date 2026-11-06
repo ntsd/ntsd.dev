@@ -1,0 +1,163 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Giscus from '../components/Giscus.astro';
+import TOC from '../components/TOC.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
+
+interface Props {
+  post: {
+    title: string;
+    description?: string;
+    date: Date;
+    headerImg?: string;
+    categories?: string[];
+    tags?: string[];
+    catalog?: boolean;
+  };
+  prevPost?: { url: string; title: string };
+  nextPost?: { url: string; title: string };
+  headings?: { depth: number; slug: string; text: string }[];
+}
+
+const { post, prevPost, nextPost, headings = [] } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const formattedDate = post.date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout
+  title={post.title}
+  description={post.description}
+  image={post.headerImg}
+  type="article"
+>
+  <Fragment slot="head">
+    <SchemaOrg
+      title={post.title}
+      description={post.description || ""}
+      datePublished={post.date}
+      url={canonicalUrl}
+      image={post.headerImg}
+      tags={post.tags}
+    />
+  </Fragment>
+
+  <!-- Post Header -->
+  <header class="bg-zinc-950 text-white border-b border-zinc-800">
+    <div class="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+      <div class="max-w-4xl">
+        <!-- Categories & Tags -->
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+          {post.categories?.map((cat) => (
+            <a
+              class="text-xs font-mono font-medium py-1 px-3 border border-zinc-700 bg-zinc-900/80 rounded-full hover:border-zinc-500 hover:text-white transition-colors"
+              href={`/categories/#${encodeURIComponent(cat)}`}
+              title={cat}
+            >
+              {cat}
+            </a>
+          ))}
+          {post.tags?.map((tag) => (
+            <a
+              class="text-xs font-mono font-medium py-1 px-3 text-zinc-400 hover:text-white transition-colors"
+              href={`/tags/#${encodeURIComponent(tag)}`}
+              title={tag}
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
+
+        <!-- Post Title -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-6 text-white">
+          {post.title}
+        </h1>
+
+        <!-- Post Description -->
+        {post.description && (
+          <p class="text-lg sm:text-xl text-zinc-300 font-normal leading-relaxed mb-6">
+            {post.description}
+          </p>
+        )}
+
+        <!-- Author & Date -->
+        <div class="flex items-center gap-3 text-xs font-mono text-zinc-400 pt-6 border-t border-zinc-800/80">
+          <span>By Jirawat Boonkumnerd</span>
+          <span>&middot;</span>
+          <time datetime={post.date.toISOString().split("T")[0]}>
+            {formattedDate}
+          </time>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Article Content -->
+  <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+    <div class="grid grid-cols-12 gap-8 lg:gap-12 max-w-6xl mx-auto">
+      <article class="col-span-12 lg:col-span-8">
+        <div class="prose prose-zinc lg:prose-lg max-w-none prose-headings:scroll-mt-24 prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-600 hover:prose-a:underline prose-pre:border prose-pre:border-zinc-800 prose-img:rounded-xl prose-img:shadow-sm">
+          <slot />
+        </div>
+
+        <!-- Previous / Next Navigation -->
+        <nav aria-label="Article navigation" class="grid grid-cols-2 text-center mt-16 gap-6 border-t border-zinc-200/80 pt-10">
+          {prevPost ? (
+            <div class="craft-card col-span-2 sm:col-span-1 border border-zinc-200/80 bg-white p-5 rounded-xl hover:border-zinc-300 shadow-sm transition-all text-left group">
+              <a href={prevPost.url} class="block">
+                <div class="text-[11px] font-mono font-medium text-zinc-400 group-hover:text-blue-600 transition-colors uppercase tracking-wider">&larr; Previous</div>
+                <div class="font-bold text-zinc-900 group-hover:text-blue-600 transition-colors mt-1.5 line-clamp-1">{prevPost.title}</div>
+              </a>
+            </div>
+          ) : <div class="hidden sm:block col-span-1" />}
+
+          {nextPost ? (
+            <div class="craft-card col-span-2 sm:col-span-1 border border-zinc-200/80 bg-white p-5 rounded-xl hover:border-zinc-300 shadow-sm transition-all text-right group">
+              <a href={nextPost.url} class="block">
+                <div class="text-[11px] font-mono font-medium text-zinc-400 group-hover:text-blue-600 transition-colors uppercase tracking-wider">Next &rarr;</div>
+                <div class="font-bold text-zinc-900 group-hover:text-blue-600 transition-colors mt-1.5 line-clamp-1">{nextPost.title}</div>
+              </a>
+            </div>
+          ) : <div class="hidden sm:block col-span-1" />}
+        </nav>
+
+        <!-- Giscus Discussion Embed -->
+        <div class="mt-16 pt-10 border-t border-zinc-200/80">
+          <h2 class="text-2xl font-bold tracking-tight text-zinc-950 mb-6">Discussion & Comments</h2>
+          <Giscus />
+        </div>
+      </article>
+
+      <!-- Table of Contents Sidebar -->
+      {headings.length > 0 && (
+        <aside class="hidden lg:block col-span-4">
+          <div class="sticky top-24 craft-card bg-white border border-zinc-200/80 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400 mb-4">
+              On This Page
+            </h3>
+            <TOC headings={headings} />
+          </div>
+        </aside>
+      )}
+    </div>
+  </div>
+
+  <!-- Reading Progress Bar -->
+  <div id="read-progress"></div>
+
+  <script is:inline>
+    const progress = document.getElementById("read-progress");
+    window.addEventListener("scroll", () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (progress && total > 0) {
+        const percent = (window.scrollY / total) * 100;
+        progress.style.width = percent + "%";
+      }
+    });
+  </script>
+</BaseLayout>

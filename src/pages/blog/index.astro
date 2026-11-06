@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import BlogList from '../../components/BlogList.astro';
+
+const allPosts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const pageSize = 7;
+const totalPages = Math.ceil(allPosts.length / pageSize);
+const posts = allPosts.slice(0, pageSize);
+const nextUrl = totalPages > 1 ? '/blog/page/2/' : null;
+---
+
+<PageLayout
+  title="Blog"
+  description="Technical articles, deep dives, benchmarks and tutorials"
+>
+  <div class="max-w-4xl mx-auto py-8">
+    <BlogList
+      posts={posts}
+      currentPage={1}
+      totalPages={totalPages}
+      prevUrl={null}
+      nextUrl={nextUrl}
+    />
+  </div>
+</PageLayout>
+

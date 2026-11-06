@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import TagCloud from '../components/TagCloud.astro';
+
+const allPosts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Map tags to posts
+const tagMap = new Map<string, typeof allPosts>();
+
+for (const post of allPosts) {
+  for (const tag of post.data.tags || []) {
+    const existing = tagMap.get(tag) || [];
+    existing.push(post);
+    tagMap.set(tag, existing);
+  }
+}
+
+// Sorted tags alphabetically
+const sortedTags = Array.from(tagMap.keys()).sort((a, b) => a.localeCompare(b));
+
+const tagCloudData = sortedTags.map((name) => ({
+  name,
+  count: tagMap.get(name)!.length,
+}));
+---
+
+<PageLayout
+  title="Tags Catalog"
+  description="Explore technical articles, benchmarks, and tutorials indexed by topic"
+>
+  <div class="max-w-4xl mx-auto py-8">
+    <!-- Tag Cloud Overview -->
+    <div class="mb-14">
+      <TagCloud tags={tagCloudData} />
+    </div>
+
+    <!-- Tags List -->
+    <div class="space-y-12">
+      {sortedTags.map((tag) => {
+        const posts = tagMap.get(tag) || [];
+
+        return (
+          <section class="scroll-mt-24 craft-card bg-white border border-zinc-200/80 rounded-xl p-6 lg:p-7 shadow-sm" id={tag}>
+            <div class="flex items-center justify-between border-b border-zinc-100 pb-3 mb-4">
+              <h2 class="text-xl font-bold tracking-tight text-zinc-950 font-mono">
+                #{tag}
+              </h2>
+              <span class="text-xs font-mono text-zinc-400">
+                {posts.length} {posts.length === 1 ? 'article' : 'articles'}
+              </span>
+            </div>
+
+            <div class="divide-y divide-zinc-100">
+              {posts.map((post) => {
+                const slug = post.id.replace(/^\d{4}-\d{1,2}-\d{1,2}-/, '');
+                const formattedDate = post.data.date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                });
+
+                return (
+                  <div class="py-3.5 group">
+                    <a href={`/${slug}/`} class="block">
+                      <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                        <h3 class="text-base font-semibold text-zinc-900 group-hover:text-blue-600 transition-colors">
+                          {post.data.title}
+                        </h3>
+                        <time
+                          datetime={post.data.date.toISOString().split('T')[0]}
+                          class="font-mono text-xs text-zinc-400 whitespace-nowrap"
+                        >
+                          {formattedDate}
+                        </time>
+                      </div>
+                      {post.data.description && (
+                        <p class="mt-1 text-sm text-zinc-600 line-clamp-1">
+                          {post.data.description}
+                        </p>
+                      )}
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
+  </div>
+</PageLayout>

@@ -1,0 +1,52 @@
+---
+import Social from './Social.astro';
+---
+
+<footer class="mt-auto border-t border-zinc-200/80 bg-white text-zinc-600">
+  <div class="container mx-auto px-4 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- Left: Copyright and identity -->
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <a href="/" class="text-sm font-bold tracking-tight text-zinc-900 hover:text-blue-600 transition-colors">
+          Jirawat Boonkumnerd
+        </a>
+        <p class="text-xs text-zinc-500 mt-1 font-mono">
+          &copy; {new Date().getFullYear()} ntsd.dev &middot; All rights reserved.
+        </p>
+      </div>
+
+
+      <!-- Right: Social Links & RSS -->
+      <div class="flex items-center gap-4">
+        <Social />
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Transitional Service Worker Registration (Production Only) -->
+{import.meta.env.PROD && (
+  <script is:inline>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then((reg) => {
+          console.log('[sw] Registered with scope:', reg.scope);
+        }).catch((err) => {
+          console.error('[sw] Registration failed:', err);
+        });
+      });
+    }
+  </script>
+)}
+
+{import.meta.env.DEV && (
+  <script is:inline>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script>
+)}

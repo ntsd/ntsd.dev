@@ -1,0 +1,44 @@
+---
+// Giscus comments component deferred via IntersectionObserver
+---
+<div id="giscus-container" class="comment giscus py-8"></div>
+
+<script is:inline>
+  function loadGiscus() {
+    const container = document.getElementById("giscus-container");
+    if (!container || container.hasChildNodes()) return;
+
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "ntsd/ntsd.dev");
+    script.setAttribute("data-repo-id", "R_kgDOGQFuoQ");
+    script.setAttribute("data-category", "General");
+    script.setAttribute("data-category-id", "DIC_kwDOGQFuoc4CR2-u");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-reactions-enabled", "0");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-theme", "light");
+    script.setAttribute("data-lang", "en");
+    script.setAttribute("data-loading", "lazy");
+    script.setAttribute("crossorigin", "anonymous");
+    script.async = true;
+    container.appendChild(script);
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadGiscus();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: "200px" });
+
+    const target = document.getElementById("giscus-container");
+    if (target) observer.observe(target);
+  } else {
+    window.addEventListener("load", loadGiscus);
+  }
+</script>
+

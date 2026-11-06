@@ -1,0 +1,111 @@
+---
+interface Props {
+  project: {
+    id: string;
+    name: string;
+    description: string;
+    since?: string | number;
+    tags?: string[];
+    stacks?: string[];
+    web?: string;
+    github?: string;
+  };
+}
+
+const { project } = Astro.props;
+
+// Build lowercase classes for client-side tag/stack filtering
+const stackClasses = project.stacks?.map((s) => s.toLowerCase().replace(/[^a-z0-9_-]/g, '')).join(' ') || '';
+const tagClasses = project.tags?.map((t) => t.toLowerCase().replace(/[^a-z0-9_-]/g, '')).join(' ') || '';
+---
+
+<div
+  class={`project-card craft-card ${stackClasses} ${tagClasses} bg-white border border-zinc-200/80 hover:border-zinc-300 rounded-xl p-6 lg:p-7 shadow-sm hover:shadow-md flex flex-col justify-between w-full group relative`}
+>
+  <div>
+    <!-- Top Metadata: Date & Tags -->
+    <div class="flex items-center justify-between gap-2 mb-3">
+      {project.since && (
+        <span class="font-mono text-xs font-medium text-zinc-400">
+          {project.since}
+        </span>
+      )}
+      <div class="flex flex-wrap gap-1.5 ml-auto">
+        {project.tags?.map((tag) => (
+          <a
+            class="px-2 py-0.5 text-[11px] font-mono font-medium text-blue-700 bg-blue-50 border border-blue-200/60 rounded-full hover:bg-blue-100 transition-colors"
+            href={`/projects/?filter=${encodeURIComponent(tag.toLowerCase())}`}
+          >
+            {tag}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Title & Description -->
+    <a class="block group/title mt-1" href={`/projects/${project.id}/`}>
+      <h3 class="text-xl font-bold tracking-tight text-zinc-900 group-hover/title:text-blue-600 transition-colors flex items-center justify-between">
+        <span>{project.name}</span>
+        <svg
+          class="w-4 h-4 text-zinc-400 group-hover/title:text-blue-600 group-hover/title:translate-x-0.5 transition-all"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </h3>
+      <p class="mt-2.5 text-sm text-zinc-600 leading-relaxed line-clamp-2">
+        {project.description}
+      </p>
+    </a>
+  </div>
+
+  <!-- Bottom Bar: Tech Stacks & Links -->
+  <div class="flex items-center justify-between pt-6 mt-6 border-t border-zinc-100 gap-4">
+    <!-- Stacks -->
+    <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+      {project.stacks?.map((stack) => (
+        <a
+          class="px-2 py-0.5 text-zinc-600 bg-zinc-100/80 hover:bg-zinc-200/80 rounded border border-zinc-200/50 hover:text-zinc-900 transition-colors"
+          href={`/projects/?filter=${encodeURIComponent(stack.toLowerCase())}`}
+          title={stack}
+        >
+          {stack}
+        </a>
+      ))}
+    </div>
+
+    <!-- External Action Icons -->
+    <div class="flex items-center gap-2.5 text-zinc-400">
+      {project.web && (
+        <a
+          aria-label={`${project.name} live website`}
+          class="p-1.5 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 rounded transition-colors"
+          href={project.web}
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Visit Live Site"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM6.262 6.072a8.25 8.25 0 1010.562-.766 4.5 4.5 0 01-1.318 1.357L14.25 7.5l.165.33a.809.809 0 01-1.086 1.085l-.604-.302a1.125 1.125 0 00-1.298.21l-.132.131c-.439.44-.439 1.152 0 1.591l.296.296c.256.257.622.374.98.314l1.17-.195c.323-.054.654.036.905.245l1.33 1.108c.32.267.46.694.358 1.1a8.7 8.7 0 01-2.288 4.04l-.723.724a1.125 1.125 0 01-1.298.21l-.153-.076a1.125 1.125 0 01-.622-1.006v-1.089c0-.298-.119-.585-.33-.796l-1.347-1.347a1.125 1.125 0 01-.21-1.298L9.75 12l-1.64-1.64a6 6 0 01-1.676-3.257l-.172-1.03z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+      )}
+      {project.github && (
+        <a
+          aria-label={`${project.name} GitHub repository`}
+          class="p-1.5 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 rounded transition-colors"
+          href={`https://github.com/${project.github}`}
+          rel="noopener noreferrer"
+          target="_blank"
+          title="GitHub Repository"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path>
+          </svg>
+        </a>
+      )}
+    </div>
+  </div>
+</div>
