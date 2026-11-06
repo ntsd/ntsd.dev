@@ -26,13 +26,14 @@ const tagClasses = project.tags?.map((t) => t.toLowerCase().replace(/[^a-z0-9_-]
     <!-- Top Metadata: Date & Tags -->
     <div class="flex items-center justify-between gap-2 mb-3">
       {project.since && (
-        <span class="font-mono text-xs font-medium text-zinc-400">
+        <span class="font-mono text-xs font-medium text-zinc-600">
           {project.since}
         </span>
       )}
       <div class="flex flex-wrap gap-1.5 ml-auto">
         {project.tags?.map((tag) => (
           <a
+            aria-label={`Filter projects by tag ${tag}`}
             class="px-2 py-0.5 text-[11px] font-mono font-medium text-blue-700 bg-blue-50 border border-blue-200/60 rounded-full hover:bg-blue-100 transition-colors"
             href={`/projects/?filter=${encodeURIComponent(tag.toLowerCase())}`}
           >
@@ -67,6 +68,7 @@ const tagClasses = project.tags?.map((t) => t.toLowerCase().replace(/[^a-z0-9_-]
     <div class="flex flex-wrap gap-1.5 text-xs font-mono">
       {project.stacks?.map((stack) => (
         <a
+          aria-label={`Filter projects by stack ${stack}`}
           class="px-2 py-0.5 text-zinc-600 bg-zinc-100/80 hover:bg-zinc-200/80 rounded border border-zinc-200/50 hover:text-zinc-900 transition-colors"
           href={`/projects/?filter=${encodeURIComponent(stack.toLowerCase())}`}
           title={stack}

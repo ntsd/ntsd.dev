@@ -110,7 +110,7 @@ const formattedDate = post.date.toLocaleDateString("en-US", {
           {prevPost ? (
             <div class="craft-card col-span-2 sm:col-span-1 border border-zinc-200/80 bg-white p-5 rounded-xl hover:border-zinc-300 shadow-sm transition-all text-left group">
               <a href={prevPost.url} class="block">
-                <div class="text-[11px] font-mono font-medium text-zinc-400 group-hover:text-blue-600 transition-colors uppercase tracking-wider">&larr; Previous</div>
+                <div class="text-[11px] font-mono font-medium text-zinc-600 group-hover:text-blue-600 transition-colors uppercase tracking-wider">&larr; Previous</div>
                 <div class="font-bold text-zinc-900 group-hover:text-blue-600 transition-colors mt-1.5 line-clamp-1">{prevPost.title}</div>
               </a>
             </div>
@@ -119,7 +119,7 @@ const formattedDate = post.date.toLocaleDateString("en-US", {
           {nextPost ? (
             <div class="craft-card col-span-2 sm:col-span-1 border border-zinc-200/80 bg-white p-5 rounded-xl hover:border-zinc-300 shadow-sm transition-all text-right group">
               <a href={nextPost.url} class="block">
-                <div class="text-[11px] font-mono font-medium text-zinc-400 group-hover:text-blue-600 transition-colors uppercase tracking-wider">Next &rarr;</div>
+                <div class="text-[11px] font-mono font-medium text-zinc-600 group-hover:text-blue-600 transition-colors uppercase tracking-wider">Next &rarr;</div>
                 <div class="font-bold text-zinc-900 group-hover:text-blue-600 transition-colors mt-1.5 line-clamp-1">{nextPost.title}</div>
               </a>
             </div>
@@ -136,7 +136,7 @@ const formattedDate = post.date.toLocaleDateString("en-US", {
       {headings.length > 0 && (
         <aside class="hidden lg:block col-span-4">
           <div class="sticky top-24 craft-card bg-white border border-zinc-200/80 rounded-xl p-6 shadow-sm">
-            <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400 mb-4">
+            <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-600 mb-4">
               On This Page
             </h3>
             <TOC headings={headings} />

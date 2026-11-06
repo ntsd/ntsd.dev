@@ -48,7 +48,7 @@ const tagCloudData = sortedTags.map((name) => ({
               <h2 class="text-xl font-bold tracking-tight text-zinc-950 font-mono">
                 #{tag}
               </h2>
-              <span class="text-xs font-mono text-zinc-400">
+              <span class="text-xs font-mono text-zinc-600">
                 {posts.length} {posts.length === 1 ? 'article' : 'articles'}
               </span>
             </div>
@@ -71,7 +71,7 @@ const tagCloudData = sortedTags.map((name) => ({
                         </h3>
                         <time
                           datetime={post.data.date.toISOString().split('T')[0]}
-                          class="font-mono text-xs text-zinc-400 whitespace-nowrap"
+                          class="font-mono text-xs text-zinc-600 whitespace-nowrap"
                         >
                           {formattedDate}
                         </time>
