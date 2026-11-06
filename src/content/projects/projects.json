@@ -1,5 +1,92 @@
 [
   {
+    "id": "zerofactory",
+    "name": "ZeroFactory",
+    "description": "Autonomous multi-agent software factory with parallel task dispatch, Kanban pipeline, isolated Git worktrees, and automated code review.",
+    "since": 2026,
+    "github": "hotcode-dev/zerofactory",
+    "readme": "https://raw.githubusercontent.com/hotcode-dev/zerofactory/main/README.md",
+    "stacks": [
+      "Python",
+      "AI Agents",
+      "Git"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "zerohub",
+    "name": "ZeroHub",
+    "description": "An open-source WebRTC signaling server.",
+    "since": 2024,
+    "github": "hotcode-dev/zerohub",
+    "readme": "https://raw.githubusercontent.com/hotcode-dev/zerohub/main/README.md",
+    "web": "https://zerohub.dev",
+    "stacks": [
+      "TypeScript",
+      "Go",
+      "WebRTC"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "pomodoro-chad",
+    "name": "Pomodoro Chad",
+    "description": "The Uncompromising GigaChad Pomodoro + Zero-Latency Git Voice Vault.",
+    "since": 2026,
+    "github": "ntsd/pomodoro-chad",
+    "readme": "https://raw.githubusercontent.com/ntsd/pomodoro-chad/main/README.md",
+    "web": "https://chadodoro.ntsd.dev/",
+    "stacks": [
+      "Astro",
+      "TypeScript",
+      "Python"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "zerocoach",
+    "name": "ZeroCoach",
+    "description": "An open-source, privacy-first AI health coach with offline mobile LLM inference, visual nutrition tracking, wearable sync, and adaptive lifestyle.",
+    "since": 2026,
+    "github": "ntsd/zerocoach",
+    "readme": "https://raw.githubusercontent.com/ntsd/zerocoach/main/README.md",
+    "web": "https://zerocoach.tech",
+    "stacks": [
+      "TypeScript",
+      "AI",
+      "Mobile"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
+    "id": "vibe-trap",
+    "name": "Vibe Trap",
+    "description": "macOS AFK anti-tamper & jumpscare trap utility. Keeps screen awake, locks workstation on unauthorized touch.",
+    "since": 2026,
+    "github": "ntsd/vibe-trap",
+    "readme": "https://raw.githubusercontent.com/ntsd/vibe-trap/main/README.md",
+    "stacks": [
+      "Swift",
+      "macOS"
+    ],
+    "tags": [
+      "Featured"
+    ],
+    "featured": true
+  },
+  {
     "id": "zero-share",
     "name": "Zero Share",
     "description": "A client-side secure P2P file sharing using WebRTC.",
@@ -46,9 +133,7 @@
       "Astro",
       "Svelte"
     ],
-    "tags": [
-      "Featured"
-    ],
+    "tags": [],
     "featured": true
   },
   {
@@ -64,9 +149,7 @@
       "Astro",
       "Svelte"
     ],
-    "tags": [
-      "Featured"
-    ],
+    "tags": [],
     "featured": true
   },
   {
