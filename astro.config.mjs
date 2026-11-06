@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { remarkLangCase } from './src/plugins/remark-lang-case.ts';
@@ -49,31 +49,29 @@ export default defineConfig({
     inlineStylesheets: 'always',
   },
   markdown: {
-    remarkPlugins: [remarkLangCase, remarkKramdown],
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'append',
-          content: {
-            type: 'element',
-            tagName: 'span',
-            properties: { className: ['anchor-link'] },
-            children: [{ type: 'text', value: '#' }],
+    processor: unified({
+      remarkPlugins: [remarkLangCase, remarkKramdown],
+      rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'append',
+            content: {
+              type: 'element',
+              tagName: 'span',
+              properties: { className: ['anchor-link'] },
+              children: [{ type: 'text', value: '#' }],
+            },
           },
-        },
+        ],
       ],
-    ],
+    }),
     shikiConfig: {
       theme: 'github-dark',
     },
   },
   integrations: [
-    tailwind({
-      configFile: './tailwind.config.js',
-      applyBaseStyles: false,
-    }),
     sitemap(),
     postBuildIntegration(),
   ],
