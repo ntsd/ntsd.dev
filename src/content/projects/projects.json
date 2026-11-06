@@ -3,7 +3,7 @@
     "id": "zerofactory",
     "name": "ZeroFactory",
     "description": "Autonomous multi-agent software factory with parallel task dispatch, Kanban pipeline, isolated Git worktrees, and automated code review.",
-    "since": 2026,
+    "since": "2026 - present",
     "github": "hotcode-dev/zerofactory",
     "readme": "https://raw.githubusercontent.com/hotcode-dev/zerofactory/main/README.md",
     "stacks": [
@@ -20,7 +20,7 @@
     "id": "zerohub",
     "name": "ZeroHub",
     "description": "An open-source WebRTC signaling server.",
-    "since": 2024,
+    "since": "2024 - present",
     "github": "hotcode-dev/zerohub",
     "readme": "https://raw.githubusercontent.com/hotcode-dev/zerohub/main/README.md",
     "web": "https://zerohub.dev",
@@ -38,7 +38,7 @@
     "id": "pomodoro-chad",
     "name": "Pomodoro Chad",
     "description": "The Uncompromising GigaChad Pomodoro + Zero-Latency Git Voice Vault.",
-    "since": 2026,
+    "since": "2026",
     "github": "ntsd/pomodoro-chad",
     "readme": "https://raw.githubusercontent.com/ntsd/pomodoro-chad/main/README.md",
     "web": "https://chadodoro.ntsd.dev/",
@@ -56,7 +56,7 @@
     "id": "zerocoach",
     "name": "ZeroCoach",
     "description": "An open-source, privacy-first AI health coach with offline mobile LLM inference, visual nutrition tracking, wearable sync, and adaptive lifestyle.",
-    "since": 2026,
+    "since": "2026 - present",
     "github": "ntsd/zerocoach",
     "readme": "https://raw.githubusercontent.com/ntsd/zerocoach/main/README.md",
     "web": "https://zerocoach.tech",
@@ -118,7 +118,7 @@
     "tags": [
       "Featured"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "tools",
@@ -134,7 +134,7 @@
       "Svelte"
     ],
     "tags": [],
-    "featured": true
+    "featured": false
   },
   {
     "id": "lisuify",
@@ -150,7 +150,7 @@
       "Svelte"
     ],
     "tags": [],
-    "featured": true
+    "featured": false
   },
   {
     "id": "zero-market-radar",
