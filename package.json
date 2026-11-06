@@ -10,6 +10,7 @@
     "build": "node scripts/fetch-readmes.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "deploy": "wrangler pages deploy dist",
     "test:parity": "node scripts/verify-parity.mjs"
   },
   "dependencies": {
@@ -30,7 +31,8 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.10.7",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "wrangler": "^4.158.0"
   },
   "repository": {
     "type": "git",
