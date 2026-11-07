@@ -15,9 +15,12 @@ const {
   datePublished,
   dateModified,
   url,
-  image = "https://ntsd.dev/img/me.jpg",
+  image = "/pwa/icons/512.png",
   tags = []
 } = Astro.props;
+
+const rawImage = (!image || image.startsWith("data:")) ? "/pwa/icons/512.png" : image;
+const resolvedImage = new URL(rawImage, Astro.site || "https://ntsd.dev").href;
 
 const schema = {
   "@context": "https://schema.org",
@@ -27,7 +30,7 @@ const schema = {
   "datePublished": datePublished.toISOString(),
   "dateModified": (dateModified || datePublished).toISOString(),
   "url": url,
-  "image": image.startsWith("http") ? image : `https://ntsd.dev${image}`,
+  "image": resolvedImage,
   "keywords": tags.join(", "),
   "author": {
     "@type": "Person",

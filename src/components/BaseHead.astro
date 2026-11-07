@@ -9,13 +9,13 @@ interface Props {
 const {
   title,
   description = "A software engineer who loves coding.",
-  image = "/img/me.jpg",
+  image = "/pwa/icons/512.png",
   type = "website"
 } = Astro.props;
 
 const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonicalURL = new URL(pathname, Astro.site);
-const ogImage = (!image || image.startsWith('data:')) ? new URL('/img/me.jpg', Astro.site) : new URL(image, Astro.site);
+const ogImage = (!image || image.startsWith('data:')) ? new URL('/pwa/icons/512.png', Astro.site) : new URL(image, Astro.site);
 ---
 
 <meta charset="utf-8" />
