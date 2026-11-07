@@ -37,8 +37,11 @@ const { className = '' } = Astro.props;
       <div class="flex items-start gap-3">
         <div class="w-10 h-10 rounded-full bg-zinc-200/80 animate-pulse shrink-0"></div>
         <div class="flex-1 space-y-2">
-          <div class="h-24 bg-white rounded-xl border border-zinc-200/80 w-full animate-pulse flex items-center justify-center text-xs text-zinc-400 font-mono">
-            Loading discussion thread...
+          <div class="h-24 bg-white rounded-xl border border-zinc-200/80 w-full flex items-center justify-center text-xs text-zinc-700 font-mono">
+            <span class="inline-flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+              Loading discussion thread...
+            </span>
           </div>
         </div>
       </div>

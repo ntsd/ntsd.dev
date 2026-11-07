@@ -82,6 +82,16 @@ pre.astro-code .line {
   min-height: 1.4rem;
 }
 
+/* Shiki comment contrast enhancement for WCAG AA compliance (5.76:1 on #18181b) */
+pre.astro-code span[style*="#6A737D"],
+pre.astro-code span[style*="#6a737d"],
+pre.shiki span[style*="#6A737D"],
+pre.shiki span[style*="#6a737d"],
+pre code span[style*="#6A737D"],
+pre code span[style*="#6a737d"] {
+  color: #8b949e !important;
+}
+
 /* Heading anchor link styles */
 .anchor-link {
   color: #a1a1aa;
