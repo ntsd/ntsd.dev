@@ -177,7 +177,7 @@ const showCatalog = Boolean(post.catalog) && headings.length > 0;
 Giscus embeds an `iframe` hosted on `giscus.app`. Default themes like `noborder_light` inject their own grayish backgrounds (`#f6f6f7`) and green buttons, creating jarring rectangular borders on top of the site's `#fafafa` page background.
 
 We resolved this by:
-1. Authoring a custom stylesheet at [`public/styles/giscus.css`](https://github.com/ntsd/ntsd.dev/blob/main/public/styles/giscus.css) with `--color-canvas-default: transparent`.
+1. Authoring a custom stylesheet at [`public/styles/giscus.css`](https://github.com/ntsd/ntsd.dev/blob/main/public/styles/giscus.css) with `color-scheme: light !important` and `--color-canvas-default: #fafafa` matching the page background seamlessly.
 2. Setting `--color-btn-primary-bg: #18181b` and `--color-accent-fg: #2563eb` to match the site's obsidian/zinc tokens and blue link accents.
 3. Enabling CORS in `public/_headers`:
 

@@ -141,8 +141,9 @@ Previous iterations attempted to wrap Giscus in a boxed card with `data-theme="n
 
 We solved this with:
 1. **Direct Article Section**: Removed the artificial card wrapper, allowing comments to flow naturally within the post container.
-2. **Transparent Custom Giscus Theme**: Authored `public/styles/giscus.css` with:
-   - `--color-canvas-default: transparent`: The iframe canvas renders 100% transparent, adopting the native page background.
+2. **Custom Giscus Theme Matching Page Canvas**: Authored `public/styles/giscus.css` with:
+   - `color-scheme: light !important`: Guarantees light-mode canvas painting across dark-mode OS and browser environments.
+   - `--color-canvas-default: #fafafa`: Seamlessly matches the site's `#fafafa` page background.
    - `--color-canvas-inset: #ffffff`: Crisp white comment input box matching the site's form controls.
    - `--color-btn-primary-bg: #18181b`: Primary actions match the site's dark zinc button styling.
    - `--color-accent-fg: #2563eb`: Blue accent links matching site links.

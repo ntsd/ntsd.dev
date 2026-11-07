@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
   --astro-code-foreground: #e4e4e7;
   --astro-code-background: #18181b;
   --astro-code-token-constant: #79c0ff;

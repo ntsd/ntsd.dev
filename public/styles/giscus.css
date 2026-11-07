@@ -1,7 +1,14 @@
 /*! Custom Giscus Theme for ntsd.dev
- * Canvas transparent to seamlessly match page background (#fafafa)
+ * Light theme matching #fafafa page background with forced color-scheme: light
  */
+:root,
+body {
+  color-scheme: light !important;
+  background-color: #fafafa !important;
+}
+
 main {
+  color-scheme: light !important;
   --color-prettylights-syntax-comment: #6e7781;
   --color-prettylights-syntax-constant: #0550ae;
   --color-prettylights-syntax-entity: #8250df;
@@ -61,7 +68,7 @@ main {
   --color-fg-default: #18181b;
   --color-fg-muted: #52525b;
   --color-fg-subtle: #71717a;
-  --color-canvas-default: transparent;
+  --color-canvas-default: #fafafa;
   --color-canvas-overlay: #ffffff;
   --color-canvas-inset: #ffffff;
   --color-canvas-subtle: #fafafa;
@@ -82,6 +89,8 @@ main {
   --color-primer-shadow-inset: inset 0 1px 0 rgba(228, 228, 231, 0.2);
   --color-scale-gray-1: #f4f4f5;
   --color-scale-blue-1: #dbeafe;
+  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
 }
 
 main .pagination-loader-container {
@@ -91,4 +100,3 @@ main .pagination-loader-container {
 main .gsc-loading-image {
   background-image: url(https://github.githubassets.com/images/mona-loading-default.gif);
 }
-
