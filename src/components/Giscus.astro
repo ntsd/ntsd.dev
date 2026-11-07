@@ -66,7 +66,7 @@ const { className = '' } = Astro.props;
     if (!container || container.querySelector("script[src*='giscus']")) return;
 
     const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-    const themeUrl = isDev ? "light" : "https://ntsd.dev/styles/giscus.css?v=2";
+    const themeUrl = isDev ? "light" : "https://ntsd.dev/styles/giscus-theme.css";
 
     const script = document.createElement("script");
     script.src = "https://giscus.app/client.js";
