@@ -49,9 +49,15 @@ const ogImage = (!image || image.startsWith('data:')) ? new URL('/pwa/icons/512.
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
   rel="stylesheet"
+  media="print"
+  onload="this.media='all'"
 />
-<link href="https://www.google-analytics.com" rel="preconnect" />
-<link href="https://giscus.app" rel="preconnect" />
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
 
 <!-- Web App Manifest & Icons -->
 <link rel="manifest" href="/pwa/manifest.json" />
