@@ -16,14 +16,15 @@ const {
 
 <BaseLayout title={title} description={description} image={headerImg}>
   <!-- Page Header -->
-  <header class="bg-zinc-950 text-white border-b border-zinc-800">
-    <div class="container mx-auto px-4 lg:px-8 py-16 lg:py-20 text-center">
-      <div class="max-w-2xl mx-auto">
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3">
+  <header class="relative bg-zinc-950 text-white border-b border-zinc-800 overflow-hidden">
+    <div class="absolute inset-0 bg-grid-dark pointer-events-none" aria-hidden="true"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-white mb-4">
           {title}
         </h1>
         {description && (
-          <p class="text-base sm:text-lg text-zinc-400 font-normal leading-relaxed">
+          <p class="text-base sm:text-lg text-zinc-300 font-normal leading-relaxed">
             {description}
           </p>
         )}
@@ -31,7 +32,7 @@ const {
     </div>
   </header>
 
-  <div class="container mx-auto px-4 lg:px-8 py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
     <slot />
   </div>
 </BaseLayout>

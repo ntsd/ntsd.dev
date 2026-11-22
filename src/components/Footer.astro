@@ -2,22 +2,31 @@
 import Social from './Social.astro';
 ---
 
-<footer class="mt-auto border-t border-zinc-200/80 bg-white text-zinc-600">
-  <div class="container mx-auto px-4 lg:px-8 py-12">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<footer class="mt-auto border-t border-zinc-200 bg-white text-zinc-600">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
       <!-- Left: Copyright and identity -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left">
-        <a href="/" class="text-sm font-bold tracking-tight text-zinc-900 hover:text-blue-600 transition-colors">
-          Jirawat Boonkumnerd
+      <div class="flex flex-col items-start">
+        <a href="/" translate="no" class="text-base font-extrabold tracking-tight text-zinc-950 hover:text-blue-600 transition-colors">
+          ntsd<span class="text-blue-600 font-mono font-semibold">.dev</span>
         </a>
-        <p class="text-xs text-zinc-500 mt-1 font-mono">
-          &copy; {new Date().getFullYear()} ntsd.dev &middot; All rights reserved.
+        <p class="text-xs text-zinc-600 mt-1.5 font-mono">
+          &copy; {new Date().getFullYear()} Jirawat Boonkumnerd &middot; Bangkok, Thailand
         </p>
       </div>
 
+      <!-- Center: Sitemap Links -->
+      <nav aria-label="Footer Navigation" class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium">
+        <a href="/blog/" class="inline-flex items-center min-h-[44px] text-zinc-600 hover:text-zinc-950 transition-colors">Blog</a>
+        <a href="/projects/" class="inline-flex items-center min-h-[44px] text-zinc-600 hover:text-zinc-950 transition-colors">Projects</a>
+        <a href="/tags/" class="inline-flex items-center min-h-[44px] text-zinc-600 hover:text-zinc-950 transition-colors">Tags</a>
+        <a href="/categories/" class="inline-flex items-center min-h-[44px] text-zinc-600 hover:text-zinc-950 transition-colors">Categories</a>
+        <a href="/about/" class="inline-flex items-center min-h-[44px] text-zinc-600 hover:text-zinc-950 transition-colors">About</a>
+        <a href="/privacy-policy/" class="inline-flex items-center min-h-[44px] text-zinc-600 hover:text-zinc-950 transition-colors">Privacy</a>
+      </nav>
 
       <!-- Right: Social Links & RSS -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center">
         <Social />
       </div>
     </div>

@@ -23,7 +23,7 @@ const ogImage = (!image || image.startsWith('data:')) ? new URL('/pwa/icons/512.
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <meta content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" name="google-site-verification" />
 <meta name="keywords" content="Programming, Web Development, Coding, Artificial Intelligence, Machine Learning, Jirawat Boonkumnerd" />
-<meta name="theme-color" content="#212121" />
+<meta name="theme-color" content="#ffffff" />
 
 <title>{title ? (title.includes("Jirawat Boonkumnerd") ? title : `${title} · Jirawat Boonkumnerd`) : "Jirawat Boonkumnerd"}</title>
 <meta name="description" content={description} />
@@ -43,7 +43,13 @@ const ogImage = (!image || image.startsWith('data:')) ? new URL('/pwa/icons/512.
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
 
-<!-- Preconnects -->
+<!-- Preconnects & Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
 <link href="https://www.google-analytics.com" rel="preconnect" />
 <link href="https://giscus.app" rel="preconnect" />
 

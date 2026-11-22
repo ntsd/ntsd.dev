@@ -19,12 +19,17 @@ const { title, description, image, type } = Astro.props;
     <BaseHead title={title} description={description} image={image} type={type} />
     <slot name="head" />
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col min-h-screen bg-zinc-50 text-zinc-900 antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2.5 focus:rounded-lg focus:bg-zinc-950 focus:text-white focus:text-sm focus:font-semibold focus:shadow-lg"
+    >
+      Skip to main content
+    </a>
     <Nav />
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
-

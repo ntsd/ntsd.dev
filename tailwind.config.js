@@ -6,6 +6,10 @@ export default {
   safelist: ['-translate-y-full', 'max-h-screen'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -13,11 +17,12 @@ export default {
               'line-break': 'anywhere',
             },
             ':not(pre) > code': {
-              color: '#e4e4e7',
-              backgroundColor: '#27272a',
-              padding: '0.2em 0.4em',
-              borderRadius: '0.25rem',
-              fontWeight: '400',
+              color: '#18181b',
+              backgroundColor: '#f4f4f5',
+              border: '1px solid #e4e4e7',
+              padding: '0.15em 0.4em',
+              borderRadius: '0.375rem',
+              fontWeight: '500',
               fontSize: '0.875em',
               fontFamily: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
             },
@@ -32,13 +37,14 @@ export default {
               color: '#e4e4e7',
               borderWidth: '1px',
               borderColor: '#27272a',
-              borderRadius: '0.5rem',
+              borderRadius: '0.75rem',
               padding: '1.25rem',
               overflowX: 'auto',
             },
             'pre code': {
               color: 'inherit',
               backgroundColor: 'transparent',
+              border: 'none',
               padding: '0',
               borderRadius: '0',
               fontSize: '0.875rem',
@@ -54,11 +60,10 @@ export default {
       center: true,
       screens: {
         lg: '1024px',
-        xl: '1280px',
+        xl: '1152px',
       },
     },
   },
   plugins: [typography],
   darkMode: 'class',
 };
-

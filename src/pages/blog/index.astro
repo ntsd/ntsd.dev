@@ -15,9 +15,9 @@ const nextUrl = totalPages > 1 ? '/blog/page/2/' : null;
 
 <PageLayout
   title="Blog"
-  description="Technical articles, deep dives, benchmarks and tutorials"
+  description="Technical articles, deep dives, benchmarks, and engineering tutorials."
 >
-  <div class="max-w-4xl mx-auto py-8">
+  <div class="max-w-4xl">
     <BlogList
       posts={posts}
       currentPage={1}
@@ -27,4 +27,3 @@ const nextUrl = totalPages > 1 ? '/blog/page/2/' : null;
     />
   </div>
 </PageLayout>
-

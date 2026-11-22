@@ -5,28 +5,27 @@ interface Props {
 
 const { tags } = Astro.props;
 
-// Determine min and max counts for logarithmic scaling
 const counts = tags.map((t) => t.count);
 const minCount = Math.min(...counts, 1);
 const maxCount = Math.max(...counts, 1);
 
 function getScaleClass(count: number): string {
-  if (maxCount === minCount) return "text-sm";
+  if (maxCount === minCount) return "text-sm font-medium text-zinc-800 bg-white border-zinc-200";
   const ratio = (count - minCount) / (maxCount - minCount);
-  if (ratio > 0.75) return "text-lg font-bold text-zinc-950 bg-zinc-100 border-zinc-300";
-  if (ratio > 0.4) return "text-sm font-semibold text-zinc-800 bg-zinc-50 border-zinc-200";
-  return "text-xs font-medium text-zinc-600 bg-white border-zinc-200/80";
+  if (ratio > 0.75) return "text-base font-bold text-zinc-950 bg-zinc-100 border-zinc-300";
+  if (ratio > 0.4) return "text-sm font-semibold text-zinc-900 bg-white border-zinc-300";
+  return "text-xs font-medium text-zinc-700 bg-white border-zinc-200";
 }
 ---
 
-<div class="flex flex-wrap gap-2.5 items-center justify-center p-8 bg-zinc-50/50 rounded-2xl border border-zinc-200/80">
+<div class="flex flex-wrap gap-2.5 items-center p-6 sm:p-8 bg-white rounded-2xl border border-zinc-200 shadow-xs">
   {tags.map((tag) => (
     <a
       href={`/tags/#${encodeURIComponent(tag.name)}`}
-      class={`craft-button inline-flex items-center gap-1.5 px-3.5 py-1.5 font-mono rounded-lg border shadow-xs hover:border-zinc-400 hover:text-blue-600 transition-all ${getScaleClass(tag.count)}`}
+      class={`craft-button inline-flex items-center gap-1.5 min-h-[44px] px-3.5 py-2 font-mono rounded-lg border hover:border-zinc-400 hover:text-blue-600 ${getScaleClass(tag.count)}`}
     >
       <span>#{tag.name}</span>
-      <span class="text-[10px] text-zinc-400 font-normal">({tag.count})</span>
+      <span class="text-xs text-zinc-600 font-normal">({tag.count})</span>
     </a>
   ))}
 </div>

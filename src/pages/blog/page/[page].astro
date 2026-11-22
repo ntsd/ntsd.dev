@@ -37,10 +37,10 @@ const { posts, currentPage, totalPages, prevUrl, nextUrl } = Astro.props;
 ---
 
 <PageLayout
-  title={`Blog - Page ${currentPage}`}
-  description="Technical articles, deep dives, benchmarks and tutorials"
+  title={`Blog — Page ${currentPage}`}
+  description="Technical articles, deep dives, benchmarks, and engineering tutorials."
 >
-  <div class="max-w-4xl mx-auto py-8">
+  <div class="max-w-4xl">
     <BlogList
       posts={posts}
       currentPage={currentPage}
@@ -50,4 +50,3 @@ const { posts, currentPage, totalPages, prevUrl, nextUrl } = Astro.props;
     />
   </div>
 </PageLayout>
-

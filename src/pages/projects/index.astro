@@ -7,65 +7,151 @@ const allProjects = await getCollection('projects');
 const featured = allProjects.filter((p) => p.data.featured);
 const regular = allProjects.filter((p) => !p.data.featured);
 const projects = [...featured, ...regular];
+
+const filterOptions = [
+  { key: '', label: 'All' },
+  { key: 'featured', label: 'Featured' },
+  { key: 'golang', label: 'Golang' },
+  { key: 'typescript', label: 'TypeScript' },
+  { key: 'webrtc', label: 'WebRTC' },
+  { key: 'astro', label: 'Astro' },
+  { key: 'svelte', label: 'Svelte' },
+  { key: 'python', label: 'Python' },
+  { key: 'swift', label: 'Swift' },
+];
 ---
 
 <PageLayout
   title="Open Source Projects"
-  description="Distributed systems, networking protocols, WebRTC engines, and developer tools"
+  description="Distributed systems, networking protocols, WebRTC engines, and developer utilities."
 >
-  <div class="max-w-6xl mx-auto py-8">
-    <!-- Quick Filter Chips -->
-    <div class="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-zinc-200/80">
-      <span class="text-xs font-mono font-medium text-zinc-600 uppercase tracking-wider mr-2">Filter by stack:</span>
-      <a href="/projects/" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">All</a>
-      <a href="/projects/?filter=featured" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Featured</a>
-      <a href="/projects/?filter=golang" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Golang</a>
-      <a href="/projects/?filter=typescript" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">TypeScript</a>
-      <a href="/projects/?filter=webrtc" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">WebRTC</a>
-      <a href="/projects/?filter=astro" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Astro</a>
-      <a href="/projects/?filter=svelte" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Svelte</a>
-      <a href="/projects/?filter=python" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Python</a>
-      <a href="/projects/?filter=swift" class="craft-button px-3 py-1 text-xs font-mono rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800 shadow-xs">Swift</a>
-    </div>
-
-    <!-- Active Filter Alert -->
-    <div id="filter-banner" class="hidden mb-8 p-4 bg-zinc-100 border border-zinc-300 rounded-xl flex items-center justify-between">
-      <span class="text-sm font-medium text-zinc-800" id="filter-text"></span>
-      <a href="/projects/" class="text-xs font-mono font-semibold text-blue-600 hover:underline">
-        Clear filter &times;
-      </a>
-    </div>
-
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
-      {projects.map((project) => (
-        <ProjectCard project={project.data} />
+  <!-- Quick Filter Chips -->
+  <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-zinc-200">
+    <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter projects by stack">
+      <span class="text-xs font-mono font-semibold text-zinc-600 uppercase tracking-wider mr-1">Filter:</span>
+      {filterOptions.map((opt) => (
+        <a
+          href={opt.key ? `/projects/?filter=${encodeURIComponent(opt.key)}` : '/projects/'}
+          data-filter={opt.key}
+          class="filter-chip craft-button inline-flex items-center justify-center min-h-[44px] px-3.5 py-2 text-xs font-mono font-medium rounded-lg border border-zinc-300 bg-white hover:bg-zinc-50 text-zinc-800"
+        >
+          {opt.label}
+        </a>
       ))}
     </div>
+    <p class="font-mono text-xs text-zinc-600 tabular-nums" id="projects-count" aria-live="polite">
+      Showing {projects.length} of {projects.length} projects
+    </p>
+  </div>
+
+  <!-- Active Filter Alert -->
+  <div id="filter-banner" class="hidden mb-8 p-4 bg-white border border-zinc-300 rounded-xl flex flex-wrap items-center justify-between gap-3 shadow-xs">
+    <span class="text-sm font-medium text-zinc-900" id="filter-text"></span>
+    <a
+      href="/projects/"
+      id="clear-filter-btn"
+      class="inline-flex items-center min-h-[44px] px-3 text-xs font-mono font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors"
+    >
+      Clear filter &times;
+    </a>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8" id="projects-grid">
+    {projects.map((project) => (
+      <ProjectCard project={project.data} />
+    ))}
+  </div>
+
+  <!-- Empty Filter State -->
+  <div id="projects-empty" class="hidden text-center py-16 px-6 bg-white border border-zinc-200 rounded-2xl">
+    <p class="text-lg font-bold text-zinc-950 mb-2">No matching projects found</p>
+    <p class="text-sm text-zinc-600 mb-6">Try clearing the active filter to browse all open-source systems.</p>
+    <a
+      href="/projects/"
+      id="empty-reset-btn"
+      class="craft-button inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-sm font-semibold text-white bg-zinc-950 hover:bg-zinc-800 rounded-lg"
+    >
+      Show All Projects
+    </a>
   </div>
 
   <script is:inline>
     (() => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const filter = urlParams.get("filter");
+      const chips = Array.from(document.querySelectorAll(".filter-chip"));
+      const cards = Array.from(document.querySelectorAll(".project-card"));
+      const banner = document.getElementById("filter-banner");
+      const filterText = document.getElementById("filter-text");
+      const countEl = document.getElementById("projects-count");
+      const emptyEl = document.getElementById("projects-empty");
+      const clearBtn = document.getElementById("clear-filter-btn");
+      const emptyResetBtn = document.getElementById("empty-reset-btn");
+      const total = cards.length;
 
-      if (filter) {
-        const normalizedFilter = filter.toLowerCase().replace(/[^a-z0-9_-]/g, "");
-        const banner = document.getElementById("filter-banner");
-        const filterText = document.getElementById("filter-text");
-        if (banner && filterText) {
-          banner.classList.remove("hidden");
-          filterText.textContent = `Showing projects matching "${filter}"`;
-        }
+      const applyFilter = (rawFilter, updateUrl = false) => {
+        const filter = (rawFilter || "").trim();
+        const normalized = filter.toLowerCase().replace(/[^a-z0-9_-]/g, "");
 
-        const cards = document.querySelectorAll(".project-card");
+        let visible = 0;
         cards.forEach((card) => {
-          const cardClasses = card.className.toLowerCase();
-          if (!cardClasses.includes(normalizedFilter)) {
-            card.style.display = "none";
+          const matches = !normalized || card.className.toLowerCase().includes(normalized);
+          card.style.display = matches ? "" : "none";
+          if (matches) visible += 1;
+        });
+
+        chips.forEach((chip) => {
+          const chipKey = chip.getAttribute("data-filter") || "";
+          const isActive = chipKey === normalized;
+          chip.setAttribute("aria-pressed", String(isActive));
+          if (isActive) {
+            chip.classList.add("bg-zinc-950", "text-white", "border-zinc-950", "hover:bg-zinc-800");
+            chip.classList.remove("bg-white", "text-zinc-800", "border-zinc-300", "hover:bg-zinc-50");
+          } else {
+            chip.classList.remove("bg-zinc-950", "text-white", "border-zinc-950", "hover:bg-zinc-800");
+            chip.classList.add("bg-white", "text-zinc-800", "border-zinc-300", "hover:bg-zinc-50");
           }
         });
-      }
+
+        if (banner && filterText) {
+          if (normalized) {
+            banner.classList.remove("hidden");
+            filterText.textContent = `Showing ${visible} ${visible === 1 ? "project" : "projects"} matching "${filter}"`;
+          } else {
+            banner.classList.add("hidden");
+          }
+        }
+
+        if (countEl) {
+          countEl.textContent = `Showing ${visible} of ${total} projects`;
+        }
+
+        if (emptyEl) {
+          emptyEl.classList.toggle("hidden", visible > 0);
+        }
+
+        if (updateUrl) {
+          const nextUrl = normalized ? `/projects/?filter=${encodeURIComponent(normalized)}` : "/projects/";
+          window.history.replaceState({}, "", nextUrl);
+        }
+      };
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", (e) => {
+          e.preventDefault();
+          applyFilter(chip.getAttribute("data-filter") || "", true);
+        });
+      });
+
+      [clearBtn, emptyResetBtn].forEach((btn) => {
+        if (!btn) return;
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          applyFilter("", true);
+        });
+      });
+
+      const initialFilter = new URLSearchParams(window.location.search).get("filter") || "";
+      applyFilter(initialFilter, false);
     })();
   </script>
 </PageLayout>
