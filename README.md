@@ -92,6 +92,29 @@ npm run deploy
 
 ---
 
+## 🤖 Agent Skills
+
+Recommended UI/UX and visual QA agent skills used with [`.agent/workflows/ui.md`](.agent/workflows/ui.md):
+
+```bash
+# 1. Taste (Visual direction & layout)
+npx skills add Leonxlnx/taste-skill
+
+# 2. Emil Kowalski's Skills (Motion & micro-interactions)
+npx skills add emilkowalski/skills
+
+# 3. Impeccable (Design critique & polish)
+npx skills add pbakaus/impeccable
+
+# 4. Vercel Web Design Guidelines (Accessibility & pre-ship review)
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines
+
+# 5. ZeroVisual (Live visual QA & regression)
+npx skills add hotcode-dev/zerovisual
+```
+
+---
+
 ## 📄 License
 
 MIT © [Jirawat Boonkumnerd](https://github.com/ntsd)
